@@ -1,0 +1,26 @@
+{
+	"name": "@cloudcannon/client",
+	"version": "0.0.0",
+	"description": "",
+	"type": "module",
+	"main": "index.ts",
+	"scripts": {
+		"start": "NODE_EXTRA_CA_CERTS=`mkcert -CAROOT`/rootCA.pem node --env-file=.env.development index.ts",
+		"lint-report": "biome lint --diagnostic-level=error --reporter=junit > lint-results.xml",
+		"lint-autofix": "biome check --fix",
+		"lint-code": "biome check",
+		"lint": "npm run lint-autofix && npm run lint-code",
+		"typecheck": "tsc",
+		"test": "node --test",
+		"test-report": "node --test --experimental-test-coverage --test-reporter=junit --test-reporter-destination=test-results.xml --test-reporter=lcov --test-reporter-destination=lcov.info"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.11",
+		"@types/node": "25.6.0",
+		"typescript": "6.0.2"
+	},
+	"dependencies": {
+	}
+}

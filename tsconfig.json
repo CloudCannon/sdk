@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"declaration": true,
+
+		"strict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"isolatedDeclarations": true,
+
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true
+	},
+	"include": ["**/*.js", "**/*.ts"],
+	"exclude": ["node_modules"]
+}
