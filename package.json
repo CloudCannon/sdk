@@ -1,26 +1,57 @@
 {
-	"name": "@cloudcannon/client",
-	"version": "0.0.0",
-	"description": "",
-	"type": "module",
-	"main": "index.ts",
-	"scripts": {
-		"start": "NODE_EXTRA_CA_CERTS=`mkcert -CAROOT`/rootCA.pem node --env-file=.env.development index.ts",
-		"lint-report": "biome lint --diagnostic-level=error --reporter=junit > lint-results.xml",
-		"lint-autofix": "biome check --fix",
-		"lint-code": "biome check",
-		"lint": "npm run lint-autofix && npm run lint-code",
-		"typecheck": "tsc",
-		"test": "node --test",
-		"test-report": "node --test --experimental-test-coverage --test-reporter=junit --test-reporter-destination=test-results.xml --test-reporter=lcov --test-reporter-destination=lcov.info"
-	},
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@biomejs/biome": "2.4.11",
-		"@types/node": "25.6.0",
-		"typescript": "6.0.2"
-	},
-	"dependencies": {
-	}
+  "name": "@cloudcannon/sdk",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "REST API client for the CloudCannon CMS.",
+  "keywords": [
+    "cloudcannon",
+    "cms",
+    "sdk",
+    "static site generator",
+    "configuration"
+  ],
+  "homepage": "https://github.com/CloudCannon/sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudCannon/sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CloudCannon/sdk/issues",
+    "email": "support@cloudcannon.com"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "test:coverage": "node --test --test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info",
+    "lint": "biome check && tsc --noEmit",
+    "lint:fix": "biome check --fix"
+  },
+  "author": "CloudCannon <support@cloudcannon.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "2.4.11",
+    "@types/node": "25.6.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+  }
 }

@@ -7,18 +7,21 @@
 
 		"strict": true,
 		"noFallthroughCasesInSwitch": true,
-		"noEmit": true,
-		"allowImportingTsExtensions": true,
+		"noEmit": false,
 
 		"skipLibCheck": true,
+		"rewriteRelativeImportExtensions": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"isolatedDeclarations": true,
 
 		"verbatimModuleSyntax": true,
-		"erasableSyntaxOnly": true
+		"erasableSyntaxOnly": true,
+
+		"outDir": "dist",
+		"types": ["node"]
 	},
 	"include": ["**/*.js", "**/*.ts"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "dist"]
 }
