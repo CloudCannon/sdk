@@ -43,7 +43,8 @@
     "test:watch": "node --test --watch",
     "test:coverage": "node --test --test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info",
     "lint": "biome check && tsc --noEmit",
-    "lint:fix": "biome check --fix"
+    "lint:fix": "biome check --fix",
+    "generate-schema": "npx openapi-typescript $1 -o ./schema.ts"
   },
   "author": "CloudCannon <support@cloudcannon.com>",
   "license": "ISC",

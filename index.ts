@@ -1,10 +1,18 @@
 import type { components, operations, paths } from './schema.ts';
+import { BuildClient } from './src/build.ts';
+import {
+	type CommitEditingSessionOptions,
+	type CommitEditingSessionResponse,
+	EditingSessionClient,
+} from './src/editing-session.ts';
+import { EditingSessionFileClient } from './src/editing-session-file.ts';
 import { InboxClient } from './src/inbox.ts';
 import { OrgClient } from './src/org.ts';
 import { type BuildConfiguration, SiteClient } from './src/site.ts';
 import { SiteInboxClient } from './src/site-inbox.ts';
+import { SyncClient } from './src/sync.ts';
 
-export type { BuildConfiguration };
+export type { BuildConfiguration, CommitEditingSessionOptions, CommitEditingSessionResponse };
 
 export type Provider = operations['Providers_Repositories']['parameters']['path']['provider'];
 
@@ -18,6 +26,12 @@ export type SiteDam = components['schemas']['SiteDamBlueprint'];
 export type FormSubmission = components['schemas']['FormHookBlueprint'];
 export type Inbox = components['schemas']['InboxBlueprint'];
 export type Dam = components['schemas']['DamBlueprint'];
+export type EditingSession = components['schemas']['EditingSessionBlueprint'];
+export type EditingSessionFile = components['schemas']['EditingSessionFileBlueprint'];
+export type EditingSessionFileContribution =
+	components['schemas']['EditingSessionFileContributionBlueprint'];
+export type UploadData =
+	operations['Index_UploadData']['responses']['200']['content']['application/json'];
 
 export type ProviderDetails = {
 	provider: Provider;
@@ -157,9 +171,37 @@ export default class CloudCannonClient {
 		return new SiteInboxClient(uuid, this);
 	}
 
+	editingSession(uuid: string): EditingSessionClient {
+		return new EditingSessionClient(uuid, this);
+	}
+
+	editingSessionFile(uuid: string): EditingSessionFileClient {
+		return new EditingSessionFileClient(uuid, this);
+	}
+
+	build(uuid: string): BuildClient {
+		return new BuildClient(uuid, this);
+	}
+
+	sync(uuid: string): SyncClient {
+		return new SyncClient(uuid, this);
+	}
+
 	async orgs(): Promise<Org[]> {
 		const resp = await this.fetch('/orgs');
 		const orgs = await resp.json();
 		return orgs;
+	}
+
+	async getUploadData(): Promise<UploadData> {
+		const resp = await this.fetch('/upload-data');
+		if (resp.status === 403) {
+			throw new Error('Error fetching upload data. Permission denied');
+		}
+		if (resp.status === 422) {
+			throw new Error('Error fetching upload data. Invalid request');
+		}
+		const uploadData = await resp.json();
+		return uploadData;
 	}
 }
