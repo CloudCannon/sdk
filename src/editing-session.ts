@@ -79,7 +79,6 @@ export class EditingSessionClient {
 			);
 		}
 		const result = await resp.json();
-		console.log(this.#uuid, result);
 		return result;
 	}
 }
