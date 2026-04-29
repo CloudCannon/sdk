@@ -1,5 +1,14 @@
 import type CloudCannonClient from '../index.ts';
-import type { Build, ProviderDetails, Site, SiteDam, SiteInbox, SiteScan, Sync } from '../index.ts';
+import type {
+	Build,
+	EditingSession,
+	ProviderDetails,
+	Site,
+	SiteDam,
+	SiteInbox,
+	SiteScan,
+	Sync,
+} from '../index.ts';
 import type { operations } from '../schema.js';
 import { ApiError } from './errors.ts';
 
@@ -34,6 +43,12 @@ export type ConnectInboxOptions =
 	operations['Site Inboxes_Create']['requestBody']['content']['application/json'];
 export type ConnectDamOptions =
 	operations['Dams_Create']['requestBody']['content']['application/json'];
+export type FileListing =
+	operations['Files_Index']['responses']['200']['content']['application/json'][number];
+export type UploadFileOptions = {
+	type?: string;
+	overwriteExistingFile?: boolean;
+};
 
 export class SiteClient {
 	#uuid: string;
@@ -155,6 +170,25 @@ export class SiteClient {
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error creating build. Permission denied');
 		}
+	}
+
+	async listFiles(): Promise<FileListing[]> {
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/files`);
+		if (resp.status === 401) {
+			throw new Error('Error fetching files. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error fetching files. Invalid request',
+				errorResp.errors,
+				`/sites/${this.#uuid}/files`,
+				{},
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
 	}
 
 	async getFile(path: string): Promise<Response> {
@@ -376,7 +410,7 @@ export class SiteClient {
 			throw new Error('Error creating dam. Permission denied');
 		}
 		if (resp.status === 422) {
-			const errorResp = await resp.json();
+      const errorResp = await resp.json();
 			throw new ApiError(
 				'Error creating dam. Invalid request',
 				errorResp.errors,
@@ -387,5 +421,110 @@ export class SiteClient {
 		}
 		const dam = await resp.json();
 		return dam;
+	}
+
+	async getEditingSessions(): Promise<EditingSession[]> {
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/editing_sessions`);
+		if (resp.status === 403) {
+			throw new Error('Error fetching editing sessions. Permission denied');
+		}
+		const editingSessions = await resp.json();
+		return editingSessions;
+	}
+
+	async createEditingSession(): Promise<EditingSession> {
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/editing_sessions`, {
+			method: 'POST',
+		});
+		if (resp.status === 401 || resp.status === 403) {
+			throw new Error('Error creating editing session. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error creating editing session. Invalid request',
+				errorResp.errors,
+				`/sites/${this.#uuid}/editing_sessions`,
+				{ method: 'POST' },
+				resp.status
+			);
+		}
+		const editingSession = await resp.json();
+		return editingSession;
+	}
+
+	async getLatestEditingSession(): Promise<EditingSession> {
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/editing_sessions/latest`);
+		if (resp.status === 403) {
+			throw new Error('Error fetching latest editing session. Permission denied');
+		}
+		const editingSession = await resp.json();
+		return editingSession;
+	}
+
+	async uploadFile(
+		path: string,
+		content: BlobPart,
+		options: UploadFileOptions = {}
+	): Promise<void> {
+		if (!path.startsWith('/')) {
+			path = `/${path}`;
+		}
+
+		const files = await this.listFiles();
+		const existingFile = files.find((file) => file.sitePath === path);
+		if (existingFile && !options.overwriteExistingFile) {
+			throw new Error('File already exists and overwriteExistingFile is not set');
+		}
+
+		const uploadData = await this.#client.getUploadData();
+
+		const editingSession = await this.createEditingSession();
+
+		const file = await this.#client.editingSession(editingSession.uuid).createFile({
+			path,
+			source_path: existingFile ? path : undefined,
+			edit_type: 'update',
+		});
+
+		const contributions = await this.#client.editingSessionFile(file.uuid).getContributions();
+		contributions.sort((a, b) => a.updated_at.localeCompare(b.updated_at));
+		const latestContribution = contributions.at(-1);
+
+		if (latestContribution && !options.overwriteExistingFile) {
+			throw new Error('File already exists and overwriteExistingFile is not set');
+		}
+
+		const s3Key = `${uploadData.prefix}/${Date.now()}${path}`;
+		const formData = new FormData();
+		formData.append('key', s3Key);
+		Object.keys(uploadData.fields).forEach((field) => {
+			if (field !== 'key') {
+				formData.append(field, uploadData.fields[field]);
+			}
+		});
+		formData.append('file', new Blob([content], { type: options.type ?? 'text/plain' }));
+
+		const uploadResp = await fetch(uploadData.url, {
+			method: 'POST',
+			body: formData,
+		});
+
+		const etag = uploadResp.headers.get('ETag');
+		if (!etag) {
+			throw new Error('ETag not found in upload response');
+		}
+
+		const contentHash = etag.slice(1, -1);
+
+		await this.#client.editingSessionFile(file.uuid).createContribution({
+			s3_key: s3Key,
+			content_hash: contentHash,
+			previous_content_hash: latestContribution?.content_hash ?? existingFile?.md5,
+		});
+
+		await this.#client.editingSessionFile(file.uuid).unlock({
+			previous_content_hash: contentHash,
+		});
 	}
 }

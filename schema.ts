@@ -2203,6 +2203,23 @@ export interface paths {
 		patch?: never;
 		trace?: never;
 	};
+	'/api/v0/upload-data': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get the presigned data for file upload */
+		get: operations['Index_UploadData'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
 	'/api/v0/users': {
 		parameters: {
 			query?: never;
@@ -3852,7 +3869,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
+					'application/json': components['schemas']['EditingSessionFileContributionBlueprint'][];
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
@@ -3870,9 +3887,9 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					s3_key?: Record<string, never>;
+					s3_key: string;
 					content_hash: string;
-					previous_content_hash?: Record<string, never>;
+					previous_content_hash?: string;
 				};
 			};
 		};
@@ -4050,7 +4067,13 @@ export interface operations {
 			};
 			cookie?: never;
 		};
-		requestBody?: never;
+		requestBody: {
+			content: {
+				'application/json': {
+					previous_content_hash: string;
+				};
+			};
+		};
 		responses: {
 			/** @description Created */
 			200: {
@@ -4268,8 +4291,8 @@ export interface operations {
 					edit_type?: string | null;
 					path?: string | null;
 					source_path?: string | null;
-					discard_unsaved?: Record<string, never>;
-					previous_content_hash?: Record<string, never>;
+					discard_unsaved?: boolean;
+					previous_content_hash?: string;
 					metadata?: {
 						[key: string]: unknown;
 					};
@@ -4277,6 +4300,15 @@ export interface operations {
 			};
 		};
 		responses: {
+			/** @description Success */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['EditingSessionFileBlueprint'];
+				};
+			};
 			/** @description Created */
 			201: {
 				headers: {
@@ -8655,6 +8687,34 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	Index_UploadData: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						prefix: string;
+						url: string;
+						fields: {
+							[key: string]: string;
+						};
+					};
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
 	Users_ShowCurrentUser: {
