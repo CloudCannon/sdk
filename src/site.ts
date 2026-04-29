@@ -410,7 +410,7 @@ export class SiteClient {
 			throw new Error('Error creating dam. Permission denied');
 		}
 		if (resp.status === 422) {
-      const errorResp = await resp.json();
+			const errorResp = await resp.json();
 			throw new ApiError(
 				'Error creating dam. Invalid request',
 				errorResp.errors,
