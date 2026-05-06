@@ -999,6 +999,23 @@ export interface paths {
 		patch?: never;
 		trace?: never;
 	};
+	'/api/v0/projects/{project_uuid}/branches': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List branches for the project repository */
+		get: operations['Project Git_Branches'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
 	'/api/v0/projects/{project_uuid}/git': {
 		parameters: {
 			query?: never;
@@ -1010,6 +1027,40 @@ export interface paths {
 		/** @description Update project Git details */
 		put: operations['Projects_UpdateGit'];
 		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/projects/{project_uuid}/pull-requests': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List open pull requests for the project repository */
+		get: operations['Project Git_PullRequests'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/projects/{project_uuid}/refresh-pr-comments': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		/** @description Refresh deploy-preview PR comments for every site on this project */
+		post: operations['Projects_RefreshPrComments'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2309,6 +2360,8 @@ export interface components {
 		BranchSchema: {
 			name?: string;
 			sha?: string;
+			/** Format: date-time */
+			updated_at?: string | null;
 		};
 		PullRequestSchema: {
 			number?: number;
@@ -2324,6 +2377,7 @@ export interface components {
 			/** Format: date-time */
 			merged_at?: string | null;
 			locked?: boolean | null;
+			draft?: boolean | null;
 			head?: {
 				ref?: string;
 				sha?: string;
@@ -2565,6 +2619,8 @@ export interface components {
 			mode?: string | null;
 			project_id?: number | null;
 			project_uuid?: string | null;
+			pr_number?: number | null;
+			pr_external_url?: string | null;
 			cloudcannon_config_path?: string | null;
 			output_storage_provider?: string | null;
 			domain_name?: string | null;
@@ -2621,6 +2677,8 @@ export interface components {
 			mode?: string | null;
 			project_id?: number | null;
 			project_uuid?: string | null;
+			pr_number?: number | null;
+			pr_external_url?: string | null;
 			cloudcannon_config_path?: string | null;
 			output_storage_provider?: string | null;
 			base_domain?: components['schemas']['BaseDomainBlueprint'] | (string | null);
@@ -2737,6 +2795,13 @@ export interface components {
 			last_compiled?: string | null;
 			/** Format: date-time */
 			last_compiled_success?: string | null;
+			auto_create_site_on_pr?: boolean;
+			comment_on_pr?: boolean;
+			auto_delete_site_on_pr_close?: boolean;
+			pr_comment_skip_drafts?: boolean;
+			pr_comment_footer?: string | null;
+			auto_create_skip_drafts?: boolean;
+			pr_features_enabled?: boolean;
 			/** Format: date-time */
 			created_at: string;
 			/** Format: date-time */
@@ -3223,7 +3288,9 @@ export interface components {
 		};
 	};
 	parameters: {
+		/** @description Page number to fetch (1-indexed) */
 		PageQuery: number;
+		/** @description Number of items per page */
 		ItemsQuery: number;
 		SortAttributeQuery: string;
 		SortDirectionQuery: string;
@@ -3398,10 +3465,10 @@ export interface operations {
 	'Base Domain Dns Records_List': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
 			};
 			header?: never;
 			path: {
@@ -3414,11 +3481,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -3604,10 +3671,10 @@ export interface operations {
 	Subdomains_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
 			};
 			header?: never;
 			path: {
@@ -3620,11 +3687,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -3724,7 +3791,7 @@ export interface operations {
 			content: {
 				'application/json': {
 					/** @enum {string} */
-					dam_type:
+					dam_type?:
 						| 's3'
 						| 'tenovos'
 						| 'cloudinary'
@@ -3732,9 +3799,9 @@ export interface operations {
 						| 'google'
 						| 'cloudflare'
 						| 'digitalocean';
-					name: string;
-					config: string;
-					base_url: string;
+					name?: string;
+					config?: string;
+					base_url?: string;
 					access_key?: string | null;
 					access_secret?: string | null;
 					max_upload_size?: number | null;
@@ -4527,7 +4594,22 @@ export interface operations {
 	};
 	'Form Hook_Sends': {
 		parameters: {
-			query?: never;
+			query?: {
+				success?: boolean;
+				inbox_target_uuid?: string;
+				form_hook_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
+			};
 			header?: never;
 			path: {
 				form_hook_uuid: components['schemas']['UUID'];
@@ -4738,10 +4820,51 @@ export interface operations {
 		parameters: {
 			query?: {
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				site_id?: number;
+				recaptcha?: boolean;
+				sent?: boolean;
+				spam_checked?: boolean;
+				automatically_marked_spam?: boolean;
+				ip?: string;
+				host?: string;
+				explicitly_marked_status?: number;
+				inbox_uuid?: string;
+				has_error?: string | number | boolean;
+				has_spam_check_error?: string | number | boolean;
+				cleared_at_lt?: string;
+				cleared_at_gt?: string;
+				cleared_at_lte?: string;
+				cleared_at_gte?: string;
+				last_sent_at_lt?: string;
+				last_sent_at_gt?: string;
+				last_sent_at_lte?: string;
+				last_sent_at_gte?: string;
+				sent_count_lt?: number;
+				sent_count_gt?: number;
+				sent_count_lte?: number;
+				sent_count_gte?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -4754,11 +4877,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -4859,7 +4982,52 @@ export interface operations {
 	};
 	Organizations_Index: {
 		parameters: {
-			query?: never;
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'name' | 'partner_points' | 'updated_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				hubspot_migrated?: boolean;
+				organisation_type?: string;
+				country?: string;
+				partner_organisation_id?: number;
+				billing_status?: string;
+				has_partner_organisation_id?: number;
+				expired?: string | number | boolean;
+				has_address?: string | number | boolean;
+				has_organisation_type?: string | number | boolean;
+				locked?: string | number | boolean;
+				has_billing_name?: string | number | boolean;
+				has_billing_email?: string | number | boolean;
+				hosting_limit_exceeded?: boolean;
+				build_time_limit_exceeded?: boolean;
+				user_limit_exceeded?: boolean;
+				domain_limit_exceeded?: boolean;
+				provider_account_linked?: string | number | boolean;
+				user_uuid?: string;
+				trial?: string | number | boolean;
+				plan_period?: string | number | boolean;
+				pricing_version_is_current?: string | number | boolean;
+				in_partner_program?: string | number | boolean;
+				given_user_is_sole_owner?: string | number | boolean;
+				plan?: string;
+				storage_provider_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
+			};
 			header?: never;
 			path?: never;
 			cookie?: never;
@@ -4869,12 +5037,19 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
 					[name: string]: unknown;
 				};
 				content: {
 					'application/json': components['schemas']['OrgBlueprintNormal'][];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
 	Organizations_Show: {
@@ -4950,10 +5125,34 @@ export interface operations {
 	'Organization Activity_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				size_gte?: string | number | boolean;
+				site_id?: number;
+				size_lt?: string | number | boolean;
+				size_gt?: string | number | boolean;
+				size_lte?: string | number | boolean;
+				organisation_uuid?: string;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -4966,11 +5165,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -4984,10 +5183,38 @@ export interface operations {
 	'Base Domains_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?:
+					| 'id'
+					| 'uuid'
+					| 'base_domain'
+					| 'auto_generate_ssl_failures'
+					| 'next_ssl_generate_attempt_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				organisation_id?: number;
+				base_domain?: string;
+				has_zone_id?: number;
+				has_cloudflare_zone_id?: number;
+				has_cloudflare_zone_create_error?: string | number | boolean;
+				uses_dns?: boolean;
+				organisation_uuid?: string;
+				auto_ssl_retries?: string | number | boolean;
+				updated_at_lt?: string | number | boolean;
+				updated_at_gt?: string | number | boolean;
+				updated_at_lte?: string | number | boolean;
+				updated_at_gte?: string | number | boolean;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string | number | boolean;
+				created_at_gt?: string | number | boolean;
+				created_at_lte?: string | number | boolean;
+				created_at_gte?: string | number | boolean;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5000,11 +5227,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5095,10 +5322,31 @@ export interface operations {
 	DAMs_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'name' | 'type' | 'base_url';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				name?: string;
+				dam_type?: string;
+				organisation_id?: number;
+				organisation_uuid?: string;
+				unlinked_site_uuid?: string;
+				site_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5111,11 +5359,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5172,10 +5420,30 @@ export interface operations {
 	'Organization Inboxes_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'created_at' | 'updated_at' | 'id' | 'key' | 'name' | 'uuid';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				name?: string;
+				organisation_id?: number;
+				captcha_type?: string;
+				site_uuid?: string;
+				organisation_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5188,11 +5456,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5243,10 +5511,44 @@ export interface operations {
 	Projects_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?:
+					| 'id'
+					| 'uuid'
+					| 'name'
+					| 'external_url'
+					| 'git_repository'
+					| 'main_git_branch'
+					| 'updated_at'
+					| 'created_at'
+					| 'last_synced'
+					| 'last_compiled'
+					| 'last_compiled_success'
+					| 'provider';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				git_repository?: string;
+				last_synced?: string;
+				last_compiled?: string;
+				last_compiled_success?: string;
+				name?: string;
+				organisation_id?: number;
+				organisation_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5259,11 +5561,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5294,11 +5596,18 @@ export interface operations {
 					default_authentication?: string | null;
 					default_publish_mode?: string | null;
 					default_password?: Record<string, never>;
+					pr_features_enabled?: boolean;
 					git_repository: string;
 					allow_all_branching?: boolean;
 					prevent_permissions_granted_on_branch?: boolean;
 					main_git_branch?: string | null;
 					provider: string;
+					auto_create_site_on_pr?: boolean;
+					auto_delete_site_on_pr_close?: boolean;
+					auto_create_skip_drafts?: boolean;
+					comment_on_pr?: boolean;
+					pr_comment_skip_drafts?: boolean;
+					pr_comment_footer?: string | null;
 				};
 			};
 		};
@@ -5421,10 +5730,97 @@ export interface operations {
 	Sites_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?:
+					| 'id'
+					| 'uuid'
+					| 'site_name'
+					| 'domain_name'
+					| 'created_at'
+					| 'updated_at'
+					| 'last_synced'
+					| 'last_compressed'
+					| 'last_compiled'
+					| 'last_cleaned'
+					| 'priority_domain_at'
+					| 'storage_provider'
+					| 'stable_domain'
+					| 'subpath'
+					| 'sync_error';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				has_subpath?: string | number | boolean;
+				has_client_password?: string | number | boolean;
+				cloudflare_hostname?: string | number | boolean;
+				locales?: string;
+				sync_error?: string;
+				compile_error?: string;
+				files?: string;
+				latest_hosted_build_id?: number;
+				last_synced?: string;
+				last_compiled?: string;
+				last_compiled_success?: string;
+				site_name?: string;
+				base_domain_id?: number;
+				domain_name?: string;
+				ssl_certificate_id?: number;
+				project_id?: number;
+				project_uuid?: string;
+				storage_provider?: string;
+				output_storage_provider?: string;
+				hosting_choice?: string;
+				ssg?: string;
+				authentication?: string;
+				force_ssl?: boolean;
+				editing_locked?: boolean;
+				uploads_locked?: boolean;
+				browsing_locked?: boolean;
+				building_locked?: boolean;
+				uses_i18n?: boolean;
+				auto_generate_ssl?: boolean;
+				organisation_id?: number;
+				use_rbenv_builds?: boolean;
+				needs_clean?: boolean;
+				has_storage_provider?: string | number | boolean;
+				has_output_storage_provider?: string | number | boolean;
+				has_source?: string | number | boolean;
+				has_domain_name?: string | number | boolean;
+				has_unsaved_changes?: string | number | boolean;
+				error?: string | number | boolean;
+				compiled?: string | number | boolean;
+				last_compiled_status?: string | number | boolean;
+				base_domain_uuid?: string;
+				cloudflare_hostname_uuid?: string;
+				cloudflare_error?: string;
+				dam_uuid?: string;
+				publish_branch?: string | number | boolean;
+				owner_locked?: string | number | boolean;
+				owner_trial?: string | number | boolean;
+				ssl_certificate?: string | number | boolean;
+				ssl_certificate_expired?: string | number | boolean;
+				bearer_tokens?: string | number | boolean;
+				site_scanner?: string | number | boolean;
+				old_includes?: string | number | boolean;
+				inbox_uuid?: string;
+				repeatables?: string | number | boolean;
+				storage_provider_details_full_name?: string | number | boolean;
+				source?: string | number | boolean;
+				organisation_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5437,11 +5833,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5535,10 +5931,35 @@ export interface operations {
 	'Ssl Certificates_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'name' | 'expires_at' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				expires_at_lt?: string;
+				expires_at_gt?: string;
+				expires_at_lte?: string;
+				expires_at_gte?: string;
+				autorenew?: boolean;
+				has_cloudflare_id?: number;
+				name?: string;
+				organisation_id?: number;
+				organisation_uuid?: string;
+				expired?: string | number | boolean;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5551,11 +5972,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5583,9 +6004,9 @@ export interface operations {
 					expires_at: string;
 					crt: string;
 					key: string;
-					chain: string;
+					chain?: string;
 					autorenew?: boolean | null;
-					cipher: string;
+					cipher?: string;
 				};
 			};
 		};
@@ -5735,6 +6156,7 @@ export interface operations {
 					default_authentication?: string | null;
 					default_publish_mode?: string | null;
 					default_password?: Record<string, never>;
+					pr_features_enabled?: boolean;
 				};
 			};
 		};
@@ -5775,6 +6197,30 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
+	'Project Git_Branches': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				project_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['BranchSchema'][];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
 	Projects_UpdateGit: {
 		parameters: {
 			query?: never;
@@ -5810,13 +6256,148 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
+	'Project Git_PullRequests': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				project_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['PullRequestSchema'][];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	Projects_RefreshPrComments: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				project_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['ProjectBlueprint'];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
 	Projects_Sites: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?:
+					| 'id'
+					| 'uuid'
+					| 'site_name'
+					| 'domain_name'
+					| 'created_at'
+					| 'updated_at'
+					| 'last_synced'
+					| 'last_compressed'
+					| 'last_compiled'
+					| 'last_cleaned'
+					| 'priority_domain_at'
+					| 'storage_provider'
+					| 'stable_domain'
+					| 'subpath'
+					| 'sync_error';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				has_subpath?: string | number | boolean;
+				has_client_password?: string | number | boolean;
+				cloudflare_hostname?: string | number | boolean;
+				locales?: string;
+				sync_error?: string;
+				compile_error?: string;
+				files?: string;
+				latest_hosted_build_id?: number;
+				last_synced?: string;
+				last_compiled?: string;
+				last_compiled_success?: string;
+				site_name?: string;
+				base_domain_id?: number;
+				domain_name?: string;
+				ssl_certificate_id?: number;
+				project_id?: number;
+				project_uuid?: string;
+				storage_provider?: string;
+				output_storage_provider?: string;
+				hosting_choice?: string;
+				ssg?: string;
+				authentication?: string;
+				force_ssl?: boolean;
+				editing_locked?: boolean;
+				uploads_locked?: boolean;
+				browsing_locked?: boolean;
+				building_locked?: boolean;
+				uses_i18n?: boolean;
+				auto_generate_ssl?: boolean;
+				organisation_id?: number;
+				use_rbenv_builds?: boolean;
+				needs_clean?: boolean;
+				has_storage_provider?: string | number | boolean;
+				has_output_storage_provider?: string | number | boolean;
+				has_source?: string | number | boolean;
+				has_domain_name?: string | number | boolean;
+				has_unsaved_changes?: string | number | boolean;
+				error?: string | number | boolean;
+				compiled?: string | number | boolean;
+				last_compiled_status?: string | number | boolean;
+				base_domain_uuid?: string;
+				cloudflare_hostname_uuid?: string;
+				cloudflare_error?: string;
+				dam_uuid?: string;
+				publish_branch?: string | number | boolean;
+				owner_locked?: string | number | boolean;
+				owner_trial?: string | number | boolean;
+				ssl_certificate?: string | number | boolean;
+				ssl_certificate_expired?: string | number | boolean;
+				bearer_tokens?: string | number | boolean;
+				site_scanner?: string | number | boolean;
+				old_includes?: string | number | boolean;
+				inbox_uuid?: string;
+				repeatables?: string | number | boolean;
+				storage_provider_details_full_name?: string | number | boolean;
+				source?: string | number | boolean;
+				organisation_uuid?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -5829,11 +6410,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -5952,7 +6533,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					dam_uuid: string;
+					dam_uuid?: string;
 					uploads_locked?: boolean;
 					config?: {
 						[key: string]: unknown;
@@ -6175,7 +6756,6 @@ export interface operations {
 					editing_locked?: boolean | null;
 					active_quest?: string | null;
 					cloudcannon_config_path?: string | null;
-					stable_domain?: string;
 					flags?: {
 						[key: string]: unknown;
 					};
@@ -6219,10 +6799,34 @@ export interface operations {
 	'Site Activity_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				size_gte?: string | number | boolean;
+				site_id?: number;
+				size_lt?: string | number | boolean;
+				size_gt?: string | number | boolean;
+				size_lte?: string | number | boolean;
+				organisation_uuid?: string;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -6235,11 +6839,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -6388,10 +6992,33 @@ export interface operations {
 	Backups_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				size_gte?: number;
+				site_id?: number;
+				size_lt?: number;
+				size_gt?: number;
+				size_lte?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -6404,11 +7031,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -6428,7 +7055,13 @@ export interface operations {
 			};
 			cookie?: never;
 		};
-		requestBody?: never;
+		requestBody: {
+			content: {
+				'application/json': {
+					exclude_git?: boolean;
+				};
+			};
+		};
 		responses: {
 			/** @description Created */
 			201: {
@@ -6477,10 +7110,30 @@ export interface operations {
 	'Site Bearer Tokens_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				name?: string;
+				token?: string;
+				site_id?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -6493,11 +7146,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -6631,10 +7284,30 @@ export interface operations {
 	'Site Authentication Users_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				email?: string;
+				has_password?: string | number | boolean;
+				site_id?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -6647,11 +7320,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -6728,10 +7401,33 @@ export interface operations {
 	Builds_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				name?: string;
+				site_id?: number;
+				completed_at?: string;
+				successful?: boolean;
+				pinnable?: boolean;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -6744,11 +7440,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -7288,10 +7984,51 @@ export interface operations {
 		parameters: {
 			query?: {
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				site_id?: number;
+				recaptcha?: boolean;
+				sent?: boolean;
+				spam_checked?: boolean;
+				automatically_marked_spam?: boolean;
+				ip?: string;
+				host?: string;
+				explicitly_marked_status?: number;
+				inbox_uuid?: string;
+				has_error?: string | number | boolean;
+				has_spam_check_error?: string | number | boolean;
+				cleared_at_lt?: string;
+				cleared_at_gt?: string;
+				cleared_at_lte?: string;
+				cleared_at_gte?: string;
+				last_sent_at_lt?: string;
+				last_sent_at_gt?: string;
+				last_sent_at_lte?: string;
+				last_sent_at_gte?: string;
+				sent_count_lt?: number;
+				sent_count_gt?: number;
+				sent_count_lte?: number;
+				sent_count_gte?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				search?: string;
 			};
 			header?: never;
 			path: {
@@ -7304,11 +8041,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -7359,10 +8096,10 @@ export interface operations {
 	'Site Inboxes_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
 			};
 			header?: never;
 			path: {
@@ -7375,11 +8112,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -7544,10 +8281,38 @@ export interface operations {
 	Outputs_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				completed_at_lte?: string;
+				completed_at_gte?: string;
+				site_id?: number;
+				successful?: boolean;
+				name?: string;
+				identifier?: string;
+				after_identifier?: string;
+				diff_id?: string;
+				provider?: string;
+				completed_at_lt?: string;
+				completed_at_gt?: string;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -7560,11 +8325,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -7673,10 +8438,10 @@ export interface operations {
 	'Site Provider Branch_Branches': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
 			};
 			header?: never;
 			path: {
@@ -7689,11 +8454,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -7860,10 +8625,10 @@ export interface operations {
 	'Pull Requests_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
 			};
 			header?: never;
 			path: {
@@ -7876,11 +8641,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -8080,10 +8845,10 @@ export interface operations {
 	'Upstream Pull Requests_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
 			};
 			header?: never;
 			path: {
@@ -8096,11 +8861,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -8200,10 +8965,44 @@ export interface operations {
 	'Site Scheduled Builds_Index': {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				site_id?: number;
+				filename?: string;
+				run_date_lt?: string;
+				run_date_gt?: string;
+				run_date_lte?: string;
+				run_date_gte?: string;
+				period_lt?: number;
+				period_gt?: number;
+				period_lte?: number;
+				period_gte?: number;
+				run_count_lt?: number;
+				run_count_gt?: number;
+				run_count_lte?: number;
+				name?: string;
+				run_count_gte?: number;
+				from_source?: boolean;
+				scheduled_at?: string;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -8216,11 +9015,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};
@@ -8586,10 +9385,35 @@ export interface operations {
 	Syncs_Index: {
 		parameters: {
 			query?: {
+				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
-				item?: components['parameters']['ItemsQuery'];
-				sort_attribute?: components['parameters']['SortAttributeQuery'];
-				sort_direction?: components['parameters']['SortDirectionQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'created_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				site_id?: number;
+				completed_at?: string;
+				successful?: boolean;
+				name?: string;
+				identifier?: string;
+				after_identifier?: string;
+				diff_id?: string;
+				provider?: string;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -8602,11 +9426,11 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
-					/** @description null */
+					/** @description The current page number */
 					current_page?: string;
-					/** @description null */
+					/** @description The total number of items across all pages */
 					total_items?: string;
-					/** @description null */
+					/** @description The total number of pages available */
 					total_pages?: string;
 					[name: string]: unknown;
 				};

@@ -1,5 +1,14 @@
 import type CloudCannonClient from '../index.ts';
 import type { FormSubmission } from '../index.ts';
+import type { operations } from '../schema.js';
+import {
+	buildQuery,
+	type FilterOptions,
+	type PaginatedResponse,
+	type PaginationOptions,
+	paginatedResponse,
+	type SortingOptions,
+} from './helpers/query.ts';
 
 export class InboxClient {
 	#uuid: string;
@@ -10,12 +19,17 @@ export class InboxClient {
 		this.#client = client;
 	}
 
-	async getSubmissions(): Promise<FormSubmission[]> {
-		const resp = await this.#client.fetch(`/inboxes/${this.#uuid}/form-hooks`);
+	async getSubmissions(
+		options: PaginationOptions &
+			SortingOptions<operations['Inbox Form Hooks_Index']> &
+			FilterOptions<operations['Inbox Form Hooks_Index']> = {}
+	): Promise<PaginatedResponse<FormSubmission>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/inboxes/${this.#uuid}/form-hooks?${query}`);
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching submissions. Permission denied');
 		}
 		const submissions = await resp.json();
-		return submissions;
+		return paginatedResponse(submissions, resp.headers);
 	}
 }

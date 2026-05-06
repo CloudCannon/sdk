@@ -1,4 +1,5 @@
 import type { components, operations, paths } from './schema.ts';
+import { BackupClient } from './src/backup.ts';
 import { BuildClient } from './src/build.ts';
 import {
 	type CommitEditingSessionOptions,
@@ -8,15 +9,32 @@ import {
 import { EditingSessionFileClient } from './src/editing-session-file.ts';
 import { InboxClient } from './src/inbox.ts';
 import { OrgClient } from './src/org.ts';
+import {
+	buildQuery,
+	type FilterOptions,
+	type PaginatedResponse,
+	type PaginationOptions,
+	paginatedResponse,
+	type SortingOptions,
+} from './src/helpers/query.ts';
 import { type BuildConfiguration, SiteClient } from './src/site.ts';
 import { SiteInboxClient } from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
 
-export type { BuildConfiguration, CommitEditingSessionOptions, CommitEditingSessionResponse };
+export type {
+	BuildConfiguration,
+	CommitEditingSessionOptions,
+	CommitEditingSessionResponse,
+	FilterOptions,
+	PaginatedResponse,
+	PaginationOptions,
+	SortingOptions,
+};
 
 export type Provider = operations['Providers_Repositories']['parameters']['path']['provider'];
 
 export type Site = components['schemas']['SiteBlueprint'];
+export type Backup = components['schemas']['SiteArchiveBlueprint'];
 export type Org = components['schemas']['OrgBlueprintFull'];
 export type Build = components['schemas']['BuildBlueprint'];
 export type Sync = components['schemas']['SyncBlueprint'];
@@ -46,6 +64,7 @@ type ParamToString<S extends string> = S extends `${infer A}/{${string}}/${infer
 		: S;
 
 type StripPrefix<S extends string> = S extends `/api/v0${infer Rest}` ? Rest : never;
+type StripParams<S extends string> = S extends `${infer Path}?${string}` ? Path : S;
 
 type RequestBody<T> = T extends { requestBody: { content: { 'application/json': infer B } } }
 	? B
@@ -86,7 +105,7 @@ type SegmentMatch<A extends string[], B extends string[]> = A['length'] extends 
 
 type MatchURL<M extends keyof paths[keyof paths], U extends string> = {
 	[K in keyof paths]: [
-		SegmentMatch<Split<U>, Split<ParamToString<StripPrefix<K & string>>>>,
+		SegmentMatch<Split<StripParams<U>>, Split<ParamToString<StripPrefix<K & string>>>>,
 	] extends [never]
 		? never
 		: RequestParams<paths[K][M]> extends never
@@ -183,14 +202,26 @@ export default class CloudCannonClient {
 		return new BuildClient(uuid, this);
 	}
 
+	backup(uuid: string): BackupClient {
+		return new BackupClient(uuid, this);
+	}
+
 	sync(uuid: string): SyncClient {
 		return new SyncClient(uuid, this);
 	}
 
-	async orgs(): Promise<Org[]> {
-		const resp = await this.fetch('/orgs');
+	async orgs(
+		options: PaginationOptions &
+			SortingOptions<operations['Organizations_Index']> &
+			FilterOptions<operations['Organizations_Index']> = {}
+	): Promise<PaginatedResponse<Org>> {
+		const query = buildQuery(options);
+		const resp = await this.fetch(`/orgs?${query}`);
+		if (resp.status === 403) {
+			throw new Error('Error fetching orgs. Permission denied');
+		}
 		const orgs = await resp.json();
-		return orgs;
+		return paginatedResponse(orgs, resp.headers);
 	}
 
 	async getUploadData(): Promise<UploadData> {
