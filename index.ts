@@ -7,8 +7,6 @@ import {
 	EditingSessionClient,
 } from './src/editing-session.ts';
 import { EditingSessionFileClient } from './src/editing-session-file.ts';
-import { InboxClient } from './src/inbox.ts';
-import { OrgClient } from './src/org.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -17,6 +15,8 @@ import {
 	paginatedResponse,
 	type SortingOptions,
 } from './src/helpers/query.ts';
+import { InboxClient } from './src/inbox.ts';
+import { OrgClient } from './src/org.ts';
 import { type BuildConfiguration, SiteClient } from './src/site.ts';
 import { SiteInboxClient } from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
