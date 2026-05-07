@@ -2,6 +2,14 @@ import type CloudCannonClient from '../index.ts';
 import type { Dam, Inbox, Org, Provider, ProviderDetails, Site } from '../index.ts';
 import type { operations } from '../schema.js';
 import { ApiError } from './errors.ts';
+import {
+	buildQuery,
+	type FilterOptions,
+	type PaginatedResponse,
+	type PaginationOptions,
+	paginatedResponse,
+	type SortingOptions,
+} from './helpers/query.ts';
 
 export interface ConnectSiteOptions extends ProviderDetails {
 	folder?: string;
@@ -24,13 +32,18 @@ export class OrgClient {
 		this.#client = client;
 	}
 
-	async sites(): Promise<Site[]> {
-		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/sites`);
+	async sites(
+		options: PaginationOptions &
+			SortingOptions<operations['Sites_Index']> &
+			FilterOptions<operations['Sites_Index']> = {}
+	): Promise<PaginatedResponse<Site>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/sites?${query}`);
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching sites. Permission denied');
 		}
 		const sites = await resp.json();
-		return sites;
+		return paginatedResponse(sites, resp.headers);
 	}
 
 	async createSite(name: string, stableDomain?: string): Promise<Site> {
@@ -101,13 +114,18 @@ export class OrgClient {
 		return org;
 	}
 
-	async getInboxes(): Promise<Inbox[]> {
-		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/inboxes`);
+	async getInboxes(
+		options: PaginationOptions &
+			SortingOptions<operations['Organization Inboxes_Index']> &
+			FilterOptions<operations['Organization Inboxes_Index']> = {}
+	): Promise<PaginatedResponse<Inbox>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/inboxes?${query}`);
 		if (resp.status === 403) {
 			throw new Error('Error fetching inboxes. Permission denied');
 		}
 		const inboxes = await resp.json();
-		return inboxes;
+		return paginatedResponse(inboxes, resp.headers);
 	}
 
 	async createInbox(body: CreateInboxOptions): Promise<Inbox> {
@@ -132,10 +150,15 @@ export class OrgClient {
 		return inbox;
 	}
 
-	async getDams(): Promise<Dam[]> {
-		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/dams`);
+	async getDams(
+		options: PaginationOptions &
+			SortingOptions<operations['DAMs_Index']> &
+			FilterOptions<operations['DAMs_Index']> = {}
+	): Promise<PaginatedResponse<Dam>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/dams?${query}`);
 		const dams = await resp.json();
-		return dams;
+		return paginatedResponse(dams, resp.headers);
 	}
 
 	async createDam(body: CreateDamOptions): Promise<Dam> {

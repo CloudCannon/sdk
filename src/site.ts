@@ -1,5 +1,6 @@
 import type CloudCannonClient from '../index.ts';
 import type {
+	Backup,
 	Build,
 	EditingSession,
 	ProviderDetails,
@@ -11,6 +12,14 @@ import type {
 } from '../index.ts';
 import type { operations } from '../schema.js';
 import { ApiError } from './errors.ts';
+import {
+	buildQuery,
+	type FilterOptions,
+	type PaginatedResponse,
+	type PaginationOptions,
+	paginatedResponse,
+	type SortingOptions,
+} from './helpers/query.ts';
 
 export type BuildConfiguration = Partial<
 	Omit<
@@ -38,6 +47,8 @@ export type UpdateSiteOptions =
 	operations['Sites_Update']['requestBody']['content']['application/json'];
 export type CopySiteOptions =
 	operations['Sites_Copy']['requestBody']['content']['application/json'];
+export type CreateBackupOptions =
+	operations['Backups_Create']['requestBody']['content']['application/json'];
 
 export type ConnectInboxOptions =
 	operations['Site Inboxes_Create']['requestBody']['content']['application/json'];
@@ -154,13 +165,18 @@ export class SiteClient {
 		return site;
 	}
 
-	async getBuilds(): Promise<Build[]> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds`);
+	async getBuilds(
+		options: PaginationOptions &
+			SortingOptions<operations['Builds_Index']> &
+			FilterOptions<operations['Builds_Index']> = {}
+	): Promise<PaginatedResponse<Build>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds?${query}`);
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching builds. Permission denied');
 		}
 		const builds = await resp.json();
-		return builds;
+		return paginatedResponse(builds, resp.headers);
 	}
 
 	async rebuild(): Promise<void> {
@@ -170,6 +186,42 @@ export class SiteClient {
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error creating build. Permission denied');
 		}
+	}
+
+	async listBackups(
+		options: PaginationOptions &
+			SortingOptions<operations['Backups_Index']> &
+			FilterOptions<operations['Backups_Index']> = {}
+	): Promise<PaginatedResponse<Backup>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives?${query}`);
+		if (resp.status === 401) {
+			throw new Error('Error fetching backups. Permission denied');
+		}
+		const items = await resp.json();
+		return paginatedResponse(items, resp.headers);
+	}
+
+	async createBackup(body: CreateBackupOptions = {}): Promise<{ socket_message_id?: string }> {
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives`, {
+			method: 'POST',
+			body,
+		});
+		if (resp.status === 401) {
+			throw new Error('Error creating backup. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error creating backup. Invalid request',
+				errorResp.errors,
+				`/sites/${this.#uuid}/archives`,
+				{ method: 'POST', body },
+				resp.status
+			);
+		}
+		const result = await resp.json();
+		return result;
 	}
 
 	async listFiles(): Promise<FileListing[]> {
@@ -212,13 +264,18 @@ export class SiteClient {
 		return resp;
 	}
 
-	async getSyncs(): Promise<Sync[]> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs`);
+	async getSyncs(
+		options: PaginationOptions &
+			SortingOptions<operations['Syncs_Index']> &
+			FilterOptions<operations['Syncs_Index']> = {}
+	): Promise<PaginatedResponse<Sync>> {
+		const query = buildQuery(options);
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs?${query}`);
 		if (resp.status === 401) {
 			throw new Error('Error fetching syncs. Permission denied');
 		}
 		const syncs = await resp.json();
-		return syncs;
+		return paginatedResponse(syncs, resp.headers);
 	}
 
 	async getScan(): Promise<SiteScan> {
