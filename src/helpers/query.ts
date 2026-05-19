@@ -29,7 +29,7 @@ export function buildQuery(
 ): string {
 	const params = new URLSearchParams();
 	if (options.page !== undefined) params.set('page', String(options.page));
-	if (options.items !== undefined) params.set('item', String(options.items));
+	if (options.items !== undefined) params.set('items', String(options.items));
 	if (options.sort_attribute !== undefined) params.set('sort_attribute', options.sort_attribute);
 	if (options.sort_direction !== undefined) params.set('sort_direction', options.sort_direction);
 	if (options.filters) {
