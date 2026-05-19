@@ -584,4 +584,21 @@ export class SiteClient {
 			previous_content_hash: contentHash,
 		});
 	}
+
+	async triggerPull(): Promise<void> {
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/providers/sync`, {
+			method: 'POST',
+		});
+
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error triggering pull on site. Invalid request',
+				errorResp.errors,
+				`/sites/${this.#uuid}/providers/sync`,
+				{ method: 'POST' },
+				resp.status
+			);
+		}
+	}
 }
