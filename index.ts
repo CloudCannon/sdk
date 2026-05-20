@@ -4,9 +4,14 @@ import { BuildClient } from './src/build.ts';
 import {
 	type CommitEditingSessionOptions,
 	type CommitEditingSessionResponse,
+	type CreateEditingSessionFileOptions,
 	EditingSessionClient,
 } from './src/editing-session.ts';
-import { EditingSessionFileClient } from './src/editing-session-file.ts';
+import {
+	type CreateContributionOptions,
+	type UnlockOptions,
+	EditingSessionFileClient,
+} from './src/editing-session-file.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -20,6 +25,9 @@ import {
 	InboxClient,
 } from './src/inbox.ts';
 import {
+	type ConnectSiteOptions,
+	type CreateDamOptions,
+	type CreateInboxOptions,
 	type ListOrgDamsOptions,
 	type ListOrgInboxesOptions,
 	type ListOrgSitesOptions,
@@ -27,30 +35,52 @@ import {
 } from './src/org.ts';
 import {
 	type BuildConfiguration,
+	type ConnectDamOptions,
+	type ConnectInboxOptions,
+	type CopySiteOptions,
+	type CreateBackupOptions,
 	type ListSiteBuildsOptions,
 	type ListSiteBackupsOptions,
 	type ListSiteSyncsOptions,
+	type UpdateSiteOptions,
+	type UploadFileOptions,
 	SiteClient,
 } from './src/site.ts';
-import { SiteInboxClient } from './src/site-inbox.ts';
+import {
+	type UpdateInboxOptions,
+	SiteInboxClient,
+} from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
 
 export type {
 	BuildConfiguration,
 	CommitEditingSessionOptions,
 	CommitEditingSessionResponse,
+	ConnectDamOptions,
+	ConnectInboxOptions,
+	ConnectSiteOptions,
+	CopySiteOptions,
+	CreateBackupOptions,
+	CreateContributionOptions,
+	CreateDamOptions,
+	CreateEditingSessionFileOptions,
+	CreateInboxOptions,
 	FilterOptions,
 	ListInboxSubmissionsOptions,
 	ListOrgDamsOptions,
 	ListOrgInboxesOptions,
 	ListOrgSitesOptions,
 	ListOrgsOptions,
-	PaginatedResponse,
-	PaginationOptions,
 	ListSiteBackupsOptions,
 	ListSiteBuildsOptions,
 	ListSiteSyncsOptions,
+	PaginatedResponse,
+	PaginationOptions,
 	SortingOptions,
+	UnlockOptions,
+	UpdateInboxOptions,
+	UpdateSiteOptions,
+	UploadFileOptions,
 };
 
 export type Provider = operations['Providers_Repositories']['parameters']['path']['provider'];
