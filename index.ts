@@ -9,8 +9,8 @@ import {
 } from './src/editing-session.ts';
 import {
 	type CreateContributionOptions,
-	type UnlockOptions,
 	EditingSessionFileClient,
+	type UnlockOptions,
 } from './src/editing-session-file.ts';
 import {
 	buildQuery,
@@ -20,10 +20,7 @@ import {
 	paginatedResponse,
 	type SortingOptions,
 } from './src/helpers/query.ts';
-import {
-	type ListInboxSubmissionsOptions,
-	InboxClient,
-} from './src/inbox.ts';
+import { InboxClient, type ListInboxSubmissionsOptions } from './src/inbox.ts';
 import {
 	type ConnectSiteOptions,
 	type CreateDamOptions,
@@ -39,17 +36,14 @@ import {
 	type ConnectInboxOptions,
 	type CopySiteOptions,
 	type CreateBackupOptions,
-	type ListSiteBuildsOptions,
 	type ListSiteBackupsOptions,
+	type ListSiteBuildsOptions,
 	type ListSiteSyncsOptions,
+	SiteClient,
 	type UpdateSiteOptions,
 	type UploadFileOptions,
-	SiteClient,
 } from './src/site.ts';
-import {
-	type UpdateInboxOptions,
-	SiteInboxClient,
-} from './src/site-inbox.ts';
+import { SiteInboxClient, type UpdateInboxOptions } from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
 
 export type {
@@ -109,7 +103,7 @@ export type ProviderDetails = {
 	branch: string;
 };
 
-export type ListOrgsOptions = PaginationOptions &
+type ListOrgsOptions = PaginationOptions &
 	SortingOptions<operations['Organizations_Index']> &
 	FilterOptions<operations['Organizations_Index']>;
 

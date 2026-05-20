@@ -23,7 +23,9 @@ export class InboxClient {
 		this.#client = client;
 	}
 
-	async getSubmissions(options: ListInboxSubmissionsOptions = {}): Promise<PaginatedResponse<FormSubmission>> {
+	async getSubmissions(
+		options: ListInboxSubmissionsOptions = {}
+	): Promise<PaginatedResponse<FormSubmission>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/inboxes/${this.#uuid}/form-hooks?${query}`);
 		if (resp.status === 401 || resp.status === 403) {
