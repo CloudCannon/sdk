@@ -47,6 +47,16 @@ export type UpdateSiteOptions =
 	operations['Sites_Update']['requestBody']['content']['application/json'];
 export type CopySiteOptions =
 	operations['Sites_Copy']['requestBody']['content']['application/json'];
+export type ListSiteBuildsOptions = PaginationOptions &
+	SortingOptions<operations['Builds_Index']> &
+	FilterOptions<operations['Builds_Index']>;
+export type ListSiteBackupsOptions = PaginationOptions &
+	SortingOptions<operations['Backups_Index']> &
+	FilterOptions<operations['Backups_Index']>;
+export type ListSiteSyncsOptions = PaginationOptions &
+	SortingOptions<operations['Syncs_Index']> &
+	FilterOptions<operations['Syncs_Index']>;
+
 export type CreateBackupOptions =
 	operations['Backups_Create']['requestBody']['content']['application/json'];
 
@@ -165,11 +175,7 @@ export class SiteClient {
 		return site;
 	}
 
-	async getBuilds(
-		options: PaginationOptions &
-			SortingOptions<operations['Builds_Index']> &
-			FilterOptions<operations['Builds_Index']> = {}
-	): Promise<PaginatedResponse<Build>> {
+	async getBuilds(options: ListSiteBuildsOptions = {}): Promise<PaginatedResponse<Build>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds?${query}`);
 		if (resp.status === 401 || resp.status === 403) {
@@ -188,11 +194,7 @@ export class SiteClient {
 		}
 	}
 
-	async listBackups(
-		options: PaginationOptions &
-			SortingOptions<operations['Backups_Index']> &
-			FilterOptions<operations['Backups_Index']> = {}
-	): Promise<PaginatedResponse<Backup>> {
+	async listBackups(options: ListSiteBackupsOptions = {}): Promise<PaginatedResponse<Backup>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives?${query}`);
 		if (resp.status === 401) {
@@ -264,11 +266,7 @@ export class SiteClient {
 		return resp;
 	}
 
-	async getSyncs(
-		options: PaginationOptions &
-			SortingOptions<operations['Syncs_Index']> &
-			FilterOptions<operations['Syncs_Index']> = {}
-	): Promise<PaginatedResponse<Sync>> {
+	async getSyncs(options: ListSiteSyncsOptions = {}): Promise<PaginatedResponse<Sync>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs?${query}`);
 		if (resp.status === 401) {

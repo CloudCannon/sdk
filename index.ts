@@ -15,9 +15,23 @@ import {
 	paginatedResponse,
 	type SortingOptions,
 } from './src/helpers/query.ts';
-import { InboxClient } from './src/inbox.ts';
-import { OrgClient } from './src/org.ts';
-import { type BuildConfiguration, SiteClient } from './src/site.ts';
+import {
+	type ListInboxSubmissionsOptions,
+	InboxClient,
+} from './src/inbox.ts';
+import {
+	type ListOrgDamsOptions,
+	type ListOrgInboxesOptions,
+	type ListOrgSitesOptions,
+	OrgClient,
+} from './src/org.ts';
+import {
+	type BuildConfiguration,
+	type ListSiteBuildsOptions,
+	type ListSiteBackupsOptions,
+	type ListSiteSyncsOptions,
+	SiteClient,
+} from './src/site.ts';
 import { SiteInboxClient } from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
 
@@ -26,8 +40,16 @@ export type {
 	CommitEditingSessionOptions,
 	CommitEditingSessionResponse,
 	FilterOptions,
+	ListInboxSubmissionsOptions,
+	ListOrgDamsOptions,
+	ListOrgInboxesOptions,
+	ListOrgSitesOptions,
+	ListOrgsOptions,
 	PaginatedResponse,
 	PaginationOptions,
+	ListSiteBackupsOptions,
+	ListSiteBuildsOptions,
+	ListSiteSyncsOptions,
 	SortingOptions,
 };
 
@@ -56,6 +78,10 @@ export type ProviderDetails = {
 	repository: string;
 	branch: string;
 };
+
+export type ListOrgsOptions = PaginationOptions &
+	SortingOptions<operations['Organizations_Index']> &
+	FilterOptions<operations['Organizations_Index']>;
 
 type ParamToString<S extends string> = S extends `${infer A}/{${string}}/${infer B}`
 	? `${A}/${string}/${ParamToString<B>}`
@@ -210,11 +236,7 @@ export default class CloudCannonClient {
 		return new SyncClient(uuid, this);
 	}
 
-	async orgs(
-		options: PaginationOptions &
-			SortingOptions<operations['Organizations_Index']> &
-			FilterOptions<operations['Organizations_Index']> = {}
-	): Promise<PaginatedResponse<Org>> {
+	async orgs(options: ListOrgsOptions = {}): Promise<PaginatedResponse<Org>> {
 		const query = buildQuery(options);
 		const resp = await this.fetch(`/orgs?${query}`);
 		if (resp.status === 403) {
