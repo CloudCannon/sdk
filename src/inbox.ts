@@ -10,6 +10,10 @@ import {
 	type SortingOptions,
 } from './helpers/query.ts';
 
+export type ListInboxSubmissionsOptions = PaginationOptions &
+	SortingOptions<operations['Inbox Form Hooks_Index']> &
+	FilterOptions<operations['Inbox Form Hooks_Index']>;
+
 export class InboxClient {
 	#uuid: string;
 	#client: CloudCannonClient;
@@ -20,9 +24,7 @@ export class InboxClient {
 	}
 
 	async getSubmissions(
-		options: PaginationOptions &
-			SortingOptions<operations['Inbox Form Hooks_Index']> &
-			FilterOptions<operations['Inbox Form Hooks_Index']> = {}
+		options: ListInboxSubmissionsOptions = {}
 	): Promise<PaginatedResponse<FormSubmission>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/inboxes/${this.#uuid}/form-hooks?${query}`);

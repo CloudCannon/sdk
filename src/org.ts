@@ -18,6 +18,16 @@ export interface ConnectSiteOptions extends ProviderDetails {
 export type Repository =
 	operations['Providers_Repositories']['responses']['200']['content']['application/json'][number];
 
+export type ListOrgSitesOptions = PaginationOptions &
+	SortingOptions<operations['Sites_Index']> &
+	FilterOptions<operations['Sites_Index']>;
+export type ListOrgInboxesOptions = PaginationOptions &
+	SortingOptions<operations['Organization Inboxes_Index']> &
+	FilterOptions<operations['Organization Inboxes_Index']>;
+export type ListOrgDamsOptions = PaginationOptions &
+	SortingOptions<operations['DAMs_Index']> &
+	FilterOptions<operations['DAMs_Index']>;
+
 export type CreateInboxOptions =
 	operations['Organization Inboxes_Create']['requestBody']['content']['application/json'];
 export type CreateDamOptions =
@@ -32,11 +42,7 @@ export class OrgClient {
 		this.#client = client;
 	}
 
-	async sites(
-		options: PaginationOptions &
-			SortingOptions<operations['Sites_Index']> &
-			FilterOptions<operations['Sites_Index']> = {}
-	): Promise<PaginatedResponse<Site>> {
+	async sites(options: ListOrgSitesOptions = {}): Promise<PaginatedResponse<Site>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/sites?${query}`);
 		if (resp.status === 401 || resp.status === 403) {
@@ -114,11 +120,7 @@ export class OrgClient {
 		return org;
 	}
 
-	async getInboxes(
-		options: PaginationOptions &
-			SortingOptions<operations['Organization Inboxes_Index']> &
-			FilterOptions<operations['Organization Inboxes_Index']> = {}
-	): Promise<PaginatedResponse<Inbox>> {
+	async getInboxes(options: ListOrgInboxesOptions = {}): Promise<PaginatedResponse<Inbox>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/inboxes?${query}`);
 		if (resp.status === 403) {
@@ -150,11 +152,7 @@ export class OrgClient {
 		return inbox;
 	}
 
-	async getDams(
-		options: PaginationOptions &
-			SortingOptions<operations['DAMs_Index']> &
-			FilterOptions<operations['DAMs_Index']> = {}
-	): Promise<PaginatedResponse<Dam>> {
+	async getDams(options: ListOrgDamsOptions = {}): Promise<PaginatedResponse<Dam>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/dams?${query}`);
 		const dams = await resp.json();

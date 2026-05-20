@@ -4,9 +4,14 @@ import { BuildClient } from './src/build.ts';
 import {
 	type CommitEditingSessionOptions,
 	type CommitEditingSessionResponse,
+	type CreateEditingSessionFileOptions,
 	EditingSessionClient,
 } from './src/editing-session.ts';
-import { EditingSessionFileClient } from './src/editing-session-file.ts';
+import {
+	type CreateContributionOptions,
+	EditingSessionFileClient,
+	type UnlockOptions,
+} from './src/editing-session-file.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -15,20 +20,61 @@ import {
 	paginatedResponse,
 	type SortingOptions,
 } from './src/helpers/query.ts';
-import { InboxClient } from './src/inbox.ts';
-import { OrgClient } from './src/org.ts';
-import { type BuildConfiguration, SiteClient } from './src/site.ts';
-import { SiteInboxClient } from './src/site-inbox.ts';
+import { InboxClient, type ListInboxSubmissionsOptions } from './src/inbox.ts';
+import {
+	type ConnectSiteOptions,
+	type CreateDamOptions,
+	type CreateInboxOptions,
+	type ListOrgDamsOptions,
+	type ListOrgInboxesOptions,
+	type ListOrgSitesOptions,
+	OrgClient,
+} from './src/org.ts';
+import {
+	type BuildConfiguration,
+	type ConnectDamOptions,
+	type ConnectInboxOptions,
+	type CopySiteOptions,
+	type CreateBackupOptions,
+	type ListSiteBackupsOptions,
+	type ListSiteBuildsOptions,
+	type ListSiteSyncsOptions,
+	SiteClient,
+	type UpdateSiteOptions,
+	type UploadFileOptions,
+} from './src/site.ts';
+import { SiteInboxClient, type UpdateInboxOptions } from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
 
 export type {
 	BuildConfiguration,
 	CommitEditingSessionOptions,
 	CommitEditingSessionResponse,
+	ConnectDamOptions,
+	ConnectInboxOptions,
+	ConnectSiteOptions,
+	CopySiteOptions,
+	CreateBackupOptions,
+	CreateContributionOptions,
+	CreateDamOptions,
+	CreateEditingSessionFileOptions,
+	CreateInboxOptions,
 	FilterOptions,
+	ListInboxSubmissionsOptions,
+	ListOrgDamsOptions,
+	ListOrgInboxesOptions,
+	ListOrgSitesOptions,
+	ListOrgsOptions,
+	ListSiteBackupsOptions,
+	ListSiteBuildsOptions,
+	ListSiteSyncsOptions,
 	PaginatedResponse,
 	PaginationOptions,
 	SortingOptions,
+	UnlockOptions,
+	UpdateInboxOptions,
+	UpdateSiteOptions,
+	UploadFileOptions,
 };
 
 export type Provider = operations['Providers_Repositories']['parameters']['path']['provider'];
@@ -56,6 +102,10 @@ export type ProviderDetails = {
 	repository: string;
 	branch: string;
 };
+
+type ListOrgsOptions = PaginationOptions &
+	SortingOptions<operations['Organizations_Index']> &
+	FilterOptions<operations['Organizations_Index']>;
 
 type ParamToString<S extends string> = S extends `${infer A}/{${string}}/${infer B}`
 	? `${A}/${string}/${ParamToString<B>}`
@@ -210,11 +260,7 @@ export default class CloudCannonClient {
 		return new SyncClient(uuid, this);
 	}
 
-	async orgs(
-		options: PaginationOptions &
-			SortingOptions<operations['Organizations_Index']> &
-			FilterOptions<operations['Organizations_Index']> = {}
-	): Promise<PaginatedResponse<Org>> {
+	async orgs(options: ListOrgsOptions = {}): Promise<PaginatedResponse<Org>> {
 		const query = buildQuery(options);
 		const resp = await this.fetch(`/orgs?${query}`);
 		if (resp.status === 403) {
