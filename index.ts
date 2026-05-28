@@ -1,4 +1,4 @@
-import { createHmac } from 'node:crypto';
+import { createHmac, randomUUID } from 'node:crypto';
 import type { components, operations, paths } from './schema.ts';
 import { BackupClient } from './src/backup.ts';
 import { BuildClient } from './src/build.ts';
@@ -224,14 +224,16 @@ export default class CloudCannonClient {
 	): Promise<Record<string, string>> {
 		const signedAtISO = new Date().toISOString();
 
+		const nonce = randomUUID();
 		const key = Buffer.from(userAccessKey.secret, 'base64');
-		const message = JSON.stringify({ url, signed_at: signedAtISO, body: body ?? '' });
+		const message = JSON.stringify({ url, signed_at: signedAtISO, body: body ?? '', nonce });
 		const digest = createHmac('sha256', key).update(message).digest('hex');
 
 		return {
 			'X-CC-ACCESS-KEY': userAccessKey.id,
 			'X-CC-SIGNED-AT': signedAtISO,
 			'X-CC-CHECKSUM': digest,
+			'X-CC-NONCE': nonce,
 		};
 	}
 
