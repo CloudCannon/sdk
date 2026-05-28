@@ -44,7 +44,7 @@ export class OrgClient {
 
 	async sites(options: ListOrgSitesOptions = {}): Promise<PaginatedResponse<Site>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/sites?${query}`);
+		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/sites${query}`);
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching sites. Permission denied');
 		}
@@ -122,7 +122,7 @@ export class OrgClient {
 
 	async getInboxes(options: ListOrgInboxesOptions = {}): Promise<PaginatedResponse<Inbox>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/inboxes?${query}`);
+		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/inboxes${query}`);
 		if (resp.status === 403) {
 			throw new Error('Error fetching inboxes. Permission denied');
 		}
@@ -154,7 +154,7 @@ export class OrgClient {
 
 	async getDams(options: ListOrgDamsOptions = {}): Promise<PaginatedResponse<Dam>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/dams?${query}`);
+		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/dams${query}`);
 		const dams = await resp.json();
 		return paginatedResponse(dams, resp.headers);
 	}

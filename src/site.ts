@@ -177,7 +177,7 @@ export class SiteClient {
 
 	async getBuilds(options: ListSiteBuildsOptions = {}): Promise<PaginatedResponse<Build>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds?${query}`);
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds${query}`);
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching builds. Permission denied');
 		}
@@ -196,7 +196,7 @@ export class SiteClient {
 
 	async listBackups(options: ListSiteBackupsOptions = {}): Promise<PaginatedResponse<Backup>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives?${query}`);
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives${query}`);
 		if (resp.status === 401) {
 			throw new Error('Error fetching backups. Permission denied');
 		}
@@ -268,7 +268,7 @@ export class SiteClient {
 
 	async getSyncs(options: ListSiteSyncsOptions = {}): Promise<PaginatedResponse<Sync>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs?${query}`);
+		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs${query}`);
 		if (resp.status === 401) {
 			throw new Error('Error fetching syncs. Permission denied');
 		}

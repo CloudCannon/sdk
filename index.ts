@@ -1,3 +1,4 @@
+import { createHmac } from 'node:crypto';
 import type { components, operations, paths } from './schema.ts';
 import { BackupClient } from './src/backup.ts';
 import { BuildClient } from './src/build.ts';
@@ -170,32 +171,67 @@ type ValidURL<M extends keyof paths[keyof paths], U extends string> =
 			}[keyof paths]
 		: U;
 
-export type CloudCannonClientConfig = {
-	key: string;
-
+type BaseCloudCannonClientConfig = {
 	apiOrigin?: string;
 	getCustomAuthHeaders?: () => Record<string, string>;
 };
 
+export type CloudCannonClientConfig =
+	| ({
+			key: string;
+	  } & BaseCloudCannonClientConfig)
+	| ({
+			userAccessKey: UserAccessKey;
+	  } & BaseCloudCannonClientConfig);
+
+export type UserAccessKey = { id: string; secret: string };
+
 export default class CloudCannonClient {
-	#apiKey: string;
+	#apiKey?: string;
+	#userAccessKey?: UserAccessKey;
+
 	#appDomain: string;
 	#getCustomAuthHeaders?: () => Record<string, string>;
 
 	constructor(config: CloudCannonClientConfig) {
-		this.#apiKey = config.key;
+		if ('userAccessKey' in config) {
+			this.#userAccessKey = config.userAccessKey;
+		} else {
+			this.#apiKey = config.key;
+		}
 		this.#appDomain = config.apiOrigin ?? 'app.cloudcannon.com';
 		this.#getCustomAuthHeaders = config.getCustomAuthHeaders;
 	}
 
-	getAuthHeaders(): Record<string, string> {
+	async getAuthHeaders(url: string, body?: string): Promise<Record<string, string>> {
 		if (this.#getCustomAuthHeaders) {
-			return {
-				...this.#getCustomAuthHeaders(),
-			};
+			return this.#getCustomAuthHeaders();
 		}
+
+		if (this.#userAccessKey) {
+			return this.signRequest(this.#userAccessKey, url, body);
+		}
+
 		return {
 			'X-API-KEY': `${this.#apiKey}`,
+		};
+	}
+
+	async signRequest(
+		userAccessKey: UserAccessKey,
+		url: string,
+		body?: string | null
+	): Promise<Record<string, string>> {
+		const signedAtISO = new Date().toISOString();
+
+		const key = Buffer.from(userAccessKey.secret, 'base64');
+		const message = JSON.stringify({ url, signed_at: signedAtISO, body: body ?? '' });
+		const digest = createHmac('sha256', key).update(message).digest('hex');
+
+		return {
+			'X-CC-ACCESS-KEY': userAccessKey.id,
+			'X-CC-SIGNED-AT': signedAtISO,
+			'X-CC-CHECKSUM': digest,
 		};
 	}
 
@@ -204,22 +240,29 @@ export default class CloudCannonClient {
 		options?: Omit<RequestInit, keyof RequestMixin<M, MatchURL<Lowercase<M>, U>[Lowercase<M>]>> &
 			RequestMixin<M, MatchURL<Lowercase<M>, U>[Lowercase<M>]>
 	): Promise<APIResponse<MatchURL<Lowercase<M>, U>[Lowercase<M>]>> {
+		const fullUrl = `https://${this.#appDomain}/api/v0${url}`;
+
+		let body: string | undefined;
+		if (options?.body) {
+			if (typeof options?.body !== 'string') {
+				body = JSON.stringify(options.body);
+			} else {
+				body = options.body;
+			}
+		}
+
+		const authHeaders = await this.getAuthHeaders(fullUrl, body);
 		const requestInit = {
 			...options,
 			headers: {
-				...this.getAuthHeaders(),
+				...authHeaders,
 				'Content-Type': 'application/json',
 				...options?.headers,
 			},
+			body,
 		} as RequestInit;
-		if (options?.body) {
-			if (typeof options?.body !== 'string') {
-				requestInit.body = JSON.stringify(options.body);
-			} else {
-				requestInit.body = options.body;
-			}
-		}
-		return fetch(`https://${this.#appDomain}/api/v0${url}`, requestInit) as Promise<
+
+		return fetch(fullUrl, requestInit) as Promise<
 			APIResponse<MatchURL<Lowercase<M>, U>[Lowercase<M>]>
 		>;
 	}
@@ -262,7 +305,7 @@ export default class CloudCannonClient {
 
 	async orgs(options: ListOrgsOptions = {}): Promise<PaginatedResponse<Org>> {
 		const query = buildQuery(options);
-		const resp = await this.fetch(`/orgs?${query}`);
+		const resp = await this.fetch(`/orgs${query}`);
 		if (resp.status === 403) {
 			throw new Error('Error fetching orgs. Permission denied');
 		}

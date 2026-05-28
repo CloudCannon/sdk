@@ -26,7 +26,7 @@ export function buildQuery(
 		sort_direction?: 'ASC' | 'DESC';
 		filters?: Record<string, unknown>;
 	} = {}
-): string {
+): `?${string}` | '' {
 	const params = new URLSearchParams();
 	if (options.page !== undefined) params.set('page', String(options.page));
 	if (options.items !== undefined) params.set('items', String(options.items));
@@ -39,7 +39,12 @@ export function buildQuery(
 			}
 		}
 	}
-	return params.toString();
+
+	const result = params.toString();
+	if (result.length > 0) {
+		return `?${result}`;
+	}
+	return '';
 }
 
 export function paginatedResponse<T>(items: T[], headers: Headers): PaginatedResponse<T> {

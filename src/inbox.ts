@@ -27,7 +27,7 @@ export class InboxClient {
 		options: ListInboxSubmissionsOptions = {}
 	): Promise<PaginatedResponse<FormSubmission>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/inboxes/${this.#uuid}/form-hooks?${query}`);
+		const resp = await this.#client.fetch(`/inboxes/${this.#uuid}/form-hooks${query}`);
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching submissions. Permission denied');
 		}
