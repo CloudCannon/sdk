@@ -30,13 +30,22 @@ npm install @cloudcannon/sdk
 
 ## Creating and configuring the client
 
-Import `CloudCannonClient` and instantiate it with your API key:
+Import `CloudCannonClient` and instantiate it with your API key or user access key:
 
 ```typescript
 import CloudCannonClient from '@cloudcannon/sdk';
 
+// Authenticate with an API key
 const client = new CloudCannonClient({
   key: 'your-api-key-here',
+});
+
+// Authenticate with a user access key
+const client = new CloudCannonClient({
+  userAccessKey: {
+    id: 'your-access-key-id',
+    secret: 'your-access-key-secret',
+  },
 });
 ```
 
@@ -44,13 +53,24 @@ const client = new CloudCannonClient({
 
 | Option | Type | Description |
 |--------|------|-------------|
-| `key` | `string` | **Required.** Your CloudCannon API key. |
+| `key` | `string` | Your CloudCannon API key. Required if `userAccessKey` is not provided. |
+| `userAccessKey` | `{ id: string, secret: string }` | User access key for HMAC-SHA256 request signing. Required if `key` is not provided. |
 | `apiOrigin` | `string` | The API host. Defaults to `app.cloudcannon.com`. |
-| `getCustomAuthHeaders` | `() => Record<string, string>` | Provide custom authentication headers instead of the default `X-API-KEY`. |
+| `getCustomAuthHeaders` | `() => Record<string, string>` | Provide custom authentication headers instead of the default auth headers. |
 
 ```typescript
+// API key authentication
 const client = new CloudCannonClient({
   key: 'your-api-key-here',
+  apiOrigin: 'app.cloudcannon.com',
+});
+
+// User access key authentication
+const client = new CloudCannonClient({
+  userAccessKey: {
+    id: 'your-access-key-id',
+    secret: 'your-access-key-secret',
+  },
   apiOrigin: 'app.cloudcannon.com',
 });
 ```
