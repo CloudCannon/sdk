@@ -13,6 +13,7 @@ import {
 	EditingSessionFileClient,
 	type UnlockOptions,
 } from './src/editing-session-file.ts';
+import { AuthenticationError } from './src/errors.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -46,6 +47,11 @@ import {
 } from './src/site.ts';
 import { SiteInboxClient, type UpdateInboxOptions } from './src/site-inbox.ts';
 import { SyncClient } from './src/sync.ts';
+
+export {
+	ApiError,
+	AuthenticationError,
+} from './src/errors.ts';
 
 export type {
 	BuildConfiguration,
@@ -259,14 +265,25 @@ export default class CloudCannonClient {
 			headers: {
 				...authHeaders,
 				'Content-Type': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest',
 				...options?.headers,
 			},
 			body,
 		} as RequestInit;
 
-		return fetch(fullUrl, requestInit) as Promise<
-			APIResponse<MatchURL<Lowercase<M>, U>[Lowercase<M>]>
+		const resp = (await fetch(fullUrl, requestInit)) as APIResponse<
+			MatchURL<Lowercase<M>, U>[Lowercase<M>]
 		>;
+
+		if (resp.status === 401) {
+			throw new AuthenticationError(
+				'Failed to authenticate with the CloudCannon API.',
+				fullUrl,
+				options
+			);
+		}
+
+		return resp;
 	}
 
 	org(uuid: string): OrgClient {
