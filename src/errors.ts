@@ -18,3 +18,9 @@ export class ApiError extends Error {
 		this.status = status;
 	}
 }
+
+export class AuthenticationError extends ApiError {
+	constructor(message: string, url: string, options: unknown) {
+		super(message, undefined, url, options, 401);
+	}
+}
