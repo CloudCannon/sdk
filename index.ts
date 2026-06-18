@@ -276,10 +276,19 @@ export default class CloudCannonClient {
 		>;
 
 		if (resp.status === 401) {
+			let error: unknown;
+			try {
+				error = await resp.text();
+				({ error } = JSON.parse(error as string));
+			} catch {
+				// Error intentionally ignored
+			}
 			throw new AuthenticationError(
 				'Failed to authenticate with the CloudCannon API.',
+				error,
 				fullUrl,
-				options
+				options,
+				authHeaders
 			);
 		}
 
