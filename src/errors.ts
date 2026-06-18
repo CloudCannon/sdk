@@ -20,7 +20,17 @@ export class ApiError extends Error {
 }
 
 export class AuthenticationError extends ApiError {
-	constructor(message: string, url: string, options: unknown) {
-		super(message, undefined, url, options, 401);
+	authHeaders: Record<string, string>;
+
+	constructor(
+		message: string,
+		errors: unknown,
+		url: string,
+		options: unknown,
+		authHeaders: Record<string, string>
+	) {
+		super(message, errors, url, options, 401);
+
+		this.authHeaders = authHeaders;
 	}
 }
