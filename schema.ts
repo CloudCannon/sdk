@@ -47,7 +47,8 @@ export interface paths {
 		};
 		/** @description Get base domain */
 		get: operations['Base Domains_Show'];
-		put?: never;
+		/** @description Update base domain */
+		put: operations['Base Domains_Update'];
 		post?: never;
 		/** @description Delete base domain */
 		delete: operations['Base Domains_Destroy'];
@@ -2289,6 +2290,41 @@ export interface paths {
 		patch?: never;
 		trace?: never;
 	};
+	'/api/v0/users/access_keys': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get current user's access keys */
+		get: operations['Users_AccessKeys'];
+		put?: never;
+		/** @description Create a new access key */
+		post: operations['Users_CreateAccessKey'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/users/access_keys/{uuid}': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		post?: never;
+		/** @description Revoke an access key */
+		delete: operations['Users_DestroyAccessKey'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
 	'/api/v0/users/avatar': {
 		parameters: {
 			query?: never;
@@ -2394,6 +2430,7 @@ export interface components {
 					full_name?: string;
 				};
 			};
+			is_external_contributor?: boolean;
 		};
 		CommitsSchema: {
 			sha?: string;
@@ -2440,6 +2477,17 @@ export interface components {
 		BaseBlueprint: {
 			uuid: components['schemas']['UUID'];
 			id: number;
+		};
+		UserAccessKeyBlueprint: components['schemas']['BaseBlueprint'] & {
+			name?: string | null;
+			key_id: string;
+			login_session_id?: number | null;
+			/** Format: date-time */
+			revoked_at?: string | null;
+			/** Format: date-time */
+			created_at: string;
+			/** Format: date-time */
+			updated_at: string;
 		};
 		SyncBlueprint: components['schemas']['BaseBlueprint'] & {
 			name: string;
@@ -2797,11 +2845,12 @@ export interface components {
 			last_compiled_success?: string | null;
 			auto_create_site_on_pr?: boolean;
 			comment_on_pr?: boolean;
-			auto_delete_site_on_pr_close?: boolean;
 			pr_comment_skip_drafts?: boolean;
 			pr_comment_footer?: string | null;
 			auto_create_skip_drafts?: boolean;
-			pr_features_enabled?: boolean;
+			pr_tab_visible?: boolean;
+			publishing_tab_visible?: boolean;
+			branches_tab_visible?: boolean;
 			/** Format: date-time */
 			created_at: string;
 			/** Format: date-time */
@@ -2889,9 +2938,14 @@ export interface components {
 			mfa_required_after?: string | null;
 			/** Format: date-time */
 			sso_required_after?: string | null;
+			custom_billing_active?: boolean;
+			custom_billing_period?: string | null;
+			custom_contract_value?: number;
 			is_owner?: boolean;
+			earns_partner_points?: boolean;
 			card_action_banner?: string | null;
 			payment_locked?: boolean;
+			custom_billing_start_date?: string | null;
 			/** Format: date-time */
 			trial_end?: string | null;
 		};
@@ -2952,6 +3006,9 @@ export interface components {
 			mfa_required_after?: string | null;
 			/** Format: date-time */
 			sso_required_after?: string | null;
+			custom_billing_active?: boolean;
+			custom_billing_period?: string | null;
+			custom_contract_value?: number;
 			initial_saml_user_group_uuid?: (string | null) | components['schemas']['UUID'];
 			is_github_app?: boolean;
 			github_account_linked?: boolean;
@@ -3168,6 +3225,7 @@ export interface components {
 			cloudflare_zone_create_error_from_cloudflare?: boolean;
 			mx_record?: string | null;
 			spf_record?: string | null;
+			minimum_tls_version?: string | null;
 			cloudflare_name_servers?: string[];
 			name_servers?: string[] | null;
 			cloudflare_dns_migration?: Record<string, never>[] | null;
@@ -3191,6 +3249,7 @@ export interface components {
 			cloudflare_zone_create_error_from_cloudflare?: boolean;
 			mx_record?: string | null;
 			spf_record?: string | null;
+			minimum_tls_version?: string | null;
 			site_count?: number;
 			subdomain_count?: number;
 			fallback_domain?: string | null;
@@ -3367,6 +3426,31 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	'Base Domains_Update': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				base_domain_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['BaseDomainBlueprintFull'];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
 	'Base Domains_Destroy': {
@@ -3987,14 +4071,8 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					edit_type?: string | null;
-					path?: string | null;
-					source_path?: string | null;
-					discard_unsaved?: Record<string, never>;
-					previous_content_hash?: Record<string, never>;
-					metadata?: {
-						[key: string]: unknown;
-					};
+					edit_type: string;
+					discard_unsaved?: boolean;
 				};
 			};
 		};
@@ -4024,14 +4102,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					edit_type?: string | null;
-					path?: string | null;
-					source_path?: string | null;
-					discard_unsaved?: Record<string, never>;
-					previous_content_hash?: Record<string, never>;
-					metadata?: {
-						[key: string]: unknown;
-					};
+					path: string;
 				};
 			};
 		};
@@ -4213,14 +4284,14 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					target?: Record<string, never>;
-					source?: Record<string, never>;
-					s3_key?: Record<string, never>;
-					content_hash?: Record<string, never>;
-					discard_unsaved?: Record<string, never>;
-					allow_overwrite?: Record<string, never>;
-					message?: Record<string, never>;
+					source?: string;
+					target?: string;
 					paths?: {
+						source?: string;
+						target?: string;
+					}[];
+					allow_overwrite?: boolean;
+					metadata?: {
 						[key: string]: unknown;
 					};
 				};
@@ -4252,15 +4323,9 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					target?: Record<string, never>;
-					source?: Record<string, never>;
-					s3_key?: Record<string, never>;
-					content_hash?: Record<string, never>;
-					discard_unsaved?: Record<string, never>;
-					allow_overwrite?: Record<string, never>;
-					message?: Record<string, never>;
-					paths?: {
-						[key: string]: unknown;
+					message?: string;
+					include?: {
+						[key: string]: boolean;
 					};
 				};
 			};
@@ -4293,16 +4358,11 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					target?: Record<string, never>;
-					source?: Record<string, never>;
-					s3_key?: Record<string, never>;
-					content_hash?: Record<string, never>;
-					discard_unsaved?: Record<string, never>;
-					allow_overwrite?: Record<string, never>;
-					message?: Record<string, never>;
+					target?: string;
 					paths?: {
-						[key: string]: unknown;
-					};
+						target?: string;
+					}[];
+					discard_unsaved?: boolean;
 				};
 			};
 		};
@@ -4401,14 +4461,14 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					target?: Record<string, never>;
-					source?: Record<string, never>;
-					s3_key?: Record<string, never>;
-					content_hash?: Record<string, never>;
-					discard_unsaved?: Record<string, never>;
-					allow_overwrite?: Record<string, never>;
-					message?: Record<string, never>;
+					source?: string;
+					target?: string;
 					paths?: {
+						source?: string;
+						target?: string;
+					}[];
+					allow_overwrite?: boolean;
+					metadata?: {
 						[key: string]: unknown;
 					};
 				};
@@ -4440,16 +4500,10 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					target?: Record<string, never>;
-					source?: Record<string, never>;
-					s3_key?: Record<string, never>;
-					content_hash?: Record<string, never>;
-					discard_unsaved?: Record<string, never>;
-					allow_overwrite?: Record<string, never>;
-					message?: Record<string, never>;
+					target?: string;
 					paths?: {
-						[key: string]: unknown;
-					};
+						target?: string;
+					}[];
 				};
 			};
 		};
@@ -4480,16 +4534,15 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					target?: Record<string, never>;
-					source?: Record<string, never>;
-					s3_key?: Record<string, never>;
-					content_hash?: Record<string, never>;
-					discard_unsaved?: Record<string, never>;
-					allow_overwrite?: Record<string, never>;
-					message?: Record<string, never>;
-					paths?: {
-						[key: string]: unknown;
-					};
+					target?: string;
+					s3_key?: string;
+					content_hash?: string;
+					files?: {
+						target?: string;
+						s3_key?: string;
+						content_hash?: string;
+					}[];
+					allow_overwrite?: boolean;
 				};
 			};
 		};
@@ -4595,19 +4648,19 @@ export interface operations {
 	'Form Hook_Sends': {
 		parameters: {
 			query?: {
-				success?: boolean;
 				inbox_target_uuid?: string;
 				form_hook_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				success?: boolean;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -4849,21 +4902,21 @@ export interface operations {
 				last_sent_at_gte?: string;
 				sent_count_lt?: number;
 				sent_count_gt?: number;
-				sent_count_lte?: number;
 				sent_count_gte?: number;
-				site_uuid?: string;
+				sent_count_lte?: number;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -4988,44 +5041,52 @@ export interface operations {
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
 				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'name' | 'partner_points' | 'updated_at';
+				sort_attribute?:
+					| 'id'
+					| 'uuid'
+					| 'name'
+					| 'partner_points'
+					| 'updated_at'
+					| 'estimated_monthly_cost';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				country?: string;
+				locked?: string | number | boolean;
 				hubspot_migrated?: boolean;
 				organisation_type?: string;
-				country?: string;
 				partner_organisation_id?: number;
 				billing_status?: string;
 				has_partner_organisation_id?: number;
+				has_organisation_type?: string | number | boolean;
 				expired?: string | number | boolean;
 				has_address?: string | number | boolean;
-				has_organisation_type?: string | number | boolean;
-				locked?: string | number | boolean;
-				has_billing_name?: string | number | boolean;
 				has_billing_email?: string | number | boolean;
+				has_billing_name?: string | number | boolean;
 				hosting_limit_exceeded?: boolean;
-				build_time_limit_exceeded?: boolean;
 				user_limit_exceeded?: boolean;
+				build_time_limit_exceeded?: boolean;
 				domain_limit_exceeded?: boolean;
-				provider_account_linked?: string | number | boolean;
+				is_icp?: boolean;
 				user_uuid?: string;
-				trial?: string | number | boolean;
 				plan_period?: string | number | boolean;
 				pricing_version_is_current?: string | number | boolean;
+				storage_provider_uuid?: string;
+				unattached?: string | number | boolean;
+				provider_account_linked?: string | number | boolean;
 				in_partner_program?: string | number | boolean;
 				given_user_is_sole_owner?: string | number | boolean;
 				plan?: string;
-				storage_provider_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				trial?: string | number | boolean;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5133,25 +5194,25 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				size_gte?: string | number | boolean;
-				site_id?: number;
 				size_lt?: string | number | boolean;
-				size_gt?: string | number | boolean;
+				site_id?: number;
 				size_lte?: string | number | boolean;
+				size_gte?: string | number | boolean;
+				size_gt?: string | number | boolean;
 				organisation_uuid?: string;
-				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5196,24 +5257,24 @@ export interface operations {
 					| 'next_ssl_generate_attempt_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				organisation_id?: number;
 				base_domain?: string;
 				has_zone_id?: number;
 				has_cloudflare_zone_id?: number;
 				has_cloudflare_zone_create_error?: string | number | boolean;
 				uses_dns?: boolean;
+				organisation_id?: number;
 				organisation_uuid?: string;
 				auto_ssl_retries?: string | number | boolean;
-				updated_at_lt?: string | number | boolean;
-				updated_at_gt?: string | number | boolean;
-				updated_at_lte?: string | number | boolean;
-				updated_at_gte?: string | number | boolean;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string | number | boolean;
 				created_at_gt?: string | number | boolean;
 				created_at_lte?: string | number | boolean;
 				created_at_gte?: string | number | boolean;
+				updated_at_lt?: string | number | boolean;
+				updated_at_gt?: string | number | boolean;
+				updated_at_lte?: string | number | boolean;
+				updated_at_gte?: string | number | boolean;
 				search?: string;
 			};
 			header?: never;
@@ -5334,18 +5395,18 @@ export interface operations {
 				dam_type?: string;
 				organisation_id?: number;
 				organisation_uuid?: string;
-				unlinked_site_uuid?: string;
 				site_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				unlinked_site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5428,21 +5489,21 @@ export interface operations {
 				sort_attribute?: 'created_at' | 'updated_at' | 'id' | 'key' | 'name' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				captcha_type?: string;
 				name?: string;
 				organisation_id?: number;
-				captcha_type?: string;
 				site_uuid?: string;
 				organisation_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5538,16 +5599,16 @@ export interface operations {
 				name?: string;
 				organisation_id?: number;
 				organisation_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5596,14 +5657,15 @@ export interface operations {
 					default_authentication?: string | null;
 					default_publish_mode?: string | null;
 					default_password?: Record<string, never>;
-					pr_features_enabled?: boolean;
+					pr_tab_visible?: boolean;
+					publishing_tab_visible?: boolean;
+					branches_tab_visible?: boolean;
 					git_repository: string;
 					allow_all_branching?: boolean;
 					prevent_permissions_granted_on_branch?: boolean;
 					main_git_branch?: string | null;
 					provider: string;
 					auto_create_site_on_pr?: boolean;
-					auto_delete_site_on_pr_close?: boolean;
 					auto_create_skip_drafts?: boolean;
 					comment_on_pr?: boolean;
 					pr_comment_skip_drafts?: boolean;
@@ -5753,17 +5815,6 @@ export interface operations {
 					| 'sync_error';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				has_subpath?: string | number | boolean;
-				has_client_password?: string | number | boolean;
-				cloudflare_hostname?: string | number | boolean;
-				locales?: string;
-				sync_error?: string;
-				compile_error?: string;
-				files?: string;
-				latest_hosted_build_id?: number;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
 				site_name?: string;
 				base_domain_id?: number;
 				domain_name?: string;
@@ -5782,13 +5833,33 @@ export interface operations {
 				building_locked?: boolean;
 				uses_i18n?: boolean;
 				auto_generate_ssl?: boolean;
-				organisation_id?: number;
 				use_rbenv_builds?: boolean;
 				needs_clean?: boolean;
 				has_storage_provider?: string | number | boolean;
 				has_output_storage_provider?: string | number | boolean;
 				has_source?: string | number | boolean;
 				has_domain_name?: string | number | boolean;
+				has_subpath?: string | number | boolean;
+				organisation_id?: number;
+				cloudflare_hostname?: string | number | boolean;
+				has_client_password?: string | number | boolean;
+				sync_error?: string;
+				last_compiled?: string;
+				compile_error?: string;
+				locales?: string;
+				latest_hosted_build_id?: number;
+				files?: string;
+				last_synced?: string;
+				last_compiled_success?: string;
+				ssl_certificate?: string | number | boolean;
+				ssl_certificate_expired?: string | number | boolean;
+				inbox_uuid?: string;
+				bearer_tokens?: string | number | boolean;
+				site_scanner?: string | number | boolean;
+				old_includes?: string | number | boolean;
+				repeatables?: string | number | boolean;
+				storage_provider_details_full_name?: string | number | boolean;
+				source?: string | number | boolean;
 				has_unsaved_changes?: string | number | boolean;
 				error?: string | number | boolean;
 				compiled?: string | number | boolean;
@@ -5800,26 +5871,17 @@ export interface operations {
 				publish_branch?: string | number | boolean;
 				owner_locked?: string | number | boolean;
 				owner_trial?: string | number | boolean;
-				ssl_certificate?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
-				bearer_tokens?: string | number | boolean;
-				site_scanner?: string | number | boolean;
-				old_includes?: string | number | boolean;
-				inbox_uuid?: string;
-				repeatables?: string | number | boolean;
-				storage_provider_details_full_name?: string | number | boolean;
-				source?: string | number | boolean;
 				organisation_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5939,26 +6001,26 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'name' | 'expires_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				name?: string;
+				organisation_id?: number;
 				expires_at_lt?: string;
 				expires_at_gt?: string;
 				expires_at_lte?: string;
 				expires_at_gte?: string;
-				autorenew?: boolean;
 				has_cloudflare_id?: number;
-				name?: string;
-				organisation_id?: number;
+				autorenew?: boolean;
 				organisation_uuid?: string;
 				expired?: string | number | boolean;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6156,7 +6218,9 @@ export interface operations {
 					default_authentication?: string | null;
 					default_publish_mode?: string | null;
 					default_password?: Record<string, never>;
-					pr_features_enabled?: boolean;
+					pr_tab_visible?: boolean;
+					publishing_tab_visible?: boolean;
+					branches_tab_visible?: boolean;
 				};
 			};
 		};
@@ -6330,17 +6394,6 @@ export interface operations {
 					| 'sync_error';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				has_subpath?: string | number | boolean;
-				has_client_password?: string | number | boolean;
-				cloudflare_hostname?: string | number | boolean;
-				locales?: string;
-				sync_error?: string;
-				compile_error?: string;
-				files?: string;
-				latest_hosted_build_id?: number;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
 				site_name?: string;
 				base_domain_id?: number;
 				domain_name?: string;
@@ -6359,13 +6412,33 @@ export interface operations {
 				building_locked?: boolean;
 				uses_i18n?: boolean;
 				auto_generate_ssl?: boolean;
-				organisation_id?: number;
 				use_rbenv_builds?: boolean;
 				needs_clean?: boolean;
 				has_storage_provider?: string | number | boolean;
 				has_output_storage_provider?: string | number | boolean;
 				has_source?: string | number | boolean;
 				has_domain_name?: string | number | boolean;
+				has_subpath?: string | number | boolean;
+				organisation_id?: number;
+				cloudflare_hostname?: string | number | boolean;
+				has_client_password?: string | number | boolean;
+				sync_error?: string;
+				last_compiled?: string;
+				compile_error?: string;
+				locales?: string;
+				latest_hosted_build_id?: number;
+				files?: string;
+				last_synced?: string;
+				last_compiled_success?: string;
+				ssl_certificate?: string | number | boolean;
+				ssl_certificate_expired?: string | number | boolean;
+				inbox_uuid?: string;
+				bearer_tokens?: string | number | boolean;
+				site_scanner?: string | number | boolean;
+				old_includes?: string | number | boolean;
+				repeatables?: string | number | boolean;
+				storage_provider_details_full_name?: string | number | boolean;
+				source?: string | number | boolean;
 				has_unsaved_changes?: string | number | boolean;
 				error?: string | number | boolean;
 				compiled?: string | number | boolean;
@@ -6377,26 +6450,17 @@ export interface operations {
 				publish_branch?: string | number | boolean;
 				owner_locked?: string | number | boolean;
 				owner_trial?: string | number | boolean;
-				ssl_certificate?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
-				bearer_tokens?: string | number | boolean;
-				site_scanner?: string | number | boolean;
-				old_includes?: string | number | boolean;
-				inbox_uuid?: string;
-				repeatables?: string | number | boolean;
-				storage_provider_details_full_name?: string | number | boolean;
-				source?: string | number | boolean;
 				organisation_uuid?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6419,7 +6483,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'][];
+					'application/json': components['schemas']['SiteBlueprint'][];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
@@ -6807,25 +6871,25 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				size_gte?: string | number | boolean;
-				site_id?: number;
 				size_lt?: string | number | boolean;
-				size_gt?: string | number | boolean;
+				site_id?: number;
 				size_lte?: string | number | boolean;
+				size_gte?: string | number | boolean;
+				size_gt?: string | number | boolean;
 				organisation_uuid?: string;
-				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7000,24 +7064,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				size_gte?: number;
-				site_id?: number;
 				size_lt?: number;
-				size_gt?: number;
+				site_id?: number;
 				size_lte?: number;
-				site_uuid?: string;
+				size_gte?: number;
+				size_gt?: number;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7118,22 +7182,22 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
-				token?: string;
 				site_id?: number;
-				site_uuid?: string;
+				token?: string;
+				name?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -7292,22 +7356,22 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				email?: string;
-				has_password?: string | number | boolean;
 				site_id?: number;
-				site_uuid?: string;
+				has_password?: string | number | boolean;
+				email?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -7409,24 +7473,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
 				site_id?: number;
+				name?: string;
 				completed_at?: string;
 				successful?: boolean;
 				pinnable?: boolean;
-				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -8013,21 +8077,21 @@ export interface operations {
 				last_sent_at_gte?: string;
 				sent_count_lt?: number;
 				sent_count_gt?: number;
-				sent_count_lte?: number;
 				sent_count_gte?: number;
-				site_uuid?: string;
+				sent_count_lte?: number;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 				search?: string;
 			};
 			header?: never;
@@ -8289,30 +8353,30 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				identifier?: string;
+				after_identifier?: string;
+				provider?: string;
+				completed_at_lt?: string;
+				diff_id?: string;
+				completed_at_gt?: string;
 				completed_at_lte?: string;
+				name?: string;
 				completed_at_gte?: string;
 				site_id?: number;
 				successful?: boolean;
-				name?: string;
-				identifier?: string;
-				after_identifier?: string;
-				diff_id?: string;
-				provider?: string;
-				completed_at_lt?: string;
-				completed_at_gt?: string;
-				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -8973,36 +9037,36 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
 				filename?: string;
 				run_date_lt?: string;
 				run_date_gt?: string;
+				site_id?: number;
 				run_date_lte?: string;
-				run_date_gte?: string;
 				period_lt?: number;
 				period_gt?: number;
 				period_lte?: number;
 				period_gte?: number;
-				run_count_lt?: number;
+				run_date_gte?: string;
 				run_count_gt?: number;
+				run_count_gte?: number;
+				scheduled_at?: string;
+				from_source?: boolean;
+				run_count_lt?: number;
 				run_count_lte?: number;
 				name?: string;
-				run_count_gte?: number;
-				from_source?: boolean;
-				scheduled_at?: string;
-				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -9393,27 +9457,27 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				identifier?: string;
+				after_identifier?: string;
+				provider?: string;
+				diff_id?: string;
+				name?: string;
 				site_id?: number;
 				completed_at?: string;
 				successful?: boolean;
-				name?: string;
-				identifier?: string;
-				after_identifier?: string;
-				diff_id?: string;
-				provider?: string;
-				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
+				site_uuid?: string;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
 			};
 			header?: never;
 			path: {
@@ -9591,6 +9655,70 @@ export interface operations {
 			};
 			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
+		};
+	};
+	Users_AccessKeys: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['UserAccessKeyBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	Users_CreateAccessKey: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['UserAccessKeyBlueprint'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	Users_DestroyAccessKey: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				access_key_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description No Content */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 		};
 	};
 	'Users Avatar_Show': {

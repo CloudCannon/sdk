@@ -1085,7 +1085,7 @@ await site.uploadFile(
   '# Hello World',                // File content (string, Blob, ArrayBuffer, etc.)
   {
     type: 'text/markdown',        // Optional MIME type (defaults to 'text/plain')
-    overwriteExistingFile: true, // Whether to overwrite if the file already exists
+    allow_overwrite: true, // Whether to overwrite if the file already exists
   }
 );
 // Returns: void
@@ -1280,6 +1280,116 @@ const file = await session.createFile({
 // }
 ```
 
+#### `session.moveFile(options)`
+
+Move (rename) a single file within the editing session. The session file's `source_path` is preserved and a delete entry is created for the original location on commit.
+
+```typescript
+const files = await session.moveFile({
+  source: 'content/old-post.md',  // Path to move from
+  target: 'content/new-post.md', // Path to move to
+  allow_overwrite: false,        // Optional: allow overwriting an existing file
+});
+// [ // EditingSessionFile[]
+//   { uuid: "STRING_VALUE", edit_type: "update", path: "content/new-post.md", ... },
+// ]
+```
+
+#### `session.moveFiles(options)`
+
+Move multiple files within the editing session in a single request.
+
+```typescript
+const files = await session.moveFiles({
+  paths: [
+    { source: 'content/old-post.md', target: 'content/new-post.md' },
+    { source: 'content/draft.md', target: 'content/published.md' },
+  ],
+  allow_overwrite: true,         // Optional: applied to all paths
+});
+// [ // EditingSessionFile[] ]
+```
+
+#### `session.cloneFile(options)`
+
+Clone a single file to a new path within the editing session. The source file is left unchanged.
+
+```typescript
+const files = await session.cloneFile({
+  source: 'content/post.md',     // Path to clone from
+  target: 'content/post-copy.md', // Path to clone to
+  allow_overwrite: false,        // Optional: allow overwriting an existing file
+});
+// [ // EditingSessionFile[] ]
+```
+
+#### `session.cloneFiles(options)`
+
+Clone multiple files within the editing session in a single request.
+
+```typescript
+const files = await session.cloneFiles({
+  paths: [
+    { source: 'content/post.md', target: 'content/post-copy.md' },
+    { source: 'assets/logo.png', target: 'assets/logo-backup.png' },
+  ],
+  allow_overwrite: true,         // Optional: applied to all paths
+});
+// [ // EditingSessionFile[] ]
+```
+
+#### `session.deleteFile(options)`
+
+Mark a single file for deletion within the editing session. The file is removed from the repository on commit.
+
+```typescript
+const files = await session.deleteFile({
+  target: 'content/old-post.md', // Path to delete
+  discard_unsaved: false,        // Optional: discard unsaved edits to the file
+});
+// [ // EditingSessionFile[] ]
+```
+
+#### `session.deleteFiles(options)`
+
+Mark multiple files for deletion within the editing session in a single request.
+
+```typescript
+const files = await session.deleteFiles({
+  paths: [
+    { target: 'content/old-post.md' },
+    { target: 'content/draft.md' },
+  ],
+  discard_unsaved: true,         // Optional: applied to all paths
+});
+// [ // EditingSessionFile[] ]
+```
+
+#### `session.restoreFile(options)`
+
+Restore a previously deleted file within the editing session, removing the pending delete entry.
+
+```typescript
+const files = await session.restoreFile({
+  target: 'content/old-post.md', // Path to restore
+});
+// [ // EditingSessionFile[] ]
+```
+
+#### `session.restoreFiles(options)`
+
+Restore multiple previously deleted files within the editing session in a single request.
+
+```typescript
+const files = await session.restoreFiles({
+  paths: [
+    { target: 'content/old-post.md' },
+    { target: 'content/draft.md' },
+  ],
+});
+// [ // EditingSessionFile[] ]
+```
+
 #### `session.commit()`
 
 Commit the editing session, pushing changes to the connected repository.
@@ -1380,6 +1490,15 @@ const contribution = await file.unlock({
 //   created_at: "TIMESTAMP",
 //   updated_at: "TIMESTAMP",
 // }
+```
+
+#### `file.discard()`
+
+Discard the editing session file, removing it from the editing session.
+
+```typescript
+const contribution = await file.discard();
+// { }
 ```
 
 ---
