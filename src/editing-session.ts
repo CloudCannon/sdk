@@ -12,6 +12,49 @@ export type CommitEditingSessionOptions =
 export type CommitEditingSessionResponse =
 	operations['Editing Session_Commit']['responses']['200']['content']['application/json'];
 
+export type MoveEditingSessionFileOptions = Omit<
+	operations['Editing Session_MovePath']['requestBody']['content']['application/json'],
+	'paths'
+>;
+
+export type MoveEditingSessionFilesOptions = Omit<
+	operations['Editing Session_MovePath']['requestBody']['content']['application/json'],
+	'source' | 'target'
+>;
+
+export type CloneEditingSessionFileOptions = Omit<
+	operations['Editing Session_ClonePath']['requestBody']['content']['application/json'],
+	'paths'
+>;
+
+export type CloneEditingSessionFilesOptions = Omit<
+	operations['Editing Session_ClonePath']['requestBody']['content']['application/json'],
+	'source' | 'target'
+>;
+
+export type DeleteEditingSessionFileOptions = Omit<
+	operations['Editing Session_DeletePath']['requestBody']['content']['application/json'],
+	'paths'
+>;
+
+export type DeleteEditingSessionFilesOptions = Omit<
+	operations['Editing Session_DeletePath']['requestBody']['content']['application/json'],
+	'target'
+>;
+
+export type RestoreEditingSessionFileOptions = Omit<
+	operations['Editing Session_RestorePath']['requestBody']['content']['application/json'],
+	'paths'
+>;
+
+export type RestoreEditingSessionFilesOptions = Omit<
+	operations['Editing Session_RestorePath']['requestBody']['content']['application/json'],
+	'target'
+>;
+
+export type EditingSessionFilesResponse =
+	operations['Editing Session_MovePath']['responses']['200']['content']['application/json'];
+
 export class EditingSessionClient {
 	#uuid: string;
 	#client: CloudCannonClient;
@@ -61,9 +104,198 @@ export class EditingSessionClient {
 		return file;
 	}
 
-	async commit(): Promise<CommitEditingSessionResponse> {
+	async moveFile(options: MoveEditingSessionFileOptions): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/move_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error moving editing session file. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error moving editing session file. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/move_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async moveFiles(options: MoveEditingSessionFilesOptions): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/move_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error moving editing session files. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error moving editing session files. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/move_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async cloneFile(options: CloneEditingSessionFileOptions): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/clone_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error cloning editing session file. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error cloning editing session file. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/clone_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async cloneFiles(options: CloneEditingSessionFilesOptions): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/clone_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error cloning editing session files. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error cloning editing session files. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/clone_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async deleteFile(options: DeleteEditingSessionFileOptions): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/delete_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error deleting editing session file. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error deleting editing session file. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/delete_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async deleteFiles(
+		options: DeleteEditingSessionFilesOptions
+	): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/delete_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error deleting editing session files. Permission denied');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error deleting editing session files. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/delete_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async restoreFile(
+		options: RestoreEditingSessionFileOptions
+	): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/restore_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error restoring editing session file. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error restoring editing session file. File not found');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error restoring editing session file. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/restore_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async restoreFiles(
+		options: RestoreEditingSessionFilesOptions
+	): Promise<EditingSessionFilesResponse> {
+		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/restore_path`, {
+			method: 'POST',
+			body: options,
+		});
+		if (resp.status === 403) {
+			throw new Error('Error restoring editing session files. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error restoring editing session files. File not found');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error restoring editing session files. Invalid request',
+				errorResp.errors,
+				`/editing_sessions/${this.#uuid}/restore_path`,
+				{ method: 'POST', body: options },
+				resp.status
+			);
+		}
+		const files = await resp.json();
+		return files;
+	}
+
+	async commit(body?: CommitEditingSessionOptions): Promise<CommitEditingSessionResponse> {
 		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/commit`, {
 			method: 'POST',
+			body,
 		});
 		if (resp.status === 403) {
 			throw new Error('Error committing editing session. Permission denied');

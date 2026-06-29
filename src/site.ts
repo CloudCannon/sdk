@@ -68,7 +68,7 @@ export type FileListing =
 	operations['Files_Index']['responses']['200']['content']['application/json'][number];
 export type UploadFileOptions = {
 	type?: string;
-	overwriteExistingFile?: boolean;
+	allow_overwrite?: boolean;
 };
 
 export class SiteClient {
@@ -528,8 +528,8 @@ export class SiteClient {
 
 		const files = await this.listFiles();
 		const existingFile = files.find((file) => file.sitePath === path);
-		if (existingFile && !options.overwriteExistingFile) {
-			throw new Error('File already exists and overwriteExistingFile is not set');
+		if (existingFile && !options.allow_overwrite) {
+			throw new Error('File already exists and allow_overwrite is not set');
 		}
 
 		const uploadData = await this.#client.getUploadData();
@@ -546,8 +546,8 @@ export class SiteClient {
 		contributions.sort((a, b) => a.updated_at.localeCompare(b.updated_at));
 		const latestContribution = contributions.at(-1);
 
-		if (latestContribution && !options.overwriteExistingFile) {
-			throw new Error('File already exists and overwriteExistingFile is not set');
+		if (latestContribution && !options.allow_overwrite) {
+			throw new Error('File already exists and allow_overwrite is not set');
 		}
 
 		const s3Key = `${uploadData.prefix}/${Date.now()}${path}`;

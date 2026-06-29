@@ -3,10 +3,18 @@ import type { components, operations, paths } from './schema.ts';
 import { BackupClient } from './src/backup.ts';
 import { BuildClient } from './src/build.ts';
 import {
+	type CloneEditingSessionFileOptions,
+	type CloneEditingSessionFilesOptions,
 	type CommitEditingSessionOptions,
 	type CommitEditingSessionResponse,
 	type CreateEditingSessionFileOptions,
+	type DeleteEditingSessionFileOptions,
+	type DeleteEditingSessionFilesOptions,
 	EditingSessionClient,
+	type MoveEditingSessionFileOptions,
+	type MoveEditingSessionFilesOptions,
+	type RestoreEditingSessionFileOptions,
+	type RestoreEditingSessionFilesOptions,
 } from './src/editing-session.ts';
 import {
 	type CreateContributionOptions,
@@ -55,6 +63,8 @@ export {
 
 export type {
 	BuildConfiguration,
+	CloneEditingSessionFileOptions,
+	CloneEditingSessionFilesOptions,
 	CommitEditingSessionOptions,
 	CommitEditingSessionResponse,
 	ConnectDamOptions,
@@ -66,6 +76,8 @@ export type {
 	CreateDamOptions,
 	CreateEditingSessionFileOptions,
 	CreateInboxOptions,
+	DeleteEditingSessionFileOptions,
+	DeleteEditingSessionFilesOptions,
 	FilterOptions,
 	ListInboxSubmissionsOptions,
 	ListOrgDamsOptions,
@@ -75,8 +87,12 @@ export type {
 	ListSiteBackupsOptions,
 	ListSiteBuildsOptions,
 	ListSiteSyncsOptions,
+	MoveEditingSessionFileOptions,
+	MoveEditingSessionFilesOptions,
 	PaginatedResponse,
 	PaginationOptions,
+	RestoreEditingSessionFileOptions,
+	RestoreEditingSessionFilesOptions,
 	SortingOptions,
 	UnlockOptions,
 	UpdateInboxOptions,

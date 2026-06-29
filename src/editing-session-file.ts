@@ -60,6 +60,30 @@ export class EditingSessionFileClient {
 		return contribution;
 	}
 
+	async discard(): Promise<EditingSessionFileContribution> {
+		const resp = await this.#client.fetch(`/editing_session_files/${this.#uuid}`, {
+			method: 'DELETE',
+		});
+		if (resp.status === 403) {
+			throw new Error('Error discarding editing session file. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error discarding editing session file. File not found');
+		}
+		if (resp.status === 422) {
+			const errorResp = await resp.json();
+			throw new ApiError(
+				'Error discarding editing session file. Invalid request',
+				errorResp.errors,
+				`/editing_session_files/${this.#uuid}`,
+				{ method: 'DELETE' },
+				resp.status
+			);
+		}
+		const contribution = await resp.json();
+		return contribution;
+	}
+
 	async unlock(body: UnlockOptions): Promise<EditingSessionFileContribution> {
 		const resp = await this.#client.fetch(`/editing_session_files/${this.#uuid}/unlock`, {
 			method: 'PUT',
