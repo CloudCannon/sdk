@@ -47,6 +47,19 @@ export function buildQuery(
 	return '';
 }
 
+export function normaliseUrl(url: string): string {
+	const parsed = new URL(url);
+	const sortedParams = new URLSearchParams();
+	const entries = [...parsed.searchParams.entries()].sort(([a], [b]) =>
+		a < b ? -1 : a > b ? 1 : 0
+	);
+	for (const [key, value] of entries) {
+		sortedParams.append(key, value);
+	}
+	parsed.search = sortedParams.toString();
+	return parsed.toString();
+}
+
 export function paginatedResponse<T>(items: T[], headers: Headers): PaginatedResponse<T> {
 	const parse = (name: string): number | undefined => {
 		const value = headers.get(name);
