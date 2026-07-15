@@ -25,6 +25,7 @@ import { AuthenticationError } from './src/errors.ts';
 import {
 	buildQuery,
 	type FilterOptions,
+	normaliseUrl,
 	type PaginatedResponse,
 	type PaginationOptions,
 	paginatedResponse,
@@ -264,7 +265,7 @@ export default class CloudCannonClient {
 		options?: Omit<RequestInit, keyof RequestMixin<M, MatchURL<Lowercase<M>, U>[Lowercase<M>]>> &
 			RequestMixin<M, MatchURL<Lowercase<M>, U>[Lowercase<M>]>
 	): Promise<APIResponse<MatchURL<Lowercase<M>, U>[Lowercase<M>]>> {
-		const fullUrl = `https://${this.#appDomain}/api/v0${url}`;
+		const fullUrl = normaliseUrl(`https://${this.#appDomain}/api/v0${url}`);
 
 		let body: string | undefined;
 		if (options?.body) {
