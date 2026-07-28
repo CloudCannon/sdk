@@ -197,6 +197,7 @@ type ValidURL<M extends keyof paths[keyof paths], U extends string> =
 type BaseCloudCannonClientConfig = {
 	apiOrigin?: string;
 	getCustomAuthHeaders?: () => Record<string, string>;
+	client?: string;
 };
 
 export type CloudCannonClientConfig =
@@ -215,6 +216,7 @@ export default class CloudCannonClient {
 
 	#appDomain: string;
 	#getCustomAuthHeaders?: () => Record<string, string>;
+	#client: string;
 
 	constructor(config: CloudCannonClientConfig) {
 		if ('userAccessKey' in config) {
@@ -224,6 +226,7 @@ export default class CloudCannonClient {
 		}
 		this.#appDomain = config.apiOrigin ?? 'app.cloudcannon.com';
 		this.#getCustomAuthHeaders = config.getCustomAuthHeaders;
+		this.#client = config.client ?? 'sdk';
 	}
 
 	async getAuthHeaders(url: string, body?: string): Promise<Record<string, string>> {
@@ -283,6 +286,7 @@ export default class CloudCannonClient {
 				...authHeaders,
 				'Content-Type': 'application/json',
 				'X-Requested-With': 'XMLHttpRequest',
+				'X-CC-Client': this.#client,
 				...options?.headers,
 			},
 			body,
