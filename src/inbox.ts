@@ -11,8 +11,8 @@ import {
 } from './helpers/query.ts';
 
 export type ListInboxSubmissionsOptions = PaginationOptions &
-	SortingOptions<operations['Inbox Form Hooks_Index']> &
-	FilterOptions<operations['Inbox Form Hooks_Index']>;
+	SortingOptions<operations['InboxesFormHooksIndex']> &
+	FilterOptions<operations['InboxesFormHooksIndex']>;
 
 export class InboxClient {
 	#uuid: string;

@@ -4,7 +4,7 @@ import type { operations } from '../schema.js';
 import { ApiError } from './errors.ts';
 
 export type UpdateInboxOptions =
-	operations['Site Inboxes_Update']['requestBody']['content']['application/json'];
+	operations['SiteInboxesUpdate']['requestBody']['content']['application/json'];
 
 export class SiteInboxClient {
 	#uuid: string;

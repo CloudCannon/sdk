@@ -101,7 +101,7 @@ export type {
 	UploadFileOptions,
 };
 
-export type Provider = operations['Providers_Repositories']['parameters']['path']['provider'];
+export type Provider = operations['OrgsProvidersRepositories']['parameters']['path']['provider'];
 
 export type Site = components['schemas']['SiteBlueprint'];
 export type Backup = components['schemas']['SiteArchiveBlueprint'];
@@ -119,7 +119,7 @@ export type EditingSessionFile = components['schemas']['EditingSessionFileBluepr
 export type EditingSessionFileContribution =
 	components['schemas']['EditingSessionFileContributionBlueprint'];
 export type UploadData =
-	operations['Index_UploadData']['responses']['200']['content']['application/json'];
+	operations['IndexUploadData']['responses']['200']['content']['application/json'];
 
 export type ProviderDetails = {
 	provider: Provider;
@@ -128,8 +128,8 @@ export type ProviderDetails = {
 };
 
 type ListOrgsOptions = PaginationOptions &
-	SortingOptions<operations['Organizations_Index']> &
-	FilterOptions<operations['Organizations_Index']>;
+	SortingOptions<operations['OrgsIndexIndex']> &
+	FilterOptions<operations['OrgsIndexIndex']>;
 
 type ParamToString<S extends string> = S extends `${infer A}/{${string}}/${infer B}`
 	? `${A}/${string}/${ParamToString<B>}`
@@ -355,9 +355,6 @@ export default class CloudCannonClient {
 	async orgs(options: ListOrgsOptions = {}): Promise<PaginatedResponse<Org>> {
 		const query = buildQuery(options);
 		const resp = await this.fetch(`/orgs${query}`);
-		if (resp.status === 403) {
-			throw new Error('Error fetching orgs. Permission denied');
-		}
 		const orgs = await resp.json();
 		return paginatedResponse(orgs, resp.headers);
 	}

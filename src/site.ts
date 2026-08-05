@@ -23,7 +23,7 @@ import {
 
 export type BuildConfiguration = Partial<
 	Omit<
-		operations['Sites_UpdateBuild']['requestBody']['content']['application/json'],
+		operations['SitesIndexUpdateBuild']['requestBody']['content']['application/json'],
 		'build_configuration'
 	>
 > & {
@@ -44,28 +44,28 @@ export type BuildConfiguration = Partial<
 };
 
 export type UpdateSiteOptions =
-	operations['Sites_Update']['requestBody']['content']['application/json'];
+	operations['SitesIndexUpdate']['requestBody']['content']['application/json'];
 export type CopySiteOptions =
-	operations['Sites_Copy']['requestBody']['content']['application/json'];
+	operations['SitesIndexCopy']['requestBody']['content']['application/json'];
 export type ListSiteBuildsOptions = PaginationOptions &
-	SortingOptions<operations['Builds_Index']> &
-	FilterOptions<operations['Builds_Index']>;
+	SortingOptions<operations['SitesBuildsIndex']> &
+	FilterOptions<operations['SitesBuildsIndex']>;
 export type ListSiteBackupsOptions = PaginationOptions &
-	SortingOptions<operations['Backups_Index']> &
-	FilterOptions<operations['Backups_Index']>;
+	SortingOptions<operations['SitesArchivesIndex']> &
+	FilterOptions<operations['SitesArchivesIndex']>;
 export type ListSiteSyncsOptions = PaginationOptions &
-	SortingOptions<operations['Syncs_Index']> &
-	FilterOptions<operations['Syncs_Index']>;
+	SortingOptions<operations['SitesSyncsIndex']> &
+	FilterOptions<operations['SitesSyncsIndex']>;
 
 export type CreateBackupOptions =
-	operations['Backups_Create']['requestBody']['content']['application/json'];
+	operations['SitesArchivesCreate']['requestBody']['content']['application/json'];
 
 export type ConnectInboxOptions =
-	operations['Site Inboxes_Create']['requestBody']['content']['application/json'];
+	operations['SitesInboxesCreate']['requestBody']['content']['application/json'];
 export type ConnectDamOptions =
-	operations['Dams_Create']['requestBody']['content']['application/json'];
+	operations['SitesDamsCreate']['requestBody']['content']['application/json'];
 export type FileListing =
-	operations['Files_Index']['responses']['200']['content']['application/json'][number];
+	operations['SitesFilesIndex']['responses']['200']['content']['application/json'][number];
 export type UploadFileOptions = {
 	type?: string;
 	allow_overwrite?: boolean;
@@ -82,6 +82,9 @@ export class SiteClient {
 
 	async get(): Promise<Site> {
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}`);
+		if (resp.status === 403) {
+			throw new Error('Error fetching site. Permission denied');
+		}
 		const site = await resp.json();
 		return site;
 	}
@@ -91,6 +94,9 @@ export class SiteClient {
 			method: 'PUT',
 			body,
 		});
+		if (resp.status === 403) {
+			throw new Error('Error updating site. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -129,6 +135,9 @@ export class SiteClient {
 		if (resp.status === 402) {
 			throw new Error('Error copying site. Feature not on plan');
 		}
+		if (resp.status === 403) {
+			throw new Error('Error copying site. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -161,6 +170,9 @@ export class SiteClient {
 			method: 'PUT',
 			body,
 		});
+		if (resp.status === 403) {
+			throw new Error('Error updating build configuration. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -197,7 +209,7 @@ export class SiteClient {
 	async listBackups(options: ListSiteBackupsOptions = {}): Promise<PaginatedResponse<Backup>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives${query}`);
-		if (resp.status === 401) {
+		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching backups. Permission denied');
 		}
 		const items = await resp.json();
@@ -209,7 +221,7 @@ export class SiteClient {
 			method: 'POST',
 			body,
 		});
-		if (resp.status === 401) {
+		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error creating backup. Permission denied');
 		}
 		if (resp.status === 422) {
@@ -228,18 +240,8 @@ export class SiteClient {
 
 	async listFiles(): Promise<FileListing[]> {
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/files`);
-		if (resp.status === 401) {
+		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching files. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error fetching files. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/files`,
-				{},
-				resp.status
-			);
 		}
 		const files = await resp.json();
 		return files;
@@ -269,7 +271,7 @@ export class SiteClient {
 	async getSyncs(options: ListSiteSyncsOptions = {}): Promise<PaginatedResponse<Sync>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs${query}`);
-		if (resp.status === 401) {
+		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error fetching syncs. Permission denied');
 		}
 		const syncs = await resp.json();
@@ -313,6 +315,9 @@ export class SiteClient {
 			method: 'POST',
 			body,
 		});
+		if (resp.status === 403) {
+			throw new Error('Error adding provider. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -339,6 +344,9 @@ export class SiteClient {
 			method: 'PUT',
 			body,
 		});
+		if (resp.status === 403) {
+			throw new Error('Error updating provider. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -357,6 +365,9 @@ export class SiteClient {
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/providers`, {
 			method: 'DELETE',
 		});
+		if (resp.status === 403) {
+			throw new Error('Error removing provider. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -384,6 +395,9 @@ export class SiteClient {
 			method: 'POST',
 			body,
 		});
+		if (resp.status === 403) {
+			throw new Error('Error adding output provider. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -402,6 +416,9 @@ export class SiteClient {
 		const resp = await this.#client.fetch(`/sites/${this.#uuid}/output-providers`, {
 			method: 'DELETE',
 		});
+		if (resp.status === 403) {
+			throw new Error('Error removing output provider. Permission denied');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(

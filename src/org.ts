@@ -16,22 +16,22 @@ export interface ConnectSiteOptions extends ProviderDetails {
 }
 
 export type Repository =
-	operations['Providers_Repositories']['responses']['200']['content']['application/json'][number];
+	operations['OrgsProvidersRepositories']['responses']['200']['content']['application/json'][number];
 
 export type ListOrgSitesOptions = PaginationOptions &
-	SortingOptions<operations['Sites_Index']> &
-	FilterOptions<operations['Sites_Index']>;
+	SortingOptions<operations['OrgsSitesIndex']> &
+	FilterOptions<operations['OrgsSitesIndex']>;
 export type ListOrgInboxesOptions = PaginationOptions &
-	SortingOptions<operations['Organization Inboxes_Index']> &
-	FilterOptions<operations['Organization Inboxes_Index']>;
+	SortingOptions<operations['OrgsInboxesIndex']> &
+	FilterOptions<operations['OrgsInboxesIndex']>;
 export type ListOrgDamsOptions = PaginationOptions &
-	SortingOptions<operations['DAMs_Index']> &
-	FilterOptions<operations['DAMs_Index']>;
+	SortingOptions<operations['OrgsDamsIndex']> &
+	FilterOptions<operations['OrgsDamsIndex']>;
 
 export type CreateInboxOptions =
-	operations['Organization Inboxes_Create']['requestBody']['content']['application/json'];
+	operations['OrgsInboxesCreate']['requestBody']['content']['application/json'];
 export type CreateDamOptions =
-	operations['DAMs_Create']['requestBody']['content']['application/json'];
+	operations['OrgsDamsCreate']['requestBody']['content']['application/json'];
 
 export class OrgClient {
 	#uuid: string;
@@ -57,7 +57,7 @@ export class OrgClient {
 			method: 'POST',
 			body: { site_name: name, stable_domain: stableDomain },
 		});
-		if (resp.status === 401) {
+		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error creating site. Permission denied');
 		}
 		if (resp.status === 422) {
@@ -155,6 +155,9 @@ export class OrgClient {
 	async getDams(options: ListOrgDamsOptions = {}): Promise<PaginatedResponse<Dam>> {
 		const query = buildQuery(options);
 		const resp = await this.#client.fetch(`/orgs/${this.#uuid}/dams${query}`);
+		if (resp.status === 403) {
+			throw new Error('Error fetching dams. Permission denied');
+		}
 		const dams = await resp.json();
 		return paginatedResponse(dams, resp.headers);
 	}
@@ -164,7 +167,7 @@ export class OrgClient {
 			method: 'POST',
 			body,
 		});
-		if (resp.status === 401) {
+		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error creating dam. Permission denied');
 		}
 		if (resp.status === 422) {

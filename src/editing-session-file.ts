@@ -4,10 +4,10 @@ import type { operations } from '../schema.js';
 import { ApiError } from './errors.ts';
 
 export type CreateContributionOptions =
-	operations['Editing Session Contributions_Create']['requestBody']['content']['application/json'];
+	operations['EditingSessionFilesContributionsCreate']['requestBody']['content']['application/json'];
 
 export type UnlockOptions =
-	operations['Editing Session File_Unlock']['requestBody']['content']['application/json'];
+	operations['EditingSessionFilesIndexUnlock']['requestBody']['content']['application/json'];
 
 export class EditingSessionFileClient {
 	#uuid: string;
@@ -23,6 +23,9 @@ export class EditingSessionFileClient {
 		if (resp.status === 403) {
 			throw new Error('Error fetching editing session file. Permission denied');
 		}
+		if (resp.status === 404) {
+			throw new Error('Error fetching editing session file. File not found');
+		}
 		const file = await resp.json();
 		return file;
 	}
@@ -31,6 +34,9 @@ export class EditingSessionFileClient {
 		const resp = await this.#client.fetch(`/editing_session_files/${this.#uuid}/contributions`);
 		if (resp.status === 403) {
 			throw new Error('Error fetching editing session file contributions. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error fetching editing session file contributions. File not found');
 		}
 		const contributions = await resp.json();
 		return contributions;
@@ -46,6 +52,9 @@ export class EditingSessionFileClient {
 		if (resp.status === 401 || resp.status === 403) {
 			throw new Error('Error creating editing session file contribution. Permission denied');
 		}
+		if (resp.status === 404) {
+			throw new Error('Error creating editing session file contribution. File not found');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -60,7 +69,7 @@ export class EditingSessionFileClient {
 		return contribution;
 	}
 
-	async discard(): Promise<EditingSessionFileContribution> {
+	async discard(): Promise<Record<string, never>> {
 		const resp = await this.#client.fetch(`/editing_session_files/${this.#uuid}`, {
 			method: 'DELETE',
 		});

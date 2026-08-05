@@ -4,56 +4,56 @@ import type { operations } from '../schema.js';
 import { ApiError } from './errors.ts';
 
 export type CreateEditingSessionFileOptions =
-	operations['Editing Session Files_Create']['requestBody']['content']['application/json'];
+	operations['EditingSessionsFilesCreate']['requestBody']['content']['application/json'];
 
 export type CommitEditingSessionOptions =
-	operations['Editing Session_Commit']['requestBody']['content']['application/json'];
+	operations['EditingSessionsIndexCommit']['requestBody']['content']['application/json'];
 
 export type CommitEditingSessionResponse =
-	operations['Editing Session_Commit']['responses']['200']['content']['application/json'];
+	operations['EditingSessionsIndexCommit']['responses']['200']['content']['application/json'];
 
 export type MoveEditingSessionFileOptions = Omit<
-	operations['Editing Session_MovePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexMovePath']['requestBody']['content']['application/json'],
 	'paths'
 >;
 
 export type MoveEditingSessionFilesOptions = Omit<
-	operations['Editing Session_MovePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexMovePath']['requestBody']['content']['application/json'],
 	'source' | 'target'
 >;
 
 export type CloneEditingSessionFileOptions = Omit<
-	operations['Editing Session_ClonePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexClonePath']['requestBody']['content']['application/json'],
 	'paths'
 >;
 
 export type CloneEditingSessionFilesOptions = Omit<
-	operations['Editing Session_ClonePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexClonePath']['requestBody']['content']['application/json'],
 	'source' | 'target'
 >;
 
 export type DeleteEditingSessionFileOptions = Omit<
-	operations['Editing Session_DeletePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexDeletePath']['requestBody']['content']['application/json'],
 	'paths'
 >;
 
 export type DeleteEditingSessionFilesOptions = Omit<
-	operations['Editing Session_DeletePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexDeletePath']['requestBody']['content']['application/json'],
 	'target'
 >;
 
 export type RestoreEditingSessionFileOptions = Omit<
-	operations['Editing Session_RestorePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexRestorePath']['requestBody']['content']['application/json'],
 	'paths'
 >;
 
 export type RestoreEditingSessionFilesOptions = Omit<
-	operations['Editing Session_RestorePath']['requestBody']['content']['application/json'],
+	operations['EditingSessionsIndexRestorePath']['requestBody']['content']['application/json'],
 	'target'
 >;
 
 export type EditingSessionFilesResponse =
-	operations['Editing Session_MovePath']['responses']['200']['content']['application/json'];
+	operations['EditingSessionsIndexMovePath']['responses']['200']['content']['application/json'];
 
 export class EditingSessionClient {
 	#uuid: string;
@@ -69,6 +69,9 @@ export class EditingSessionClient {
 		if (resp.status === 403) {
 			throw new Error('Error fetching editing session. Permission denied');
 		}
+		if (resp.status === 404) {
+			throw new Error('Error fetching editing session. Session not found');
+		}
 		const editingSession = await resp.json();
 		return editingSession;
 	}
@@ -77,6 +80,9 @@ export class EditingSessionClient {
 		const resp = await this.#client.fetch(`/editing_sessions/${this.#uuid}/files`);
 		if (resp.status === 403) {
 			throw new Error('Error fetching editing session files. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error fetching editing session files. Session not found');
 		}
 		const files = await resp.json();
 		return files;
@@ -89,6 +95,9 @@ export class EditingSessionClient {
 		});
 		if (resp.status === 403) {
 			throw new Error('Error creating editing session file. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error creating editing session file. Session not found');
 		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
@@ -112,6 +121,9 @@ export class EditingSessionClient {
 		if (resp.status === 403) {
 			throw new Error('Error moving editing session file. Permission denied');
 		}
+		if (resp.status === 404) {
+			throw new Error('Error moving editing session file. File not found');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -133,6 +145,9 @@ export class EditingSessionClient {
 		});
 		if (resp.status === 403) {
 			throw new Error('Error moving editing session files. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error moving editing session files. File not found');
 		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
@@ -156,6 +171,9 @@ export class EditingSessionClient {
 		if (resp.status === 403) {
 			throw new Error('Error cloning editing session file. Permission denied');
 		}
+		if (resp.status === 404) {
+			throw new Error('Error cloning editing session file. File not found');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -178,6 +196,9 @@ export class EditingSessionClient {
 		if (resp.status === 403) {
 			throw new Error('Error cloning editing session files. Permission denied');
 		}
+		if (resp.status === 404) {
+			throw new Error('Error cloning editing session files. File not found');
+		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
 			throw new ApiError(
@@ -199,6 +220,9 @@ export class EditingSessionClient {
 		});
 		if (resp.status === 403) {
 			throw new Error('Error deleting editing session file. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error deleting editing session file. File not found');
 		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
@@ -223,6 +247,9 @@ export class EditingSessionClient {
 		});
 		if (resp.status === 403) {
 			throw new Error('Error deleting editing session files. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error deleting editing session files. File not found');
 		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
@@ -299,6 +326,9 @@ export class EditingSessionClient {
 		});
 		if (resp.status === 403) {
 			throw new Error('Error committing editing session. Permission denied');
+		}
+		if (resp.status === 404) {
+			throw new Error('Error committing editing session. Session not found');
 		}
 		if (resp.status === 422) {
 			const errorResp = await resp.json();
