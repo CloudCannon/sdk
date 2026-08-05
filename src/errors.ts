@@ -47,6 +47,18 @@ export class NotFoundError extends ApiError {
 	}
 }
 
+export class PaymentRequiredError extends ApiError {
+	constructor(message: string, errors: unknown, url: string, options: unknown) {
+		super(message, errors, url, options, 402);
+	}
+}
+
+export class UnprocessableEntityError extends ApiError {
+	constructor(message: string, errors: unknown, url: string, options: unknown) {
+		super(message, errors, url, options, 422);
+	}
+}
+
 export type ResponseInfo = {
 	status: number;
 	json: () => Promise<unknown>;
@@ -67,7 +79,7 @@ export async function assertResponse<R extends ResponseInfo>(
 	options?: unknown
 ): Promise<Exclude<R, { status: 402 | 403 | 404 | 422 }>> {
 	if (resp.status === 402) {
-		throw new ApiError(message, await readError(resp), url, options, 402);
+		throw new PaymentRequiredError(message, await readError(resp), url, options);
 	}
 	if (resp.status === 403) {
 		throw new ForbiddenError(message, await readError(resp), url, options);
@@ -77,7 +89,7 @@ export async function assertResponse<R extends ResponseInfo>(
 	}
 	if (resp.status === 422) {
 		const body = (await readError(resp)) as { errors?: unknown };
-		throw new ApiError(message, body?.errors, url, options, 422);
+		throw new UnprocessableEntityError(message, body?.errors, url, options);
 	}
 	return resp as Exclude<R, { status: 402 | 403 | 404 | 422 }>;
 }

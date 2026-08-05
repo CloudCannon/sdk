@@ -21,7 +21,7 @@ import {
 	EditingSessionFileClient,
 	type UnlockOptions,
 } from './src/editing-session-file.ts';
-import { AuthenticationError, assertResponse } from './src/errors.ts';
+import { ApiError, AuthenticationError, assertResponse } from './src/errors.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -62,6 +62,8 @@ export {
 	AuthenticationError,
 	ForbiddenError,
 	NotFoundError,
+	PaymentRequiredError,
+	UnprocessableEntityError,
 } from './src/errors.ts';
 
 export type {
@@ -312,6 +314,27 @@ export default class CloudCannonClient {
 				fullUrl,
 				options,
 				authHeaders
+			);
+		}
+
+		if ((resp.status as number) === 500) {
+			let error: unknown;
+			try {
+				const text = await resp.text();
+				try {
+					error = JSON.parse(text);
+				} catch {
+					error = text;
+				}
+			} catch {
+				// Error intentionally ignored
+			}
+			throw new ApiError(
+				'The CloudCannon API returned an internal server error.',
+				error,
+				fullUrl,
+				options,
+				resp.status
 			);
 		}
 
