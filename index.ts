@@ -21,7 +21,7 @@ import {
 	EditingSessionFileClient,
 	type UnlockOptions,
 } from './src/editing-session-file.ts';
-import { AuthenticationError } from './src/errors.ts';
+import { AuthenticationError, assertResponse } from './src/errors.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -60,6 +60,8 @@ import { SyncClient } from './src/sync.ts';
 export {
 	ApiError,
 	AuthenticationError,
+	ForbiddenError,
+	NotFoundError,
 } from './src/errors.ts';
 
 export type {
@@ -267,7 +269,7 @@ export default class CloudCannonClient {
 		url: ValidURL<Lowercase<M>, U>,
 		options?: Omit<RequestInit, keyof RequestMixin<M, MatchURL<Lowercase<M>, U>[Lowercase<M>]>> &
 			RequestMixin<M, MatchURL<Lowercase<M>, U>[Lowercase<M>]>
-	): Promise<APIResponse<MatchURL<Lowercase<M>, U>[Lowercase<M>]>> {
+	): Promise<Exclude<APIResponse<MatchURL<Lowercase<M>, U>[Lowercase<M>]>, { status: 401 }>> {
 		const fullUrl = normaliseUrl(`https://${this.#appDomain}/api/v0${url}`);
 
 		let body: string | undefined;
@@ -360,13 +362,10 @@ export default class CloudCannonClient {
 	}
 
 	async getUploadData(): Promise<UploadData> {
-		const resp = await this.fetch('/upload-data');
-		if (resp.status === 403) {
-			throw new Error('Error fetching upload data. Permission denied');
-		}
-		if (resp.status === 422) {
-			throw new Error('Error fetching upload data. Invalid request');
-		}
+		const url = '/upload-data' as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching upload data', url, requestInit);
 		const uploadData = await resp.json();
 		return uploadData;
 	}

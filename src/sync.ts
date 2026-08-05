@@ -1,4 +1,5 @@
 import type CloudCannonClient from '../index.ts';
+import { assertResponse } from './errors.ts';
 
 export class SyncClient {
 	#uuid: string;
@@ -10,10 +11,10 @@ export class SyncClient {
 	}
 
 	async get(): Promise<Response> {
-		const resp = await this.#client.fetch(`/syncs/${this.#uuid}`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error fetching sync. Permission denied');
-		}
+		const url = `/syncs/${this.#uuid}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching sync', url, requestInit);
 		return resp;
 	}
 }

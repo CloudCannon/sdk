@@ -34,3 +34,50 @@ export class AuthenticationError extends ApiError {
 		this.authHeaders = authHeaders;
 	}
 }
+
+export class ForbiddenError extends ApiError {
+	constructor(message: string, errors: unknown, url: string, options: unknown) {
+		super(message, errors, url, options, 403);
+	}
+}
+
+export class NotFoundError extends ApiError {
+	constructor(message: string, errors: unknown, url: string, options: unknown) {
+		super(message, errors, url, options, 404);
+	}
+}
+
+export type ResponseInfo = {
+	status: number;
+	json: () => Promise<unknown>;
+};
+
+async function readError(resp: ResponseInfo): Promise<unknown> {
+	try {
+		return await resp.json();
+	} catch {
+		return undefined;
+	}
+}
+
+export async function assertResponse<R extends ResponseInfo>(
+	resp: R,
+	message: string,
+	url: string,
+	options?: unknown
+): Promise<Exclude<R, { status: 402 | 403 | 404 | 422 }>> {
+	if (resp.status === 402) {
+		throw new ApiError(message, await readError(resp), url, options, 402);
+	}
+	if (resp.status === 403) {
+		throw new ForbiddenError(message, await readError(resp), url, options);
+	}
+	if (resp.status === 404) {
+		throw new NotFoundError(message, await readError(resp), url, options);
+	}
+	if (resp.status === 422) {
+		const body = (await readError(resp)) as { errors?: unknown };
+		throw new ApiError(message, body?.errors, url, options, 422);
+	}
+	return resp as Exclude<R, { status: 402 | 403 | 404 | 422 }>;
+}
