@@ -1597,18 +1597,30 @@ Responses from paginated endpoints return:
 
 ## Error handling
 
-The SDK throws standard `Error` objects for permission and not-found failures. For validation errors (HTTP 422), it throws an `ApiError` which includes the full validation messages, the request URL, and the original status code.
+The SDK throws typed errors that all extend `ApiError`, so you can check the status code or use `instanceof`:
+
+- `AuthenticationError` for HTTP 401 (unauthorized)
+- `ForbiddenError` for HTTP 403 (permission denied)
+- `NotFoundError` for HTTP 404 (not found)
+- `PaymentRequiredError` for HTTP 402 (feature not on plan)
+- `UnprocessableEntityError` for HTTP 422 (validation; includes the full validation messages, the request URL, and the original status code)
 
 ```typescript
-import { ApiError } from '@cloudcannon/sdk';
+import { ApiError, ForbiddenError, NotFoundError, UnprocessableEntityError } from '@cloudcannon/sdk';
 
 try {
   await site.update({ site_name: '' });
 } catch (err) {
-  if (err instanceof ApiError) {
+  if (err instanceof ForbiddenError) {
+    console.error(err.status);   // 403
+    console.error(err.url);      // The endpoint that failed
+  } else if (err instanceof NotFoundError) {
+    console.error(err.status);   // 404
+  } else if (err instanceof UnprocessableEntityError) {
     console.error(err.status);   // 422
     console.error(err.errors);   // Detailed validation errors from the API
-    console.error(err.url);      // The endpoint that failed
+  } else if (err instanceof ApiError) {
+    console.error(err.status);
   }
 }
 ```

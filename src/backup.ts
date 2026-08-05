@@ -1,4 +1,5 @@
 import type CloudCannonClient from '../index.ts';
+import { assertResponse } from './errors.ts';
 
 export class BackupClient {
 	#uuid: string;
@@ -10,10 +11,10 @@ export class BackupClient {
 	}
 
 	async download(): Promise<Response> {
-		const resp = await this.#client.fetch(`/site-archives/${this.#uuid}/download`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error downloading backup. Permission denied');
-		}
+		const url = `/site-archives/${this.#uuid}/download` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error downloading backup', url, requestInit);
 		return resp;
 	}
 }

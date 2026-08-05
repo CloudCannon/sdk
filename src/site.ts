@@ -11,7 +11,7 @@ import type {
 	Sync,
 } from '../index.ts';
 import type { operations } from '../schema.js';
-import { ApiError } from './errors.ts';
+import { assertResponse } from './errors.ts';
 import {
 	buildQuery,
 	type FilterOptions,
@@ -23,7 +23,7 @@ import {
 
 export type BuildConfiguration = Partial<
 	Omit<
-		operations['Sites_UpdateBuild']['requestBody']['content']['application/json'],
+		operations['SitesIndexUpdateBuild']['requestBody']['content']['application/json'],
 		'build_configuration'
 	>
 > & {
@@ -44,28 +44,28 @@ export type BuildConfiguration = Partial<
 };
 
 export type UpdateSiteOptions =
-	operations['Sites_Update']['requestBody']['content']['application/json'];
+	operations['SitesIndexUpdate']['requestBody']['content']['application/json'];
 export type CopySiteOptions =
-	operations['Sites_Copy']['requestBody']['content']['application/json'];
+	operations['SitesIndexCopy']['requestBody']['content']['application/json'];
 export type ListSiteBuildsOptions = PaginationOptions &
-	SortingOptions<operations['Builds_Index']> &
-	FilterOptions<operations['Builds_Index']>;
+	SortingOptions<operations['SitesBuildsIndex']> &
+	FilterOptions<operations['SitesBuildsIndex']>;
 export type ListSiteBackupsOptions = PaginationOptions &
-	SortingOptions<operations['Backups_Index']> &
-	FilterOptions<operations['Backups_Index']>;
+	SortingOptions<operations['SitesArchivesIndex']> &
+	FilterOptions<operations['SitesArchivesIndex']>;
 export type ListSiteSyncsOptions = PaginationOptions &
-	SortingOptions<operations['Syncs_Index']> &
-	FilterOptions<operations['Syncs_Index']>;
+	SortingOptions<operations['SitesSyncsIndex']> &
+	FilterOptions<operations['SitesSyncsIndex']>;
 
 export type CreateBackupOptions =
-	operations['Backups_Create']['requestBody']['content']['application/json'];
+	operations['SitesArchivesCreate']['requestBody']['content']['application/json'];
 
 export type ConnectInboxOptions =
-	operations['Site Inboxes_Create']['requestBody']['content']['application/json'];
+	operations['SitesInboxesCreate']['requestBody']['content']['application/json'];
 export type ConnectDamOptions =
-	operations['Dams_Create']['requestBody']['content']['application/json'];
+	operations['SitesDamsCreate']['requestBody']['content']['application/json'];
 export type FileListing =
-	operations['Files_Index']['responses']['200']['content']['application/json'][number];
+	operations['SitesFilesIndex']['responses']['200']['content']['application/json'][number];
 export type UploadFileOptions = {
 	type?: string;
 	allow_overwrite?: boolean;
@@ -81,64 +81,35 @@ export class SiteClient {
 	}
 
 	async get(): Promise<Site> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}`);
+		const url = `/sites/${this.#uuid}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching site', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
 
 	async update(body: UpdateSiteOptions): Promise<Site> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}`, {
-			method: 'PUT',
-			body,
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error updating site. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}`,
-				{ method: 'PUT', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}` as const;
+		const requestInit = { method: 'PUT', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error updating site', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
 
 	async delete(): Promise<void> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}`, {
-			method: 'DELETE',
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error deleting site. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}`,
-				{ method: 'DELETE' },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}` as const;
+		const requestInit = { method: 'DELETE' } as const;
+		const resp = await this.#client.fetch(url, requestInit);
+		await assertResponse(resp, 'Error deleting site', url, requestInit);
 	}
 
 	async copy(body: CopySiteOptions): Promise<Site> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/copy`, {
-			method: 'POST',
-			body,
-		});
-		if (resp.status === 402) {
-			throw new Error('Error copying site. Feature not on plan');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error copying site. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/copy`,
-				{ method: 'POST', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/copy` as const;
+		const requestInit = { method: 'POST', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error copying site', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
@@ -157,139 +128,91 @@ export class SiteClient {
 			build_configuration: JSON.stringify(buildConfiguration),
 		};
 
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/build`, {
-			method: 'PUT',
-			body,
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error updating build configuration. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/build`,
-				{ method: 'PUT', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/build` as const;
+		const requestInit = { method: 'PUT', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error updating build configuration', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
 
 	async getBuilds(options: ListSiteBuildsOptions = {}): Promise<PaginatedResponse<Build>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds${query}`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error fetching builds. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/builds${query}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching builds', url, requestInit);
 		const builds = await resp.json();
 		return paginatedResponse(builds, resp.headers);
 	}
 
 	async rebuild(): Promise<void> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/builds`, {
-			method: 'POST',
-		});
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error creating build. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/builds` as const;
+		const requestInit = { method: 'POST' } as const;
+		const resp = await this.#client.fetch(url, requestInit);
+		await assertResponse(resp, 'Error creating build', url, requestInit);
 	}
 
 	async listBackups(options: ListSiteBackupsOptions = {}): Promise<PaginatedResponse<Backup>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives${query}`);
-		if (resp.status === 401) {
-			throw new Error('Error fetching backups. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/archives${query}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching backups', url, requestInit);
 		const items = await resp.json();
 		return paginatedResponse(items, resp.headers);
 	}
 
 	async createBackup(body: CreateBackupOptions = {}): Promise<{ socket_message_id?: string }> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/archives`, {
-			method: 'POST',
-			body,
-		});
-		if (resp.status === 401) {
-			throw new Error('Error creating backup. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error creating backup. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/archives`,
-				{ method: 'POST', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/archives` as const;
+		const requestInit = { method: 'POST', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error creating backup', url, requestInit);
 		const result = await resp.json();
 		return result;
 	}
 
 	async listFiles(): Promise<FileListing[]> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/files`);
-		if (resp.status === 401) {
-			throw new Error('Error fetching files. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error fetching files. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/files`,
-				{},
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/files` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching files', url, requestInit);
 		const files = await resp.json();
 		return files;
 	}
 
 	async getFile(path: string): Promise<Response> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/files/${encodeURIComponent(path)}`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error fetching file. Permission denied');
-		}
-		if (resp.status === 404) {
-			throw new Error('Error fetching file. File not found');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error fetching file. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/files/${encodeURIComponent(path)}`,
-				{},
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/files/${encodeURIComponent(path)}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching file', url, requestInit);
 		return resp;
 	}
 
 	async getSyncs(options: ListSiteSyncsOptions = {}): Promise<PaginatedResponse<Sync>> {
 		const query = buildQuery(options);
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/syncs${query}`);
-		if (resp.status === 401) {
-			throw new Error('Error fetching syncs. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/syncs${query}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching syncs', url, requestInit);
 		const syncs = await resp.json();
 		return paginatedResponse(syncs, resp.headers);
 	}
 
 	async getScan(): Promise<SiteScan> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/scans`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error fetching scans. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/scans` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching scans', url, requestInit);
 		const scan = await resp.json();
 		return scan;
 	}
 
 	async getScreenshotHashes(): Promise<Record<string, string>> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/screenshots`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error fetching file. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/screenshots` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching screenshots', url, requestInit);
 		const screenshots = await (resp as Response).json();
 		return screenshots;
 	}
@@ -309,20 +232,10 @@ export class SiteClient {
 			},
 		};
 
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/providers`, {
-			method: 'POST',
-			body,
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error adding provider. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/providers`,
-				{ method: 'POST', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/providers` as const;
+		const requestInit = { method: 'POST', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error adding provider', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
@@ -335,38 +248,19 @@ export class SiteClient {
 			},
 		};
 
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/providers`, {
-			method: 'PUT',
-			body,
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error updating provider. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/providers`,
-				{ method: 'PUT', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/providers` as const;
+		const requestInit = { method: 'PUT', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error updating provider', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
 
 	async disconnectSourceProvider(): Promise<Site> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/providers`, {
-			method: 'DELETE',
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error removing provider. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/providers`,
-				{ method: 'DELETE' },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/providers` as const;
+		const requestInit = { method: 'DELETE' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error removing provider', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
@@ -380,139 +274,82 @@ export class SiteClient {
 			},
 		};
 
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/output-providers`, {
-			method: 'POST',
-			body,
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error adding output provider. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/output-providers`,
-				{ method: 'POST', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/output-providers` as const;
+		const requestInit = { method: 'POST', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error adding output provider', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
 
 	async disconnectOutputProvider(): Promise<Site> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/output-providers`, {
-			method: 'DELETE',
-		});
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error removing output provider. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/output-providers`,
-				{ method: 'DELETE' },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/output-providers` as const;
+		const requestInit = { method: 'DELETE' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error removing output provider', url, requestInit);
 		const site = await resp.json();
 		return site;
 	}
 
 	async getInboxConnections(): Promise<SiteInbox[]> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/inboxes`);
-		if (resp.status === 403) {
-			throw new Error('Error fetching inboxes. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/inboxes` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching inboxes', url, requestInit);
 		const inboxes = await resp.json();
 		return inboxes;
 	}
 
 	async connectInbox(body: ConnectInboxOptions): Promise<SiteInbox> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/inboxes`, {
-			method: 'POST',
-			body,
-		});
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error creating inbox. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error creating inbox. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/inboxes`,
-				{ method: 'POST', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/inboxes` as const;
+		const requestInit = { method: 'POST', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error creating inbox', url, requestInit);
 		const inbox = await resp.json();
 		return inbox;
 	}
 
 	async getDamConnections(): Promise<SiteDam[]> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/dams`);
-		if (resp.status === 403) {
-			throw new Error('Error fetching dams. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/dams` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching dams', url, requestInit);
 		const dams = await resp.json();
 		return dams;
 	}
 
 	async connectDam(body: ConnectDamOptions): Promise<SiteDam> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/dams`, {
-			method: 'POST',
-			body,
-		});
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error creating dam. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error creating dam. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/dams`,
-				{ method: 'POST', body },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/dams` as const;
+		const requestInit = { method: 'POST', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error creating dam', url, requestInit);
 		const dam = await resp.json();
 		return dam;
 	}
 
 	async getEditingSessions(): Promise<EditingSession[]> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/editing_sessions`);
-		if (resp.status === 403) {
-			throw new Error('Error fetching editing sessions. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/editing_sessions` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching editing sessions', url, requestInit);
 		const editingSessions = await resp.json();
 		return editingSessions;
 	}
 
 	async createEditingSession(): Promise<EditingSession> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/editing_sessions`, {
-			method: 'POST',
-		});
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error creating editing session. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error creating editing session. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/editing_sessions`,
-				{ method: 'POST' },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/editing_sessions` as const;
+		const requestInit = { method: 'POST' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error creating editing session', url, requestInit);
 		const editingSession = await resp.json();
 		return editingSession;
 	}
 
 	async getLatestEditingSession(): Promise<EditingSession> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/editing_sessions/latest`);
-		if (resp.status === 403) {
-			throw new Error('Error fetching latest editing session. Permission denied');
-		}
+		const url = `/sites/${this.#uuid}/editing_sessions/latest` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching latest editing session', url, requestInit);
 		const editingSession = await resp.json();
 		return editingSession;
 	}
@@ -584,19 +421,9 @@ export class SiteClient {
 	}
 
 	async triggerPull(): Promise<void> {
-		const resp = await this.#client.fetch(`/sites/${this.#uuid}/providers/sync`, {
-			method: 'POST',
-		});
-
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error triggering pull on site. Invalid request',
-				errorResp.errors,
-				`/sites/${this.#uuid}/providers/sync`,
-				{ method: 'POST' },
-				resp.status
-			);
-		}
+		const url = `/sites/${this.#uuid}/providers/sync` as const;
+		const requestInit = { method: 'POST' } as const;
+		const resp = await this.#client.fetch(url, requestInit);
+		await assertResponse(resp, 'Error triggering pull on site', url, requestInit);
 	}
 }

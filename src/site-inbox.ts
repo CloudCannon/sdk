@@ -1,10 +1,10 @@
 import type CloudCannonClient from '../index.ts';
 import type { SiteInbox } from '../index.ts';
 import type { operations } from '../schema.js';
-import { ApiError } from './errors.ts';
+import { assertResponse } from './errors.ts';
 
 export type UpdateInboxOptions =
-	operations['Site Inboxes_Update']['requestBody']['content']['application/json'];
+	operations['SiteInboxesUpdate']['requestBody']['content']['application/json'];
 
 export class SiteInboxClient {
 	#uuid: string;
@@ -16,23 +16,10 @@ export class SiteInboxClient {
 	}
 
 	async update(body: UpdateInboxOptions): Promise<SiteInbox> {
-		const resp = await this.#client.fetch(`/site-inboxes/${this.#uuid}`, {
-			method: 'PUT',
-			body,
-		});
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error updating inbox. Permission denied');
-		}
-		if (resp.status === 422) {
-			const errorResp = await resp.json();
-			throw new ApiError(
-				'Error updating inbox. Invalid request',
-				errorResp.errors,
-				`/site-inboxes/${this.#uuid}`,
-				{ method: 'PUT', body },
-				resp.status
-			);
-		}
+		const url = `/site-inboxes/${this.#uuid}` as const;
+		const requestInit = { method: 'PUT', body } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error updating inbox', url, requestInit);
 		const siteInbox = await resp.json();
 		return siteInbox;
 	}

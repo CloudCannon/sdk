@@ -14,8 +14,8 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Delete */
-		delete: operations['Bearer Tokens_Destroy'];
+		/** @description Delete site bearer token */
+		delete: operations['AuthenticationBearerTokensDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -31,8 +31,8 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Delete */
-		delete: operations['Site Authentication Users_Destroy'];
+		/** @description Delete site authentication user */
+		delete: operations['AuthenticationUsersDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -46,12 +46,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get base domain */
-		get: operations['Base Domains_Show'];
+		get: operations['BaseDomainsIndexShow'];
 		/** @description Update base domain */
-		put: operations['Base Domains_Update'];
+		put: operations['BaseDomainsIndexUpdate'];
 		post?: never;
 		/** @description Delete base domain */
-		delete: operations['Base Domains_Destroy'];
+		delete: operations['BaseDomainsIndexDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -65,12 +65,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Status of base domain dns */
-		get: operations['Base Domain Dns_Status'];
+		get: operations['BaseDomainsDnsIndexStatus'];
 		put?: never;
 		/** @description Create a base domain dns */
-		post: operations['Base Domain Dns_Create'];
+		post: operations['BaseDomainsDnsIndexCreate'];
 		/** @description Delete base domain dns */
-		delete: operations['Base Domain Dns_Destroy'];
+		delete: operations['BaseDomainsDnsIndexDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -84,10 +84,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List of base domain dns records */
-		get: operations['Base Domain Dns Records_List'];
+		get: operations['BaseDomainsDnsRecordsList'];
 		put?: never;
 		/** @description Create a base domain dns record */
-		post: operations['Base Domain Dns Records_Create'];
+		post: operations['BaseDomainsDnsRecordsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -103,10 +103,10 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update a base domain dns record */
-		put: operations['Base Domain Dns Records_Update'];
+		put: operations['BaseDomainsDnsRecordsUpdate'];
 		post?: never;
 		/** @description Delete a base domain dns record */
-		delete: operations['Base Domain Dns Records_Destroy'];
+		delete: operations['BaseDomainsDnsRecordsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -122,7 +122,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Retry setup for base domain dns */
-		post: operations['Base Domain Dns_Retry'];
+		post: operations['BaseDomainsDnsIndexRetry'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -136,8 +136,8 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Status of base domain dns */
-		get: operations['Base Domain Dns_Validate'];
+		/** @description Validate base domain dns */
+		get: operations['BaseDomainsDnsIndexValidate'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -154,8 +154,8 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Get base domain */
-		put: operations['Base Domains_Migrate'];
+		/** @description Migrate base domain to Cloudflare */
+		put: operations['BaseDomainsIndexMigrate'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -171,7 +171,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get subdomains from base domain */
-		get: operations['Subdomains_Index'];
+		get: operations['BaseDomainsSubdomainsIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -188,7 +188,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to build output */
-		get: operations['Builds_Output'];
+		get: operations['BuildsOutput'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -204,8 +204,25 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to build output */
-		get: operations['Builds_Files'];
+		/** @description Redirect to a file in the build output */
+		get: operations['BuildsFiles'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/builds/{build_uuid}/urls': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Redirect to build URLs */
+		get: operations['BuildsUrls'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -222,12 +239,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get DAM Details */
-		get: operations['DAMs_Show'];
+		get: operations['DamsShow'];
 		/** @description Update DAM details */
-		put: operations['DAMs_Update'];
+		put: operations['DamsUpdate'];
 		post?: never;
 		/** @description Delete DAM */
-		delete: operations['DAMs_Destroy'];
+		delete: operations['DamsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -241,11 +258,11 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get the details of an editing session file */
-		get: operations['Editing Session File_Index'];
+		get: operations['EditingSessionFilesIndexIndex'];
 		put?: never;
 		post?: never;
 		/** @description discard an editing session file for editing */
-		delete: operations['Editing Session File_Discard'];
+		delete: operations['EditingSessionFilesIndexDiscard'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -259,8 +276,8 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Unlock an editing session file for editing */
-		put: operations['Editing Session File_ClaimLock'];
+		/** @description Claim the edit lock on an editing session file */
+		put: operations['EditingSessionFilesIndexClaimLock'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -275,11 +292,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the files for an editing session */
-		get: operations['Editing Session Contributions_Index'];
+		/** @description List the contributions for an editing session file */
+		get: operations['EditingSessionFilesContributionsIndex'];
 		put?: never;
 		/** @description Create a new contribution or upload a new file to an existing contribution */
-		post: operations['Editing Session Contributions_Create'];
+		post: operations['EditingSessionFilesContributionsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -295,7 +312,24 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update the edit type of a editing session file */
-		put: operations['Editing Session File_EditType'];
+		put: operations['EditingSessionFilesIndexEditType'];
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/editing_session_files/{editing_session_file_uuid}/metadata': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		/** @description Update the metadata of an editing session file */
+		put: operations['EditingSessionFilesIndexMetadata'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -312,7 +346,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update the path of a editing session file */
-		put: operations['Editing Session File_Path'];
+		put: operations['EditingSessionFilesIndexPath'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -328,7 +362,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get the raw contents of an editing session file */
-		get: operations['Editing Session File_Raw'];
+		get: operations['EditingSessionFilesIndexRaw'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -345,7 +379,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get a resized preview of an editing session file */
-		get: operations['Editing Session File_Resized'];
+		get: operations['EditingSessionFilesIndexResized'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -363,7 +397,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Mark an editing session file with conflicts as resolved */
-		put: operations['Editing Session File_Resolve'];
+		put: operations['EditingSessionFilesIndexResolve'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -380,7 +414,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Unlock an editing session file for editing */
-		put: operations['Editing Session File_Unlock'];
+		put: operations['EditingSessionFilesIndexUnlock'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -396,7 +430,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get editing session details */
-		get: operations['Editing Session_Index'];
+		get: operations['EditingSessionsIndexIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -416,7 +450,7 @@ export interface paths {
 		put?: never;
 		post?: never;
 		/** @description Abort a merge on an editing session */
-		delete: operations['Editing Session_Abort'];
+		delete: operations['EditingSessionsIndexAbort'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -432,7 +466,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Perform a clone in an editing session */
-		post: operations['Editing Session_ClonePath'];
+		post: operations['EditingSessionsIndexClonePath'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -449,7 +483,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Save an editing session to your source provider */
-		post: operations['Editing Session_Commit'];
+		post: operations['EditingSessionsIndexCommit'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -466,7 +500,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Perform a delete in an editing session */
-		post: operations['Editing Session_DeletePath'];
+		post: operations['EditingSessionsIndexDeletePath'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -481,10 +515,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get the files for an editing session */
-		get: operations['Editing Session Files_Index'];
+		get: operations['EditingSessionsFilesIndex'];
 		put?: never;
 		/** @description Create a new file in an editing session */
-		post: operations['Editing Session Files_Create'];
+		post: operations['EditingSessionsFilesCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -501,7 +535,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Perform a move in an editing session */
-		post: operations['Editing Session_MovePath'];
+		post: operations['EditingSessionsIndexMovePath'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -518,7 +552,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Restore a deleted editing session file */
-		post: operations['Editing Session_RestorePath'];
+		post: operations['EditingSessionsIndexRestorePath'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -535,7 +569,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Upload a file to an editing session */
-		post: operations['Editing Session_UploadFile'];
+		post: operations['EditingSessionsIndexUploadFile'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -551,10 +585,10 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update form hook */
-		put: operations['Form Hook_Update'];
+		put: operations['FormHooksUpdate'];
 		post?: never;
 		/** @description Clear form hook */
-		delete: operations['Form Hook_Clear'];
+		delete: operations['FormHooksClear'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -570,7 +604,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Resend form hook */
-		post: operations['Form Hook_QueueSend'];
+		post: operations['FormHooksQueueSend'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -585,9 +619,99 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List form hook sends */
-		get: operations['Form Hook_Sends'];
+		get: operations['FormHooksSends'];
 		put?: never;
 		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/groups/{group_uuid}': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get group details */
+		get: operations['GroupsIndexShow'];
+		/** @description Update a group's name and custom permissions */
+		put: operations['GroupsIndexUpdate'];
+		post?: never;
+		/** @description Delete a group */
+		delete: operations['GroupsIndexDestroy'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/groups/{group_uuid}/leave': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		post?: never;
+		/** @description Leave a group as the current authenticated user */
+		delete: operations['GroupsIndexLeave'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/groups/{group_uuid}/members': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List the members of a group */
+		get: operations['GroupsMembersIndex'];
+		put?: never;
+		/** @description Invite a user to a group by email; existing users are added as members, others as pending members */
+		post: operations['GroupsMembersInvite'];
+		/** @description Remove a member from a group by email */
+		delete: operations['GroupsMembersDestroy'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/groups/{group_uuid}/pending-members': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List the pending (invited but not yet accepted) members of a group */
+		get: operations['GroupsPendingMembersIndex'];
+		put?: never;
+		post?: never;
+		/** @description Cancel a pending group invitation by email */
+		delete: operations['GroupsPendingMembersDestroy'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/groups/{group_uuid}/pending-members/resend': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		/** @description Resend a pending group invitation email by email address */
+		post: operations['GroupsPendingMembersResendInvitation'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -602,12 +726,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Inbox Target Details */
-		get: operations['Inbox Targets_Show'];
+		get: operations['InboxTargetsShow'];
 		/** @description Update inbox target config */
-		put: operations['Inbox Targets_Update'];
+		put: operations['InboxTargetsUpdate'];
 		post?: never;
-		/** @description Delete Inbox */
-		delete: operations['Inbox Targets_Destroy'];
+		/** @description Delete Inbox Target */
+		delete: operations['InboxTargetsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -623,7 +747,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Restart validation process for target */
-		post: operations['Inbox Targets_Revalidate'];
+		post: operations['InboxTargetsRevalidate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -638,12 +762,29 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Inbox Details */
-		get: operations['Inboxes_Show'];
+		get: operations['InboxesIndexShow'];
 		/** @description Update Inbox details */
-		put: operations['Inboxes_Update'];
+		put: operations['InboxesIndexUpdate'];
 		post?: never;
 		/** @description Delete Inbox */
-		delete: operations['Inboxes_Destroy'];
+		delete: operations['InboxesIndexDestroy'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/inboxes/{inbox_uuid}/export': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Export inbox submissions as CSV */
+		get: operations['InboxesIndexExport'];
+		put?: never;
+		post?: never;
+		delete?: never;
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -657,7 +798,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List form hooks */
-		get: operations['Inbox Form Hooks_Index'];
+		get: operations['InboxesFormHooksIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -674,10 +815,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List inbox targets */
-		get: operations['Inbox Targets_Index'];
+		get: operations['InboxesInboxTargetsIndex'];
 		put?: never;
 		/** @description Create inbox target */
-		post: operations['Inbox Targets_Create'];
+		post: operations['InboxesInboxTargetsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -692,7 +833,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description View uploaded file */
-		get: operations['Inboxes_Upload'];
+		get: operations['InboxesIndexUpload'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -709,7 +850,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization list */
-		get: operations['Organizations_Index'];
+		get: operations['OrgsIndexIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -726,9 +867,26 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization details */
-		get: operations['Organizations_Show'];
+		get: operations['OrgsIndexShow'];
 		/** @description Update organisation details */
-		put: operations['Organizations_Update'];
+		put: operations['OrgsIndexUpdate'];
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/access-review': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Download an organization access review as CSV */
+		get: operations['OrgsIndexAccessReview'];
+		put?: never;
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -744,10 +902,148 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List activity */
-		get: operations['Organization Activity_Index'];
+		get: operations['OrgsActivityIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/analytics/build/duration': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get organization build duration analytics */
+		get: operations['OrgsAnalyticsBuildDuration'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/analytics/build/duration-total': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get total organization build duration */
+		get: operations['OrgsAnalyticsBuildDurationTotal'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get organization bandwidth usage analytics */
+		get: operations['OrgsAnalyticsHostingBandwidth'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-by-site': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get organization bandwidth usage by site */
+		get: operations['OrgsAnalyticsHostingBandwidthBySite'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-by-url': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get organization bandwidth usage by URL */
+		get: operations['OrgsAnalyticsHostingBandwidthByUrl'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-total': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get total organization bandwidth usage */
+		get: operations['OrgsAnalyticsHostingBandwidthTotal'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/api-keys': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List an organization's API keys */
+		get: operations['OrgsApiKeysIndex'];
+		put?: never;
+		/** @description Create an organization API key with scoped permissions */
+		post: operations['OrgsApiKeysCreate'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/api-keys/{api_key_uuid}': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get an organization API key */
+		get: operations['OrgsApiKeysShow'];
+		put?: never;
+		post?: never;
+		/** @description Delete an organization API key */
+		delete: operations['OrgsApiKeysDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -761,10 +1057,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization base domains */
-		get: operations['Base Domains_Index'];
+		get: operations['OrgsBaseDomainsIndex'];
 		put?: never;
 		/** @description Create base domain */
-		post: operations['Base Domains_Create'];
+		post: operations['OrgsBaseDomainsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -780,7 +1076,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update organisation billing details */
-		put: operations['Organizations_UpdateBilling'];
+		put: operations['OrgsIndexUpdateBilling'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -796,10 +1092,28 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization DAMs */
-		get: operations['DAMs_Index'];
+		get: operations['OrgsDamsIndex'];
 		put?: never;
 		/** @description Create DAM */
-		post: operations['DAMs_Create'];
+		post: operations['OrgsDamsCreate'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/groups': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List an organization's groups */
+		get: operations['OrgsGroupsIndex'];
+		put?: never;
+		/** @description Create a custom group with scoped permissions */
+		post: operations['OrgsGroupsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -814,10 +1128,79 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization inboxes */
-		get: operations['Organization Inboxes_Index'];
+		get: operations['OrgsInboxesIndex'];
 		put?: never;
 		/** @description Create inbox */
-		post: operations['Organization Inboxes_Create'];
+		post: operations['OrgsInboxesCreate'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/members': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List organization members */
+		get: operations['OrgsMembersIndex'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/members/{email}': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get an organization member or pending member by email */
+		get: operations['OrgsMembersShow'];
+		put?: never;
+		post?: never;
+		/** @description Remove an organization member or cancel a pending invitation by email */
+		delete: operations['OrgsMembersDestroy'];
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/pending-members': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List an organization's pending members grouped by email */
+		get: operations['OrgsPendingMembersIndex'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/permissions': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get the current user's permission groups for an organization */
+		get: operations['OrgsIndexPermissions'];
+		put?: never;
+		post?: never;
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -832,10 +1215,27 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization projects */
-		get: operations['Projects_Index'];
+		get: operations['OrgsProjectsIndex'];
 		put?: never;
 		/** @description Create project */
-		post: operations['Projects_Create'];
+		post: operations['OrgsProjectsCreate'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/providers/{provider}/installations': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List app installations */
+		get: operations['OrgsProvidersInstallations'];
+		put?: never;
+		post?: never;
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -850,7 +1250,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List repositories */
-		get: operations['Providers_Repositories'];
+		get: operations['OrgsProvidersRepositories'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -867,10 +1267,27 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List branches from repository */
-		get: operations['Providers_Branches'];
+		get: operations['OrgsProvidersBranches'];
 		put?: never;
 		/** @description Clone a branch from the selected branch */
-		post: operations['Providers_CreateBranch'];
+		post: operations['OrgsProvidersCreateBranch'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/orgs/{org_uuid}/site-mountings': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get organization site mountings */
+		get: operations['OrgsSiteMountingsIndex'];
+		put?: never;
+		post?: never;
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -885,10 +1302,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization sites */
-		get: operations['Sites_Index'];
+		get: operations['OrgsSitesIndex'];
 		put?: never;
 		/** @description Create site */
-		post: operations['Sites_Create'];
+		post: operations['OrgsSitesCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -905,7 +1322,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Create site from a remote repo without keeping the connection with git */
-		post: operations['Sites_Connect'];
+		post: operations['OrgsSitesConnect'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -920,10 +1337,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get organization Ssl Certificates */
-		get: operations['Ssl Certificates_Index'];
+		get: operations['OrgsSslCertificatesIndex'];
 		put?: never;
 		/** @description Create Ssl Certificate */
-		post: operations['Ssl Certificates_Create'];
+		post: operations['OrgsSslCertificatesCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -938,7 +1355,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to whitelabel logo */
-		get: operations['Whitelabel_Show'];
+		get: operations['OrgsWhitelabelShow'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -955,7 +1372,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to brand logo */
-		get: operations['Whitelabel_ShowBrand'];
+		get: operations['OrgsWhitelabelShowBrand'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -972,7 +1389,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to output */
-		get: operations['Outputs_Show'];
+		get: operations['OutputsShow'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -989,12 +1406,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get project details */
-		get: operations['Projects_Show'];
+		get: operations['ProjectsShow'];
 		/** @description Update project details */
-		put: operations['Projects_Update'];
+		put: operations['ProjectsUpdate'];
 		post?: never;
 		/** @description Delete project */
-		delete: operations['Projects_Destroy'];
+		delete: operations['ProjectsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1008,7 +1425,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List branches for the project repository */
-		get: operations['Project Git_Branches'];
+		get: operations['ProjectsGitBranches'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1026,7 +1443,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update project Git details */
-		put: operations['Projects_UpdateGit'];
+		put: operations['ProjectsUpdateGit'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1042,7 +1459,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List open pull requests for the project repository */
-		get: operations['Project Git_PullRequests'];
+		get: operations['ProjectsGitPullRequests'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1061,7 +1478,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Refresh deploy-preview PR comments for every site on this project */
-		post: operations['Projects_RefreshPrComments'];
+		post: operations['ProjectsRefreshPrComments'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1076,7 +1493,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get sites from projects */
-		get: operations['Projects_Sites'];
+		get: operations['ProjectsSites'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1093,11 +1510,11 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Scheduled Build Details */
-		get: operations['Site Scheduled Builds_Show'];
+		get: operations['ScheduledBuildsShow'];
 		put?: never;
 		post?: never;
 		/** @description Delete Scheduled Build */
-		delete: operations['Site Scheduled Builds_Destroy'];
+		delete: operations['ScheduledBuildsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1111,7 +1528,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Download site archive */
-		get: operations['Site Archives_Download'];
+		get: operations['SiteArchivesDownload'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1128,12 +1545,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Site DAM details */
-		get: operations['Site DAMs_Show'];
+		get: operations['SiteDamsShow'];
 		/** @description Update site dam details */
-		put: operations['Site DAMs_Update'];
+		put: operations['SiteDamsUpdate'];
 		post?: never;
 		/** @description Delete Site DAM */
-		delete: operations['Site DAMs_Destroy'];
+		delete: operations['SiteDamsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1147,12 +1564,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Site Inbox details */
-		get: operations['Site Inboxes_Show'];
+		get: operations['SiteInboxesShow'];
 		/** @description Update site inbox details */
-		put: operations['Site Inboxes_Update'];
+		put: operations['SiteInboxesUpdate'];
 		post?: never;
 		/** @description Delete Site Inbox */
-		delete: operations['Site Inboxes_Destroy'];
+		delete: operations['SiteInboxesDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1167,10 +1584,10 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site mounting details */
-		put: operations['Site Mountings_Update'];
+		put: operations['SiteMountingsUpdate'];
 		post?: never;
 		/** @description Delete Site Mounting */
-		delete: operations['Site Mountings_Destroy'];
+		delete: operations['SiteMountingsDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1184,12 +1601,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get site details */
-		get: operations['Sites_Show'];
+		get: operations['SitesIndexShow'];
 		/** @description Update site details */
-		put: operations['Sites_Update'];
+		put: operations['SitesIndexUpdate'];
 		post?: never;
 		/** @description Delete site */
-		delete: operations['Sites_Destroy'];
+		delete: operations['SitesIndexDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1203,7 +1620,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List activity */
-		get: operations['Site Activity_Index'];
+		get: operations['SitesActivityIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1220,7 +1637,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get build duration analytics */
-		get: operations['Site Analytics_Duration'];
+		get: operations['SitesAnalyticsBuildDuration'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1237,7 +1654,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get bandwidth usage analytics */
-		get: operations['Site Analytics_Bandwidth'];
+		get: operations['SitesAnalyticsHostingBandwidth'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1254,7 +1671,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get bandwidth usage by URL for this site */
-		get: operations['Site Analytics_BandwidthByUrl'];
+		get: operations['SitesAnalyticsHostingBandwidthByUrl'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1271,7 +1688,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get bandwidth usage for a specific URL */
-		get: operations['Site Analytics_BandwidthForUrl'];
+		get: operations['SitesAnalyticsHostingBandwidthForUrl'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1288,10 +1705,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List backups */
-		get: operations['Backups_Index'];
+		get: operations['SitesArchivesIndex'];
 		put?: never;
 		/** @description Create backup */
-		post: operations['Backups_Create'];
+		post: operations['SitesArchivesCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1307,7 +1724,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site authentication method */
-		put: operations['Sites_UpdateAuthentication'];
+		put: operations['SitesIndexUpdateAuthentication'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1323,10 +1740,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List site bearer tokens */
-		get: operations['Site Bearer Tokens_Index'];
+		get: operations['SitesAuthenticationBearerTokensIndex'];
 		put?: never;
 		/** @description Create site bearer token */
-		post: operations['Site Bearer Tokens_Create'];
+		post: operations['SitesAuthenticationBearerTokensCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1342,7 +1759,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update client sharing password */
-		put: operations['Site Authentication_UpdateClientPassword'];
+		put: operations['SitesAuthenticationIndexUpdateClientPassword'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1359,7 +1776,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update SAML data */
-		put: operations['Site Authentication_UpdateSaml'];
+		put: operations['SitesAuthenticationIndexUpdateSaml'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1376,7 +1793,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update authentication password */
-		put: operations['Site Authentication_UpdateStablePassword'];
+		put: operations['SitesAuthenticationIndexUpdateStablePassword'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1392,10 +1809,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List site authentication users */
-		get: operations['Site Authentication Users_Index'];
+		get: operations['SitesAuthenticationUsersIndex'];
 		put?: never;
 		/** @description Create site authentication user */
-		post: operations['Site Authentication Users_Create'];
+		post: operations['SitesAuthenticationUsersCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1411,7 +1828,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site build configuration */
-		put: operations['Sites_UpdateBuild'];
+		put: operations['SitesIndexUpdateBuild'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1427,12 +1844,12 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List site builds */
-		get: operations['Builds_Index'];
+		get: operations['SitesBuildsIndex'];
 		put?: never;
 		/** @description Create a new build */
-		post: operations['Builds_Create'];
+		post: operations['SitesBuildsCreate'];
 		/** @description Cancel the current build */
-		delete: operations['Builds_Cancel'];
+		delete: operations['SitesBuildsCancel'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1447,7 +1864,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site client sharing configuration */
-		put: operations['Sites_UpdateClientSharing'];
+		put: operations['SitesIndexUpdateClientSharing'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1465,7 +1882,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Copy site */
-		post: operations['Sites_Copy'];
+		post: operations['SitesIndexCopy'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1481,7 +1898,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site dam configuration */
-		put: operations['Sites_UpdateDam'];
+		put: operations['SitesIndexUpdateDam'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1497,10 +1914,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get site dams */
-		get: operations['Dams_Index'];
+		get: operations['SitesDamsIndex'];
 		put?: never;
 		/** @description Create site dam */
-		post: operations['Dams_Create'];
+		post: operations['SitesDamsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1516,7 +1933,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update domain name */
-		put: operations['Site Domain Name_Update'];
+		put: operations['SitesDomainUpdate'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1534,7 +1951,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Prioritise this site as default for the domain */
-		post: operations['Site Domain Name_Prioritise'];
+		post: operations['SitesDomainPrioritise'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1549,10 +1966,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get site editing sessions */
-		get: operations['Editing Sessions_Index'];
+		get: operations['SitesEditingSessionsIndex'];
 		put?: never;
 		/** @description Create a new editing session on a site */
-		post: operations['Editing Sessions_Create'];
+		post: operations['SitesEditingSessionsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1567,7 +1984,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get latest open editing session for a site */
-		get: operations['Editing Sessions_Latest'];
+		get: operations['SitesEditingSessionsLatest'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1584,7 +2001,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List files from site */
-		get: operations['Files_Index'];
+		get: operations['SitesFilesIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1603,7 +2020,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Complete ZIP Upload */
-		post: operations['Files_CompleteZipUpload'];
+		post: operations['SitesFilesCompleteZipUpload'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1618,7 +2035,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to file */
-		get: operations['Files_Show'];
+		get: operations['SitesFilesShow'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1635,7 +2052,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description returns file metadata */
-		get: operations['Files_Metadata'];
+		get: operations['SitesFilesMetadata'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1652,7 +2069,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to resized file */
-		get: operations['Files_Resized'];
+		get: operations['SitesFilesResized'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1669,7 +2086,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description returns file sorting */
-		get: operations['Files_Sorting'];
+		get: operations['SitesFilesSorting'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1686,7 +2103,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List form hooks */
-		get: operations['Site Form Hooks_Index'];
+		get: operations['SitesFormHooksIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1704,7 +2121,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site hosting configuration */
-		put: operations['Sites_UpdateHosting'];
+		put: operations['SitesIndexUpdateHosting'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1720,11 +2137,64 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get site inboxes */
-		get: operations['Site Inboxes_Index'];
+		get: operations['SitesInboxesIndex'];
 		put?: never;
 		/** @description Create site inbox */
-		post: operations['Site Inboxes_Create'];
+		post: operations['SitesInboxesCreate'];
 		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/sites/{site_uuid}/main_source_dam': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description Get the site's main source DAM */
+		get: operations['SitesMainSourceDamIndex'];
+		/** @description Set the site's main source DAM */
+		put: operations['SitesMainSourceDamUpdate'];
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/sites/{site_uuid}/members': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List site members */
+		get: operations['SitesMembersIndex'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/sites/{site_uuid}/members/{email}': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		/** @description Move a site member to a different site group */
+		post: operations['SitesMembersSetSiteGroup'];
+		/** @description Remove a site member or cancel a pending invitation */
+		delete: operations['SitesMembersDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1739,11 +2209,11 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update output storage provider */
-		put: operations['Output Site Providers_Update'];
+		put: operations['SitesOutputProvidersIndexUpdate'];
 		/** @description Add output storage provider */
-		post: operations['Output Site Providers_Add'];
+		post: operations['SitesOutputProvidersIndexAdd'];
 		/** @description Remove output storage provider */
-		delete: operations['Output Site Providers_Remove'];
+		delete: operations['SitesOutputProvidersIndexRemove'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1759,7 +2229,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Sync to output storage provider */
-		post: operations['Output Site Providers_Sync'];
+		post: operations['SitesOutputProvidersIndexSync'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1774,7 +2244,24 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List site outputs */
-		get: operations['Outputs_Index'];
+		get: operations['SitesOutputsIndex'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/sites/{site_uuid}/pending-members': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List pending site members */
+		get: operations['SitesPendingMembersIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1792,11 +2279,11 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update storage provider */
-		put: operations['Site Provider_Update'];
+		put: operations['SitesProvidersIndexUpdate'];
 		/** @description Add storage provider */
-		post: operations['Site Provider_Add'];
+		post: operations['SitesProvidersIndexAdd'];
 		/** @description Remove storage provider */
-		delete: operations['Site Provider_Remove'];
+		delete: operations['SitesProvidersIndexRemove'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1810,10 +2297,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List branches */
-		get: operations['Site Provider Branch_Branches'];
+		get: operations['SitesProvidersGitIndexBranches'];
 		put?: never;
 		/** @description Clone a branch from the selected site branch */
-		post: operations['Site Provider Branch_CreateBranch'];
+		post: operations['SitesProvidersGitIndexCreateBranch'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1830,7 +2317,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Merge changes */
-		post: operations['Site Provider Branch_Merge'];
+		post: operations['SitesProvidersGitIndexMerge'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1847,7 +2334,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Set the branch for changes to be published to */
-		post: operations['Site Provider Branch_PublishBranch'];
+		post: operations['SitesProvidersGitIndexPublishBranch'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1862,7 +2349,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Compare the changes to the publish branch */
-		get: operations['Site Provider Branch_Compare'];
+		get: operations['SitesProvidersGitIndexCompare'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1879,7 +2366,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Compare the changes from the publish branch */
-		get: operations['Site Provider Branch_UpstreamCompare'];
+		get: operations['SitesProvidersGitIndexUpstreamCompare'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1898,7 +2385,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Merge upstream changes */
-		post: operations['Site Provider Branch_UpstreamMerge'];
+		post: operations['SitesProvidersGitIndexUpstreamMerge'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1913,10 +2400,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List pull requests */
-		get: operations['Pull Requests_Index'];
+		get: operations['SitesProvidersGitPullRequestsIndex'];
 		put?: never;
 		/** @description Create pull request */
-		post: operations['Pull Requests_Create'];
+		post: operations['SitesProvidersGitPullRequestsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -1931,11 +2418,11 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get pull request details */
-		get: operations['Pull Requests_Show'];
+		get: operations['SitesProvidersGitPullRequestsShow'];
 		put?: never;
 		post?: never;
 		/** @description Close pull request */
-		delete: operations['Pull Requests_Close'];
+		delete: operations['SitesProvidersGitPullRequestsClose'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -1949,7 +2436,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get pull request commits */
-		get: operations['Pull Requests_Commits'];
+		get: operations['SitesProvidersGitPullRequestsCommits'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -1967,7 +2454,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Merge pull request */
-		put: operations['Pull Requests_Merge'];
+		put: operations['SitesProvidersGitPullRequestsMerge'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -1985,7 +2472,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Clears the current storage providers error */
-		post: operations['Site Provider_Reconnect'];
+		post: operations['SitesProvidersIndexReconnect'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2002,7 +2489,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		/** @description Sync from storage provider */
-		post: operations['Site Provider_Sync'];
+		post: operations['SitesProvidersIndexSync'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2017,10 +2504,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List Upstream pull requests */
-		get: operations['Upstream Pull Requests_Index'];
+		get: operations['SitesProvidersGitUpstreamPullRequestsIndex'];
 		put?: never;
 		/** @description Create update pull request */
-		post: operations['Upstream Pull Requests_Create'];
+		post: operations['SitesProvidersGitUpstreamPullRequestsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2036,7 +2523,7 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site publish method */
-		put: operations['Sites_UpdatePublish'];
+		put: operations['SitesIndexUpdatePublish'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -2052,7 +2539,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get site scan details */
-		get: operations['Scans_Index'];
+		get: operations['SitesScansIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2069,10 +2556,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List site scheduled builds */
-		get: operations['Site Scheduled Builds_Index'];
+		get: operations['SitesScheduledBuildsIndex'];
 		put?: never;
-		/** @description Create site schedueld build */
-		post: operations['Site Scheduled Builds_Create'];
+		/** @description Create site scheduled build */
+		post: operations['SitesScheduledBuildsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2087,7 +2574,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Returns a presigned s3 URL to load screenshot hashes for a site */
-		get: operations['Screenshots_Index'];
+		get: operations['SitesScreenshotsIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2103,8 +2590,8 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Returns lighthouse json response */
-		get: operations['Screenshots_Lighthouse'];
+		/** @description Redirect to lighthouse json response */
+		get: operations['SitesScreenshotsLighthouse'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2121,7 +2608,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to screenshot */
-		get: operations['Screenshots_Show'];
+		get: operations['SitesScreenshotsShow'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2138,10 +2625,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get site mountings */
-		get: operations['Site Mountings_Index'];
+		get: operations['SitesSiteMountingsIndex'];
 		put?: never;
 		/** @description Create site mounting */
-		post: operations['Site Mountings_Create'];
+		post: operations['SitesSiteMountingsCreate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2157,10 +2644,10 @@ export interface paths {
 		};
 		get?: never;
 		/** @description Update site SSL Custom */
-		put: operations['Site SSL Custom_Update'];
+		put: operations['SitesSslIndexUpdate'];
 		post?: never;
 		/** @description Remove site SSL Custom */
-		delete: operations['Site SSL Custom_Remove'];
+		delete: operations['SitesSslIndexRemove'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -2174,10 +2661,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get state for SSL Auto */
-		get: operations['Site SSL Auto_SslState'];
+		get: operations['SitesSslAutoSslState'];
 		put?: never;
 		/** @description Retry to Generate SSL Auto */
-		post: operations['Site SSL Auto_RetrySslGenerate'];
+		post: operations['SitesSslAutoRetrySslGenerate'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2192,11 +2679,11 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Cloudflare state for SSL */
-		get: operations['Site SSL Cloudflare_CloudflareSslState'];
+		get: operations['SitesSslCloudflareCloudflareSslState'];
 		/** @description Update Cloudflare SSL Setup */
-		put: operations['Site SSL Cloudflare_Update'];
+		put: operations['SitesSslCloudflareUpdate'];
 		/** @description Retry Cloudflare SSL Setup */
-		post: operations['Site SSL Cloudflare_RetryCloudflareSetup'];
+		post: operations['SitesSslCloudflareRetryCloudflareSetup'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2211,10 +2698,28 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description List site syncs */
-		get: operations['Syncs_Index'];
+		get: operations['SitesSyncsIndex'];
 		put?: never;
 		post?: never;
 		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/sites/{site_uuid}/watchers': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		/** @description Start watching a site path */
+		post: operations['SitesIndexStartWatching'];
+		/** @description Stop watching a site path */
+		delete: operations['SitesIndexStopWatching'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -2228,11 +2733,11 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get Ssl Certificate Details */
-		get: operations['Ssl Certificates_Show'];
+		get: operations['SslCertificatesShow'];
 		put?: never;
 		post?: never;
 		/** @description Delete Ssl Certificate */
-		delete: operations['Ssl Certificates_Destroy'];
+		delete: operations['SslCertificatesDestroy'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -2246,7 +2751,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to sync output */
-		get: operations['Syncs_Show'];
+		get: operations['SyncsShow'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2263,7 +2768,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get the presigned data for file upload */
-		get: operations['Index_UploadData'];
+		get: operations['IndexUploadData'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2280,9 +2785,9 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get current user details */
-		get: operations['Users_ShowCurrentUser'];
+		get: operations['UsersUserShowCurrentUser'];
 		/** @description Update current user information */
-		put: operations['Users_Update'];
+		put: operations['UsersUserUpdate'];
 		post?: never;
 		delete?: never;
 		options?: never;
@@ -2298,10 +2803,10 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get current user's access keys */
-		get: operations['Users_AccessKeys'];
+		get: operations['UsersUserAccessKeys'];
 		put?: never;
 		/** @description Create a new access key */
-		post: operations['Users_CreateAccessKey'];
+		post: operations['UsersUserCreateAccessKey'];
 		delete?: never;
 		options?: never;
 		head?: never;
@@ -2319,7 +2824,7 @@ export interface paths {
 		put?: never;
 		post?: never;
 		/** @description Revoke an access key */
-		delete: operations['Users_DestroyAccessKey'];
+		delete: operations['UsersUserDestroyAccessKey'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -2333,10 +2838,61 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to avatar */
-		get: operations['Users Avatar_Show'];
+		get: operations['UsersAvatarShow'];
 		put?: never;
 		post?: never;
 		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/users/invites': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		/** @description List the current user's pending organization invites */
+		get: operations['UsersUserInvites'];
+		put?: never;
+		post?: never;
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/users/invites/accept': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		/** @description Accept pending organization invites */
+		post: operations['UsersUserAcceptInvite'];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
+	'/api/v0/users/invites/decline': {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		post?: never;
+		/** @description Decline pending organization invites */
+		delete: operations['UsersUserDeclineInvite'];
 		options?: never;
 		head?: never;
 		patch?: never;
@@ -2350,7 +2906,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Get user details */
-		get: operations['Users_ShowByIdentifier'];
+		get: operations['UsersUserShowByIdentifier'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2367,7 +2923,7 @@ export interface paths {
 			cookie?: never;
 		};
 		/** @description Redirect to avatar */
-		get: operations['Users Avatar_ShowByIdentifier'];
+		get: operations['UsersAvatarShowByIdentifier'];
 		put?: never;
 		post?: never;
 		delete?: never;
@@ -2775,6 +3331,10 @@ export interface components {
 			ssl_certificate_id?: number | null;
 			auto_generate_ssl_failures?: number;
 			auto_generate_ssl_max_failures?: number;
+			/** Format: date-time */
+			next_ssl_generate_attempt_at?: string | null;
+			/** Format: date-time */
+			ssl_generation_failing_email_sent_at?: string | null;
 			auto_generate_ssl_error_code?: string | null;
 			/** Format: date-time */
 			auto_generate_ssl_errored_at?: string | null;
@@ -2782,6 +3342,10 @@ export interface components {
 		CloudflareSSLStateSchema: {
 			ssl_status?: string | null;
 			ssl_errors?: unknown | Record<string, never>[] | (string | null);
+			ssl_certificate_id?: number | null;
+			custom_hostname_id?: string | null;
+			min_tls_version?: string | null;
+			response?: Record<string, never> | null;
 		};
 		SiteBearerTokenBlueprint: components['schemas']['BaseBlueprint'] & {
 			name?: string;
@@ -2903,7 +3467,6 @@ export interface components {
 			business_type?: string | null;
 			organisation_type?: string | null;
 			partner_organisation_id?: number | null;
-			partner_points?: number;
 			flags?: {
 				[key: string]: unknown;
 			} | null;
@@ -2942,6 +3505,7 @@ export interface components {
 			custom_billing_period?: string | null;
 			custom_contract_value?: number;
 			is_owner?: boolean;
+			partner_points?: number | null;
 			earns_partner_points?: boolean;
 			card_action_banner?: string | null;
 			payment_locked?: boolean;
@@ -2971,7 +3535,6 @@ export interface components {
 			business_type?: string | null;
 			organisation_type?: string | null;
 			partner_organisation_id?: number | null;
-			partner_points?: number;
 			flags?: {
 				[key: string]: unknown;
 			} | null;
@@ -3023,6 +3586,7 @@ export interface components {
 			bitbucket_account_is_latest?: boolean;
 			self_hosted_gitlab_data?: Record<string, never> | null;
 			github_enterprise_server_data?: Record<string, never> | null;
+			partner_organisation?: Record<string, never> | null;
 		};
 		InboxTargetBlueprint: components['schemas']['BaseBlueprint'] & {
 			target_type: string;
@@ -3053,6 +3617,11 @@ export interface components {
 			organisation_uuid?: components['schemas']['UUID'];
 			inbox_targets?: (components['schemas']['InboxTargetBlueprint'] | (string | null))[];
 		};
+		GroupPendingMemberBlueprint: components['schemas']['BaseBlueprint'] & {
+			email?: string;
+			organisation_uuid?: string | null;
+			group?: components['schemas']['GroupBlueprint'];
+		};
 		UserBlueprint: components['schemas']['BaseBlueprint'] & {
 			first_name?: string | null;
 			surname?: string | null;
@@ -3063,6 +3632,17 @@ export interface components {
 			country?: string;
 			job_title?: string | null;
 			ssg_experience?: string | null;
+			/** Format: date-time */
+			last_sign_in_at?: string | null;
+			/** Format: date-time */
+			current_sign_in_at?: string | null;
+		};
+		GroupMemberBlueprint: components['schemas']['BaseBlueprint'] & {
+			group_id?: number;
+			user_id?: number;
+			group_uuid?: string | null;
+			user_uuid?: string | null;
+			user?: components['schemas']['UserBlueprint'];
 		};
 		FormHookSendBlueprint: components['schemas']['BaseBlueprint'] & {
 			/** Format: date-time */
@@ -3260,7 +3840,7 @@ export interface components {
 			subdomain?: string;
 			target?: string;
 		};
-		BaseDomainDnsRecodSchema: {
+		BaseDomainDnsRecordSchema: {
 			content?: string;
 			/** Format: date-time */
 			created_on?: string;
@@ -3276,6 +3856,38 @@ export interface components {
 			type?: string;
 			zone_id?: string;
 			zone_name?: string;
+		};
+		GroupPermissionBlueprint: components['schemas']['BaseBlueprint'] & {
+			resource?: string;
+			global_scope?: boolean;
+			group_scope_uuid?: string | null;
+			base_domain_scope_uuid?: string | null;
+			project_scope_uuid?: string | null;
+			site_scope_uuid?: string | null;
+			file_glob?: string | null;
+			except?: boolean;
+			group_id?: number;
+			group_uuid?: string | null;
+			organisation_uuid?: string | null;
+		};
+		GroupBlueprint: components['schemas']['BaseBlueprint'] & {
+			creation_type?: string | null;
+			organisation_id?: number;
+			name?: string;
+			organisation_uuid?: string | null;
+		};
+		GroupBlueprintWithPermissions: components['schemas']['GroupBlueprint'] & {
+			permissions?: components['schemas']['GroupPermissionBlueprint'][];
+		};
+		ApiKeyBlueprint: components['schemas']['BaseBlueprint'] & {
+			name?: string;
+			key_snippet?: string | null;
+			/** Format: date-time */
+			created_at?: string;
+			group?: components['schemas']['GroupBlueprintWithPermissions'];
+		};
+		ApiKeyBlueprintUnsnippedKey: components['schemas']['ApiKeyBlueprint'] & {
+			key?: string;
 		};
 		AdditionalPartnerPointsBlueprint: components['schemas']['BaseBlueprint'] & {
 			id: number;
@@ -3360,7 +3972,7 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
-	'Bearer Tokens_Destroy': {
+	AuthenticationBearerTokensDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3382,7 +3994,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Authentication Users_Destroy': {
+	AuthenticationUsersDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3404,7 +4016,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Base Domains_Show': {
+	BaseDomainsIndexShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3428,16 +4040,23 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Base Domains_Update': {
+	BaseDomainsIndexUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				base_domain_uuid: components['schemas']['UUID'];
+				base_domain_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
-		requestBody?: never;
+		requestBody: {
+			content: {
+				'application/json': {
+					/** @enum {string} */
+					minimum_tls_version?: '1.2' | '1.3';
+				};
+			};
+		};
 		responses: {
 			/** @description OK */
 			200: {
@@ -3445,7 +4064,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
+					'application/json': components['schemas']['BaseDomainBlueprint'];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
@@ -3453,12 +4072,12 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domains_Destroy': {
+	BaseDomainsIndexDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				base_domain_uuid: components['schemas']['UUID'];
+				base_domain_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -3476,12 +4095,12 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns_Status': {
+	BaseDomainsDnsIndexStatus: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				base_domain_uuid: components['schemas']['UUID'];
+				base_domain_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -3494,13 +4113,17 @@ export interface operations {
 				};
 				content: {
 					'application/json': {
-						TODO?: Record<string, never>;
+						success?: boolean;
+						status?: number;
+						answers?: string[];
+						error_message?: string;
 					};
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Base Domain Dns_Create': {
+	BaseDomainsDnsIndexCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3520,10 +4143,11 @@ export interface operations {
 					'application/json': components['schemas']['BaseDomainBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns_Destroy': {
+	BaseDomainsDnsIndexDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3543,20 +4167,22 @@ export interface operations {
 					'application/json': components['schemas']['BaseDomainBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns Records_List': {
+	BaseDomainsDnsRecordsList: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
+				search?: string;
 			};
 			header?: never;
 			path: {
-				base_domain_uuid: components['schemas']['UUID'];
+				base_domain_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -3574,7 +4200,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['BaseDomainDnsRecodSchema'][];
+					'application/json': components['schemas']['BaseDomainDnsRecordSchema'][];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
@@ -3582,7 +4208,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns Records_Create': {
+	BaseDomainsDnsRecordsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3610,7 +4236,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['BaseDomainDnsRecodSchema'];
+					'application/json': components['schemas']['BaseDomainDnsRecordSchema'];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
@@ -3618,7 +4244,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns Records_Update': {
+	BaseDomainsDnsRecordsUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3647,7 +4273,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['BaseDomainDnsRecodSchema'];
+					'application/json': components['schemas']['BaseDomainDnsRecordSchema'];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
@@ -3655,7 +4281,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns Records_Destroy': {
+	BaseDomainsDnsRecordsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3679,7 +4305,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns_Retry': {
+	BaseDomainsDnsIndexRetry: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3699,10 +4325,11 @@ export interface operations {
 					'application/json': components['schemas']['BaseDomainBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domain Dns_Validate': {
+	BaseDomainsDnsIndexValidate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3724,15 +4351,16 @@ export interface operations {
 					};
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Base Domains_Migrate': {
+	BaseDomainsIndexMigrate: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				base_domain_uuid: components['schemas']['UUID'];
+				base_domain_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -3752,17 +4380,18 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Subdomains_Index: {
+	BaseDomainsSubdomainsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
+				search?: string;
 			};
 			header?: never;
 			path: {
-				base_domain_uuid: components['schemas']['UUID'];
+				base_domain_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -3783,9 +4412,10 @@ export interface operations {
 					'application/json': components['schemas']['SubdomainBlueprint'][];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Builds_Output: {
+	BuildsOutput: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3796,6 +4426,15 @@ export interface operations {
 		};
 		requestBody?: never;
 		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'text/plain': string;
+				};
+			};
 			/** @description Redirect */
 			307: {
 				headers: {
@@ -3811,7 +4450,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Builds_Files: {
+	BuildsFiles: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3839,7 +4478,33 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	DAMs_Show: {
+	BuildsUrls: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				build_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Redirect */
+			307: {
+				headers: {
+					/** @description null */
+					location?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'text/html': string;
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	DamsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3862,7 +4527,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	DAMs_Update: {
+	DamsUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3882,7 +4547,8 @@ export interface operations {
 						| 'azure'
 						| 'google'
 						| 'cloudflare'
-						| 'digitalocean';
+						| 'digitalocean'
+						| 'bynder';
 					name?: string;
 					config?: string;
 					base_url?: string;
@@ -3907,7 +4573,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	DAMs_Destroy: {
+	DamsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3927,10 +4593,9 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session File_Index': {
+	EditingSessionFilesIndexIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3951,9 +4616,10 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Editing Session File_Discard': {
+	EditingSessionFilesIndexDiscard: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3970,7 +4636,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['EditingSessionFileContributionBlueprint'];
+					'application/json': Record<string, never>;
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
@@ -3978,7 +4644,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session File_ClaimLock': {
+	EditingSessionFilesIndexClaimLock: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -3987,9 +4653,15 @@ export interface operations {
 			};
 			cookie?: never;
 		};
-		requestBody?: never;
+		requestBody?: {
+			content: {
+				'application/json': {
+					previous_content_hash?: string;
+				};
+			};
+		};
 		responses: {
-			/** @description Created */
+			/** @description OK */
 			200: {
 				headers: {
 					[name: string]: unknown;
@@ -4003,7 +4675,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session Contributions_Index': {
+	EditingSessionFilesContributionsIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4024,9 +4696,10 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Editing Session Contributions_Create': {
+	EditingSessionFilesContributionsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4056,10 +4729,11 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session File_EditType': {
+	EditingSessionFilesIndexEditType: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4087,10 +4761,44 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session File_Path': {
+	EditingSessionFilesIndexMetadata: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				editing_session_file_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					metadata?: {
+						[key: string]: unknown;
+					};
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['EditingSessionFileBlueprint'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	EditingSessionFilesIndexPath: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4117,10 +4825,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session File_Raw': {
+	EditingSessionFilesIndexRaw: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4146,9 +4855,13 @@ export interface operations {
 			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Editing Session File_Resized': {
+	EditingSessionFilesIndexResized: {
 		parameters: {
-			query?: never;
+			query?: {
+				width?: number;
+				height?: number;
+				content_type?: string;
+			};
 			header?: never;
 			path: {
 				editing_session_file_uuid: components['schemas']['UUID'];
@@ -4172,7 +4885,7 @@ export interface operations {
 			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Editing Session File_Resolve': {
+	EditingSessionFilesIndexResolve: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4193,10 +4906,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session File_Unlock': {
+	EditingSessionFilesIndexUnlock: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4213,7 +4927,7 @@ export interface operations {
 			};
 		};
 		responses: {
-			/** @description Created */
+			/** @description OK */
 			200: {
 				headers: {
 					[name: string]: unknown;
@@ -4227,7 +4941,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_Index': {
+	EditingSessionsIndexIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4248,9 +4962,10 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Editing Session_Abort': {
+	EditingSessionsIndexAbort: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4261,18 +4976,19 @@ export interface operations {
 		};
 		requestBody?: never;
 		responses: {
-			/** @description OK */
-			200: {
+			/** @description No Content */
+			204: {
 				headers: {
 					[name: string]: unknown;
 				};
 				content?: never;
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_ClonePath': {
+	EditingSessionsIndexClonePath: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4308,10 +5024,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_Commit': {
+	EditingSessionsIndexCommit: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4343,10 +5060,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_DeletePath': {
+	EditingSessionsIndexDeletePath: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4377,10 +5095,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session Files_Index': {
+	EditingSessionsFilesIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4401,9 +5120,10 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Editing Session Files_Create': {
+	EditingSessionsFilesCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4446,10 +5166,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_MovePath': {
+	EditingSessionsIndexMovePath: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4485,10 +5206,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_RestorePath': {
+	EditingSessionsIndexRestorePath: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4522,7 +5244,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Session_UploadFile': {
+	EditingSessionsIndexUploadFile: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4557,10 +5279,11 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Form Hook_Update': {
+	FormHooksUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4592,7 +5315,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Form Hook_Clear': {
+	FormHooksClear: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4617,7 +5340,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Form Hook_QueueSend': {
+	FormHooksQueueSend: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4645,22 +5368,22 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Form Hook_Sends': {
+	FormHooksSends: {
 		parameters: {
 			query?: {
+				success?: boolean;
 				inbox_target_uuid?: string;
 				form_hook_uuid?: string;
-				success?: boolean;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -4684,7 +5407,297 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Inbox Targets_Show': {
+	GroupsIndexShow: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupBlueprintWithPermissions'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	GroupsIndexUpdate: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					name?: string;
+					permissions?: {
+						resource?: string;
+						except?: boolean;
+						global_scope?: boolean;
+						group_scope_uuid?: string;
+						site_scope_uuid?: string;
+						base_domain_scope_uuid?: string;
+						project_scope_uuid?: string;
+						file_glob?: string;
+					}[];
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupBlueprintWithPermissions'];
+				};
+			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	GroupsIndexDestroy: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Deleted */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	GroupsIndexLeave: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Left the group */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	GroupsMembersIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				/** @description Filter members by name or email */
+				search?: string;
+			};
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['UserBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	GroupsMembersInvite: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					email: string;
+					accept_billing_increase?: boolean;
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupMemberBlueprint'];
+				};
+			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	GroupsMembersDestroy: {
+		parameters: {
+			query: {
+				/** @description Email of the member to remove */
+				email: string;
+			};
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Deleted */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	GroupsPendingMembersIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+			};
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupPendingMemberBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	GroupsPendingMembersDestroy: {
+		parameters: {
+			query: {
+				/** @description Email of the pending member to remove */
+				email: string;
+			};
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Deleted */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	GroupsPendingMembersResendInvitation: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				group_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					email: string;
+				};
+			};
+		};
+		responses: {
+			/** @description Invitation resent */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	InboxTargetsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4707,12 +5720,12 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Inbox Targets_Update': {
+	InboxTargetsUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				inbox_uuid: components['schemas']['UUID'];
+				inbox_target_uuid: components['schemas']['UUID'];
 			};
 			cookie?: never;
 		};
@@ -4740,7 +5753,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Inbox Targets_Destroy': {
+	InboxTargetsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4760,10 +5773,9 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Inbox Targets_Revalidate': {
+	InboxTargetsRevalidate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4786,7 +5798,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Inboxes_Show: {
+	InboxesIndexShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4809,7 +5821,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Inboxes_Update: {
+	InboxesIndexUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4846,7 +5858,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Inboxes_Destroy: {
+	InboxesIndexDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -4866,10 +5878,78 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Inbox Form Hooks_Index': {
+	InboxesIndexExport: {
+		parameters: {
+			query?: {
+				category?: 'spam' | 'sent' | 'errored' | 'pending';
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				site_id?: number;
+				recaptcha?: boolean;
+				sent?: boolean;
+				spam_checked?: boolean;
+				automatically_marked_spam?: boolean;
+				ip?: string;
+				host?: string;
+				explicitly_marked_status?: number;
+				inbox_uuid?: string;
+				has_error?: string | number | boolean;
+				has_spam_check_error?: string | number | boolean;
+				cleared_at_lt?: string;
+				cleared_at_gt?: string;
+				cleared_at_lte?: string;
+				cleared_at_gte?: string;
+				last_sent_at_lt?: string;
+				last_sent_at_gt?: string;
+				last_sent_at_lte?: string;
+				last_sent_at_gte?: string;
+				sent_count_lt?: number;
+				sent_count_gt?: number;
+				sent_count_lte?: number;
+				sent_count_gte?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				search?: string;
+			};
+			header?: never;
+			path: {
+				inbox_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'text/csv': string;
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	InboxesFormHooksIndex: {
 		parameters: {
 			query?: {
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
@@ -4888,9 +5968,9 @@ export interface operations {
 				automatically_marked_spam?: boolean;
 				ip?: string;
 				host?: string;
+				explicitly_marked_status?: number;
 				inbox_uuid?: string;
 				has_error?: string | number | boolean;
-				explicitly_marked_status?: number;
 				has_spam_check_error?: string | number | boolean;
 				cleared_at_lt?: string;
 				cleared_at_gt?: string;
@@ -4900,23 +5980,23 @@ export interface operations {
 				last_sent_at_gt?: string;
 				last_sent_at_lte?: string;
 				last_sent_at_gte?: string;
+				sent_count_lt?: number;
 				sent_count_gt?: number;
 				sent_count_lte?: number;
-				sent_count_lt?: number;
 				sent_count_gte?: number;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -4946,9 +6026,23 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Inbox Targets_Index': {
+	InboxesInboxTargetsIndex: {
 		parameters: {
-			query?: never;
+			query?: {
+				inbox_uuid?: string;
+				target_type?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				search?: string;
+			};
 			header?: never;
 			path: {
 				inbox_uuid: components['schemas']['UUID'];
@@ -4969,7 +6063,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Inbox Targets_Create': {
+	InboxesInboxTargetsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5004,7 +6098,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Inboxes_Upload: {
+	InboxesIndexUpload: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5030,16 +6124,17 @@ export interface operations {
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
 			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	Organizations_Index: {
+	OrgsIndexIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
+				/** @description Exclude organisations managed as clients of the current user's partner organisations */
+				exclude_partner_clients?: boolean;
 				/** @description Attribute to sort the results by */
 				sort_attribute?:
 					| 'id'
@@ -5050,41 +6145,57 @@ export interface operations {
 					| 'estimated_monthly_cost';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				country?: string;
-				locked?: string | number | boolean;
+				build_time_limit_exceeded?: boolean;
+				hosting_limit_exceeded?: boolean;
+				user_limit_exceeded?: boolean;
+				domain_limit_exceeded?: boolean;
 				hubspot_migrated?: boolean;
+				has_billing_email?: string | number | boolean;
+				has_partner_organisation_id?: number;
+				country?: string;
 				organisation_type?: string;
 				partner_organisation_id?: number;
 				billing_status?: string;
-				has_partner_organisation_id?: number;
 				has_organisation_type?: string | number | boolean;
 				expired?: string | number | boolean;
 				has_address?: string | number | boolean;
-				has_billing_email?: string | number | boolean;
+				locked?: string | number | boolean;
 				has_billing_name?: string | number | boolean;
-				hosting_limit_exceeded?: boolean;
-				user_limit_exceeded?: boolean;
-				build_time_limit_exceeded?: boolean;
-				domain_limit_exceeded?: boolean;
-				trial?: string | number | boolean;
-				plan_period?: string | number | boolean;
 				unattached?: string | number | boolean;
-				storage_provider_uuid?: string;
 				in_partner_program?: string | number | boolean;
-				user_uuid?: string;
-				provider_account_linked?: string | number | boolean;
 				given_user_is_sole_owner?: string | number | boolean;
 				plan?: string;
+				needs_attention?: string | number | boolean;
+				billing_issue?: string | number | boolean;
+				trial_ending_soon?: string | number | boolean;
+				inactive?: string | number | boolean;
+				has_failing_sites?: string | number | boolean;
+				has_domain_issues?: string | number | boolean;
+				has_build_failures?: string | number | boolean;
+				has_sync_errors?: string | number | boolean;
+				has_output_errors?: string | number | boolean;
+				has_ssl_auto_failures?: string | number | boolean;
+				has_dns_errors?: string | number | boolean;
+				has_site_domain_failures?: string | number | boolean;
+				has_expired_certs?: string | number | boolean;
+				has_expiring_certs?: string | number | boolean;
+				has_custom_ssl_expiring?: string | number | boolean;
+				has_failing_forms?: string | number | boolean;
+				storage_provider_uuid?: string;
+				provider_account_linked?: string | number | boolean;
+				trial?: string | number | boolean;
+				plan_period?: string | number | boolean;
+				user_uuid?: string;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5108,10 +6219,9 @@ export interface operations {
 					'application/json': components['schemas']['OrgBlueprintNormal'][];
 				};
 			};
-			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Organizations_Show: {
+	OrgsIndexShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5134,7 +6244,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Organizations_Update: {
+	OrgsIndexUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5181,7 +6291,30 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Organization Activity_Index': {
+	OrgsIndexAccessReview: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'text/csv': string;
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsActivityIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -5192,25 +6325,25 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				size_lt?: string | number | boolean;
 				site_id?: number;
+				size_lt?: string | number | boolean;
+				size_gt?: string | number | boolean;
 				size_lte?: string | number | boolean;
 				size_gte?: string | number | boolean;
-				size_gt?: string | number | boolean;
 				organisation_uuid?: string;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5237,9 +6370,343 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Base Domains_Index': {
+	OrgsAnalyticsBuildDuration: {
+		parameters: {
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						/** Format: date-time */
+						date?: string;
+						duration?: number;
+					}[];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsAnalyticsBuildDurationTotal: {
+		parameters: {
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						used?: number;
+					};
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsAnalyticsHostingBandwidth: {
+		parameters: {
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						/** Format: date-time */
+						date?: string;
+						bandwidth?: number;
+					}[];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsAnalyticsHostingBandwidthBySite: {
+		parameters: {
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+				offset?: number;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						site_id?: number;
+						host?: string;
+						total_bandwidth?: number;
+						total_requests?: number;
+					}[];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsAnalyticsHostingBandwidthByUrl: {
+		parameters: {
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+				offset?: number;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						url?: string;
+						site_id?: number;
+						host?: string;
+						total_bandwidth?: number;
+						total_requests?: number;
+					}[];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsAnalyticsHostingBandwidthTotal: {
+		parameters: {
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+				/** @description Set to "upper" to include all hosting log entries */
+				bound?: 'upper';
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						used?: number;
+					};
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsApiKeysIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'name';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				/** @description Filter API keys by name */
+				search?: string;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['ApiKeyBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsApiKeysCreate: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					name?: string;
+					permissions?: {
+						resource?: string;
+						except?: boolean;
+						global_scope?: boolean;
+						group_scope_uuid?: string;
+						site_scope_uuid?: string;
+						base_domain_scope_uuid?: string;
+						project_scope_uuid?: string;
+						file_glob?: string;
+					}[];
+				};
+			};
+		};
+		responses: {
+			/** @description Created */
+			201: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['ApiKeyBlueprintUnsnippedKey'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsApiKeysShow: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+				api_key_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['ApiKeyBlueprint'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsApiKeysDestroy: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+				api_key_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Deleted */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsBaseDomainsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -5263,16 +6730,17 @@ export interface operations {
 				organisation_id?: number;
 				organisation_uuid?: string;
 				auto_ssl_retries?: string | number | boolean;
+				dns_failing?: string | number | boolean;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string | number | boolean;
-				uuid?: string;
 				created_at_gt?: string | number | boolean;
 				created_at_lte?: string | number | boolean;
 				created_at_gte?: string | number | boolean;
+				updated_at_lt?: string | number | boolean;
 				updated_at_gt?: string | number | boolean;
 				updated_at_lte?: string | number | boolean;
 				updated_at_gte?: string | number | boolean;
-				updated_at_lt?: string | number | boolean;
 				search?: string;
 			};
 			header?: never;
@@ -5298,9 +6766,10 @@ export interface operations {
 					'application/json': components['schemas']['BaseDomainBlueprintFull'][];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Base Domains_Create': {
+	OrgsBaseDomainsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5328,10 +6797,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Organizations_UpdateBilling: {
+	OrgsIndexUpdateBilling: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5343,7 +6813,6 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					name: string;
 					billing_name?: string | null;
 					billing_email?: string | null;
 					billing_city?: string | null;
@@ -5352,15 +6821,6 @@ export interface operations {
 					billing_line2?: string | null;
 					billing_postal_code?: string | null;
 					billing_state?: string | null;
-					brand_color?: string | null;
-					business_type?: string | null;
-					/** Format: date-time */
-					mfa_required_after?: string | null;
-					/** Format: date-time */
-					sso_required_after?: string | null;
-					flags?: {
-						[key: string]: unknown;
-					};
 				};
 			};
 		};
@@ -5378,7 +6838,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	DAMs_Index: {
+	OrgsDamsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -5395,16 +6855,16 @@ export interface operations {
 				organisation_uuid?: string;
 				unlinked_site_uuid?: string;
 				site_uuid?: string;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5430,9 +6890,10 @@ export interface operations {
 					'application/json': components['schemas']['DamBlueprint'][];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	DAMs_Create: {
+	OrgsDamsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5452,7 +6913,8 @@ export interface operations {
 						| 'azure'
 						| 'google'
 						| 'cloudflare'
-						| 'digitalocean';
+						| 'digitalocean'
+						| 'bynder';
 					name: string;
 					config: string;
 					base_url: string;
@@ -5473,10 +6935,108 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Organization Inboxes_Index': {
+	OrgsGroupsIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'name';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				creation_type?: string;
+				name?: string;
+				organisation_uuid?: string;
+				user_uuid?: string;
+				api_key?: string | number | boolean;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				search?: string;
+				/** @description Only include groups the current user is a member of */
+				only_member_of?: boolean;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupBlueprintWithPermissions'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsGroupsCreate: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					name?: string;
+					permissions?: {
+						resource?: string;
+						except?: boolean;
+						global_scope?: boolean;
+						group_scope_uuid?: string;
+						site_scope_uuid?: string;
+						base_domain_scope_uuid?: string;
+						project_scope_uuid?: string;
+						file_glob?: string;
+					}[];
+				};
+			};
+		};
+		responses: {
+			/** @description Created */
+			201: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupBlueprintWithPermissions'];
+				};
+			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsInboxesIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -5492,16 +7052,16 @@ export interface operations {
 				organisation_id?: number;
 				site_uuid?: string;
 				organisation_uuid?: string;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5530,7 +7090,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Organization Inboxes_Create': {
+	OrgsInboxesCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5567,7 +7127,147 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Projects_Index: {
+	OrgsMembersIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				/** @description Filter members by name or email */
+				search?: string;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['UserBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsMembersShow: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+				email: string;
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['UserBlueprint'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsMembersDestroy: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+				email: string;
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Deleted */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsPendingMembersIndex: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						id?: number;
+						uuid?: string;
+						first_name?: string;
+						surname?: string;
+						email?: string;
+						groups?: unknown[];
+					}[];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsIndexPermissions: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupPermissionBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsProjectsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -5597,16 +7297,16 @@ export interface operations {
 				name?: string;
 				organisation_id?: number;
 				organisation_uuid?: string;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5633,9 +7333,10 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Projects_Create: {
+	OrgsProjectsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5682,10 +7383,54 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Providers_Repositories: {
+	OrgsProvidersInstallations: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+				provider:
+					| 'github'
+					| 'github_enterprise_server'
+					| 'gitlab'
+					| 'bitbucket'
+					| 'self_hosted_gitlab';
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						id?: number;
+						app_id?: number;
+						single_file_name?: string | null;
+						app_slug?: string;
+						html_url?: string;
+						provider?: string;
+						account?: {
+							avatar_url?: string;
+							login?: string;
+							type?: string;
+						};
+					}[];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	OrgsProvidersRepositories: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5716,7 +7461,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Providers_Branches: {
+	OrgsProvidersBranches: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5748,7 +7493,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Providers_CreateBranch: {
+	OrgsProvidersCreateBranch: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5767,8 +7512,8 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					name?: string;
-					branch_from?: string;
+					name: string;
+					branch_from: string;
 				};
 			};
 		};
@@ -5787,7 +7532,61 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_Index: {
+	OrgsSiteMountingsIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				site_id?: number;
+				local_site_id?: number;
+				remote_site_id?: number;
+				site_uuid?: string;
+				org_uuid?: string;
+				org_id?: number;
+				local_site_uuid?: string;
+				remote_site_uuid?: string;
+				organisation_uuid?: string;
+				uuid?: string;
+				id?: number;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				search?: string;
+			};
+			header?: never;
+			path: {
+				org_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['SiteMountingBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	OrgsSitesIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -5837,49 +7636,55 @@ export interface operations {
 				has_output_storage_provider?: string | number | boolean;
 				has_source?: string | number | boolean;
 				has_domain_name?: string | number | boolean;
+				organisation_id?: number;
 				has_subpath?: string | number | boolean;
 				has_client_password?: string | number | boolean;
-				organisation_id?: number;
-				locales?: string;
-				compile_error?: string;
-				sync_error?: string;
 				cloudflare_hostname?: string | number | boolean;
-				files?: string;
-				latest_hosted_build_id?: number;
+				locales?: string;
+				sync_error?: string;
+				output_error?: string;
+				compile_error?: string;
 				last_synced?: string;
 				last_compiled?: string;
 				last_compiled_success?: string;
-				owner_trial?: string | number | boolean;
-				ssl_certificate?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
+				latest_hosted_build_id?: number;
+				files?: string;
+				never_synced?: string | number | boolean;
 				bearer_tokens?: string | number | boolean;
-				inbox_uuid?: string;
 				site_scanner?: string | number | boolean;
 				old_includes?: string | number | boolean;
 				repeatables?: string | number | boolean;
 				storage_provider_details_full_name?: string | number | boolean;
 				source?: string | number | boolean;
-				has_unsaved_changes?: string | number | boolean;
+				inactive?: string | number | boolean;
 				error?: string | number | boolean;
-				compiled?: string | number | boolean;
+				ssl_certificate_expired?: string | number | boolean;
 				last_compiled_status?: string | number | boolean;
+				domain_not_resolving?: string | number | boolean;
+				inbox_uuid?: string;
+				custom_ssl_expiring?: string | number | boolean;
+				failing_forms?: string | number | boolean;
+				has_unsaved_changes?: string | number | boolean;
+				compiled?: string | number | boolean;
 				base_domain_uuid?: string;
 				cloudflare_hostname_uuid?: string;
 				cloudflare_error?: string;
 				dam_uuid?: string;
 				publish_branch?: string | number | boolean;
 				owner_locked?: string | number | boolean;
+				owner_trial?: string | number | boolean;
+				ssl_certificate?: string | number | boolean;
 				organisation_uuid?: string;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5909,7 +7714,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Sites_Create: {
+	OrgsSitesCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5943,10 +7748,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_Connect: {
+	OrgsSitesConnect: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -5988,7 +7794,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Ssl Certificates_Index': {
+	OrgsSslCertificatesIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -6000,25 +7806,25 @@ export interface operations {
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
 				name?: string;
-				expires_at_lt?: string;
+				organisation_id?: number;
 				expires_at_gt?: string;
 				expires_at_lte?: string;
 				autorenew?: boolean;
 				has_cloudflare_id?: number;
 				expires_at_gte?: string;
-				organisation_id?: number;
+				expires_at_lt?: string;
 				organisation_uuid?: string;
 				expired?: string | number | boolean;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6045,9 +7851,10 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Ssl Certificates_Create': {
+	OrgsSslCertificatesCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6081,10 +7888,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Whitelabel_Show: {
+	OrgsWhitelabelShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6113,9 +7921,11 @@ export interface operations {
 					'text/html': string;
 				};
 			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Whitelabel_ShowBrand: {
+	OrgsWhitelabelShowBrand: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6144,9 +7954,11 @@ export interface operations {
 					'text/html': string;
 				};
 			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Outputs_Show: {
+	OutputsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6172,7 +7984,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Projects_Show: {
+	ProjectsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6196,12 +8008,12 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Projects_Update: {
+	ProjectsUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6237,12 +8049,12 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Projects_Destroy: {
+	ProjectsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6259,12 +8071,12 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Project Git_Branches': {
+	ProjectsGitBranches: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6276,19 +8088,37 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['BranchSchema'][];
+					'application/json': (components['schemas']['BranchSchema'] & {
+						sites?: {
+							uuid?: string;
+							site_name?: string;
+							stable_domain?: string;
+						}[];
+						is_default?: boolean;
+						pull_request?: {
+							number?: number;
+							title?: string;
+							external_url?: string;
+							state?: string;
+							/** Format: date-time */
+							updated_at?: string | null;
+						};
+					})[];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			402: components['responses']['FeatureNotOnPlan'];
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
-	Projects_UpdateGit: {
+	ProjectsUpdateGit: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6318,12 +8148,12 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Project Git_PullRequests': {
+	ProjectsGitPullRequests: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6335,19 +8165,28 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['PullRequestSchema'][];
+					'application/json': (components['schemas']['PullRequestSchema'] & {
+						sites?: {
+							uuid?: string;
+							site_name?: string;
+							stable_domain?: string;
+						}[];
+					})[];
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			402: components['responses']['FeatureNotOnPlan'];
 			403: components['responses']['ForbiddenResp'];
+			404: components['responses']['NotFoundResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
-	Projects_RefreshPrComments: {
+	ProjectsRefreshPrComments: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6366,7 +8205,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Projects_Sites: {
+	ProjectsSites: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -6416,54 +8255,60 @@ export interface operations {
 				has_output_storage_provider?: string | number | boolean;
 				has_source?: string | number | boolean;
 				has_domain_name?: string | number | boolean;
+				organisation_id?: number;
 				has_subpath?: string | number | boolean;
 				has_client_password?: string | number | boolean;
-				organisation_id?: number;
-				locales?: string;
-				compile_error?: string;
-				sync_error?: string;
 				cloudflare_hostname?: string | number | boolean;
-				files?: string;
-				latest_hosted_build_id?: number;
+				locales?: string;
+				sync_error?: string;
+				output_error?: string;
+				compile_error?: string;
 				last_synced?: string;
 				last_compiled?: string;
 				last_compiled_success?: string;
-				owner_trial?: string | number | boolean;
-				ssl_certificate?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
+				latest_hosted_build_id?: number;
+				files?: string;
+				never_synced?: string | number | boolean;
 				bearer_tokens?: string | number | boolean;
-				inbox_uuid?: string;
 				site_scanner?: string | number | boolean;
 				old_includes?: string | number | boolean;
 				repeatables?: string | number | boolean;
 				storage_provider_details_full_name?: string | number | boolean;
 				source?: string | number | boolean;
-				has_unsaved_changes?: string | number | boolean;
+				inactive?: string | number | boolean;
 				error?: string | number | boolean;
-				compiled?: string | number | boolean;
+				ssl_certificate_expired?: string | number | boolean;
 				last_compiled_status?: string | number | boolean;
+				domain_not_resolving?: string | number | boolean;
+				inbox_uuid?: string;
+				custom_ssl_expiring?: string | number | boolean;
+				failing_forms?: string | number | boolean;
+				has_unsaved_changes?: string | number | boolean;
+				compiled?: string | number | boolean;
 				base_domain_uuid?: string;
 				cloudflare_hostname_uuid?: string;
 				cloudflare_error?: string;
 				dam_uuid?: string;
 				publish_branch?: string | number | boolean;
 				owner_locked?: string | number | boolean;
+				owner_trial?: string | number | boolean;
+				ssl_certificate?: string | number | boolean;
 				organisation_uuid?: string;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
 			path: {
-				project_uuid: components['schemas']['UUID'];
+				project_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6488,7 +8333,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Scheduled Builds_Show': {
+	ScheduledBuildsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6511,7 +8356,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Scheduled Builds_Destroy': {
+	ScheduledBuildsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6531,10 +8376,9 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Archives_Download': {
+	SiteArchivesDownload: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6560,7 +8404,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site DAMs_Show': {
+	SiteDamsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6583,7 +8427,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site DAMs_Update': {
+	SiteDamsUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6619,7 +8463,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site DAMs_Destroy': {
+	SiteDamsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6639,10 +8483,9 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Inboxes_Show': {
+	SiteInboxesShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6665,7 +8508,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Inboxes_Update': {
+	SiteInboxesUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6699,7 +8542,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Inboxes_Destroy': {
+	SiteInboxesDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6719,10 +8562,9 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Mountings_Update': {
+	SiteMountingsUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6757,7 +8599,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Mountings_Destroy': {
+	SiteMountingsDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6777,10 +8619,9 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_Show: {
+	SitesIndexShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -6800,14 +8641,15 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Sites_Update: {
+	SitesIndexUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6834,15 +8676,16 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_Destroy: {
+	SitesIndexDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -6855,10 +8698,11 @@ export interface operations {
 				};
 				content?: never;
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Activity_Index': {
+	SitesActivityIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -6869,25 +8713,25 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				size_lt?: string | number | boolean;
 				site_id?: number;
+				size_lt?: string | number | boolean;
+				size_gt?: string | number | boolean;
 				size_lte?: string | number | boolean;
 				size_gte?: string | number | boolean;
-				size_gt?: string | number | boolean;
 				organisation_uuid?: string;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6914,15 +8758,16 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Analytics_Duration': {
+	SitesAnalyticsBuildDuration: {
 		parameters: {
-			query?: {
-				start_time?: string;
-				end_time?: string;
-				period?: 'hourly' | 'daily' | 'weekly';
-				timezone?: string;
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
 			};
 			header?: never;
 			path: {
@@ -6950,7 +8795,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Analytics_Bandwidth': {
+	SitesAnalyticsHostingBandwidth: {
 		parameters: {
 			query?: {
 				start_time?: string;
@@ -6975,7 +8820,7 @@ export interface operations {
 					'application/json': {
 						/** Format: date-time */
 						date?: string;
-						bandwith?: number;
+						bandwidth?: number;
 					}[];
 				};
 			};
@@ -6984,12 +8829,14 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Analytics_BandwidthByUrl': {
+	SitesAnalyticsHostingBandwidthByUrl: {
 		parameters: {
-			query?: {
-				start_time?: string;
-				end_time?: string;
-				timezone?: string;
+			query: {
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
+				offset?: number;
 			};
 			header?: never;
 			path: {
@@ -7018,13 +8865,14 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Analytics_BandwidthForUrl': {
+	SitesAnalyticsHostingBandwidthForUrl: {
 		parameters: {
-			query?: {
-				url?: string;
-				start_time?: string;
-				end_time?: string;
-				timezone?: string;
+			query: {
+				url: string;
+				start_time: string;
+				end_time: string;
+				period: 'hourly' | 'daily' | 'weekly';
+				timezone: string;
 			};
 			header?: never;
 			path: {
@@ -7051,7 +8899,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Backups_Index: {
+	SitesArchivesIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -7062,24 +8910,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				size_lt?: number;
 				site_id?: number;
+				size_lt?: number;
+				size_gt?: number;
 				size_lte?: number;
 				size_gte?: number;
-				size_gt?: number;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7106,9 +8954,10 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Backups_Create: {
+	SitesArchivesCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7137,15 +8986,16 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_UpdateAuthentication: {
+	SitesIndexUpdateAuthentication: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -7166,10 +9016,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Bearer Tokens_Index': {
+	SitesAuthenticationBearerTokensIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -7181,21 +9032,21 @@ export interface operations {
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
 				site_id?: number;
-				token?: string;
 				name?: string;
+				token?: string;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 			};
 			header?: never;
 			path: {
@@ -7221,9 +9072,10 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Bearer Tokens_Create': {
+	SitesAuthenticationBearerTokensCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7250,10 +9102,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Authentication_UpdateClientPassword': {
+	SitesAuthenticationIndexUpdateClientPassword: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7266,6 +9119,7 @@ export interface operations {
 			content: {
 				'application/json': {
 					password?: string;
+					accept_billing_increase?: boolean;
 				};
 			};
 		};
@@ -7280,10 +9134,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Authentication_UpdateSaml': {
+	SitesAuthenticationIndexUpdateSaml: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7310,10 +9165,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Authentication_UpdateStablePassword': {
+	SitesAuthenticationIndexUpdateStablePassword: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7340,10 +9196,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Authentication Users_Index': {
+	SitesAuthenticationUsersIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -7354,21 +9211,21 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				email?: string;
 				site_id?: number;
+				email?: string;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 			};
 			header?: never;
 			path: {
@@ -7394,9 +9251,10 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Authentication Users_Create': {
+	SitesAuthenticationUsersCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7423,15 +9281,16 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_UpdateBuild: {
+	SitesIndexUpdateBuild: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -7456,10 +9315,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Builds_Index: {
+	SitesBuildsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -7470,24 +9330,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				successful?: boolean;
+				pinnable?: boolean;
 				site_id?: number;
 				name?: string;
 				completed_at?: string;
-				pinnable?: boolean;
+				successful?: boolean;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7517,7 +9377,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Builds_Create: {
+	SitesBuildsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7528,7 +9388,7 @@ export interface operations {
 		};
 		requestBody?: never;
 		responses: {
-			/** @description Created */
+			/** @description No Content */
 			204: {
 				headers: {
 					[name: string]: unknown;
@@ -7539,7 +9399,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Builds_Cancel: {
+	SitesBuildsCancel: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7550,7 +9410,7 @@ export interface operations {
 		};
 		requestBody?: never;
 		responses: {
-			/** @description canceld */
+			/** @description canceled */
 			204: {
 				headers: {
 					[name: string]: unknown;
@@ -7561,12 +9421,12 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Sites_UpdateClientSharing: {
+	SitesIndexUpdateClientSharing: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -7596,15 +9456,16 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_Copy: {
+	SitesIndexCopy: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -7621,6 +9482,8 @@ export interface operations {
 					};
 					publish_mode?: string | null;
 					destroy_on_publish?: boolean;
+					branch?: string;
+					publish_branch?: boolean;
 				};
 			};
 		};
@@ -7635,15 +9498,16 @@ export interface operations {
 				};
 			};
 			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_UpdateDam: {
+	SitesIndexUpdateDam: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -7665,10 +9529,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Dams_Index: {
+	SitesDamsIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7691,7 +9556,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Dams_Create: {
+	SitesDamsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7727,7 +9592,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Domain Name_Update': {
+	SitesDomainUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7757,10 +9622,11 @@ export interface operations {
 			};
 			401: components['responses']['UnauthorizedResp'];
 			402: components['responses']['PaymentConfirmRequired'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Domain Name_Prioritise': {
+	SitesDomainPrioritise: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7781,10 +9647,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Sessions_Index': {
+	SitesEditingSessionsIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7807,7 +9674,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Editing Sessions_Create': {
+	SitesEditingSessionsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7841,7 +9708,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Editing Sessions_Latest': {
+	SitesEditingSessionsLatest: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7864,7 +9731,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Files_Index: {
+	SitesFilesIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7889,10 +9756,10 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
-			422: components['responses']['ErrorResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Files_CompleteZipUpload: {
+	SitesFilesCompleteZipUpload: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7907,6 +9774,7 @@ export interface operations {
 					zip?: {
 						key?: string;
 						checksum?: string;
+						type?: string;
 					};
 				};
 			};
@@ -7928,9 +9796,11 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Files_Show: {
+	SitesFilesShow: {
 		parameters: {
-			query?: never;
+			query?: {
+				download?: boolean;
+			};
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
@@ -7957,7 +9827,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Files_Metadata: {
+	SitesFilesMetadata: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -7985,9 +9855,13 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Files_Resized: {
+	SitesFilesResized: {
 		parameters: {
-			query?: never;
+			query?: {
+				width?: number;
+				height?: number;
+				content_type?: string;
+			};
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
@@ -8013,7 +9887,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Files_Sorting: {
+	SitesFilesSorting: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8036,12 +9910,23 @@ export interface operations {
 					'text/html': string;
 				};
 			};
+			/** @description Redirect */
+			307: {
+				headers: {
+					/** @description null */
+					location?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'text/html': string;
+				};
+			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Form Hooks_Index': {
+	SitesFormHooksIndex: {
 		parameters: {
 			query?: {
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
@@ -8060,9 +9945,9 @@ export interface operations {
 				automatically_marked_spam?: boolean;
 				ip?: string;
 				host?: string;
+				explicitly_marked_status?: number;
 				inbox_uuid?: string;
 				has_error?: string | number | boolean;
-				explicitly_marked_status?: number;
 				has_spam_check_error?: string | number | boolean;
 				cleared_at_lt?: string;
 				cleared_at_gt?: string;
@@ -8072,23 +9957,23 @@ export interface operations {
 				last_sent_at_gt?: string;
 				last_sent_at_lte?: string;
 				last_sent_at_gte?: string;
+				sent_count_lt?: number;
 				sent_count_gt?: number;
 				sent_count_lte?: number;
-				sent_count_lt?: number;
 				sent_count_gte?: number;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 				search?: string;
 			};
 			header?: never;
@@ -8118,12 +10003,12 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Sites_UpdateHosting: {
+	SitesIndexUpdateHosting: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -8151,10 +10036,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Inboxes_Index': {
+	SitesInboxesIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -8188,7 +10074,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Inboxes_Create': {
+	SitesInboxesCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8222,7 +10108,156 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Output Site Providers_Update': {
+	SitesMainSourceDamIndex: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						uuid?: components['schemas']['UUID'];
+					};
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SitesMainSourceDamUpdate: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					uuid?: components['schemas']['UUID'];
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						uuid?: components['schemas']['UUID'];
+					};
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesMembersIndex: {
+		parameters: {
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				search?: string;
+			};
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['UserBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SitesMembersSetSiteGroup: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+				email: string;
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					group_uuid?: components['schemas']['UUID'];
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['GroupMemberBlueprint'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesMembersDestroy: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+				email: string;
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description Deleted */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SitesOutputProvidersIndexUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8248,10 +10283,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Output Site Providers_Add': {
+	SitesOutputProvidersIndexAdd: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8274,6 +10310,15 @@ export interface operations {
 					custom_data?: {
 						full_name?: string;
 						branch?: string;
+						hostname?: string;
+						port?: number;
+						username?: string;
+						password?: string;
+						path?: string;
+						ignorePermissions?: boolean;
+						step?: string;
+						webhook_id?: string;
+						exclusions?: unknown[];
 					};
 				};
 			};
@@ -8288,10 +10333,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Output Site Providers_Remove': {
+	SitesOutputProvidersIndexRemove: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8311,10 +10357,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Output Site Providers_Sync': {
+	SitesOutputProvidersIndexSync: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8336,10 +10383,11 @@ export interface operations {
 					};
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Outputs_Index: {
+	SitesOutputsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -8353,27 +10401,27 @@ export interface operations {
 				identifier?: string;
 				after_identifier?: string;
 				diff_id?: string;
-				provider?: string;
-				completed_at_lt?: string;
-				completed_at_gt?: string;
-				completed_at_lte?: string;
-				completed_at_gte?: string;
 				name?: string;
+				completed_at_lt?: string;
+				provider?: string;
+				completed_at_lte?: string;
+				completed_at_gt?: string;
+				completed_at_gte?: string;
 				site_id?: number;
 				successful?: boolean;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 			};
 			header?: never;
 			path: {
@@ -8402,101 +10450,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Provider_Update': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					custom_data?: {
-						full_name?: string;
-						branch?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	'Site Provider_Add': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					storage_provider?:
-						| 'github'
-						| 'github_enterprise_server'
-						| 'bitbucket'
-						| 'gitlab'
-						| 'self_hosted_gitlab';
-					custom_data?: {
-						branch?: string;
-						full_name?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	'Site Provider_Remove': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	'Site Provider Branch_Branches': {
+	SitesPendingMembersIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -8524,12 +10478,137 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['BranchSchema'][];
+					'application/json': components['schemas']['GroupPendingMemberBlueprint'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SitesProvidersIndexUpdate: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					custom_data?: {
+						full_name?: string;
+						branch?: string;
+					};
 				};
 			};
 		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['SiteBlueprintFull'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
 	};
-	'Site Provider Branch_CreateBranch': {
+	SitesProvidersIndexAdd: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					/** @enum {string} */
+					storage_provider?:
+						| 'github'
+						| 'github_enterprise_server'
+						| 'bitbucket'
+						| 'gitlab'
+						| 'self_hosted_gitlab';
+					custom_data?: {
+						branch?: string;
+						full_name?: string;
+						webhook_id?: string;
+						lfsEnabled?: boolean;
+						fast_compile_disabled?: boolean;
+						publish_branch?: string;
+					};
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['SiteBlueprintFull'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesProvidersIndexRemove: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['SiteBlueprintFull'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesProvidersGitIndexBranches: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['BranchSchema'][];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SitesProvidersGitIndexCreateBranch: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8555,10 +10634,11 @@ export interface operations {
 					'application/json': components['schemas']['BranchSchema'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Provider Branch_Merge': {
+	SitesProvidersGitIndexMerge: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8575,7 +10655,7 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['SiteBlueprint'];
+					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
 			/** @description Deleted. Used when site is deleted after a successful merge. */
@@ -8585,10 +10665,12 @@ export interface operations {
 				};
 				content?: never;
 			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Provider Branch_PublishBranch': {
+	SitesProvidersGitIndexPublishBranch: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8611,13 +10693,14 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['SiteBlueprint'];
+					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Provider Branch_Compare': {
+	SitesProvidersGitIndexCompare: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8637,9 +10720,11 @@ export interface operations {
 					'application/json': components['schemas']['CompareSchema'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Provider Branch_UpstreamCompare': {
+	SitesProvidersGitIndexUpstreamCompare: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8659,9 +10744,10 @@ export interface operations {
 					'application/json': components['schemas']['CompareSchema'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Provider Branch_UpstreamMerge': {
+	SitesProvidersGitIndexUpstreamMerge: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8678,12 +10764,14 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['SiteBlueprint'];
+					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Pull Requests_Index': {
+	SitesProvidersGitPullRequestsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -8718,7 +10806,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Pull Requests_Create': {
+	SitesProvidersGitPullRequestsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8746,10 +10834,11 @@ export interface operations {
 				};
 			};
 			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Pull Requests_Show': {
+	SitesProvidersGitPullRequestsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8774,7 +10863,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Pull Requests_Close': {
+	SitesProvidersGitPullRequestsClose: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8800,7 +10889,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Pull Requests_Commits': {
+	SitesProvidersGitPullRequestsCommits: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8825,7 +10914,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Pull Requests_Merge': {
+	SitesProvidersGitPullRequestsMerge: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8839,55 +10928,10 @@ export interface operations {
 			content: {
 				'application/json': {
 					commit_message?: string;
+					type?: string;
 				};
 			};
 		};
-		responses: {
-			/** @description Merged */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	'Site Provider_Reconnect': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	'Site Provider_Sync': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
 		responses: {
 			/** @description OK */
 			200: {
@@ -8900,10 +10944,82 @@ export interface operations {
 					};
 				};
 			};
+			/** @description Merged */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Upstream Pull Requests_Index': {
+	SitesProvidersIndexReconnect: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: {
+			content: {
+				'application/json': {
+					forced?: boolean;
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['SiteBlueprintFull'];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesProvidersIndexSync: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody?: {
+			content: {
+				'application/json': {
+					/** @enum {string} */
+					type?: 'push' | 'pull';
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': {
+						socket_message_id?: string;
+					};
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesProvidersGitUpstreamPullRequestsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -8938,7 +11054,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Upstream Pull Requests_Create': {
+	SitesProvidersGitUpstreamPullRequestsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -8966,15 +11082,16 @@ export interface operations {
 				};
 			};
 			402: components['responses']['FeatureNotOnPlan'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Sites_UpdatePublish: {
+	SitesIndexUpdatePublish: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				site_uuid: components['schemas']['UUID'];
+				site_uuid: components['schemas']['UUID'] | number;
 			};
 			cookie?: never;
 		};
@@ -8996,10 +11113,11 @@ export interface operations {
 					'application/json': components['schemas']['SiteBlueprintFull'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Scans_Index: {
+	SitesScansIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9023,7 +11141,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Scheduled Builds_Index': {
+	SitesScheduledBuildsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -9034,36 +11152,36 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				filename?: string;
-				run_date_lt?: string;
-				run_date_gt?: string;
-				run_date_lte?: string;
-				site_id?: number;
-				period_lt?: number;
-				run_date_gte?: string;
-				period_lte?: number;
-				period_gt?: number;
-				run_count_lt?: number;
 				run_count_lte?: number;
 				run_count_gte?: number;
 				scheduled_at?: string;
 				from_source?: boolean;
-				run_count_gt?: number;
-				period_gte?: number;
+				run_count_lt?: number;
+				site_id?: number;
 				name?: string;
+				filename?: string;
+				run_date_lt?: string;
+				run_date_gt?: string;
+				run_date_lte?: string;
+				run_date_gte?: string;
+				period_lt?: number;
+				period_gt?: number;
+				period_lte?: number;
+				period_gte?: number;
+				run_count_gt?: number;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 			};
 			header?: never;
 			path: {
@@ -9088,9 +11206,10 @@ export interface operations {
 					'application/json': components['schemas']['SiteScheduledBuildBlueprint'][];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Scheduled Builds_Create': {
+	SitesScheduledBuildsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9119,20 +11238,23 @@ export interface operations {
 					'application/json': components['schemas']['SiteScheduledBuildBlueprint'];
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Screenshots_Index: {
+	SitesScreenshotsIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
-			path?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
 			cookie?: never;
 		};
 		requestBody?: never;
 		responses: {
 			/** @description Redirect */
-			307: {
+			303: {
 				headers: {
 					/** @description null */
 					location?: string;
@@ -9146,11 +11268,10 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Screenshots_Lighthouse: {
+	SitesScreenshotsLighthouse: {
 		parameters: {
 			query?: {
 				path?: string;
-				build_id?: number;
 			};
 			header?: never;
 			path: {
@@ -9160,24 +11281,23 @@ export interface operations {
 		};
 		requestBody?: never;
 		responses: {
-			/** @description OK */
-			200: {
+			/** @description Redirect */
+			303: {
 				headers: {
+					/** @description null */
+					location?: string;
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': {
-						TODO?: Record<string, never>;
-					};
+					'text/html': string;
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
 			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	Screenshots_Show: {
+	SitesScreenshotsShow: {
 		parameters: {
 			query?: {
 				path?: string;
@@ -9208,10 +11328,9 @@ export interface operations {
 			401: components['responses']['UnauthorizedResp'];
 			403: components['responses']['ForbiddenResp'];
 			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site Mountings_Index': {
+	SitesSiteMountingsIndex: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9234,7 +11353,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Site Mountings_Create': {
+	SitesSiteMountingsCreate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9269,7 +11388,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Custom_Update': {
+	SitesSslIndexUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9296,10 +11415,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Custom_Remove': {
+	SitesSslIndexRemove: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9320,10 +11440,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Auto_SslState': {
+	SitesSslAutoSslState: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9344,10 +11465,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Auto_RetrySslGenerate': {
+	SitesSslAutoRetrySslGenerate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9368,10 +11490,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Cloudflare_CloudflareSslState': {
+	SitesSslCloudflareCloudflareSslState: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9392,10 +11515,45 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Cloudflare_Update': {
+	SitesSslCloudflareUpdate: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'];
+			};
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				'application/json': {
+					ssl_certificate_id?: number | null;
+					validation_method?: string;
+					wildcard?: boolean;
+					min_tls_version?: string;
+				};
+			};
+		};
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': components['schemas']['CloudflareSSLStateSchema'];
+				};
+			};
+			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	SitesSslCloudflareRetryCloudflareSetup: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9416,34 +11574,11 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	'Site SSL Cloudflare_RetryCloudflareSetup': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CloudflareSSLStateSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	Syncs_Index: {
+	SitesSyncsIndex: {
 		parameters: {
 			query?: {
 				/** @description Page number to fetch (1-indexed) */
@@ -9457,24 +11592,24 @@ export interface operations {
 				identifier?: string;
 				after_identifier?: string;
 				diff_id?: string;
-				provider?: string;
 				name?: string;
+				provider?: string;
 				site_id?: number;
 				completed_at?: string;
 				successful?: boolean;
 				site_uuid?: string;
 				org_uuid?: string;
 				org_id?: number;
+				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
-				uuid?: string;
 				created_at_gt?: string;
 				created_at_lte?: string;
 				created_at_gte?: string;
+				updated_at_lt?: string;
 				updated_at_gt?: string;
 				updated_at_lte?: string;
 				updated_at_gte?: string;
-				updated_at_lt?: string;
 			};
 			header?: never;
 			path: {
@@ -9500,9 +11635,60 @@ export interface operations {
 				};
 			};
 			401: components['responses']['UnauthorizedResp'];
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Ssl Certificates_Show': {
+	SitesIndexStartWatching: {
+		parameters: {
+			query?: {
+				path?: string;
+			};
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'] | number;
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': Record<string, never>;
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SitesIndexStopWatching: {
+		parameters: {
+			query?: {
+				path?: string;
+			};
+			header?: never;
+			path: {
+				site_uuid: components['schemas']['UUID'] | number;
+			};
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': Record<string, never>;
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	SslCertificatesShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9525,7 +11711,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Ssl Certificates_Destroy': {
+	SslCertificatesDestroy: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9548,7 +11734,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Syncs_Show: {
+	SyncsShow: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9574,9 +11760,11 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Index_UploadData: {
+	IndexUploadData: {
 		parameters: {
-			query?: never;
+			query?: {
+				type?: 'zip';
+			};
 			header?: never;
 			path?: never;
 			cookie?: never;
@@ -9602,7 +11790,7 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Users_ShowCurrentUser: {
+	UsersUserShowCurrentUser: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9623,7 +11811,7 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Users_Update: {
+	UsersUserUpdate: {
 		parameters: {
 			query?: never;
 			header?: never;
@@ -9654,9 +11842,31 @@ export interface operations {
 			422: components['responses']['ErrorResp'];
 		};
 	};
-	Users_AccessKeys: {
+	UsersUserAccessKeys: {
 		parameters: {
-			query?: never;
+			query?: {
+				/** @description Page number to fetch (1-indexed) */
+				page?: components['parameters']['PageQuery'];
+				/** @description Number of items per page */
+				items?: components['parameters']['ItemsQuery'];
+				/** @description Attribute to sort the results by */
+				sort_attribute?: 'key_id' | 'name' | 'created_at' | 'updated_at';
+				/** @description Direction to sort the results */
+				sort_direction?: 'ASC' | 'DESC';
+				name?: string;
+				status?: string | number | boolean;
+				uuid?: string;
+				id?: string | number | boolean;
+				created_at_lt?: string;
+				created_at_gt?: string;
+				created_at_lte?: string;
+				created_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_gt?: string;
+				updated_at_lte?: string;
+				updated_at_gte?: string;
+				search?: string;
+			};
 			header?: never;
 			path?: never;
 			cookie?: never;
@@ -9666,6 +11876,12 @@ export interface operations {
 			/** @description OK */
 			200: {
 				headers: {
+					/** @description The current page number */
+					current_page?: string;
+					/** @description The total number of items across all pages */
+					total_items?: string;
+					/** @description The total number of pages available */
+					total_pages?: string;
 					[name: string]: unknown;
 				};
 				content: {
@@ -9675,14 +11891,20 @@ export interface operations {
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Users_CreateAccessKey: {
+	UsersUserCreateAccessKey: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path?: never;
 			cookie?: never;
 		};
-		requestBody?: never;
+		requestBody: {
+			content: {
+				'application/json': {
+					name?: string;
+				};
+			};
+		};
 		responses: {
 			/** @description OK */
 			200: {
@@ -9690,18 +11912,21 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['UserAccessKeyBlueprint'];
+					'application/json': {
+						access_key?: components['schemas']['UserAccessKeyBlueprint'];
+						access_key_display?: string;
+					};
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Users_DestroyAccessKey: {
+	UsersUserDestroyAccessKey: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				access_key_uuid: components['schemas']['UUID'];
+				uuid: components['schemas']['UUID'];
 			};
 			cookie?: never;
 		};
@@ -9718,9 +11943,12 @@ export interface operations {
 			404: components['responses']['NotFoundResp'];
 		};
 	};
-	'Users Avatar_Show': {
+	UsersAvatarShow: {
 		parameters: {
-			query?: never;
+			query?: {
+				/** @description Avatar size in pixels */
+				s?: number;
+			};
 			header?: never;
 			path?: never;
 			cookie?: never;
@@ -9738,14 +11966,87 @@ export interface operations {
 					'text/html': string;
 				};
 			};
+			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	Users_ShowByIdentifier: {
+	UsersUserInvites: {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description OK */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					'application/json': (components['schemas']['BaseBlueprint'] & {
+						name?: string;
+						brand_color?: string | null;
+						brand_logo?: string | null;
+						white_label_logo?: string | null;
+						/** Format: date-time */
+						invited_at?: string | null;
+					})[];
+				};
+			};
+			403: components['responses']['ForbiddenResp'];
+		};
+	};
+	UsersUserAcceptInvite: {
+		parameters: {
+			query: {
+				organisation_uuid: components['schemas']['UUID'];
+			};
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description No Content */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	UsersUserDeclineInvite: {
+		parameters: {
+			query: {
+				organisation_uuid: components['schemas']['UUID'];
+			};
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		requestBody?: never;
+		responses: {
+			/** @description No Content */
+			204: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content?: never;
+			};
+			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
+		};
+	};
+	UsersUserShowByIdentifier: {
 		parameters: {
 			query?: never;
 			header?: never;
 			path: {
-				user_identifier: components['schemas']['UUID'];
+				user_identifier: string;
 			};
 			cookie?: never;
 		};
@@ -9757,18 +12058,21 @@ export interface operations {
 					[name: string]: unknown;
 				};
 				content: {
-					'application/json': components['schemas']['UserBlueprintFull'];
+					'application/json': components['schemas']['UserBlueprint'];
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
 		};
 	};
-	'Users Avatar_ShowByIdentifier': {
+	UsersAvatarShowByIdentifier: {
 		parameters: {
-			query?: never;
+			query?: {
+				/** @description Avatar size in pixels */
+				s?: number;
+			};
 			header?: never;
 			path: {
-				user_identifier: components['schemas']['UUID'];
+				user_identifier: string;
 			};
 			cookie?: never;
 		};

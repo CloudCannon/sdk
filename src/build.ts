@@ -1,4 +1,5 @@
 import type CloudCannonClient from '../index.ts';
+import { assertResponse } from './errors.ts';
 
 export class BuildClient {
 	#uuid: string;
@@ -10,10 +11,10 @@ export class BuildClient {
 	}
 
 	async get(): Promise<Response> {
-		const resp = await this.#client.fetch(`/builds/${this.#uuid}`);
-		if (resp.status === 401 || resp.status === 403) {
-			throw new Error('Error fetching build. Permission denied');
-		}
+		const url = `/builds/${this.#uuid}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching build', url, requestInit);
 		return resp;
 	}
 }
