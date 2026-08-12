@@ -214,6 +214,14 @@ export type CloudCannonClientConfig =
 
 export type UserAccessKey = { id: string; secret: string };
 
+export const STRUCTURED_SECRET_PATTERN: RegExp = /^ccs_[A-Za-z0-9]{36}$/;
+
+export function accessKeyHmacKey(secret: string): Buffer {
+	return STRUCTURED_SECRET_PATTERN.test(secret)
+		? Buffer.from(secret, 'utf-8')
+		: Buffer.from(secret, 'base64');
+}
+
 export default class CloudCannonClient {
 	#apiKey?: string;
 	#userAccessKey?: UserAccessKey;
@@ -255,7 +263,7 @@ export default class CloudCannonClient {
 		const signedAtISO = new Date().toISOString();
 
 		const nonce = randomUUID();
-		const key = Buffer.from(userAccessKey.secret, 'base64');
+		const key = accessKeyHmacKey(userAccessKey.secret);
 		const message = JSON.stringify({ url, signed_at: signedAtISO, body: body ?? '', nonce });
 		const digest = createHmac('sha256', key).update(message).digest('hex');
 
