@@ -31,7 +31,7 @@ export type BuildConfiguration = Partial<
 		install_command?: string;
 		build_command?: string;
 		output_path: string;
-		environment_variables?: [{ key: string; value: string }];
+		environment_variables?: { key: string; value: string }[];
 		hugoVersion?: string;
 		denoVersion?: string;
 		rubyVersion?: string;
