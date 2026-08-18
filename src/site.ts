@@ -21,26 +21,28 @@ import {
 	type SortingOptions,
 } from './helpers/query.ts';
 
-export type BuildConfiguration = Partial<
+export type CompilerConfiguration = {
+	install_command?: string;
+	build_command?: string;
+	output_path: string;
+	environment_variables?: { key: string; value: string }[];
+	hugoVersion?: string;
+	denoVersion?: string;
+	rubyVersion?: string;
+	nodeVersion?: string;
+	preserved_paths?: string[];
+	preserveOutput?: boolean;
+	includeGit?: boolean;
+	manually_configure_urls?: boolean;
+};
+
+export type UpdateBuildConfigOptions = Partial<
 	Omit<
 		operations['SitesIndexUpdateBuild']['requestBody']['content']['application/json'],
 		'build_configuration'
 	>
 > & {
-	compile?: {
-		install_command?: string;
-		build_command?: string;
-		output_path: string;
-		environment_variables?: { key: string; value: string }[];
-		hugoVersion?: string;
-		denoVersion?: string;
-		rubyVersion?: string;
-		nodeVersion?: string;
-		preserved_paths?: string[];
-		preserveOutput?: boolean;
-		includeGit?: boolean;
-		manually_configure_urls?: boolean;
-	};
+	compile?: CompilerConfiguration;
 };
 
 export type UpdateSiteOptions =
@@ -114,7 +116,7 @@ export class SiteClient {
 		return site;
 	}
 
-	async updateBuildConfig(options: BuildConfiguration): Promise<Site> {
+	async updateBuildConfig(options: UpdateBuildConfigOptions): Promise<Site> {
 		const buildConfiguration = {
 			compile: {
 				...options.compile,
