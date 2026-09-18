@@ -23,4 +23,11 @@ export class SiteInboxClient {
 		const siteInbox = await resp.json();
 		return siteInbox;
 	}
+
+	async delete(): Promise<void> {
+		const url = `/site-inboxes/${this.#uuid}` as const;
+		const requestInit = { method: 'DELETE' } as const;
+		const resp = await this.#client.fetch(url, requestInit);
+		await assertResponse(resp, 'Error disconnecting inbox', url, requestInit);
+	}
 }

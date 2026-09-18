@@ -3610,6 +3610,7 @@ export interface components {
 			captcha_type?: string | null;
 			captcha_key?: string | null;
 			captcha_secret?: string | null;
+			allow_uploads?: boolean;
 			/** Format: date-time */
 			created_at: string;
 			/** Format: date-time */
@@ -5732,6 +5733,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					target?: string;
 					config?: {
 						[key: string]: unknown;
 					};
@@ -5833,13 +5835,14 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					name: string;
-					key: string;
+					name?: string;
+					key?: string;
 					monthly_quota?: number | null;
 					keep_form_hook_days?: number | null;
 					captcha_key?: string | null;
 					captcha_secret?: string | null;
 					captcha_type?: string | null;
+					allow_uploads?: boolean;
 				};
 			};
 		};
@@ -6031,6 +6034,7 @@ export interface operations {
 			query?: {
 				inbox_uuid?: string;
 				target_type?: string;
+				validated?: boolean;
 				uuid?: string;
 				id?: number;
 				created_at_lt?: string;
@@ -7049,6 +7053,7 @@ export interface operations {
 				sort_direction?: 'ASC' | 'DESC';
 				captcha_type?: string;
 				name?: string;
+				has_captcha?: string | number | boolean;
 				organisation_id?: number;
 				site_uuid?: string;
 				organisation_uuid?: string;
@@ -7109,6 +7114,7 @@ export interface operations {
 					captcha_key?: string | null;
 					captcha_secret?: string | null;
 					captcha_type?: string | null;
+					allow_uploads?: boolean;
 				};
 			};
 		};

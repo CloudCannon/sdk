@@ -13,6 +13,7 @@ A TypeScript SDK for interacting with the CloudCannon REST API.
   - [Sites (`client.site(uuid)`)](#sites-clientsiteuuid)
   - [Inboxes (`client.inbox(uuid)`)](#inboxes-clientinboxuuid)
   - [Site Inboxes (`client.siteInbox(uuid)`)](#site-inboxes-clientsiteinboxuuid)
+  - [Inbox Targets (`client.inboxTarget(uuid)`)](#inbox-targets-clientinboxtargetuuid)
   - [Editing Sessions (`client.editingSession(uuid)`)](#editing-sessions-clienteditingsessionuuid)
   - [Editing Session Files (`client.editingSessionFile(uuid)`)](#editing-session-files-clienteditingsessionfileuuid)
   - [Builds (`client.build(uuid)`)](#builds-clientbuilduuid)
@@ -309,7 +310,7 @@ const { items } = await org.getInboxes({
   filters: {
     search: 'contact',
     name: 'Contact Form',
-    captcha_type: 'recaptcha',
+    captcha_type: 'google',
     uuid: 'inbox-uuid',
     id: 123,
     // Date range filters
@@ -353,7 +354,7 @@ const inbox = await org.createInbox({
   keep_form_hook_days: 30,      // Optional number of days to retain submissions
   captcha_key: 'site-key',      // Optional reCAPTCHA site key
   captcha_secret: 'secret',     // Optional reCAPTCHA secret key
-  captcha_type: 'recaptcha',    // Optional captcha type
+  captcha_type: 'google',       // Optional captcha provider: google, hcaptcha, or turnstile
 });
 // { // Inbox
 //   uuid: "STRING_VALUE",
@@ -1108,6 +1109,57 @@ await site.triggerPull();
 const inbox = client.inbox('inbox-uuid');
 ```
 
+#### `inbox.get()`
+
+Get the inbox, including the `key` used to point a form at this inbox.
+
+```typescript
+const details = await inbox.get();
+// { // Inbox
+//   uuid: "STRING_VALUE",
+//   id: 123,
+//   name: "Contact Form",
+//   key: "contact-form",
+//   monthly_quota: 1000,
+//   keep_form_hook_days: 30,
+//   organisation_id: 123,
+//   captcha_type: "google",
+//   captcha_key: "STRING_VALUE",
+//   allow_uploads: true,
+//   created_at: "TIMESTAMP",
+//   updated_at: "TIMESTAMP",
+// }
+```
+
+#### `inbox.update(body)`
+
+Update the inbox settings. This is a partial update, so send only the fields you are changing.
+Changing `key` changes where your forms post, so every form naming the old key stops reaching this
+inbox.
+
+```typescript
+const updated = await inbox.update({
+  name: 'Contact Form',            // Display name for the inbox
+  key: 'contact-form',             // Unique key/slug used by form submissions
+  monthly_quota: 1000,             // Maximum submissions per month
+  keep_form_hook_days: 30,         // Days to retain submissions
+  captcha_type: 'google',          // Captcha provider: google, hcaptcha, or turnstile
+  captcha_key: 'site-key',
+  captcha_secret: 'secret-key',
+  allow_uploads: true,             // Accept file uploads from forms posting to this inbox
+});
+// Returns: Inbox
+```
+
+#### `inbox.delete()`
+
+Delete the inbox.
+
+```typescript
+await inbox.delete();
+// Returns: void
+```
+
 #### `inbox.getSubmissions(options?)`
 
 List form submissions for the inbox. Supports pagination, sorting, and filtering.
@@ -1178,6 +1230,57 @@ const { items } = await inbox.getSubmissions({
 // }
 ```
 
+#### `inbox.getTargets(options?)`
+
+List the targets that submissions to this inbox are forwarded to. This endpoint is not paginated,
+so it returns an array. Supports filtering.
+
+```typescript
+const targets = await inbox.getTargets({
+  filters: {
+    target_type: 'email',        // Filter by target type
+    search: 'team@example.com',
+    uuid: 'inbox-target-uuid',
+    id: 123,
+    inbox_uuid: 'inbox-uuid',
+    created_at_lt: '2024-01-01T00:00:00Z',
+    created_at_gt: '2023-01-01T00:00:00Z',
+    created_at_lte: '2024-01-01T00:00:00Z',
+    created_at_gte: '2023-01-01T00:00:00Z',
+    updated_at_lt: '2024-01-01T00:00:00Z',
+    updated_at_gt: '2023-01-01T00:00:00Z',
+    updated_at_lte: '2024-01-01T00:00:00Z',
+    updated_at_gte: '2023-01-01T00:00:00Z',
+  },
+});
+// [ // InboxTarget
+//   {
+//     uuid: "STRING_VALUE",
+//     id: 123,
+//     target_type: "email",
+//     target: "team@example.com",
+//     validated: true,
+//     config: {},
+//     inbox_uuid: "inbox-uuid",
+//     created_at: "TIMESTAMP",
+//     updated_at: "TIMESTAMP",
+//   }
+// ]
+```
+
+#### `inbox.createTarget(body)`
+
+Create a target for this inbox.
+
+```typescript
+const target = await inbox.createTarget({
+  target_type: 'email',            // Type of target, e.g. 'email'
+  target: 'team@example.com',      // Destination for the target type
+  config: {},                      // Optional target-type specific configuration
+});
+// Returns: InboxTarget
+```
+
 ---
 
 ### Site Inboxes (`client.siteInbox(uuid)`)
@@ -1207,6 +1310,72 @@ const updated = await siteInbox.update({
 //   created_at: "TIMESTAMP",
 //   updated_at: "TIMESTAMP",
 // }
+```
+
+---
+
+### Inbox Targets (`client.inboxTarget(uuid)`)
+
+```typescript
+const inboxTarget = client.inboxTarget('inbox-target-uuid');
+```
+
+#### `inboxTarget.get()`
+
+Get an inbox target.
+
+```typescript
+const target = await inboxTarget.get();
+// { // InboxTarget
+//   uuid: "STRING_VALUE",
+//   id: 123,
+//   target_type: "email",
+//   target: "team@example.com",
+//   validated: true,
+//   config: {},
+//   inbox_uuid: "inbox-uuid",
+//   created_at: "TIMESTAMP",
+//   updated_at: "TIMESTAMP",
+// }
+```
+
+#### `inboxTarget.update(body)`
+
+Update the target's destination and configuration. A target's `target_type` cannot be changed.
+
+`config` is stored as a single object and is replaced wholesale, so read the target first and spread
+its existing `config` into the new one, or every setting you leave out is erased.
+
+The permitted `config` keys are `use_client_auth`, `block_spam`, `block_spam_list`,
+`payload_format`, `field_map`, `value_map`, `slack`, `discord`, `teams` and `hubspot`. Any other key
+is silently discarded, which for a wholesale assignment means the stored config is emptied.
+
+```typescript
+const existing = await inboxTarget.get();
+
+const updated = await inboxTarget.update({
+  target: 'team@example.com',                        // New destination, restarts validation
+  config: { ...existing.config, block_spam: true },  // Merge, or the rest of the config is lost
+});
+// Returns: InboxTarget
+```
+
+#### `inboxTarget.delete()`
+
+Delete the inbox target.
+
+```typescript
+await inboxTarget.delete();
+// Returns: void
+```
+
+#### `inboxTarget.revalidate()`
+
+Restart the validation process for the target, for example to resend a confirmation email.
+
+```typescript
+const target = await inboxTarget.revalidate();
+// Returns: InboxTarget
 ```
 
 ---
