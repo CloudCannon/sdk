@@ -49,7 +49,7 @@ import {
 	OrgClient,
 } from './src/org.ts';
 import {
-	type BuildConfiguration,
+	type CompilerConfiguration,
 	type ConnectDamOptions,
 	type ConnectInboxOptions,
 	type CopySiteOptions,
@@ -58,6 +58,7 @@ import {
 	type ListSiteBuildsOptions,
 	type ListSiteSyncsOptions,
 	SiteClient,
+	type UpdateBuildConfigOptions,
 	type UpdateSiteOptions,
 	type UploadFileOptions,
 } from './src/site.ts';
@@ -74,11 +75,11 @@ export {
 } from './src/errors.ts';
 
 export type {
-	BuildConfiguration,
 	CloneEditingSessionFileOptions,
 	CloneEditingSessionFilesOptions,
 	CommitEditingSessionOptions,
 	CommitEditingSessionResponse,
+	CompilerConfiguration,
 	ConnectDamOptions,
 	ConnectInboxOptions,
 	ConnectSiteOptions,
@@ -109,6 +110,7 @@ export type {
 	RestoreEditingSessionFilesOptions,
 	SortingOptions,
 	UnlockOptions,
+	UpdateBuildConfigOptions,
 	UpdateInboxOptions,
 	UpdateInboxSettingsOptions,
 	UpdateInboxTargetOptions,
@@ -118,7 +120,14 @@ export type {
 
 export type Provider = operations['OrgsProvidersRepositories']['parameters']['path']['provider'];
 
-export type Site = components['schemas']['SiteBlueprint'];
+export type BuildConfiguration = {
+	compile?: CompilerConfiguration;
+	[name: string]: unknown;
+};
+export type Site = Omit<components['schemas']['SiteBlueprint'], 'build_configuration'> & {
+	build_configuration?: BuildConfiguration;
+};
+
 export type Backup = components['schemas']['SiteArchiveBlueprint'];
 export type Org = components['schemas']['OrgBlueprintFull'];
 export type Build = components['schemas']['BuildBlueprint'];
