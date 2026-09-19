@@ -350,7 +350,6 @@ Create a new inbox.
 const inbox = await org.createInbox({
   name: 'Contact Form',          // Display name for the inbox
   key: 'contact-form',           // Unique key/slug for the inbox
-  monthly_quota: 1000,          // Optional monthly submission quota
   keep_form_hook_days: 30,      // Optional number of days to retain submissions
   captcha_key: 'site-key',      // Optional reCAPTCHA site key
   captcha_secret: 'secret',     // Optional reCAPTCHA secret key
@@ -1141,7 +1140,6 @@ inbox.
 const updated = await inbox.update({
   name: 'Contact Form',            // Display name for the inbox
   key: 'contact-form',             // Unique key/slug used by form submissions
-  monthly_quota: 1000,             // Maximum submissions per month
   keep_form_hook_days: 30,         // Days to retain submissions
   captcha_type: 'google',          // Captcha provider: google, hcaptcha, or turnstile
   captcha_key: 'site-key',
