@@ -3045,10 +3045,6 @@ export interface components {
 			/** Format: date-time */
 			updated_at: string;
 		};
-		UserAccessKeyBlueprintWithUser: components['schemas']['UserAccessKeyBlueprint'] & {
-			user_uuid?: components['schemas']['UUID'];
-			locked_reason?: string | null;
-		};
 		SyncBlueprint: components['schemas']['BaseBlueprint'] & {
 			name: string;
 			successful?: boolean | null;
@@ -3190,8 +3186,16 @@ export interface components {
 			subpath?: string | null;
 			stable_domain: string;
 			ssg?: string | null;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site's files were last exchanged with its source. This moves only when a sync actually transferred something, so it does not change when a sync succeeds but finds nothing new, and it is also set when a Site is created by copying another Site, before it has contacted a storage provider at all. A push that committed locally and then failed to reach the provider moves it too. It is therefore not a measure of health: use last_sync_failed_at and sync_error for that.
+			 */
 			last_synced?: string | null;
+			/**
+			 * Format: date-time
+			 * @description When this Site's most recent sync attempt failed, or null if no failure is currently recorded. CloudCannon clears it once the Site syncs successfully again. Null does not on its own mean the Site is healthy, because a Site halted by sync_error stops attempting to sync at all, so check both fields. Syncing paused by unsaved changes, and a push that raced a change on the remote, are not failures: they are not recorded here and do not clear an existing value.
+			 */
+			last_sync_failed_at?: string | null;
 			/** Format: date-time */
 			last_output?: string | null;
 			/** Format: date-time */
@@ -3213,7 +3217,10 @@ export interface components {
 			editing_locked?: boolean | null;
 			uploads_locked?: boolean;
 			browsing_locked?: boolean;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site last built successfully. Unlike last_synced, its counterpart last_compiled records every build attempt, so a Site has a failed build when the two differ.
+			 */
 			last_compiled_success?: string | null;
 			preview_url?: string | null;
 			documentation_url?: string | null;
@@ -3233,9 +3240,13 @@ export interface components {
 			output_storage_provider?: string | null;
 			domain_name?: string | null;
 			site_icon_state?: string;
+			/** @description An identifier for a syncing error that has halted this Site, or null. While it is set, CloudCannon refuses to pull from the storage provider and keeps pushes local, so the two stop exchanging changes until the provider is reconnected or disconnected. Only errors that need intervention halt a Site: a sync can fail without setting this, which last_sync_failed_at records instead. */
 			sync_error?: string | null;
+			/** @description An identifier for an error that has halted this Site's Build Deploys, or null. While it is set, CloudCannon stops deploying build output to the output storage provider until that provider is updated or disconnected. There is no separate record of a deploy that failed without halting, so unlike syncing there is no last_output_failed_at. */
 			output_error?: string | null;
 			has_open_editing_session?: boolean | null;
+			/** @description Whether syncing is paused for this Site, or null when not computed. CloudCannon pauses syncing when files with unsaved changes also changed on the storage provider, and resumes once those changes are saved or discarded. A Site halted by sync_error reports false here. */
+			sync_blocked?: boolean | null;
 			storage_provider_details?: Record<string, never> | null;
 			output_storage_provider_data?: Record<string, never>;
 			has_site_password?: boolean;
@@ -3248,8 +3259,16 @@ export interface components {
 			subpath?: string | null;
 			stable_domain: string;
 			ssg?: string | null;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site's files were last exchanged with its source. This moves only when a sync actually transferred something, so it does not change when a sync succeeds but finds nothing new, and it is also set when a Site is created by copying another Site, before it has contacted a storage provider at all. A push that committed locally and then failed to reach the provider moves it too. It is therefore not a measure of health: use last_sync_failed_at and sync_error for that.
+			 */
 			last_synced?: string | null;
+			/**
+			 * Format: date-time
+			 * @description When this Site's most recent sync attempt failed, or null if no failure is currently recorded. CloudCannon clears it once the Site syncs successfully again. Null does not on its own mean the Site is healthy, because a Site halted by sync_error stops attempting to sync at all, so check both fields. Syncing paused by unsaved changes, and a push that raced a change on the remote, are not failures: they are not recorded here and do not clear an existing value.
+			 */
+			last_sync_failed_at?: string | null;
 			/** Format: date-time */
 			last_output?: string | null;
 			/** Format: date-time */
@@ -3271,7 +3290,10 @@ export interface components {
 			editing_locked?: boolean | null;
 			uploads_locked?: boolean;
 			browsing_locked?: boolean;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site last built successfully. Unlike last_synced, its counterpart last_compiled records every build attempt, so a Site has a failed build when the two differ.
+			 */
 			last_compiled_success?: string | null;
 			preview_url?: string | null;
 			documentation_url?: string | null;
@@ -3312,7 +3334,6 @@ export interface components {
 			priority_domain_at?: string;
 			prevent_client_password_save?: boolean;
 			recaptcha_key?: string | null;
-			recaptcha_secret?: string | null;
 			saml_data?: string;
 			compiler_order?: string[];
 			base_domain_id?: number | null;
@@ -3607,13 +3628,14 @@ export interface components {
 			organisation_id: number;
 			captcha_type?: string | null;
 			captcha_key?: string | null;
-			captcha_secret?: string | null;
+			captcha_project_id?: string | null;
 			allow_uploads?: boolean;
 			/** Format: date-time */
 			created_at: string;
 			/** Format: date-time */
 			updated_at: string;
 			organisation_uuid?: components['schemas']['UUID'];
+			has_captcha_secret?: boolean;
 			inbox_targets?: (components['schemas']['InboxTargetBlueprint'] | (string | null))[];
 		};
 		GroupPendingMemberBlueprint: components['schemas']['BaseBlueprint'] & {
@@ -3864,9 +3886,6 @@ export interface components {
 		};
 		ApiKeyBlueprintUnsnippedKey: components['schemas']['ApiKeyBlueprint'] & {
 			key?: string;
-		};
-		ApiKeyBlueprintAdmin: components['schemas']['ApiKeyBlueprint'] & {
-			locked_reason?: string | null;
 		};
 	};
 	responses: {
@@ -5852,10 +5871,12 @@ export interface operations {
 					keep_form_hook_days?: number | null;
 					/** @description The captcha provider's site key. */
 					captcha_key?: string | null;
-					/** @description The captcha provider's secret key. */
+					/** @description The captcha provider's secret key, or the Google Cloud API key for google_enterprise. */
 					captcha_secret?: string | null;
-					/** @description The captcha provider: google (reCAPTCHA), hcaptcha, or turnstile. */
+					/** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
 					captcha_type?: string | null;
+					/** @description The Google Cloud project ID that holds the reCAPTCHA key, for google_enterprise. */
+					captcha_project_id?: string | null;
 					/** @description Whether forms on this inbox accept file uploads. */
 					allow_uploads?: boolean;
 				};
@@ -6189,6 +6210,7 @@ export interface operations {
 				has_build_failures?: string | number | boolean;
 				has_custom_ssl_expiring?: string | number | boolean;
 				has_default_inboxes?: string | number | boolean;
+				has_disconnected_providers?: string | number | boolean;
 				has_dns_errors?: string | number | boolean;
 				has_domain_issues?: string | number | boolean;
 				has_expired_certs?: string | number | boolean;
@@ -6200,6 +6222,7 @@ export interface operations {
 				has_partner_organisation_id?: number;
 				has_site_domain_failures?: string | number | boolean;
 				has_ssl_auto_failures?: string | number | boolean;
+				has_sync_blocked?: string | number | boolean;
 				has_sync_errors?: string | number | boolean;
 				hosting_limit_exceeded?: boolean;
 				hubspot_migrated?: boolean;
@@ -7165,10 +7188,12 @@ export interface operations {
 					keep_form_hook_days?: number | null;
 					/** @description The captcha provider's site key. */
 					captcha_key?: string | null;
-					/** @description The captcha provider's secret key. */
+					/** @description The captcha provider's secret key, or the Google Cloud API key for google_enterprise. */
 					captcha_secret?: string | null;
-					/** @description The captcha provider: google (reCAPTCHA), hcaptcha, or turnstile. */
+					/** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
 					captcha_type?: string | null;
+					/** @description The Google Cloud project ID that holds the reCAPTCHA key, for google_enterprise. */
+					captcha_project_id?: string | null;
 					/** @description Whether forms on this inbox accept file uploads. */
 					allow_uploads?: boolean;
 				};
@@ -7751,6 +7776,7 @@ export interface operations {
 				ssl_certificate_id?: number;
 				storage_provider?: string;
 				storage_provider_details_full_name?: string | number | boolean;
+				sync_blocked?: string | number | boolean;
 				sync_error?: string;
 				updated_at_gt?: string;
 				updated_at_gte?: string;
@@ -8374,6 +8400,7 @@ export interface operations {
 				ssl_certificate_id?: number;
 				storage_provider?: string;
 				storage_provider_details_full_name?: string | number | boolean;
+				sync_blocked?: string | number | boolean;
 				sync_error?: string;
 				updated_at_gt?: string;
 				updated_at_gte?: string;
