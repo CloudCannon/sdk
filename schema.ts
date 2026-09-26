@@ -14,7 +14,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Delete site bearer token */
+		/** @description Delete a Bearer Token */
 		delete: operations['AuthenticationBearerTokensDestroy'];
 		options?: never;
 		head?: never;
@@ -31,7 +31,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Delete site authentication user */
+		/** @description Remove an allowed user from a Site's Account Authentication */
 		delete: operations['AuthenticationUsersDestroy'];
 		options?: never;
 		head?: never;
@@ -45,12 +45,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get base domain */
+		/** @description Get a Base Domain */
 		get: operations['BaseDomainsIndexShow'];
-		/** @description Update base domain */
+		/** @description Update a Base Domain's minimum TLS version */
 		put: operations['BaseDomainsIndexUpdate'];
 		post?: never;
-		/** @description Delete base domain */
+		/** @description Delete a Base Domain */
 		delete: operations['BaseDomainsIndexDestroy'];
 		options?: never;
 		head?: never;
@@ -64,12 +64,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Status of base domain dns */
+		/** @description Get a Base Domain's DNS status */
 		get: operations['BaseDomainsDnsIndexStatus'];
 		put?: never;
-		/** @description Create a base domain dns */
+		/** @description Enable DNS management for a Base Domain */
 		post: operations['BaseDomainsDnsIndexCreate'];
-		/** @description Delete base domain dns */
+		/** @description Disable DNS management for a Base Domain */
 		delete: operations['BaseDomainsDnsIndexDestroy'];
 		options?: never;
 		head?: never;
@@ -83,10 +83,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List of base domain dns records */
+		/** @description List a Base Domain's DNS records */
 		get: operations['BaseDomainsDnsRecordsList'];
 		put?: never;
-		/** @description Create a base domain dns record */
+		/** @description Create a Base Domain's DNS record */
 		post: operations['BaseDomainsDnsRecordsCreate'];
 		delete?: never;
 		options?: never;
@@ -102,10 +102,10 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update a base domain dns record */
+		/** @description Update a Base Domain's DNS record */
 		put: operations['BaseDomainsDnsRecordsUpdate'];
 		post?: never;
-		/** @description Delete a base domain dns record */
+		/** @description Delete a Base Domain's DNS record */
 		delete: operations['BaseDomainsDnsRecordsDestroy'];
 		options?: never;
 		head?: never;
@@ -121,7 +121,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Retry setup for base domain dns */
+		/** @description Retry DNS setup for a Base Domain */
 		post: operations['BaseDomainsDnsIndexRetry'];
 		delete?: never;
 		options?: never;
@@ -136,7 +136,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Validate base domain dns */
+		/** @description Validate a Base Domain's DNS */
 		get: operations['BaseDomainsDnsIndexValidate'];
 		put?: never;
 		post?: never;
@@ -154,7 +154,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Migrate base domain to Cloudflare */
+		/** @description Migrate a Base Domain to Cloudflare */
 		put: operations['BaseDomainsIndexMigrate'];
 		post?: never;
 		delete?: never;
@@ -170,7 +170,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get subdomains from base domain */
+		/** @description List a Base Domain's Subdomains */
 		get: operations['BaseDomainsSubdomainsIndex'];
 		put?: never;
 		post?: never;
@@ -187,7 +187,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to build output */
+		/** @description Get a Build's output log */
 		get: operations['BuildsOutput'];
 		put?: never;
 		post?: never;
@@ -204,7 +204,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to a file in the build output */
+		/** @description Get a file from a Build's output */
 		get: operations['BuildsFiles'];
 		put?: never;
 		post?: never;
@@ -221,7 +221,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to build URLs */
+		/** @description Get a Build's output URLs */
 		get: operations['BuildsUrls'];
 		put?: never;
 		post?: never;
@@ -238,12 +238,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get DAM Details */
+		/** @description Get a DAM's details */
 		get: operations['DamsShow'];
-		/** @description Update DAM details */
+		/** @description Update a DAM's details */
 		put: operations['DamsUpdate'];
 		post?: never;
-		/** @description Delete DAM */
+		/** @description Delete a DAM */
 		delete: operations['DamsDestroy'];
 		options?: never;
 		head?: never;
@@ -257,11 +257,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the details of an editing session file */
+		/** @description Get a file's details from an Editing Session */
 		get: operations['EditingSessionFilesIndexIndex'];
 		put?: never;
 		post?: never;
-		/** @description discard an editing session file for editing */
+		/** @description Discard a file from an Editing Session */
 		delete: operations['EditingSessionFilesIndexDiscard'];
 		options?: never;
 		head?: never;
@@ -276,7 +276,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Claim the edit lock on an editing session file */
+		/** @description Claim the editing lock on a file in an Editing Session */
 		put: operations['EditingSessionFilesIndexClaimLock'];
 		post?: never;
 		delete?: never;
@@ -292,10 +292,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List the contributions for an editing session file */
+		/** @description List all contributions for a file in an Editing Session */
 		get: operations['EditingSessionFilesContributionsIndex'];
 		put?: never;
-		/** @description Create a new contribution or upload a new file to an existing contribution */
+		/** @description Create a contribution for a file in an Editing Session, or update the latest contribution */
 		post: operations['EditingSessionFilesContributionsCreate'];
 		delete?: never;
 		options?: never;
@@ -311,7 +311,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update the edit type of a editing session file */
+		/** @description Update a file's edit type in an Editing Session */
 		put: operations['EditingSessionFilesIndexEditType'];
 		post?: never;
 		delete?: never;
@@ -328,7 +328,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update the metadata of an editing session file */
+		/** @description Update a file's metadata in an Editing Session */
 		put: operations['EditingSessionFilesIndexMetadata'];
 		post?: never;
 		delete?: never;
@@ -345,7 +345,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update the path of a editing session file */
+		/** @description Update a file's path in an Editing Session */
 		put: operations['EditingSessionFilesIndexPath'];
 		post?: never;
 		delete?: never;
@@ -361,7 +361,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the raw contents of an editing session file */
+		/** @description Get a file's raw contents from an Editing Session */
 		get: operations['EditingSessionFilesIndexRaw'];
 		put?: never;
 		post?: never;
@@ -378,7 +378,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get a resized preview of an editing session file */
+		/** @description View a resized preview of a file from an Editing Session */
 		get: operations['EditingSessionFilesIndexResized'];
 		put?: never;
 		post?: never;
@@ -396,7 +396,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Mark an editing session file with conflicts as resolved */
+		/** @description Mark a file's conflicts as resolved in an Editing Session */
 		put: operations['EditingSessionFilesIndexResolve'];
 		post?: never;
 		delete?: never;
@@ -413,7 +413,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Unlock an editing session file for editing */
+		/** @description Release the editing lock on a file in an Editing Session */
 		put: operations['EditingSessionFilesIndexUnlock'];
 		post?: never;
 		delete?: never;
@@ -429,7 +429,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get editing session details */
+		/** @description Get an Editing Session's details */
 		get: operations['EditingSessionsIndexIndex'];
 		put?: never;
 		post?: never;
@@ -449,7 +449,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Abort a merge on an editing session */
+		/** @description Abort a merge on an Editing Session */
 		delete: operations['EditingSessionsIndexAbort'];
 		options?: never;
 		head?: never;
@@ -465,7 +465,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Perform a clone in an editing session */
+		/** @description Clone a file in an Editing Session */
 		post: operations['EditingSessionsIndexClonePath'];
 		delete?: never;
 		options?: never;
@@ -482,7 +482,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Save an editing session to your source provider */
+		/** @description Commit an Editing Session to its Git Provider */
 		post: operations['EditingSessionsIndexCommit'];
 		delete?: never;
 		options?: never;
@@ -499,7 +499,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Perform a delete in an editing session */
+		/** @description Delete a file in an Editing Session */
 		post: operations['EditingSessionsIndexDeletePath'];
 		delete?: never;
 		options?: never;
@@ -514,10 +514,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the files for an editing session */
+		/** @description List an Editing Session's files */
 		get: operations['EditingSessionsFilesIndex'];
 		put?: never;
-		/** @description Create a new file in an editing session */
+		/** @description Create a file in an Editing Session */
 		post: operations['EditingSessionsFilesCreate'];
 		delete?: never;
 		options?: never;
@@ -534,7 +534,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Perform a move in an editing session */
+		/** @description Move a file in an Editing Session */
 		post: operations['EditingSessionsIndexMovePath'];
 		delete?: never;
 		options?: never;
@@ -551,7 +551,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Restore a deleted editing session file */
+		/** @description Restore a deleted file in an Editing Session */
 		post: operations['EditingSessionsIndexRestorePath'];
 		delete?: never;
 		options?: never;
@@ -568,7 +568,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Upload a file to an editing session */
+		/** @description Upload a file to an Editing Session */
 		post: operations['EditingSessionsIndexUploadFile'];
 		delete?: never;
 		options?: never;
@@ -584,10 +584,10 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update form hook */
+		/** @description Update a Form Hook */
 		put: operations['FormHooksUpdate'];
 		post?: never;
-		/** @description Clear form hook */
+		/** @description Clear a Form Hook */
 		delete: operations['FormHooksClear'];
 		options?: never;
 		head?: never;
@@ -603,7 +603,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Resend form hook */
+		/** @description Resend a Form Hook */
 		post: operations['FormHooksQueueSend'];
 		delete?: never;
 		options?: never;
@@ -618,7 +618,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List form hook sends */
+		/** @description List a Form Hook's sends */
 		get: operations['FormHooksSends'];
 		put?: never;
 		post?: never;
@@ -635,12 +635,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get group details */
+		/** @description Get a Permission Group's details */
 		get: operations['GroupsIndexShow'];
-		/** @description Update a group's name and custom permissions */
+		/** @description Update a Permission Group's name and permissions */
 		put: operations['GroupsIndexUpdate'];
 		post?: never;
-		/** @description Delete a group */
+		/** @description Delete a Permission Group */
 		delete: operations['GroupsIndexDestroy'];
 		options?: never;
 		head?: never;
@@ -657,7 +657,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Leave a group as the current authenticated user */
+		/** @description Leave a Permission Group */
 		delete: operations['GroupsIndexLeave'];
 		options?: never;
 		head?: never;
@@ -671,12 +671,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List the members of a group */
+		/** @description List the Members of a Permission Group */
 		get: operations['GroupsMembersIndex'];
 		put?: never;
-		/** @description Invite a user to a group by email; existing users are added as members, others as pending members */
+		/** @description Add a Member to a Permission Group */
 		post: operations['GroupsMembersInvite'];
-		/** @description Remove a member from a group by email */
+		/** @description Remove a Member from a Permission Group */
 		delete: operations['GroupsMembersDestroy'];
 		options?: never;
 		head?: never;
@@ -690,11 +690,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List the pending (invited but not yet accepted) members of a group */
+		/** @description List the pending Members of a Permission Group */
 		get: operations['GroupsPendingMembersIndex'];
 		put?: never;
 		post?: never;
-		/** @description Cancel a pending group invitation by email */
+		/** @description Cancel a pending Permission Group invitation */
 		delete: operations['GroupsPendingMembersDestroy'];
 		options?: never;
 		head?: never;
@@ -710,7 +710,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Resend a pending group invitation email by email address */
+		/** @description Resend a pending Permission Group invitation email */
 		post: operations['GroupsPendingMembersResendInvitation'];
 		delete?: never;
 		options?: never;
@@ -725,12 +725,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Inbox Target Details */
+		/** @description Get an Inbox Target's details */
 		get: operations['InboxTargetsShow'];
-		/** @description Update inbox target config */
+		/** @description Update an Inbox Target's configuration */
 		put: operations['InboxTargetsUpdate'];
 		post?: never;
-		/** @description Delete Inbox Target */
+		/** @description Delete an Inbox Target */
 		delete: operations['InboxTargetsDestroy'];
 		options?: never;
 		head?: never;
@@ -746,7 +746,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Restart validation process for target */
+		/** @description Restart validation for an Inbox Target */
 		post: operations['InboxTargetsRevalidate'];
 		delete?: never;
 		options?: never;
@@ -761,12 +761,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Inbox Details */
+		/** @description Get an Inbox's details */
 		get: operations['InboxesIndexShow'];
-		/** @description Update Inbox details */
+		/** @description Update an Inbox's details */
 		put: operations['InboxesIndexUpdate'];
 		post?: never;
-		/** @description Delete Inbox */
+		/** @description Delete an Inbox */
 		delete: operations['InboxesIndexDestroy'];
 		options?: never;
 		head?: never;
@@ -780,7 +780,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Export inbox submissions as CSV */
+		/** @description Export an Inbox's submissions as CSV */
 		get: operations['InboxesIndexExport'];
 		put?: never;
 		post?: never;
@@ -797,7 +797,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List form hooks */
+		/** @description List an Inbox's Form Hooks */
 		get: operations['InboxesFormHooksIndex'];
 		put?: never;
 		post?: never;
@@ -814,10 +814,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List inbox targets */
+		/** @description List an Inbox's Targets */
 		get: operations['InboxesInboxTargetsIndex'];
 		put?: never;
-		/** @description Create inbox target */
+		/** @description Create an Inbox Target */
 		post: operations['InboxesInboxTargetsCreate'];
 		delete?: never;
 		options?: never;
@@ -832,7 +832,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description View uploaded file */
+		/** @description View a file uploaded to an Inbox */
 		get: operations['InboxesIndexUpload'];
 		put?: never;
 		post?: never;
@@ -849,7 +849,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization list */
+		/** @description List my Organizations */
 		get: operations['OrgsIndexIndex'];
 		put?: never;
 		post?: never;
@@ -866,9 +866,9 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization details */
+		/** @description Get an Organization */
 		get: operations['OrgsIndexShow'];
-		/** @description Update organisation details */
+		/** @description Update an Organization */
 		put: operations['OrgsIndexUpdate'];
 		post?: never;
 		delete?: never;
@@ -884,7 +884,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Download an organization access review as CSV */
+		/** @description Download an Organization's access review as CSV */
 		get: operations['OrgsIndexAccessReview'];
 		put?: never;
 		post?: never;
@@ -901,7 +901,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List activity */
+		/** @description List an Organization's Activity */
 		get: operations['OrgsActivityIndex'];
 		put?: never;
 		post?: never;
@@ -918,7 +918,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization build duration analytics */
+		/** @description Get an Organization's Build duration analytics */
 		get: operations['OrgsAnalyticsBuildDuration'];
 		put?: never;
 		post?: never;
@@ -935,7 +935,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get total organization build duration */
+		/** @description Get an Organization's total Build duration */
 		get: operations['OrgsAnalyticsBuildDurationTotal'];
 		put?: never;
 		post?: never;
@@ -952,7 +952,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization bandwidth usage analytics */
+		/** @description Get an Organization's Hosting Bandwidth */
 		get: operations['OrgsAnalyticsHostingBandwidth'];
 		put?: never;
 		post?: never;
@@ -969,7 +969,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization bandwidth usage by site */
+		/** @description Get an Organization's Hosting Bandwidth per Site */
 		get: operations['OrgsAnalyticsHostingBandwidthBySite'];
 		put?: never;
 		post?: never;
@@ -986,7 +986,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization bandwidth usage by URL */
+		/** @description Get an Organization's Hosting Bandwidth per URL */
 		get: operations['OrgsAnalyticsHostingBandwidthByUrl'];
 		put?: never;
 		post?: never;
@@ -1003,7 +1003,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get total organization bandwidth usage */
+		/** @description Get an Organization's total Hosting Bandwidth */
 		get: operations['OrgsAnalyticsHostingBandwidthTotal'];
 		put?: never;
 		post?: never;
@@ -1020,10 +1020,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List an organization's API keys */
+		/** @description List an Organization's API Keys */
 		get: operations['OrgsApiKeysIndex'];
 		put?: never;
-		/** @description Create an organization API key with scoped permissions */
+		/** @description Create an Organization's API Key with scoped permissions */
 		post: operations['OrgsApiKeysCreate'];
 		delete?: never;
 		options?: never;
@@ -1038,11 +1038,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get an organization API key */
+		/** @description Get an Organization's API Key */
 		get: operations['OrgsApiKeysShow'];
 		put?: never;
 		post?: never;
-		/** @description Delete an organization API key */
+		/** @description Delete an Organization's API Key */
 		delete: operations['OrgsApiKeysDestroy'];
 		options?: never;
 		head?: never;
@@ -1056,10 +1056,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization base domains */
+		/** @description List an Organization's Base Domains */
 		get: operations['OrgsBaseDomainsIndex'];
 		put?: never;
-		/** @description Create base domain */
+		/** @description Add a Base Domain */
 		post: operations['OrgsBaseDomainsCreate'];
 		delete?: never;
 		options?: never;
@@ -1075,7 +1075,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update organisation billing details */
+		/** @description Update an Organization's billing details */
 		put: operations['OrgsIndexUpdateBilling'];
 		post?: never;
 		delete?: never;
@@ -1091,10 +1091,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization DAMs */
+		/** @description List an Organization's DAMs */
 		get: operations['OrgsDamsIndex'];
 		put?: never;
-		/** @description Create DAM */
+		/** @description Add a DAM */
 		post: operations['OrgsDamsCreate'];
 		delete?: never;
 		options?: never;
@@ -1109,10 +1109,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List an organization's groups */
+		/** @description List an Organization's Permission Groups */
 		get: operations['OrgsGroupsIndex'];
 		put?: never;
-		/** @description Create a custom group with scoped permissions */
+		/** @description Create a custom Permission Group with scoped permissions */
 		post: operations['OrgsGroupsCreate'];
 		delete?: never;
 		options?: never;
@@ -1127,10 +1127,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization inboxes */
+		/** @description List an Organization's Inboxes */
 		get: operations['OrgsInboxesIndex'];
 		put?: never;
-		/** @description Create inbox */
+		/** @description Create an Inbox */
 		post: operations['OrgsInboxesCreate'];
 		delete?: never;
 		options?: never;
@@ -1145,7 +1145,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List organization members */
+		/** @description List an Organization's Members */
 		get: operations['OrgsMembersIndex'];
 		put?: never;
 		post?: never;
@@ -1162,11 +1162,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get an organization member or pending member by email */
+		/** @description Get an Organization's Member or pending Member */
 		get: operations['OrgsMembersShow'];
 		put?: never;
 		post?: never;
-		/** @description Remove an organization member or cancel a pending invitation by email */
+		/** @description Remove an Organization's Member or cancel a pending invitation */
 		delete: operations['OrgsMembersDestroy'];
 		options?: never;
 		head?: never;
@@ -1180,7 +1180,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List an organization's pending members grouped by email */
+		/** @description List an Organization's pending Members */
 		get: operations['OrgsPendingMembersIndex'];
 		put?: never;
 		post?: never;
@@ -1197,7 +1197,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the current user's permission groups for an organization */
+		/** @description List my Permission Groups for an Organization */
 		get: operations['OrgsIndexPermissions'];
 		put?: never;
 		post?: never;
@@ -1214,10 +1214,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization projects */
+		/** @description List an Organization's Projects */
 		get: operations['OrgsProjectsIndex'];
 		put?: never;
-		/** @description Create project */
+		/** @description Create a Project */
 		post: operations['OrgsProjectsCreate'];
 		delete?: never;
 		options?: never;
@@ -1232,7 +1232,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List app installations */
+		/** @description List a Git Provider's app installations */
 		get: operations['OrgsProvidersInstallations'];
 		put?: never;
 		post?: never;
@@ -1249,7 +1249,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List repositories */
+		/** @description List a Git Provider's repositories */
 		get: operations['OrgsProvidersRepositories'];
 		put?: never;
 		post?: never;
@@ -1266,10 +1266,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List branches from repository */
+		/** @description List a repository's branches */
 		get: operations['OrgsProvidersBranches'];
 		put?: never;
-		/** @description Clone a branch from the selected branch */
+		/** @description Create a branch from an existing branch */
 		post: operations['OrgsProvidersCreateBranch'];
 		delete?: never;
 		options?: never;
@@ -1284,7 +1284,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization site mountings */
+		/** @description List an Organization's Site Mountings */
 		get: operations['OrgsSiteMountingsIndex'];
 		put?: never;
 		post?: never;
@@ -1301,10 +1301,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization sites */
+		/** @description List an Organization's Sites */
 		get: operations['OrgsSitesIndex'];
 		put?: never;
-		/** @description Create site */
+		/** @description Create a Site */
 		post: operations['OrgsSitesCreate'];
 		delete?: never;
 		options?: never;
@@ -1321,7 +1321,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Create site from a remote repo without keeping the connection with git */
+		/** @description Create a Site by copying a repository, without connecting Git */
 		post: operations['OrgsSitesConnect'];
 		delete?: never;
 		options?: never;
@@ -1336,10 +1336,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get organization Ssl Certificates */
+		/** @description List an Organization's SSL Certificates */
 		get: operations['OrgsSslCertificatesIndex'];
 		put?: never;
-		/** @description Create Ssl Certificate */
+		/** @description Create an SSL Certificate */
 		post: operations['OrgsSslCertificatesCreate'];
 		delete?: never;
 		options?: never;
@@ -1354,7 +1354,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to whitelabel logo */
+		/** @description View an Organization's Badge */
 		get: operations['OrgsWhitelabelShow'];
 		put?: never;
 		post?: never;
@@ -1371,7 +1371,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to brand logo */
+		/** @description View an Organization's Sites Browser Logo */
 		get: operations['OrgsWhitelabelShowBrand'];
 		put?: never;
 		post?: never;
@@ -1388,7 +1388,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to output */
+		/** @description Get a Build Deploy's log */
 		get: operations['OutputsShow'];
 		put?: never;
 		post?: never;
@@ -1405,12 +1405,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get project details */
+		/** @description Get a Project's details */
 		get: operations['ProjectsShow'];
-		/** @description Update project details */
+		/** @description Update a Project's details */
 		put: operations['ProjectsUpdate'];
 		post?: never;
-		/** @description Delete project */
+		/** @description Delete a Project */
 		delete: operations['ProjectsDestroy'];
 		options?: never;
 		head?: never;
@@ -1424,7 +1424,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List branches for the project repository */
+		/** @description List a Project's branches */
 		get: operations['ProjectsGitBranches'];
 		put?: never;
 		post?: never;
@@ -1442,7 +1442,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update project Git details */
+		/** @description Update a Project's Git details */
 		put: operations['ProjectsUpdateGit'];
 		post?: never;
 		delete?: never;
@@ -1458,7 +1458,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List open pull requests for the project repository */
+		/** @description List a Project's open Pull Requests */
 		get: operations['ProjectsGitPullRequests'];
 		put?: never;
 		post?: never;
@@ -1477,7 +1477,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Refresh deploy-preview PR comments for every site on this project */
+		/** @description Refresh a Project's Deploy Preview comments on Pull Requests */
 		post: operations['ProjectsRefreshPrComments'];
 		delete?: never;
 		options?: never;
@@ -1492,7 +1492,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get sites from projects */
+		/** @description List a Project's Sites */
 		get: operations['ProjectsSites'];
 		put?: never;
 		post?: never;
@@ -1509,11 +1509,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Scheduled Build Details */
+		/** @description Get a Scheduled Build's details */
 		get: operations['ScheduledBuildsShow'];
 		put?: never;
 		post?: never;
-		/** @description Delete Scheduled Build */
+		/** @description Delete a Scheduled Build */
 		delete: operations['ScheduledBuildsDestroy'];
 		options?: never;
 		head?: never;
@@ -1527,7 +1527,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Download site archive */
+		/** @description Download a Site Backup */
 		get: operations['SiteArchivesDownload'];
 		put?: never;
 		post?: never;
@@ -1544,12 +1544,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Site DAM details */
+		/** @description Get a Site DAM's details */
 		get: operations['SiteDamsShow'];
-		/** @description Update site dam details */
+		/** @description Update a Site DAM's details */
 		put: operations['SiteDamsUpdate'];
 		post?: never;
-		/** @description Delete Site DAM */
+		/** @description Disconnect a DAM from a Site */
 		delete: operations['SiteDamsDestroy'];
 		options?: never;
 		head?: never;
@@ -1563,12 +1563,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Site Inbox details */
+		/** @description Get a Site Inbox's details */
 		get: operations['SiteInboxesShow'];
-		/** @description Update site inbox details */
+		/** @description Update a Site Inbox's details */
 		put: operations['SiteInboxesUpdate'];
 		post?: never;
-		/** @description Delete Site Inbox */
+		/** @description Disconnect an Inbox from a Site */
 		delete: operations['SiteInboxesDestroy'];
 		options?: never;
 		head?: never;
@@ -1583,10 +1583,10 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site mounting details */
+		/** @description Update a Site Mounting's details */
 		put: operations['SiteMountingsUpdate'];
 		post?: never;
-		/** @description Delete Site Mounting */
+		/** @description Delete a Site Mounting */
 		delete: operations['SiteMountingsDestroy'];
 		options?: never;
 		head?: never;
@@ -1600,12 +1600,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get site details */
+		/** @description Get a Site's details */
 		get: operations['SitesIndexShow'];
-		/** @description Update site details */
+		/** @description Update a Site's details */
 		put: operations['SitesIndexUpdate'];
 		post?: never;
-		/** @description Delete site */
+		/** @description Delete a Site */
 		delete: operations['SitesIndexDestroy'];
 		options?: never;
 		head?: never;
@@ -1619,7 +1619,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List activity */
+		/** @description List a Site's Activity */
 		get: operations['SitesActivityIndex'];
 		put?: never;
 		post?: never;
@@ -1636,7 +1636,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get build duration analytics */
+		/** @description Get a Site's Build duration analytics */
 		get: operations['SitesAnalyticsBuildDuration'];
 		put?: never;
 		post?: never;
@@ -1653,7 +1653,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get bandwidth usage analytics */
+		/** @description Get a Site's Hosting Bandwidth */
 		get: operations['SitesAnalyticsHostingBandwidth'];
 		put?: never;
 		post?: never;
@@ -1670,7 +1670,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get bandwidth usage by URL for this site */
+		/** @description Get a Site's Hosting Bandwidth per URL */
 		get: operations['SitesAnalyticsHostingBandwidthByUrl'];
 		put?: never;
 		post?: never;
@@ -1687,7 +1687,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get bandwidth usage for a specific URL */
+		/** @description Get a Site's Hosting Bandwidth for a single URL */
 		get: operations['SitesAnalyticsHostingBandwidthForUrl'];
 		put?: never;
 		post?: never;
@@ -1704,10 +1704,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List backups */
+		/** @description List a Site's Backups */
 		get: operations['SitesArchivesIndex'];
 		put?: never;
-		/** @description Create backup */
+		/** @description Create a Backup */
 		post: operations['SitesArchivesCreate'];
 		delete?: never;
 		options?: never;
@@ -1723,7 +1723,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site authentication method */
+		/** @description Update a Site's authentication method */
 		put: operations['SitesIndexUpdateAuthentication'];
 		post?: never;
 		delete?: never;
@@ -1739,10 +1739,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site bearer tokens */
+		/** @description List a Site's Bearer Tokens */
 		get: operations['SitesAuthenticationBearerTokensIndex'];
 		put?: never;
-		/** @description Create site bearer token */
+		/** @description Create a Bearer Token */
 		post: operations['SitesAuthenticationBearerTokensCreate'];
 		delete?: never;
 		options?: never;
@@ -1758,7 +1758,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update client sharing password */
+		/** @description Update a Site's Client Sharing password */
 		put: operations['SitesAuthenticationIndexUpdateClientPassword'];
 		post?: never;
 		delete?: never;
@@ -1775,7 +1775,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update SAML data */
+		/** @description Update a Site's SAML configuration */
 		put: operations['SitesAuthenticationIndexUpdateSaml'];
 		post?: never;
 		delete?: never;
@@ -1792,7 +1792,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update authentication password */
+		/** @description Update a Site's authentication password */
 		put: operations['SitesAuthenticationIndexUpdateStablePassword'];
 		post?: never;
 		delete?: never;
@@ -1808,10 +1808,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site authentication users */
+		/** @description List a Site's Account Authentication users */
 		get: operations['SitesAuthenticationUsersIndex'];
 		put?: never;
-		/** @description Create site authentication user */
+		/** @description Add an allowed user to a Site's Account Authentication */
 		post: operations['SitesAuthenticationUsersCreate'];
 		delete?: never;
 		options?: never;
@@ -1827,7 +1827,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site build configuration */
+		/** @description Update a Site's build configuration */
 		put: operations['SitesIndexUpdateBuild'];
 		post?: never;
 		delete?: never;
@@ -1843,12 +1843,12 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site builds */
+		/** @description List a Site's Builds */
 		get: operations['SitesBuildsIndex'];
 		put?: never;
-		/** @description Create a new build */
+		/** @description Start a Build for a Site */
 		post: operations['SitesBuildsCreate'];
-		/** @description Cancel the current build */
+		/** @description Cancel a Site's current Build */
 		delete: operations['SitesBuildsCancel'];
 		options?: never;
 		head?: never;
@@ -1863,7 +1863,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site client sharing configuration */
+		/** @description Update a Site's Client Sharing configuration */
 		put: operations['SitesIndexUpdateClientSharing'];
 		post?: never;
 		delete?: never;
@@ -1881,7 +1881,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Copy site */
+		/** @description Copy a Site */
 		post: operations['SitesIndexCopy'];
 		delete?: never;
 		options?: never;
@@ -1897,7 +1897,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site dam configuration */
+		/** @description Update a Site's DAM configuration */
 		put: operations['SitesIndexUpdateDam'];
 		post?: never;
 		delete?: never;
@@ -1913,10 +1913,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get site dams */
+		/** @description List a Site's DAMs */
 		get: operations['SitesDamsIndex'];
 		put?: never;
-		/** @description Create site dam */
+		/** @description Connect a DAM to a Site */
 		post: operations['SitesDamsCreate'];
 		delete?: never;
 		options?: never;
@@ -1932,7 +1932,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update domain name */
+		/** @description Update a Site's Custom Domain */
 		put: operations['SitesDomainUpdate'];
 		post?: never;
 		delete?: never;
@@ -1950,7 +1950,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Prioritise this site as default for the domain */
+		/** @description Set a Site as the fallback redirect for its Base Domain */
 		post: operations['SitesDomainPrioritise'];
 		delete?: never;
 		options?: never;
@@ -1965,10 +1965,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get site editing sessions */
+		/** @description List a Site's Editing Sessions */
 		get: operations['SitesEditingSessionsIndex'];
 		put?: never;
-		/** @description Create a new editing session on a site */
+		/** @description Create an Editing Session for a Site */
 		post: operations['SitesEditingSessionsCreate'];
 		delete?: never;
 		options?: never;
@@ -1983,7 +1983,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get latest open editing session for a site */
+		/** @description Get a Site's latest open Editing Session */
 		get: operations['SitesEditingSessionsLatest'];
 		put?: never;
 		post?: never;
@@ -2000,7 +2000,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List files from site */
+		/** @description List a Site's files */
 		get: operations['SitesFilesIndex'];
 		put?: never;
 		post?: never;
@@ -2019,7 +2019,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Complete ZIP Upload */
+		/** @description Complete a ZIP file upload */
 		post: operations['SitesFilesCompleteZipUpload'];
 		delete?: never;
 		options?: never;
@@ -2034,7 +2034,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to file */
+		/** @description Get a file from a Site */
 		get: operations['SitesFilesShow'];
 		put?: never;
 		post?: never;
@@ -2051,7 +2051,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description returns file metadata */
+		/** @description Get a Site file's metadata */
 		get: operations['SitesFilesMetadata'];
 		put?: never;
 		post?: never;
@@ -2068,7 +2068,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to resized file */
+		/** @description View a resized image from a Site */
 		get: operations['SitesFilesResized'];
 		put?: never;
 		post?: never;
@@ -2085,7 +2085,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description returns file sorting */
+		/** @description Get a Site file's sorting */
 		get: operations['SitesFilesSorting'];
 		put?: never;
 		post?: never;
@@ -2102,7 +2102,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List form hooks */
+		/** @description List a Site's Form Hooks */
 		get: operations['SitesFormHooksIndex'];
 		put?: never;
 		post?: never;
@@ -2120,7 +2120,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site hosting configuration */
+		/** @description Update a Site's hosting configuration */
 		put: operations['SitesIndexUpdateHosting'];
 		post?: never;
 		delete?: never;
@@ -2136,10 +2136,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get site inboxes */
+		/** @description List a Site's Inboxes */
 		get: operations['SitesInboxesIndex'];
 		put?: never;
-		/** @description Create site inbox */
+		/** @description Connect an Inbox to a Site */
 		post: operations['SitesInboxesCreate'];
 		delete?: never;
 		options?: never;
@@ -2154,9 +2154,9 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the site's main source DAM */
+		/** @description Get the DAM a Site uses for relative asset paths */
 		get: operations['SitesMainSourceDamIndex'];
-		/** @description Set the site's main source DAM */
+		/** @description Set which DAM a Site uses for relative asset paths */
 		put: operations['SitesMainSourceDamUpdate'];
 		post?: never;
 		delete?: never;
@@ -2172,7 +2172,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site members */
+		/** @description List Site Sharing Members */
 		get: operations['SitesMembersIndex'];
 		put?: never;
 		post?: never;
@@ -2191,9 +2191,9 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Move a site member to a different site group */
+		/** @description Move a Site Sharing Member to a different Permission Group */
 		post: operations['SitesMembersSetSiteGroup'];
-		/** @description Remove a site member or cancel a pending invitation */
+		/** @description Remove a Site Sharing Member or cancel a pending invitation */
 		delete: operations['SitesMembersDestroy'];
 		options?: never;
 		head?: never;
@@ -2208,11 +2208,11 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update output storage provider */
+		/** @description Update a Site's Build Deploy */
 		put: operations['SitesOutputProvidersIndexUpdate'];
-		/** @description Add output storage provider */
+		/** @description Add a Build Deploy to a Site */
 		post: operations['SitesOutputProvidersIndexAdd'];
-		/** @description Remove output storage provider */
+		/** @description Remove a Site's Build Deploy */
 		delete: operations['SitesOutputProvidersIndexRemove'];
 		options?: never;
 		head?: never;
@@ -2228,7 +2228,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Sync to output storage provider */
+		/** @description Trigger a Site's Build Deploy */
 		post: operations['SitesOutputProvidersIndexSync'];
 		delete?: never;
 		options?: never;
@@ -2243,7 +2243,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site outputs */
+		/** @description List a Site's Build Deploys */
 		get: operations['SitesOutputsIndex'];
 		put?: never;
 		post?: never;
@@ -2260,7 +2260,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List pending site members */
+		/** @description List pending Site Sharing Members */
 		get: operations['SitesPendingMembersIndex'];
 		put?: never;
 		post?: never;
@@ -2278,11 +2278,11 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update storage provider */
+		/** @description Update a Site's Git Provider settings */
 		put: operations['SitesProvidersIndexUpdate'];
-		/** @description Add storage provider */
+		/** @description Connect a Site to a Git Provider */
 		post: operations['SitesProvidersIndexAdd'];
-		/** @description Remove storage provider */
+		/** @description Remove a Site's Git Provider */
 		delete: operations['SitesProvidersIndexRemove'];
 		options?: never;
 		head?: never;
@@ -2296,10 +2296,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List branches */
+		/** @description List a Site's branches */
 		get: operations['SitesProvidersGitIndexBranches'];
 		put?: never;
-		/** @description Clone a branch from the selected site branch */
+		/** @description Create a branch from a Site's editing branch */
 		post: operations['SitesProvidersGitIndexCreateBranch'];
 		delete?: never;
 		options?: never;
@@ -2316,7 +2316,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Merge changes */
+		/** @description Merge a Site's changes into its publish branch */
 		post: operations['SitesProvidersGitIndexMerge'];
 		delete?: never;
 		options?: never;
@@ -2333,7 +2333,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Set the branch for changes to be published to */
+		/** @description Set a Site's publish branch */
 		post: operations['SitesProvidersGitIndexPublishBranch'];
 		delete?: never;
 		options?: never;
@@ -2348,7 +2348,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Compare the changes to the publish branch */
+		/** @description Compare a Site's changes waiting to be published */
 		get: operations['SitesProvidersGitIndexCompare'];
 		put?: never;
 		post?: never;
@@ -2365,7 +2365,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Compare the changes from the publish branch */
+		/** @description Compare upstream changes waiting to be pulled into a Site */
 		get: operations['SitesProvidersGitIndexUpstreamCompare'];
 		put?: never;
 		post?: never;
@@ -2384,7 +2384,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Merge upstream changes */
+		/** @description Merge upstream changes into a Site's editing branch */
 		post: operations['SitesProvidersGitIndexUpstreamMerge'];
 		delete?: never;
 		options?: never;
@@ -2399,10 +2399,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List pull requests */
+		/** @description List open Pull Requests into the Site's Publish Branch */
 		get: operations['SitesProvidersGitPullRequestsIndex'];
 		put?: never;
-		/** @description Create pull request */
+		/** @description Create a Pull Request into the Site's Publish Branch */
 		post: operations['SitesProvidersGitPullRequestsCreate'];
 		delete?: never;
 		options?: never;
@@ -2417,11 +2417,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get pull request details */
+		/** @description Get a Pull Request's details */
 		get: operations['SitesProvidersGitPullRequestsShow'];
 		put?: never;
 		post?: never;
-		/** @description Close pull request */
+		/** @description Close a Pull Request */
 		delete: operations['SitesProvidersGitPullRequestsClose'];
 		options?: never;
 		head?: never;
@@ -2435,7 +2435,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get pull request commits */
+		/** @description List a Pull Request's commits */
 		get: operations['SitesProvidersGitPullRequestsCommits'];
 		put?: never;
 		post?: never;
@@ -2453,7 +2453,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Merge pull request */
+		/** @description Merge a Pull Request */
 		put: operations['SitesProvidersGitPullRequestsMerge'];
 		post?: never;
 		delete?: never;
@@ -2471,7 +2471,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Clears the current storage providers error */
+		/** @description Reconnect a Site's Git Provider */
 		post: operations['SitesProvidersIndexReconnect'];
 		delete?: never;
 		options?: never;
@@ -2488,7 +2488,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Sync from storage provider */
+		/** @description Sync a Site with its Git Provider */
 		post: operations['SitesProvidersIndexSync'];
 		delete?: never;
 		options?: never;
@@ -2503,10 +2503,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List Upstream pull requests */
+		/** @description List open Pull Requests from the Site's Publish Branch */
 		get: operations['SitesProvidersGitUpstreamPullRequestsIndex'];
 		put?: never;
-		/** @description Create update pull request */
+		/** @description Create a Pull Request from the Site's Publish Branch */
 		post: operations['SitesProvidersGitUpstreamPullRequestsCreate'];
 		delete?: never;
 		options?: never;
@@ -2522,7 +2522,7 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site publish method */
+		/** @description Update a Site's publish method */
 		put: operations['SitesIndexUpdatePublish'];
 		post?: never;
 		delete?: never;
@@ -2538,7 +2538,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get site scan details */
+		/** @description Get a Site's scan details */
 		get: operations['SitesScansIndex'];
 		put?: never;
 		post?: never;
@@ -2555,10 +2555,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site scheduled builds */
+		/** @description List a Site's Scheduled Builds */
 		get: operations['SitesScheduledBuildsIndex'];
 		put?: never;
-		/** @description Create site scheduled build */
+		/** @description Create a Scheduled Build */
 		post: operations['SitesScheduledBuildsCreate'];
 		delete?: never;
 		options?: never;
@@ -2573,7 +2573,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Returns a presigned s3 URL to load screenshot hashes for a site */
+		/** @description Get a presigned S3 URL for a Site's screenshot hashes */
 		get: operations['SitesScreenshotsIndex'];
 		put?: never;
 		post?: never;
@@ -2590,7 +2590,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to lighthouse json response */
+		/** @description Get a Site's Lighthouse report */
 		get: operations['SitesScreenshotsLighthouse'];
 		put?: never;
 		post?: never;
@@ -2607,7 +2607,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to screenshot */
+		/** @description View a Site's screenshot */
 		get: operations['SitesScreenshotsShow'];
 		put?: never;
 		post?: never;
@@ -2624,10 +2624,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get site mountings */
+		/** @description List a Site's Site Mountings */
 		get: operations['SitesSiteMountingsIndex'];
 		put?: never;
-		/** @description Create site mounting */
+		/** @description Create a Site Mounting */
 		post: operations['SitesSiteMountingsCreate'];
 		delete?: never;
 		options?: never;
@@ -2643,10 +2643,10 @@ export interface paths {
 			cookie?: never;
 		};
 		get?: never;
-		/** @description Update site SSL Custom */
+		/** @description Update a Site's SSL certificate */
 		put: operations['SitesSslIndexUpdate'];
 		post?: never;
-		/** @description Remove site SSL Custom */
+		/** @description Remove a Site's SSL certificate */
 		delete: operations['SitesSslIndexRemove'];
 		options?: never;
 		head?: never;
@@ -2660,10 +2660,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get state for SSL Auto */
+		/** @description Get a Site's automatic SSL state */
 		get: operations['SitesSslAutoSslState'];
 		put?: never;
-		/** @description Retry to Generate SSL Auto */
+		/** @description Retry a Site's automatic SSL generation */
 		post: operations['SitesSslAutoRetrySslGenerate'];
 		delete?: never;
 		options?: never;
@@ -2678,11 +2678,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Cloudflare state for SSL */
+		/** @description Get a Site's Cloudflare SSL state */
 		get: operations['SitesSslCloudflareCloudflareSslState'];
-		/** @description Update Cloudflare SSL Setup */
+		/** @description Update a Site's Cloudflare SSL setup */
 		put: operations['SitesSslCloudflareUpdate'];
-		/** @description Retry Cloudflare SSL Setup */
+		/** @description Retry a Site's Cloudflare SSL setup */
 		post: operations['SitesSslCloudflareRetryCloudflareSetup'];
 		delete?: never;
 		options?: never;
@@ -2697,7 +2697,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List site syncs */
+		/** @description List a Site's Syncs */
 		get: operations['SitesSyncsIndex'];
 		put?: never;
 		post?: never;
@@ -2716,9 +2716,9 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Start watching a site path */
+		/** @description Start watching a Site path */
 		post: operations['SitesIndexStartWatching'];
-		/** @description Stop watching a site path */
+		/** @description Stop watching a Site path */
 		delete: operations['SitesIndexStopWatching'];
 		options?: never;
 		head?: never;
@@ -2732,11 +2732,11 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get Ssl Certificate Details */
+		/** @description Get an SSL Certificate's details */
 		get: operations['SslCertificatesShow'];
 		put?: never;
 		post?: never;
-		/** @description Delete Ssl Certificate */
+		/** @description Delete an SSL Certificate */
 		delete: operations['SslCertificatesDestroy'];
 		options?: never;
 		head?: never;
@@ -2750,7 +2750,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to sync output */
+		/** @description Get a Sync's output log */
 		get: operations['SyncsShow'];
 		put?: never;
 		post?: never;
@@ -2767,7 +2767,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get the presigned data for file upload */
+		/** @description Get presigned data for a file upload */
 		get: operations['IndexUploadData'];
 		put?: never;
 		post?: never;
@@ -2784,9 +2784,9 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get current user details */
+		/** @description Get my account details */
 		get: operations['UsersUserShowCurrentUser'];
-		/** @description Update current user information */
+		/** @description Update my account details */
 		put: operations['UsersUserUpdate'];
 		post?: never;
 		delete?: never;
@@ -2802,10 +2802,10 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get current user's access keys */
+		/** @description List my Access Keys */
 		get: operations['UsersUserAccessKeys'];
 		put?: never;
-		/** @description Create a new access key */
+		/** @description Create an Access Key */
 		post: operations['UsersUserCreateAccessKey'];
 		delete?: never;
 		options?: never;
@@ -2823,7 +2823,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Revoke an access key */
+		/** @description Revoke an Access Key */
 		delete: operations['UsersUserDestroyAccessKey'];
 		options?: never;
 		head?: never;
@@ -2837,7 +2837,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to avatar */
+		/** @description View my avatar */
 		get: operations['UsersAvatarShow'];
 		put?: never;
 		post?: never;
@@ -2854,7 +2854,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description List the current user's pending organization invites */
+		/** @description List my pending Organization invites */
 		get: operations['UsersUserInvites'];
 		put?: never;
 		post?: never;
@@ -2873,7 +2873,7 @@ export interface paths {
 		};
 		get?: never;
 		put?: never;
-		/** @description Accept pending organization invites */
+		/** @description Accept all my pending invites to one Organization */
 		post: operations['UsersUserAcceptInvite'];
 		delete?: never;
 		options?: never;
@@ -2891,7 +2891,7 @@ export interface paths {
 		get?: never;
 		put?: never;
 		post?: never;
-		/** @description Decline pending organization invites */
+		/** @description Decline all my pending invites to one Organization */
 		delete: operations['UsersUserDeclineInvite'];
 		options?: never;
 		head?: never;
@@ -2905,7 +2905,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Get user details */
+		/** @description Get an Organization Member's details */
 		get: operations['UsersUserShowByIdentifier'];
 		put?: never;
 		post?: never;
@@ -2922,7 +2922,7 @@ export interface paths {
 			path?: never;
 			cookie?: never;
 		};
-		/** @description Redirect to avatar */
+		/** @description View an Organization Member's avatar */
 		get: operations['UsersAvatarShowByIdentifier'];
 		put?: never;
 		post?: never;
@@ -3074,7 +3074,7 @@ export interface components {
 			ssl_certificate_id?: number | null;
 			pinned_build_id?: number | null;
 			mode?: string | null;
-			is_fallback_redirect?: Record<string, never>;
+			is_fallback_redirect?: boolean;
 			site_uuid?: components['schemas']['UUID'];
 			site_id?: components['schemas']['UUID'];
 		};
@@ -3186,8 +3186,16 @@ export interface components {
 			subpath?: string | null;
 			stable_domain: string;
 			ssg?: string | null;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site's files were last exchanged with its source. This moves only when a sync actually transferred something, so it does not change when a sync succeeds but finds nothing new, and it is also set when a Site is created by copying another Site, before it has contacted a storage provider at all. A push that committed locally and then failed to reach the provider moves it too. It is therefore not a measure of health: use last_sync_failed_at and sync_error for that.
+			 */
 			last_synced?: string | null;
+			/**
+			 * Format: date-time
+			 * @description When this Site's most recent sync attempt failed, or null if no failure is currently recorded. CloudCannon clears it once the Site syncs successfully again. Null does not on its own mean the Site is healthy, because a Site halted by sync_error stops attempting to sync at all, so check both fields. Syncing paused by unsaved changes, and a push that raced a change on the remote, are not failures: they are not recorded here and do not clear an existing value.
+			 */
+			last_sync_failed_at?: string | null;
 			/** Format: date-time */
 			last_output?: string | null;
 			/** Format: date-time */
@@ -3209,7 +3217,10 @@ export interface components {
 			editing_locked?: boolean | null;
 			uploads_locked?: boolean;
 			browsing_locked?: boolean;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site last built successfully. Unlike last_synced, its counterpart last_compiled records every build attempt, so a Site has a failed build when the two differ.
+			 */
 			last_compiled_success?: string | null;
 			preview_url?: string | null;
 			documentation_url?: string | null;
@@ -3229,9 +3240,13 @@ export interface components {
 			output_storage_provider?: string | null;
 			domain_name?: string | null;
 			site_icon_state?: string;
+			/** @description An identifier for a syncing error that has halted this Site, or null. While it is set, CloudCannon refuses to pull from the storage provider and keeps pushes local, so the two stop exchanging changes until the provider is reconnected or disconnected. Only errors that need intervention halt a Site: a sync can fail without setting this, which last_sync_failed_at records instead. */
 			sync_error?: string | null;
+			/** @description An identifier for an error that has halted this Site's Build Deploys, or null. While it is set, CloudCannon stops deploying build output to the output storage provider until that provider is updated or disconnected. There is no separate record of a deploy that failed without halting, so unlike syncing there is no last_output_failed_at. */
 			output_error?: string | null;
 			has_open_editing_session?: boolean | null;
+			/** @description Whether syncing is paused for this Site, or null when not computed. CloudCannon pauses syncing when files with unsaved changes also changed on the storage provider, and resumes once those changes are saved or discarded. A Site halted by sync_error reports false here. */
+			sync_blocked?: boolean | null;
 			storage_provider_details?: Record<string, never> | null;
 			output_storage_provider_data?: Record<string, never>;
 			has_site_password?: boolean;
@@ -3244,8 +3259,16 @@ export interface components {
 			subpath?: string | null;
 			stable_domain: string;
 			ssg?: string | null;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site's files were last exchanged with its source. This moves only when a sync actually transferred something, so it does not change when a sync succeeds but finds nothing new, and it is also set when a Site is created by copying another Site, before it has contacted a storage provider at all. A push that committed locally and then failed to reach the provider moves it too. It is therefore not a measure of health: use last_sync_failed_at and sync_error for that.
+			 */
 			last_synced?: string | null;
+			/**
+			 * Format: date-time
+			 * @description When this Site's most recent sync attempt failed, or null if no failure is currently recorded. CloudCannon clears it once the Site syncs successfully again. Null does not on its own mean the Site is healthy, because a Site halted by sync_error stops attempting to sync at all, so check both fields. Syncing paused by unsaved changes, and a push that raced a change on the remote, are not failures: they are not recorded here and do not clear an existing value.
+			 */
+			last_sync_failed_at?: string | null;
 			/** Format: date-time */
 			last_output?: string | null;
 			/** Format: date-time */
@@ -3267,7 +3290,10 @@ export interface components {
 			editing_locked?: boolean | null;
 			uploads_locked?: boolean;
 			browsing_locked?: boolean;
-			/** Format: date-time */
+			/**
+			 * Format: date-time
+			 * @description When this Site last built successfully. Unlike last_synced, its counterpart last_compiled records every build attempt, so a Site has a failed build when the two differ.
+			 */
 			last_compiled_success?: string | null;
 			preview_url?: string | null;
 			documentation_url?: string | null;
@@ -3308,7 +3334,6 @@ export interface components {
 			priority_domain_at?: string;
 			prevent_client_password_save?: boolean;
 			recaptcha_key?: string | null;
-			recaptcha_secret?: string | null;
 			saml_data?: string;
 			compiler_order?: string[];
 			base_domain_id?: number | null;
@@ -3367,12 +3392,6 @@ export interface components {
 			updated_at?: string | null;
 			site_uuid?: components['schemas']['UUID'];
 		};
-		SiteArchiveBlueprintFull: components['schemas']['SiteArchiveBlueprint'] & {
-			include_build?: boolean;
-			stub_source_assets?: boolean;
-			stub_build_assets?: boolean;
-			hidden?: boolean;
-		};
 		SiteActivityBlueprint: components['schemas']['BaseBlueprint'] & {
 			id: number;
 			uuid: string;
@@ -3421,7 +3440,7 @@ export interface components {
 			updated_at: string;
 			has_default_password?: boolean;
 			organisation_uuid?: components['schemas']['UUID'];
-			main_site?: components['schemas']['SiteBlueprintFull'] | (string | null);
+			main_site?: components['schemas']['SiteBlueprintProject'] | (string | null);
 		};
 		ProjectLink: {
 			name?: string;
@@ -3483,8 +3502,8 @@ export interface components {
 			subscription_current_period_start?: string | null;
 			/** Format: date-time */
 			subscription_current_period_end?: string | null;
-			current_overage_period?: Record<string, never>;
-			additional_features?: (unknown[] | null) | (boolean | null);
+			current_overage_period?: Record<string, never> | null;
+			additional_features?: (string[] | null) | (boolean | null);
 			additional_build_time?: number | null;
 			additional_bandwidth?: number | null;
 			additional_domains?: number | null;
@@ -3551,8 +3570,8 @@ export interface components {
 			subscription_current_period_start?: string | null;
 			/** Format: date-time */
 			subscription_current_period_end?: string | null;
-			current_overage_period?: Record<string, never>;
-			additional_features?: (unknown[] | null) | (boolean | null);
+			current_overage_period?: Record<string, never> | null;
+			additional_features?: (string[] | null) | (boolean | null);
 			additional_build_time?: number | null;
 			additional_bandwidth?: number | null;
 			additional_domains?: number | null;
@@ -3609,12 +3628,16 @@ export interface components {
 			organisation_id: number;
 			captcha_type?: string | null;
 			captcha_key?: string | null;
-			captcha_secret?: string | null;
+			captcha_config?: {
+				[key: string]: unknown;
+			};
+			allow_uploads?: boolean;
 			/** Format: date-time */
 			created_at: string;
 			/** Format: date-time */
 			updated_at: string;
 			organisation_uuid?: components['schemas']['UUID'];
+			has_captcha_secret?: boolean;
 			inbox_targets?: (components['schemas']['InboxTargetBlueprint'] | (string | null))[];
 		};
 		GroupPendingMemberBlueprint: components['schemas']['BaseBlueprint'] & {
@@ -3745,29 +3768,6 @@ export interface components {
 			config?: Record<string, never>;
 			extra_params?: string | null;
 		};
-		CloudflareHostnameBlueprint: components['schemas']['BaseBlueprint'] & {
-			/** Format: date-time */
-			expires_at?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			hostname: string;
-			base_domain_id: number;
-			ssl_certificate_id?: number | null;
-			wildcard?: boolean | null;
-			validation_method?: string | null;
-			min_tls_version?: string | null;
-			custom_hostname_id?: string | null;
-			status?: string | null;
-			ssl_status?: string | null;
-			latest_json?: {
-				[key: string]: unknown;
-			} | null;
-			error?: string | null;
-			base_domain_uuid?: components['schemas']['UUID'];
-			base_domain?: components['schemas']['BaseDomainBlueprint'] | (string | null);
-		};
 		BuildBlueprint: components['schemas']['BaseBlueprint'] & {
 			name: string;
 			successful?: boolean | null;
@@ -3889,18 +3889,6 @@ export interface components {
 		ApiKeyBlueprintUnsnippedKey: components['schemas']['ApiKeyBlueprint'] & {
 			key?: string;
 		};
-		AdditionalPartnerPointsBlueprint: components['schemas']['BaseBlueprint'] & {
-			id: number;
-			uuid: string;
-			organisation_id: number;
-			points: number;
-			reason: string;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			organisation_uuid?: components['schemas']['UUID'];
-		};
 	};
 	responses: {
 		/** @description Unprocessable */
@@ -3963,8 +3951,6 @@ export interface components {
 		PageQuery: number;
 		/** @description Number of items per page */
 		ItemsQuery: number;
-		SortAttributeQuery: string;
-		SortDirectionQuery: string;
 	};
 	requestBodies: never;
 	headers: never;
@@ -4052,7 +4038,10 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					/** @enum {string} */
+					/**
+					 * @description The minimum TLS version to enforce
+					 * @enum {string}
+					 */
 					minimum_tls_version?: '1.2' | '1.3';
 				};
 			};
@@ -4178,6 +4167,7 @@ export interface operations {
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
+				/** @description Filter DNS records by a search term */
 				search?: string;
 			};
 			header?: never;
@@ -4387,6 +4377,7 @@ export interface operations {
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
+				/** @description Filter Subdomains by a search term */
 				search?: string;
 			};
 			header?: never;
@@ -4438,7 +4429,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -4465,7 +4456,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -4492,7 +4483,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -4711,8 +4702,11 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The storage key of the uploaded file contents */
 					s3_key: string;
+					/** @description The hash of the new file contents */
 					content_hash: string;
+					/** @description The content hash of the current latest contribution. Must match to avoid overwriting newer edits. */
 					previous_content_hash?: string;
 				};
 			};
@@ -4843,7 +4837,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -4858,8 +4852,11 @@ export interface operations {
 	EditingSessionFilesIndexResized: {
 		parameters: {
 			query?: {
+				/** @description The width to resize the preview to, in pixels */
 				width?: number;
+				/** @description The height to resize the preview to, in pixels */
 				height?: number;
+				/** @description The content type to return the image as */
 				content_type?: string;
 			};
 			header?: never;
@@ -4873,7 +4870,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -5000,13 +4997,19 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The path of the file to copy */
 					source?: string;
+					/** @description The path for the copied file */
 					target?: string;
 					paths?: {
+						/** @description The path of the file to copy */
 						source?: string;
+						/** @description The path for the copied file */
 						target?: string;
 					}[];
+					/** @description Overwrite the target file if it already exists */
 					allow_overwrite?: boolean;
+					/** @description Additional metadata to store on the file */
 					metadata?: {
 						[key: string]: unknown;
 					};
@@ -5040,7 +5043,9 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The commit message */
 					message?: string;
+					/** @description Which files to save, keyed by file UUID. Omit to save all files in the session. */
 					include?: {
 						[key: string]: boolean;
 					};
@@ -5076,10 +5081,13 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The path of the file to delete */
 					target?: string;
 					paths?: {
+						/** @description The path of the file to delete */
 						target?: string;
 					}[];
+					/** @description Confirm that you want to discard uncommitted edits. Without this, the request will fail if there are uncommitted edits. */
 					discard_unsaved?: boolean;
 				};
 			};
@@ -5182,13 +5190,19 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The current path of the file to move */
 					source?: string;
+					/** @description The new path for the file */
 					target?: string;
 					paths?: {
+						/** @description The current path of the file to move */
 						source?: string;
+						/** @description The new path for the file */
 						target?: string;
 					}[];
+					/** @description Overwrite the target file if it already exists */
 					allow_overwrite?: boolean;
+					/** @description Additional metadata to store on the file */
 					metadata?: {
 						[key: string]: unknown;
 					};
@@ -5222,8 +5236,10 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The path of the deleted file to restore */
 					target?: string;
 					paths?: {
+						/** @description The path of the deleted file to restore */
 						target?: string;
 					}[];
 				};
@@ -5256,14 +5272,21 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The path to upload the file to */
 					target?: string;
+					/** @description The storage key of the uploaded file contents */
 					s3_key?: string;
+					/** @description The hash of the uploaded file contents */
 					content_hash?: string;
 					files?: {
+						/** @description The path to upload the file to */
 						target?: string;
+						/** @description The storage key of the uploaded file contents */
 						s3_key?: string;
+						/** @description The hash of the uploaded file contents */
 						content_hash?: string;
 					}[];
+					/** @description Overwrite the target file if it already exists */
 					allow_overwrite?: boolean;
 				};
 			};
@@ -5295,7 +5318,10 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					/** @enum {string} */
+					/**
+					 * @description Manually set the spam status: no_mark, spam, or ham
+					 * @enum {string}
+					 */
 					explicitly_marked_status?: 'no_mark' | 'spam' | 'ham';
 				};
 			};
@@ -5371,19 +5397,21 @@ export interface operations {
 	FormHooksSends: {
 		parameters: {
 			query?: {
-				success?: boolean;
-				inbox_target_uuid?: string;
-				form_hook_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				form_hook_uuid?: string;
+				has_error?: string | number | boolean;
+				id?: number;
+				inbox_target_uuid?: string;
+				success?: boolean;
+				target_type?: string | number | boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5522,10 +5550,10 @@ export interface operations {
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
 				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
+				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				/** @description Filter members by name or email */
+				/** @description Filter Members by name or email */
 				search?: string;
 			};
 			header?: never;
@@ -5566,7 +5594,9 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The email to invite. If it doesn't match an existing Organization Member, they get a pending invite. */
 					email: string;
+					/** @description Accept any billing increase. Without this, the request will fail if you exceed the number of seats in your Subscription Plan. */
 					accept_billing_increase?: boolean;
 				};
 			};
@@ -5589,7 +5619,7 @@ export interface operations {
 	GroupsMembersDestroy: {
 		parameters: {
 			query: {
-				/** @description Email of the member to remove */
+				/** @description Email of the Member to remove */
 				email: string;
 			};
 			header?: never;
@@ -5648,7 +5678,7 @@ export interface operations {
 	GroupsPendingMembersDestroy: {
 		parameters: {
 			query: {
-				/** @description Email of the pending member to remove */
+				/** @description Email of the pending Member to remove */
 				email: string;
 			};
 			header?: never;
@@ -5732,6 +5762,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					target?: string;
 					config?: {
 						[key: string]: unknown;
 					};
@@ -5796,6 +5827,7 @@ export interface operations {
 				};
 			};
 			403: components['responses']['ForbiddenResp'];
+			422: components['responses']['ErrorResp'];
 		};
 	};
 	InboxesIndexShow: {
@@ -5833,13 +5865,24 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					name: string;
-					key: string;
-					monthly_quota?: number | null;
+					/** @description A name for the Inbox. */
+					name?: string;
+					/** @description The Inbox's unique key. */
+					key?: string;
+					/** @description The number of days to retain submissions. */
 					keep_form_hook_days?: number | null;
+					/** @description The captcha provider's site key. */
 					captcha_key?: string | null;
+					/** @description The captcha provider's secret key, or the Google Cloud API key for google_enterprise. */
 					captcha_secret?: string | null;
+					/** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
 					captcha_type?: string | null;
+					/** @description Options for the captcha provider: project_id is the Google Cloud project that holds the reCAPTCHA key, required for google_enterprise; min_score (0 to 1, default 0.5) rejects lower-scoring tokens for google and google_enterprise; send_sitekey (default true) tells hcaptcha which site key to expect. Keys for other providers are dropped. */
+					captcha_config?: {
+						[key: string]: unknown;
+					};
+					/** @description Whether forms on this inbox accept file uploads. */
+					allow_uploads?: boolean;
 				};
 			};
 		};
@@ -5883,6 +5926,7 @@ export interface operations {
 	InboxesIndexExport: {
 		parameters: {
 			query?: {
+				/** @description Filter submissions by category */
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
 				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
@@ -5890,42 +5934,42 @@ export interface operations {
 				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				recaptcha?: boolean;
-				sent?: boolean;
-				spam_checked?: boolean;
 				automatically_marked_spam?: boolean;
-				ip?: string;
-				host?: string;
+				cleared_at_gt?: string;
+				cleared_at_gte?: string;
+				cleared_at_lt?: string;
+				cleared_at_lte?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				explicitly_marked_status?: number;
-				inbox_uuid?: string;
 				has_error?: string | number | boolean;
 				has_spam_check_error?: string | number | boolean;
-				cleared_at_lt?: string;
-				cleared_at_gt?: string;
-				cleared_at_lte?: string;
-				cleared_at_gte?: string;
-				last_sent_at_lt?: string;
-				last_sent_at_gt?: string;
-				last_sent_at_lte?: string;
-				last_sent_at_gte?: string;
-				sent_count_lt?: number;
-				sent_count_gt?: number;
-				sent_count_lte?: number;
-				sent_count_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
+				host?: string;
 				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				inbox_uuid?: string;
+				ip?: string;
+				last_sent_at_gt?: string;
+				last_sent_at_gte?: string;
+				last_sent_at_lt?: string;
+				last_sent_at_lte?: string;
+				org_id?: number;
+				org_uuid?: string;
+				recaptcha?: boolean;
+				sent?: boolean;
+				sent_count_gt?: number;
+				sent_count_gte?: number;
+				sent_count_lt?: number;
+				sent_count_lte?: number;
+				site_id?: number;
+				site_uuid?: string;
+				spam_checked?: boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -5952,6 +5996,7 @@ export interface operations {
 	InboxesFormHooksIndex: {
 		parameters: {
 			query?: {
+				/** @description Filter Form Hooks by category */
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
 				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
@@ -5961,42 +6006,42 @@ export interface operations {
 				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				recaptcha?: boolean;
-				sent?: boolean;
-				spam_checked?: boolean;
 				automatically_marked_spam?: boolean;
-				ip?: string;
-				host?: string;
+				cleared_at_gt?: string;
+				cleared_at_gte?: string;
+				cleared_at_lt?: string;
+				cleared_at_lte?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				explicitly_marked_status?: number;
-				inbox_uuid?: string;
 				has_error?: string | number | boolean;
 				has_spam_check_error?: string | number | boolean;
-				cleared_at_lt?: string;
-				cleared_at_gt?: string;
-				cleared_at_lte?: string;
-				cleared_at_gte?: string;
-				last_sent_at_lt?: string;
-				last_sent_at_gt?: string;
-				last_sent_at_lte?: string;
-				last_sent_at_gte?: string;
-				sent_count_lt?: number;
-				sent_count_gt?: number;
-				sent_count_lte?: number;
-				sent_count_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
+				host?: string;
 				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				inbox_uuid?: string;
+				ip?: string;
+				last_sent_at_gt?: string;
+				last_sent_at_gte?: string;
+				last_sent_at_lt?: string;
+				last_sent_at_lte?: string;
+				org_id?: number;
+				org_uuid?: string;
+				recaptcha?: boolean;
+				sent?: boolean;
+				sent_count_gt?: number;
+				sent_count_gte?: number;
+				sent_count_lt?: number;
+				sent_count_lte?: number;
+				site_id?: number;
+				site_uuid?: string;
+				spam_checked?: boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6029,19 +6074,20 @@ export interface operations {
 	InboxesInboxTargetsIndex: {
 		parameters: {
 			query?: {
+				search?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
 				inbox_uuid?: string;
 				target_type?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
-				search?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
+				validated?: boolean;
 			};
 			header?: never;
 			path: {
@@ -6075,8 +6121,11 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The integration type: email, webhook, zapier, make, ifttt, slack, discord, teams, hubspot, n8n, pipedream, integromat, automate. */
 					target_type: string;
+					/** @description The destination: an email address, or the integration's webhook URL. */
 					target: string;
+					/** @description Additional configuration options for the target. */
 					config?: {
 						[key: string]: unknown;
 					};
@@ -6104,6 +6153,7 @@ export interface operations {
 			header?: never;
 			path: {
 				inbox_uuid: components['schemas']['UUID'];
+				/** @description The uploaded file's key */
 				key: string;
 			};
 			cookie?: never;
@@ -6113,7 +6163,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -6133,7 +6183,8 @@ export interface operations {
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
-				/** @description Exclude organisations managed as clients of the current user's partner organisations */
+				search?: string;
+				/** @description Exclude Organizations managed as clients of my partner Organizations */
 				exclude_partner_clients?: boolean;
 				/** @description Attribute to sort the results by */
 				sort_attribute?:
@@ -6142,61 +6193,64 @@ export interface operations {
 					| 'name'
 					| 'partner_points'
 					| 'updated_at'
+					| 'created_at'
 					| 'estimated_monthly_cost';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				build_time_limit_exceeded?: boolean;
-				hosting_limit_exceeded?: boolean;
-				user_limit_exceeded?: boolean;
-				domain_limit_exceeded?: boolean;
-				hubspot_migrated?: boolean;
-				has_billing_email?: string | number | boolean;
-				has_partner_organisation_id?: number;
-				country?: string;
-				organisation_type?: string;
-				partner_organisation_id?: number;
-				billing_status?: string;
-				has_organisation_type?: string | number | boolean;
-				expired?: string | number | boolean;
-				has_address?: string | number | boolean;
-				locked?: string | number | boolean;
-				has_billing_name?: string | number | boolean;
-				unattached?: string | number | boolean;
-				in_partner_program?: string | number | boolean;
-				given_user_is_sole_owner?: string | number | boolean;
-				plan?: string;
-				needs_attention?: string | number | boolean;
 				billing_issue?: string | number | boolean;
-				trial_ending_soon?: string | number | boolean;
-				inactive?: string | number | boolean;
-				has_failing_sites?: string | number | boolean;
-				has_domain_issues?: string | number | boolean;
+				billing_status?: string;
+				build_time_limit_exceeded?: boolean;
+				country?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				domain_limit_exceeded?: boolean;
+				expired?: string | number | boolean;
+				given_user_is_sole_owner?: string | number | boolean;
+				has_address?: string | number | boolean;
+				has_billing_email?: string | number | boolean;
+				has_billing_name?: string | number | boolean;
 				has_build_failures?: string | number | boolean;
-				has_sync_errors?: string | number | boolean;
-				has_output_errors?: string | number | boolean;
-				has_ssl_auto_failures?: string | number | boolean;
+				has_custom_ssl_expiring?: string | number | boolean;
+				has_default_inboxes?: string | number | boolean;
+				has_disconnected_providers?: string | number | boolean;
 				has_dns_errors?: string | number | boolean;
-				has_site_domain_failures?: string | number | boolean;
+				has_domain_issues?: string | number | boolean;
 				has_expired_certs?: string | number | boolean;
 				has_expiring_certs?: string | number | boolean;
-				has_custom_ssl_expiring?: string | number | boolean;
 				has_failing_forms?: string | number | boolean;
-				storage_provider_uuid?: string;
-				provider_account_linked?: string | number | boolean;
-				trial?: string | number | boolean;
+				has_failing_sites?: string | number | boolean;
+				has_organisation_type?: string | number | boolean;
+				has_output_errors?: string | number | boolean;
+				has_partner_organisation_id?: number;
+				has_site_domain_failures?: string | number | boolean;
+				has_ssl_auto_failures?: string | number | boolean;
+				has_sync_blocked?: string | number | boolean;
+				has_sync_errors?: string | number | boolean;
+				hosting_limit_exceeded?: boolean;
+				hubspot_migrated?: boolean;
+				id?: number;
+				in_partner_program?: string | number | boolean;
+				inactive?: string | number | boolean;
+				locked?: string | number | boolean;
+				needs_attention?: string | number | boolean;
+				organisation_type?: string;
+				partner_organisation_id?: number;
+				plan?: string;
 				plan_period?: string | number | boolean;
+				provider_account_linked?: string | number | boolean;
+				storage_provider_uuid?: string;
+				trial?: string | number | boolean;
+				trial_ending_soon?: string | number | boolean;
+				unattached?: string | number | boolean;
+				updated_at_gt?: string;
+				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				user_limit_exceeded?: boolean;
 				user_uuid?: string;
 				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
 			};
 			header?: never;
 			path?: never;
@@ -6325,25 +6379,25 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				size_lt?: string | number | boolean;
-				size_gt?: string | number | boolean;
-				size_lte?: string | number | boolean;
-				size_gte?: string | number | boolean;
-				organisation_uuid?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
+				org_id?: number;
+				org_uuid?: string;
+				organisation_uuid?: string;
+				site_id?: number;
+				site_uuid?: string;
+				size_gt?: string | number | boolean;
+				size_gte?: string | number | boolean;
+				size_lt?: string | number | boolean;
+				size_lte?: string | number | boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6376,9 +6430,13 @@ export interface operations {
 	OrgsAnalyticsBuildDuration: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
 			};
 			header?: never;
@@ -6410,9 +6468,13 @@ export interface operations {
 	OrgsAnalyticsBuildDurationTotal: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
 			};
 			header?: never;
@@ -6442,9 +6504,13 @@ export interface operations {
 	OrgsAnalyticsHostingBandwidth: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
 			};
 			header?: never;
@@ -6476,10 +6542,15 @@ export interface operations {
 	OrgsAnalyticsHostingBandwidthBySite: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
+				/** @description The number of results to skip */
 				offset?: number;
 			};
 			header?: never;
@@ -6512,10 +6583,15 @@ export interface operations {
 	OrgsAnalyticsHostingBandwidthByUrl: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
+				/** @description The number of results to skip */
 				offset?: number;
 			};
 			header?: never;
@@ -6549,9 +6625,13 @@ export interface operations {
 	OrgsAnalyticsHostingBandwidthTotal: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
 				/** @description Set to "upper" to include all hosting log entries */
 				bound?: 'upper';
@@ -6588,10 +6668,10 @@ export interface operations {
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
 				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'name';
+				sort_attribute?: 'id' | 'uuid' | 'name' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				/** @description Filter API keys by name */
+				/** @description Filter API Keys by name */
 				search?: string;
 			};
 			header?: never;
@@ -6722,25 +6802,25 @@ export interface operations {
 					| 'next_ssl_generate_attempt_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				auto_ssl_retries?: string | number | boolean;
 				base_domain?: string;
-				has_zone_id?: number;
-				has_cloudflare_zone_id?: number;
+				created_at_gt?: string | number | boolean;
+				created_at_gte?: string | number | boolean;
+				created_at_lt?: string | number | boolean;
+				created_at_lte?: string | number | boolean;
+				dns_failing?: string | number | boolean;
 				has_cloudflare_zone_create_error?: string | number | boolean;
-				uses_dns?: boolean;
+				has_cloudflare_zone_id?: number;
+				has_zone_id?: number;
+				id?: number;
 				organisation_id?: number;
 				organisation_uuid?: string;
-				auto_ssl_retries?: string | number | boolean;
-				dns_failing?: string | number | boolean;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string | number | boolean;
-				created_at_gt?: string | number | boolean;
-				created_at_lte?: string | number | boolean;
-				created_at_gte?: string | number | boolean;
-				updated_at_lt?: string | number | boolean;
 				updated_at_gt?: string | number | boolean;
-				updated_at_lte?: string | number | boolean;
 				updated_at_gte?: string | number | boolean;
+				updated_at_lt?: string | number | boolean;
+				updated_at_lte?: string | number | boolean;
+				uses_dns?: boolean;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6849,22 +6929,22 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'name' | 'type' | 'base_url';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				dam_type?: string;
+				id?: number;
+				name?: string;
 				organisation_id?: number;
 				organisation_uuid?: string;
-				unlinked_site_uuid?: string;
 				site_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				unlinked_site_uuid?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -6950,23 +7030,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'name';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				api_key?: string | number | boolean;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				creation_type?: string;
+				id?: number;
 				name?: string;
 				organisation_uuid?: string;
-				user_uuid?: string;
-				api_key?: string | number | boolean;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				user_uuid?: string;
+				uuid?: string;
+				/** @description Filter Permission Groups by name */
 				search?: string;
-				/** @description Only include groups the current user is a member of */
+				/** @description Only include Permission Groups I'm a member of */
 				only_member_of?: boolean;
 			};
 			header?: never;
@@ -7048,20 +7129,21 @@ export interface operations {
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
 				captcha_type?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				has_captcha?: string | number | boolean;
+				id?: number;
 				name?: string;
 				organisation_id?: number;
-				site_uuid?: string;
 				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				site_uuid?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7102,13 +7184,24 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description A name for the Inbox. */
 					name: string;
+					/** @description The Inbox's unique key. */
 					key: string;
-					monthly_quota?: number | null;
+					/** @description The number of days to retain submissions. */
 					keep_form_hook_days?: number | null;
+					/** @description The captcha provider's site key. */
 					captcha_key?: string | null;
+					/** @description The captcha provider's secret key, or the Google Cloud API key for google_enterprise. */
 					captcha_secret?: string | null;
+					/** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
 					captcha_type?: string | null;
+					/** @description Options for the captcha provider: project_id is the Google Cloud project that holds the reCAPTCHA key, required for google_enterprise; min_score (0 to 1, default 0.5) rejects lower-scoring tokens for google and google_enterprise; send_sitekey (default true) tells hcaptcha which site key to expect. Keys for other providers are dropped. */
+					captcha_config?: {
+						[key: string]: unknown;
+					};
+					/** @description Whether forms on this inbox accept file uploads. */
+					allow_uploads?: boolean;
 				};
 			};
 		};
@@ -7135,10 +7228,10 @@ export interface operations {
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
 				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
+				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				/** @description Filter members by name or email */
+				/** @description Filter Members by name or email */
 				search?: string;
 			};
 			header?: never;
@@ -7173,6 +7266,7 @@ export interface operations {
 			header?: never;
 			path: {
 				org_uuid: components['schemas']['UUID'];
+				/** @description The Member or pending Member's email address */
 				email: string;
 			};
 			cookie?: never;
@@ -7197,6 +7291,7 @@ export interface operations {
 			header?: never;
 			path: {
 				org_uuid: components['schemas']['UUID'];
+				/** @description The Member or pending Member's email address */
 				email: string;
 			};
 			cookie?: never;
@@ -7236,7 +7331,9 @@ export interface operations {
 						first_name?: string;
 						surname?: string;
 						email?: string;
-						groups?: unknown[];
+						invited_by?: string;
+						invited_by_uuid?: string;
+						groups?: components['schemas']['GroupBlueprint'][];
 					}[];
 				};
 			};
@@ -7290,23 +7387,24 @@ export interface operations {
 					| 'provider';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				git_repository?: string;
-				last_synced?: string;
+				id?: number;
 				last_compiled?: string;
 				last_compiled_success?: string;
+				last_synced?: string;
 				name?: string;
 				organisation_id?: number;
 				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
+				/** @description Filter Projects by name */
 				search?: string;
 			};
 			header?: never;
@@ -7355,7 +7453,7 @@ export interface operations {
 					default_destroy_on_publish?: boolean;
 					default_authentication?: string | null;
 					default_publish_mode?: string | null;
-					default_password?: Record<string, never>;
+					default_password?: string | boolean;
 					pr_tab_visible?: boolean;
 					publishing_tab_visible?: boolean;
 					branches_tab_visible?: boolean;
@@ -7393,6 +7491,7 @@ export interface operations {
 			header?: never;
 			path: {
 				org_uuid: components['schemas']['UUID'];
+				/** @description The Git Provider */
 				provider:
 					| 'github'
 					| 'github_enterprise_server'
@@ -7436,6 +7535,7 @@ export interface operations {
 			header?: never;
 			path: {
 				org_uuid: components['schemas']['UUID'];
+				/** @description The Git Provider */
 				provider:
 					| 'github'
 					| 'github_enterprise_server'
@@ -7467,12 +7567,14 @@ export interface operations {
 			header?: never;
 			path: {
 				org_uuid: components['schemas']['UUID'];
+				/** @description The Git Provider */
 				provider:
 					| 'github'
 					| 'github_enterprise_server'
 					| 'gitlab'
 					| 'bitbucket'
 					| 'self_hosted_gitlab';
+				/** @description The repository's full name */
 				repository: string;
 			};
 			cookie?: never;
@@ -7499,12 +7601,14 @@ export interface operations {
 			header?: never;
 			path: {
 				org_uuid: components['schemas']['UUID'];
+				/** @description The Git Provider */
 				provider:
 					| 'github'
 					| 'github_enterprise_server'
 					| 'gitlab'
 					| 'bitbucket'
 					| 'self_hosted_gitlab';
+				/** @description The repository's full name */
 				repository: string;
 			};
 			cookie?: never;
@@ -7539,25 +7643,25 @@ export interface operations {
 				page?: components['parameters']['PageQuery'];
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
-				site_id?: number;
-				local_site_id?: number;
-				remote_site_id?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				local_site_uuid?: string;
-				remote_site_uuid?: string;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
+				local_site_id?: number;
+				local_site_uuid?: string;
+				org_id?: number;
+				org_uuid?: string;
+				organisation_uuid?: string;
+				remote_site_id?: number;
+				remote_site_uuid?: string;
+				site_id?: number;
+				site_uuid?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7612,79 +7716,84 @@ export interface operations {
 					| 'sync_error';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_name?: string;
-				base_domain_id?: number;
-				domain_name?: string;
-				ssl_certificate_id?: number;
-				project_id?: number;
-				project_uuid?: string;
-				storage_provider?: string;
-				output_storage_provider?: string;
-				hosting_choice?: string;
-				ssg?: string;
 				authentication?: string;
-				force_ssl?: boolean;
-				editing_locked?: boolean;
-				uploads_locked?: boolean;
+				auto_generate_ssl?: boolean;
+				base_domain_id?: number;
+				base_domain_uuid?: string;
+				bearer_tokens?: string | number | boolean;
+				broken_client_auth?: string | number | boolean;
 				browsing_locked?: boolean;
 				building_locked?: boolean;
-				uses_i18n?: boolean;
-				auto_generate_ssl?: boolean;
-				use_rbenv_builds?: boolean;
-				needs_clean?: boolean;
-				has_storage_provider?: string | number | boolean;
+				cloudflare_error?: string;
+				cloudflare_hostname?: string | number | boolean;
+				cloudflare_hostname_uuid?: string;
+				compile_error?: string;
+				compiled?: string | number | boolean;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				custom_ssl_expiring?: string | number | boolean;
+				dam_uuid?: string;
+				default_inbox?: string | number | boolean;
+				domain_name?: string;
+				domain_not_resolving?: string | number | boolean;
+				editing_locked?: boolean;
+				error?: string | number | boolean;
+				failing_forms?: string | number | boolean;
+				files?: string;
+				force_ssl?: boolean;
+				has_client_password?: string | number | boolean;
+				has_domain_name?: string | number | boolean;
 				has_output_storage_provider?: string | number | boolean;
 				has_source?: string | number | boolean;
-				has_domain_name?: string | number | boolean;
-				organisation_id?: number;
+				has_storage_provider?: string | number | boolean;
 				has_subpath?: string | number | boolean;
-				has_client_password?: string | number | boolean;
-				cloudflare_hostname?: string | number | boolean;
-				locales?: string;
-				sync_error?: string;
-				output_error?: string;
-				compile_error?: string;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
-				latest_hosted_build_id?: number;
-				files?: string;
-				never_synced?: string | number | boolean;
-				bearer_tokens?: string | number | boolean;
-				site_scanner?: string | number | boolean;
-				old_includes?: string | number | boolean;
-				repeatables?: string | number | boolean;
-				storage_provider_details_full_name?: string | number | boolean;
-				source?: string | number | boolean;
-				inactive?: string | number | boolean;
-				error?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
-				last_compiled_status?: string | number | boolean;
-				domain_not_resolving?: string | number | boolean;
-				inbox_uuid?: string;
-				custom_ssl_expiring?: string | number | boolean;
-				failing_forms?: string | number | boolean;
 				has_unsaved_changes?: string | number | boolean;
-				compiled?: string | number | boolean;
-				base_domain_uuid?: string;
-				cloudflare_hostname_uuid?: string;
-				cloudflare_error?: string;
-				dam_uuid?: string;
-				publish_branch?: string | number | boolean;
+				hosting_choice?: string;
+				id?: number;
+				inactive?: string | number | boolean;
+				inbox_uuid?: string;
+				last_compiled?: string;
+				last_compiled_status?: string | number | boolean;
+				last_compiled_success?: string;
+				last_synced?: string;
+				latest_hosted_build_id?: number;
+				locales?: string;
+				needs_clean?: boolean;
+				never_synced?: string | number | boolean;
+				old_includes?: string | number | boolean;
+				organisation_id?: number;
+				organisation_uuid?: string;
+				output_error?: string;
+				output_storage_provider?: string;
 				owner_locked?: string | number | boolean;
 				owner_trial?: string | number | boolean;
+				project_id?: number;
+				project_uuid?: string;
+				publish_branch?: string | number | boolean;
+				repeatables?: string | number | boolean;
+				site_name?: string;
+				site_scanner?: string | number | boolean;
+				source?: string | number | boolean;
+				ssg?: string;
 				ssl_certificate?: string | number | boolean;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				ssl_certificate_expired?: string | number | boolean;
+				ssl_certificate_id?: number;
+				storage_provider?: string;
+				storage_provider_details_full_name?: string | number | boolean;
+				sync_blocked?: string | number | boolean;
+				sync_error?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uploads_locked?: boolean;
+				use_rbenv_builds?: boolean;
+				used_for_client_auth?: string | number | boolean;
+				uses_i18n?: boolean;
+				uuid?: string;
+				/** @description Filter Sites by a search term */
 				search?: string;
 			};
 			header?: never;
@@ -7805,26 +7914,26 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'name' | 'expires_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
-				organisation_id?: number;
-				expires_at_gt?: string;
-				expires_at_lte?: string;
 				autorenew?: boolean;
-				has_cloudflare_id?: number;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				expired?: string | number | boolean;
+				expires_at_gt?: string;
 				expires_at_gte?: string;
 				expires_at_lt?: string;
-				organisation_uuid?: string;
-				expired?: string | number | boolean;
-				uuid?: string;
+				expires_at_lte?: string;
+				has_cloudflare_id?: number;
 				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				name?: string;
+				organisation_id?: number;
+				organisation_uuid?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -7913,7 +8022,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -7946,7 +8055,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -7972,7 +8081,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -8027,7 +8136,7 @@ export interface operations {
 					default_destroy_on_publish?: boolean;
 					default_authentication?: string | null;
 					default_publish_mode?: string | null;
-					default_password?: Record<string, never>;
+					default_password?: string | boolean;
 					pr_tab_visible?: boolean;
 					publishing_tab_visible?: boolean;
 					branches_tab_visible?: boolean;
@@ -8231,79 +8340,83 @@ export interface operations {
 					| 'sync_error';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_name?: string;
-				base_domain_id?: number;
-				domain_name?: string;
-				ssl_certificate_id?: number;
-				project_id?: number;
-				project_uuid?: string;
-				storage_provider?: string;
-				output_storage_provider?: string;
-				hosting_choice?: string;
-				ssg?: string;
 				authentication?: string;
-				force_ssl?: boolean;
-				editing_locked?: boolean;
-				uploads_locked?: boolean;
+				auto_generate_ssl?: boolean;
+				base_domain_id?: number;
+				base_domain_uuid?: string;
+				bearer_tokens?: string | number | boolean;
+				broken_client_auth?: string | number | boolean;
 				browsing_locked?: boolean;
 				building_locked?: boolean;
-				uses_i18n?: boolean;
-				auto_generate_ssl?: boolean;
-				use_rbenv_builds?: boolean;
-				needs_clean?: boolean;
-				has_storage_provider?: string | number | boolean;
+				cloudflare_error?: string;
+				cloudflare_hostname?: string | number | boolean;
+				cloudflare_hostname_uuid?: string;
+				compile_error?: string;
+				compiled?: string | number | boolean;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				custom_ssl_expiring?: string | number | boolean;
+				dam_uuid?: string;
+				default_inbox?: string | number | boolean;
+				domain_name?: string;
+				domain_not_resolving?: string | number | boolean;
+				editing_locked?: boolean;
+				error?: string | number | boolean;
+				failing_forms?: string | number | boolean;
+				files?: string;
+				force_ssl?: boolean;
+				has_client_password?: string | number | boolean;
+				has_domain_name?: string | number | boolean;
 				has_output_storage_provider?: string | number | boolean;
 				has_source?: string | number | boolean;
-				has_domain_name?: string | number | boolean;
-				organisation_id?: number;
+				has_storage_provider?: string | number | boolean;
 				has_subpath?: string | number | boolean;
-				has_client_password?: string | number | boolean;
-				cloudflare_hostname?: string | number | boolean;
-				locales?: string;
-				sync_error?: string;
-				output_error?: string;
-				compile_error?: string;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
-				latest_hosted_build_id?: number;
-				files?: string;
-				never_synced?: string | number | boolean;
-				bearer_tokens?: string | number | boolean;
-				site_scanner?: string | number | boolean;
-				old_includes?: string | number | boolean;
-				repeatables?: string | number | boolean;
-				storage_provider_details_full_name?: string | number | boolean;
-				source?: string | number | boolean;
-				inactive?: string | number | boolean;
-				error?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
-				last_compiled_status?: string | number | boolean;
-				domain_not_resolving?: string | number | boolean;
-				inbox_uuid?: string;
-				custom_ssl_expiring?: string | number | boolean;
-				failing_forms?: string | number | boolean;
 				has_unsaved_changes?: string | number | boolean;
-				compiled?: string | number | boolean;
-				base_domain_uuid?: string;
-				cloudflare_hostname_uuid?: string;
-				cloudflare_error?: string;
-				dam_uuid?: string;
-				publish_branch?: string | number | boolean;
+				hosting_choice?: string;
+				id?: number;
+				inactive?: string | number | boolean;
+				inbox_uuid?: string;
+				last_compiled?: string;
+				last_compiled_status?: string | number | boolean;
+				last_compiled_success?: string;
+				last_synced?: string;
+				latest_hosted_build_id?: number;
+				locales?: string;
+				needs_clean?: boolean;
+				never_synced?: string | number | boolean;
+				old_includes?: string | number | boolean;
+				organisation_id?: number;
+				organisation_uuid?: string;
+				output_error?: string;
+				output_storage_provider?: string;
 				owner_locked?: string | number | boolean;
 				owner_trial?: string | number | boolean;
+				project_id?: number;
+				project_uuid?: string;
+				publish_branch?: string | number | boolean;
+				repeatables?: string | number | boolean;
+				site_name?: string;
+				site_scanner?: string | number | boolean;
+				source?: string | number | boolean;
+				ssg?: string;
 				ssl_certificate?: string | number | boolean;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				ssl_certificate_expired?: string | number | boolean;
+				ssl_certificate_id?: number;
+				storage_provider?: string;
+				storage_provider_details_full_name?: string | number | boolean;
+				sync_blocked?: string | number | boolean;
+				sync_error?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uploads_locked?: boolean;
+				use_rbenv_builds?: boolean;
+				used_for_client_auth?: string | number | boolean;
+				uses_i18n?: boolean;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -8392,7 +8505,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -8713,25 +8826,25 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				size_lt?: string | number | boolean;
-				size_gt?: string | number | boolean;
-				size_lte?: string | number | boolean;
-				size_gte?: string | number | boolean;
-				organisation_uuid?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
+				org_id?: number;
+				org_uuid?: string;
+				organisation_uuid?: string;
+				site_id?: number;
+				site_uuid?: string;
+				size_gt?: string | number | boolean;
+				size_gte?: string | number | boolean;
+				size_lt?: string | number | boolean;
+				size_lte?: string | number | boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -8764,9 +8877,13 @@ export interface operations {
 	SitesAnalyticsBuildDuration: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
 			};
 			header?: never;
@@ -8798,9 +8915,13 @@ export interface operations {
 	SitesAnalyticsHostingBandwidth: {
 		parameters: {
 			query?: {
+				/** @description The start of the reporting period */
 				start_time?: string;
+				/** @description The end of the reporting period */
 				end_time?: string;
+				/** @description The interval to group results by */
 				period?: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone?: string;
 			};
 			header?: never;
@@ -8832,10 +8953,15 @@ export interface operations {
 	SitesAnalyticsHostingBandwidthByUrl: {
 		parameters: {
 			query: {
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
+				/** @description The number of results to skip */
 				offset?: number;
 			};
 			header?: never;
@@ -8868,10 +8994,15 @@ export interface operations {
 	SitesAnalyticsHostingBandwidthForUrl: {
 		parameters: {
 			query: {
+				/** @description The URL to report bandwidth for */
 				url: string;
+				/** @description The start of the reporting period */
 				start_time: string;
+				/** @description The end of the reporting period */
 				end_time: string;
+				/** @description The interval to group results by */
 				period: 'hourly' | 'daily' | 'weekly';
+				/** @description The timezone for the reporting period */
 				timezone: string;
 			};
 			header?: never;
@@ -8910,24 +9041,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				size_lt?: number;
-				size_gt?: number;
-				size_lte?: number;
-				size_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
+				org_id?: number;
+				org_uuid?: string;
+				site_id?: number;
+				site_uuid?: string;
+				size_gt?: number;
+				size_gte?: number;
+				size_lt?: number;
+				size_lte?: number;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -8969,6 +9100,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description Exclude Git history from the Backup */
 					exclude_git?: boolean;
 				};
 			};
@@ -9031,22 +9163,22 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				name?: string;
-				token?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
+				name?: string;
+				org_id?: number;
+				org_uuid?: string;
+				site_id?: number;
+				site_uuid?: string;
+				token?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 			};
 			header?: never;
 			path: {
@@ -9118,7 +9250,9 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The Client Sharing password. Leave blank to remove it. */
 					password?: string;
+					/** @description Accept any billing increase. Without this, the request will fail if you exceed the number of seats in your Subscription Plan. */
 					accept_billing_increase?: boolean;
 				};
 			};
@@ -9150,6 +9284,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The Site's SAML authentication configuration */
 					saml_data?: string;
 				};
 			};
@@ -9181,6 +9316,7 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The authentication password. Leave blank to remove it. */
 					stable_password?: string;
 				};
 			};
@@ -9211,21 +9347,21 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				email?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				email?: string;
+				id?: number;
+				org_id?: number;
+				org_uuid?: string;
+				site_id?: number;
+				site_uuid?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 			};
 			header?: never;
 			path: {
@@ -9330,24 +9466,24 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				completed_at?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: number;
+				name?: string;
+				org_id?: number;
+				org_uuid?: string;
 				pinnable?: boolean;
 				site_id?: number;
-				name?: string;
-				completed_at?: string;
-				successful?: boolean;
 				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				successful?: boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -9482,7 +9618,9 @@ export interface operations {
 					};
 					publish_mode?: string | null;
 					destroy_on_publish?: boolean;
+					/** @description The branch to use for the copied Site */
 					branch?: string;
+					/** @description Set the copied Site's Publish Branch to the source Site's branch */
 					publish_branch?: boolean;
 				};
 			};
@@ -9604,8 +9742,11 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description The Custom Domain for the Site. Leave blank to remove it. */
 					domain_name?: string | null;
+					/** @description An optional subpath under the domain where the Site is served. */
 					subpath?: string | null;
+					/** @description Accept any billing increase. Without this, the request will fail if you exceed the number of domains in your Subscription Plan. */
 					accept_billing_increase?: boolean;
 				};
 			};
@@ -9772,8 +9913,11 @@ export interface operations {
 			content: {
 				'application/json': {
 					zip?: {
+						/** @description The storage key of the uploaded ZIP file */
 						key?: string;
+						/** @description The checksum of the uploaded ZIP file */
 						checksum?: string;
+						/** @description The type of the uploaded ZIP file */
 						type?: string;
 					};
 				};
@@ -9799,11 +9943,13 @@ export interface operations {
 	SitesFilesShow: {
 		parameters: {
 			query?: {
+				/** @description Set to true to download the file instead of viewing it */
 				download?: boolean;
 			};
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The path to the file within the Site */
 				path: string;
 			};
 			cookie?: never;
@@ -9813,7 +9959,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -9833,6 +9979,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The path to the file within the Site */
 				path: string;
 			};
 			cookie?: never;
@@ -9842,7 +9989,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -9858,13 +10005,17 @@ export interface operations {
 	SitesFilesResized: {
 		parameters: {
 			query?: {
+				/** @description The width to resize the image to, in pixels */
 				width?: number;
+				/** @description The height to resize the image to, in pixels */
 				height?: number;
+				/** @description The content type to return the image as */
 				content_type?: string;
 			};
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The path to the file within the Site */
 				path: string;
 			};
 			cookie?: never;
@@ -9874,7 +10025,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -9893,6 +10044,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The path to the file within the Site */
 				path: string;
 			};
 			cookie?: never;
@@ -9902,7 +10054,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -9913,7 +10065,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -9929,6 +10081,7 @@ export interface operations {
 	SitesFormHooksIndex: {
 		parameters: {
 			query?: {
+				/** @description Filter Form Hooks by category */
 				category?: 'spam' | 'sent' | 'errored' | 'pending';
 				/** @description Page number to fetch (1-indexed) */
 				page?: components['parameters']['PageQuery'];
@@ -9938,42 +10091,42 @@ export interface operations {
 				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				recaptcha?: boolean;
-				sent?: boolean;
-				spam_checked?: boolean;
 				automatically_marked_spam?: boolean;
-				ip?: string;
-				host?: string;
+				cleared_at_gt?: string;
+				cleared_at_gte?: string;
+				cleared_at_lt?: string;
+				cleared_at_lte?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				explicitly_marked_status?: number;
-				inbox_uuid?: string;
 				has_error?: string | number | boolean;
 				has_spam_check_error?: string | number | boolean;
-				cleared_at_lt?: string;
-				cleared_at_gt?: string;
-				cleared_at_lte?: string;
-				cleared_at_gte?: string;
-				last_sent_at_lt?: string;
-				last_sent_at_gt?: string;
-				last_sent_at_lte?: string;
-				last_sent_at_gte?: string;
-				sent_count_lt?: number;
-				sent_count_gt?: number;
-				sent_count_lte?: number;
-				sent_count_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
+				host?: string;
 				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				inbox_uuid?: string;
+				ip?: string;
+				last_sent_at_gt?: string;
+				last_sent_at_gte?: string;
+				last_sent_at_lt?: string;
+				last_sent_at_lte?: string;
+				org_id?: number;
+				org_uuid?: string;
+				recaptcha?: boolean;
+				sent?: boolean;
+				sent_count_gt?: number;
+				sent_count_gte?: number;
+				sent_count_lt?: number;
+				sent_count_lte?: number;
+				site_id?: number;
+				site_uuid?: string;
+				spam_checked?: boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -10173,9 +10326,10 @@ export interface operations {
 				/** @description Number of items per page */
 				items?: components['parameters']['ItemsQuery'];
 				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
+				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				/** @description Filter Members by name or email */
 				search?: string;
 			};
 			header?: never;
@@ -10210,6 +10364,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The Member or pending Member's email address */
 				email: string;
 			};
 			cookie?: never;
@@ -10241,6 +10396,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The Member or pending Member's email address */
 				email: string;
 			};
 			cookie?: never;
@@ -10318,7 +10474,7 @@ export interface operations {
 						ignorePermissions?: boolean;
 						step?: string;
 						webhook_id?: string;
-						exclusions?: unknown[];
+						exclusions?: string[];
 					};
 				};
 			};
@@ -10398,30 +10554,30 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				identifier?: string;
 				after_identifier?: string;
-				diff_id?: string;
-				name?: string;
-				completed_at_lt?: string;
-				provider?: string;
-				completed_at_lte?: string;
 				completed_at_gt?: string;
 				completed_at_gte?: string;
-				site_id?: number;
-				successful?: boolean;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
+				completed_at_lt?: string;
+				completed_at_lte?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				diff_id?: string;
+				id?: number;
+				identifier?: string;
+				name?: string;
+				org_id?: number;
+				org_uuid?: string;
+				provider?: string;
+				site_id?: number;
+				site_uuid?: string;
+				successful?: boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 			};
 			header?: never;
 			path: {
@@ -10497,7 +10653,9 @@ export interface operations {
 			content: {
 				'application/json': {
 					custom_data?: {
+						/** @description The repository's full name. Must match the connected repository — it cannot be changed here. */
 						full_name?: string;
+						/** @description The branch to sync the Site's files from */
 						branch?: string;
 					};
 				};
@@ -10529,7 +10687,10 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
-					/** @enum {string} */
+					/**
+					 * @description The Git Provider to connect
+					 * @enum {string}
+					 */
 					storage_provider?:
 						| 'github'
 						| 'github_enterprise_server'
@@ -10537,11 +10698,17 @@ export interface operations {
 						| 'gitlab'
 						| 'self_hosted_gitlab';
 					custom_data?: {
+						/** @description The branch to sync the Site's files from */
 						branch?: string;
+						/** @description The repository's full name, e.g. org/repo */
 						full_name?: string;
+						/** @description The ID of the webhook created on the repository */
 						webhook_id?: string;
+						/** @description Enable Git LFS for the repository */
 						lfsEnabled?: boolean;
+						/** @description When a Site is branched, the branched Site gets a copy of its build files. This option disables that behavior. */
 						fast_compile_disabled?: boolean;
+						/** @description The branch to publish changes to */
 						publish_branch?: string;
 					};
 				};
@@ -10844,6 +11011,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The Pull Request's number */
 				number: number;
 			};
 			cookie?: never;
@@ -10869,6 +11037,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The Pull Request's number */
 				number: number;
 			};
 			cookie?: never;
@@ -10895,6 +11064,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The Pull Request's number */
 				number: number;
 			};
 			cookie?: never;
@@ -10920,6 +11090,7 @@ export interface operations {
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The Pull Request's number */
 				number: number;
 			};
 			cookie?: never;
@@ -10968,6 +11139,7 @@ export interface operations {
 		requestBody?: {
 			content: {
 				'application/json': {
+					/** @description Reset all files from the Git Provider instead of syncing changes */
 					forced?: boolean;
 				};
 			};
@@ -10998,7 +11170,10 @@ export interface operations {
 		requestBody?: {
 			content: {
 				'application/json': {
-					/** @enum {string} */
+					/**
+					 * @description Sync direction: push local changes to the Git Provider, or pull provider changes to the Site
+					 * @enum {string}
+					 */
 					type?: 'push' | 'pull';
 				};
 			};
@@ -11152,36 +11327,36 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				run_count_lte?: number;
-				run_count_gte?: number;
-				scheduled_at?: string;
-				from_source?: boolean;
-				run_count_lt?: number;
-				site_id?: number;
-				name?: string;
-				filename?: string;
-				run_date_lt?: string;
-				run_date_gt?: string;
-				run_date_lte?: string;
-				run_date_gte?: string;
-				period_lt?: number;
-				period_gt?: number;
-				period_lte?: number;
-				period_gte?: number;
-				run_count_gt?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
 				created_at_gt?: string;
-				created_at_lte?: string;
 				created_at_gte?: string;
-				updated_at_lt?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				filename?: string;
+				from_source?: boolean;
+				id?: number;
+				name?: string;
+				org_id?: number;
+				org_uuid?: string;
+				period_gt?: number;
+				period_gte?: number;
+				period_lt?: number;
+				period_lte?: number;
+				run_count_gt?: number;
+				run_count_gte?: number;
+				run_count_lt?: number;
+				run_count_lte?: number;
+				run_date_gt?: string;
+				run_date_gte?: string;
+				run_date_lt?: string;
+				run_date_lte?: string;
+				scheduled_at?: string;
+				site_id?: number;
+				site_uuid?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 			};
 			header?: never;
 			path: {
@@ -11221,9 +11396,14 @@ export interface operations {
 		requestBody: {
 			content: {
 				'application/json': {
+					/** @description A name for the Scheduled Build. */
 					name: string;
+					/** @description How often to repeat the build, in seconds (minimum 3600). Leave blank to run once. */
 					period?: number | null;
-					/** Format: date-time */
+					/**
+					 * Format: date-time
+					 * @description The date and time to run the build.
+					 */
 					run_date: string;
 				};
 			};
@@ -11256,7 +11436,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -11271,6 +11451,7 @@ export interface operations {
 	SitesScreenshotsLighthouse: {
 		parameters: {
 			query?: {
+				/** @description The page path to report on */
 				path?: string;
 			};
 			header?: never;
@@ -11284,7 +11465,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -11300,14 +11481,19 @@ export interface operations {
 	SitesScreenshotsShow: {
 		parameters: {
 			query?: {
+				/** @description The page path to screenshot */
 				path?: string;
+				/** @description The width of the screenshot, in pixels */
 				width?: string;
+				/** @description The height of the screenshot, in pixels */
 				height?: string;
+				/** @description The Build to screenshot */
 				build_id?: number;
 			};
 			header?: never;
 			path: {
 				site_uuid: components['schemas']['UUID'];
+				/** @description The device viewport to render: mobile or desktop */
 				device: string;
 			};
 			cookie?: never;
@@ -11317,7 +11503,7 @@ export interface operations {
 			/** @description Redirect */
 			307: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -11589,27 +11775,27 @@ export interface operations {
 				sort_attribute?: 'id' | 'uuid' | 'created_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
-				identifier?: string;
 				after_identifier?: string;
+				completed_at?: string;
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
 				diff_id?: string;
+				id?: number;
+				identifier?: string;
 				name?: string;
+				org_id?: number;
+				org_uuid?: string;
 				provider?: string;
 				site_id?: number;
-				completed_at?: string;
-				successful?: boolean;
 				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
+				successful?: boolean;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				uuid?: string;
 			};
 			header?: never;
 			path: {
@@ -11641,6 +11827,7 @@ export interface operations {
 	SitesIndexStartWatching: {
 		parameters: {
 			query?: {
+				/** @description The file path to watch */
 				path?: string;
 			};
 			header?: never;
@@ -11666,6 +11853,7 @@ export interface operations {
 	SitesIndexStopWatching: {
 		parameters: {
 			query?: {
+				/** @description The file path to stop watching */
 				path?: string;
 			};
 			header?: never;
@@ -11748,7 +11936,7 @@ export interface operations {
 			/** @description Redirect */
 			303: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -11763,6 +11951,7 @@ export interface operations {
 	IndexUploadData: {
 		parameters: {
 			query?: {
+				/** @description Set to `zip` to upload a ZIP file */
 				type?: 'zip';
 			};
 			header?: never;
@@ -11853,18 +12042,20 @@ export interface operations {
 				sort_attribute?: 'key_id' | 'name' | 'created_at' | 'updated_at';
 				/** @description Direction to sort the results */
 				sort_direction?: 'ASC' | 'DESC';
+				created_at_gt?: string;
+				created_at_gte?: string;
+				created_at_lt?: string;
+				created_at_lte?: string;
+				id?: string | number | boolean;
+				locked?: string | number | boolean;
 				name?: string;
 				status?: string | number | boolean;
-				uuid?: string;
-				id?: string | number | boolean;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
 				updated_at_gt?: string;
-				updated_at_lte?: string;
 				updated_at_gte?: string;
+				updated_at_lt?: string;
+				updated_at_lte?: string;
+				user_uuid?: string;
+				uuid?: string;
 				search?: string;
 			};
 			header?: never;
@@ -11926,6 +12117,7 @@ export interface operations {
 			query?: never;
 			header?: never;
 			path: {
+				/** @description The Access Key's UUID */
 				uuid: components['schemas']['UUID'];
 			};
 			cookie?: never;
@@ -11958,7 +12150,7 @@ export interface operations {
 			/** @description Redirect */
 			302: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};
@@ -12000,6 +12192,7 @@ export interface operations {
 	UsersUserAcceptInvite: {
 		parameters: {
 			query: {
+				/** @description The Organization's UUID */
 				organisation_uuid: components['schemas']['UUID'];
 			};
 			header?: never;
@@ -12022,6 +12215,7 @@ export interface operations {
 	UsersUserDeclineInvite: {
 		parameters: {
 			query: {
+				/** @description The Organization's UUID */
 				organisation_uuid: components['schemas']['UUID'];
 			};
 			header?: never;
@@ -12046,6 +12240,7 @@ export interface operations {
 			query?: never;
 			header?: never;
 			path: {
+				/** @description The Organization Member's email address or UUID */
 				user_identifier: string;
 			};
 			cookie?: never;
@@ -12072,6 +12267,7 @@ export interface operations {
 			};
 			header?: never;
 			path: {
+				/** @description The Organization Member's email address or UUID */
 				user_identifier: string;
 			};
 			cookie?: never;
@@ -12081,7 +12277,7 @@ export interface operations {
 			/** @description Redirect */
 			302: {
 				headers: {
-					/** @description null */
+					/** @description URL of the redirect target */
 					location?: string;
 					[name: string]: unknown;
 				};

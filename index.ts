@@ -31,7 +31,14 @@ import {
 	paginatedResponse,
 	type SortingOptions,
 } from './src/helpers/query.ts';
-import { InboxClient, type ListInboxSubmissionsOptions } from './src/inbox.ts';
+import {
+	type CreateInboxTargetOptions,
+	InboxClient,
+	type ListInboxSubmissionsOptions,
+	type ListInboxTargetsOptions,
+	type UpdateInboxSettingsOptions,
+} from './src/inbox.ts';
+import { InboxTargetClient, type UpdateInboxTargetOptions } from './src/inbox-target.ts';
 import {
 	type ConnectSiteOptions,
 	type CreateDamOptions,
@@ -82,10 +89,12 @@ export type {
 	CreateDamOptions,
 	CreateEditingSessionFileOptions,
 	CreateInboxOptions,
+	CreateInboxTargetOptions,
 	DeleteEditingSessionFileOptions,
 	DeleteEditingSessionFilesOptions,
 	FilterOptions,
 	ListInboxSubmissionsOptions,
+	ListInboxTargetsOptions,
 	ListOrgDamsOptions,
 	ListOrgInboxesOptions,
 	ListOrgSitesOptions,
@@ -103,6 +112,8 @@ export type {
 	UnlockOptions,
 	UpdateBuildConfigOptions,
 	UpdateInboxOptions,
+	UpdateInboxSettingsOptions,
+	UpdateInboxTargetOptions,
 	UpdateSiteOptions,
 	UploadFileOptions,
 };
@@ -126,6 +137,7 @@ export type SiteInbox = components['schemas']['SiteInboxBlueprint'];
 export type SiteDam = components['schemas']['SiteDamBlueprint'];
 export type FormSubmission = components['schemas']['FormHookBlueprint'];
 export type Inbox = components['schemas']['InboxBlueprint'];
+export type InboxTarget = components['schemas']['InboxTargetBlueprint'];
 export type Dam = components['schemas']['DamBlueprint'];
 export type EditingSession = components['schemas']['EditingSessionBlueprint'];
 export type EditingSessionFile = components['schemas']['EditingSessionFileBlueprint'];
@@ -368,6 +380,10 @@ export default class CloudCannonClient {
 
 	inbox(uuid: string): InboxClient {
 		return new InboxClient(uuid, this);
+	}
+
+	inboxTarget(uuid: string): InboxTargetClient {
+		return new InboxTargetClient(uuid, this);
 	}
 
 	siteInbox(uuid: string): SiteInboxClient {

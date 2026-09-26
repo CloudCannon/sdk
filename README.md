@@ -13,6 +13,7 @@ A TypeScript SDK for interacting with the CloudCannon REST API.
   - [Sites (`client.site(uuid)`)](#sites-clientsiteuuid)
   - [Inboxes (`client.inbox(uuid)`)](#inboxes-clientinboxuuid)
   - [Site Inboxes (`client.siteInbox(uuid)`)](#site-inboxes-clientsiteinboxuuid)
+  - [Inbox Targets (`client.inboxTarget(uuid)`)](#inbox-targets-clientinboxtargetuuid)
   - [Editing Sessions (`client.editingSession(uuid)`)](#editing-sessions-clienteditingsessionuuid)
   - [Editing Session Files (`client.editingSessionFile(uuid)`)](#editing-session-files-clienteditingsessionfileuuid)
   - [Builds (`client.build(uuid)`)](#builds-clientbuilduuid)
@@ -309,7 +310,7 @@ const { items } = await org.getInboxes({
   filters: {
     search: 'contact',
     name: 'Contact Form',
-    captcha_type: 'recaptcha',
+    captcha_type: 'google',
     uuid: 'inbox-uuid',
     id: 123,
     // Date range filters
@@ -349,11 +350,13 @@ Create a new inbox.
 const inbox = await org.createInbox({
   name: 'Contact Form',          // Display name for the inbox
   key: 'contact-form',           // Unique key/slug for the inbox
-  monthly_quota: 1000,          // Optional monthly submission quota
   keep_form_hook_days: 30,      // Optional number of days to retain submissions
-  captcha_key: 'site-key',      // Optional reCAPTCHA site key
-  captcha_secret: 'secret',     // Optional reCAPTCHA secret key
-  captcha_type: 'recaptcha',    // Optional captcha type
+  captcha_type: 'google',       // Optional captcha provider: google, google_enterprise, hcaptcha, or turnstile
+  captcha_key: 'site-key',      // Optional captcha site key (the reCAPTCHA key ID for google_enterprise)
+  captcha_secret: 'secret',     // Optional captcha secret key (a Google Cloud API key for google_enterprise). Never returned
+  captcha_config: {                 // Optional provider options, see "Update inbox settings"
+    project_id: 'my-project',       // Google Cloud project ID, required for google_enterprise
+  },
 });
 // { // Inbox
 //   uuid: "STRING_VALUE",
@@ -1108,6 +1111,72 @@ await site.triggerPull();
 const inbox = client.inbox('inbox-uuid');
 ```
 
+#### `inbox.get()`
+
+Get the inbox, including the `key` used to point a form at this inbox.
+
+```typescript
+const details = await inbox.get();
+// { // Inbox
+//   uuid: "STRING_VALUE",
+//   id: 123,
+//   name: "Contact Form",
+//   key: "contact-form",
+//   monthly_quota: 1000,
+//   keep_form_hook_days: 30,
+//   organisation_id: 123,
+//   captcha_type: "google",
+//   captcha_key: "STRING_VALUE",
+//   captcha_config: {},            // Provider options, such as project_id for google_enterprise
+//   has_captcha_secret: true,      // The secret key itself is never returned
+//   allow_uploads: true,
+//   created_at: "TIMESTAMP",
+//   updated_at: "TIMESTAMP",
+// }
+```
+
+#### `inbox.update(body)`
+
+Update the inbox settings. This is a partial update, so send only the fields you are changing.
+Changing `key` changes where your forms post, so every form naming the old key stops reaching this
+inbox.
+
+```typescript
+const updated = await inbox.update({
+  name: 'Contact Form',            // Display name for the inbox
+  key: 'contact-form',             // Unique key/slug used by form submissions
+  keep_form_hook_days: 30,         // Days to retain submissions
+  captcha_type: 'google',          // Captcha provider: google, google_enterprise, hcaptcha, or turnstile
+  captcha_key: 'site-key',
+  captcha_secret: 'secret-key',    // Omit to keep the stored secret. Never returned
+  captcha_config: {                // Provider options, merged into the stored ones
+    project_id: 'my-project',      // Google Cloud project ID, required for google_enterprise
+    min_score: 0.5,                // Reject reCAPTCHA tokens below this score (google v3 and google_enterprise)
+    send_sitekey: true,            // Tell hCaptcha which site key to expect (hcaptcha)
+  },
+  allow_uploads: true,             // Accept file uploads from forms posting to this inbox
+});
+// Returns: Inbox
+```
+
+A provider needs both `captcha_key` and `captcha_secret`, and `google_enterprise` also needs
+`captcha_config.project_id`. Changing `captcha_type` to a different provider needs the new
+provider's keys, except between `google` and `google_enterprise`, which keeps `captcha_key`.
+`captcha_config` only holds the keys its provider uses: `project_id` and `min_score` for
+`google_enterprise`, `min_score` for `google`, and `send_sitekey` for `hcaptcha`. Keys you send are
+merged into the stored options, and a `null` removes one. Send `null` for `captcha_type`,
+`captcha_key` and `captcha_secret` together to remove the captcha, which also clears
+`captcha_config`.
+
+#### `inbox.delete()`
+
+Delete the inbox.
+
+```typescript
+await inbox.delete();
+// Returns: void
+```
+
 #### `inbox.getSubmissions(options?)`
 
 List form submissions for the inbox. Supports pagination, sorting, and filtering.
@@ -1178,6 +1247,57 @@ const { items } = await inbox.getSubmissions({
 // }
 ```
 
+#### `inbox.getTargets(options?)`
+
+List the targets that submissions to this inbox are forwarded to. This endpoint is not paginated,
+so it returns an array. Supports filtering.
+
+```typescript
+const targets = await inbox.getTargets({
+  filters: {
+    target_type: 'email',        // Filter by target type
+    search: 'team@example.com',
+    uuid: 'inbox-target-uuid',
+    id: 123,
+    inbox_uuid: 'inbox-uuid',
+    created_at_lt: '2024-01-01T00:00:00Z',
+    created_at_gt: '2023-01-01T00:00:00Z',
+    created_at_lte: '2024-01-01T00:00:00Z',
+    created_at_gte: '2023-01-01T00:00:00Z',
+    updated_at_lt: '2024-01-01T00:00:00Z',
+    updated_at_gt: '2023-01-01T00:00:00Z',
+    updated_at_lte: '2024-01-01T00:00:00Z',
+    updated_at_gte: '2023-01-01T00:00:00Z',
+  },
+});
+// [ // InboxTarget
+//   {
+//     uuid: "STRING_VALUE",
+//     id: 123,
+//     target_type: "email",
+//     target: "team@example.com",
+//     validated: true,
+//     config: {},
+//     inbox_uuid: "inbox-uuid",
+//     created_at: "TIMESTAMP",
+//     updated_at: "TIMESTAMP",
+//   }
+// ]
+```
+
+#### `inbox.createTarget(body)`
+
+Create a target for this inbox.
+
+```typescript
+const target = await inbox.createTarget({
+  target_type: 'email',            // Type of target, e.g. 'email'
+  target: 'team@example.com',      // Destination for the target type
+  config: {},                      // Optional target-type specific configuration
+});
+// Returns: InboxTarget
+```
+
 ---
 
 ### Site Inboxes (`client.siteInbox(uuid)`)
@@ -1207,6 +1327,72 @@ const updated = await siteInbox.update({
 //   created_at: "TIMESTAMP",
 //   updated_at: "TIMESTAMP",
 // }
+```
+
+---
+
+### Inbox Targets (`client.inboxTarget(uuid)`)
+
+```typescript
+const inboxTarget = client.inboxTarget('inbox-target-uuid');
+```
+
+#### `inboxTarget.get()`
+
+Get an inbox target.
+
+```typescript
+const target = await inboxTarget.get();
+// { // InboxTarget
+//   uuid: "STRING_VALUE",
+//   id: 123,
+//   target_type: "email",
+//   target: "team@example.com",
+//   validated: true,
+//   config: {},
+//   inbox_uuid: "inbox-uuid",
+//   created_at: "TIMESTAMP",
+//   updated_at: "TIMESTAMP",
+// }
+```
+
+#### `inboxTarget.update(body)`
+
+Update the target's destination and configuration. A target's `target_type` cannot be changed.
+
+`config` is stored as a single object and is replaced wholesale, so read the target first and spread
+its existing `config` into the new one, or every setting you leave out is erased.
+
+The permitted `config` keys are `use_client_auth`, `block_spam`, `block_spam_list`,
+`payload_format`, `field_map`, `value_map`, `slack`, `discord`, `teams` and `hubspot`. Any other key
+is silently discarded, which for a wholesale assignment means the stored config is emptied.
+
+```typescript
+const existing = await inboxTarget.get();
+
+const updated = await inboxTarget.update({
+  target: 'team@example.com',                        // New destination, restarts validation
+  config: { ...existing.config, block_spam: true },  // Merge, or the rest of the config is lost
+});
+// Returns: InboxTarget
+```
+
+#### `inboxTarget.delete()`
+
+Delete the inbox target.
+
+```typescript
+await inboxTarget.delete();
+// Returns: void
+```
+
+#### `inboxTarget.revalidate()`
+
+Restart the validation process for the target, for example to resend a confirmation email.
+
+```typescript
+const target = await inboxTarget.revalidate();
+// Returns: InboxTarget
 ```
 
 ---
