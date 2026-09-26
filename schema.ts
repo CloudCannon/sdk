@@ -3628,7 +3628,9 @@ export interface components {
 			organisation_id: number;
 			captcha_type?: string | null;
 			captcha_key?: string | null;
-			captcha_project_id?: string | null;
+			captcha_config?: {
+				[key: string]: unknown;
+			};
 			allow_uploads?: boolean;
 			/** Format: date-time */
 			created_at: string;
@@ -5875,8 +5877,10 @@ export interface operations {
 					captcha_secret?: string | null;
 					/** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
 					captcha_type?: string | null;
-					/** @description The Google Cloud project ID that holds the reCAPTCHA key, for google_enterprise. */
-					captcha_project_id?: string | null;
+					/** @description Options for the captcha provider: project_id is the Google Cloud project that holds the reCAPTCHA key, required for google_enterprise; min_score (0 to 1, default 0.5) rejects lower-scoring tokens for google and google_enterprise; send_sitekey (default true) tells hcaptcha which site key to expect. Keys for other providers are dropped. */
+					captcha_config?: {
+						[key: string]: unknown;
+					};
 					/** @description Whether forms on this inbox accept file uploads. */
 					allow_uploads?: boolean;
 				};
@@ -7192,8 +7196,10 @@ export interface operations {
 					captcha_secret?: string | null;
 					/** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
 					captcha_type?: string | null;
-					/** @description The Google Cloud project ID that holds the reCAPTCHA key, for google_enterprise. */
-					captcha_project_id?: string | null;
+					/** @description Options for the captcha provider: project_id is the Google Cloud project that holds the reCAPTCHA key, required for google_enterprise; min_score (0 to 1, default 0.5) rejects lower-scoring tokens for google and google_enterprise; send_sitekey (default true) tells hcaptcha which site key to expect. Keys for other providers are dropped. */
+					captcha_config?: {
+						[key: string]: unknown;
+					};
 					/** @description Whether forms on this inbox accept file uploads. */
 					allow_uploads?: boolean;
 				};

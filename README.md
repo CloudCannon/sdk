@@ -354,7 +354,9 @@ const inbox = await org.createInbox({
   captcha_type: 'google',       // Optional captcha provider: google, google_enterprise, hcaptcha, or turnstile
   captcha_key: 'site-key',      // Optional captcha site key (the reCAPTCHA key ID for google_enterprise)
   captcha_secret: 'secret',     // Optional captcha secret key (a Google Cloud API key for google_enterprise). Never returned
-  captcha_project_id: 'my-project', // Google Cloud project ID, required for google_enterprise
+  captcha_config: {                 // Optional provider options, see "Update inbox settings"
+    project_id: 'my-project',       // Google Cloud project ID, required for google_enterprise
+  },
 });
 // { // Inbox
 //   uuid: "STRING_VALUE",
@@ -1125,7 +1127,7 @@ const details = await inbox.get();
 //   organisation_id: 123,
 //   captcha_type: "google",
 //   captcha_key: "STRING_VALUE",
-//   captcha_project_id: null,
+//   captcha_config: {},            // Provider options, such as project_id for google_enterprise
 //   has_captcha_secret: true,      // The secret key itself is never returned
 //   allow_uploads: true,
 //   created_at: "TIMESTAMP",
@@ -1147,17 +1149,24 @@ const updated = await inbox.update({
   captcha_type: 'google',          // Captcha provider: google, google_enterprise, hcaptcha, or turnstile
   captcha_key: 'site-key',
   captcha_secret: 'secret-key',    // Omit to keep the stored secret. Never returned
-  captcha_project_id: null,        // Google Cloud project ID, required for google_enterprise
+  captcha_config: {                // Provider options, merged into the stored ones
+    project_id: 'my-project',      // Google Cloud project ID, required for google_enterprise
+    min_score: 0.5,                // Reject reCAPTCHA tokens below this score (google v3 and google_enterprise)
+    send_sitekey: true,            // Tell hCaptcha which site key to expect (hcaptcha)
+  },
   allow_uploads: true,             // Accept file uploads from forms posting to this inbox
 });
 // Returns: Inbox
 ```
 
 A provider needs both `captcha_key` and `captcha_secret`, and `google_enterprise` also needs
-`captcha_project_id`. Changing `captcha_type` to a different provider needs the new provider's keys,
-except between `google` and `google_enterprise`, which keeps `captcha_key`. Send `null` for
-`captcha_type`, `captcha_key`, `captcha_secret` and `captcha_project_id` together to remove the
-captcha.
+`captcha_config.project_id`. Changing `captcha_type` to a different provider needs the new
+provider's keys, except between `google` and `google_enterprise`, which keeps `captcha_key`.
+`captcha_config` only holds the keys its provider uses: `project_id` and `min_score` for
+`google_enterprise`, `min_score` for `google`, and `send_sitekey` for `hcaptcha`. Keys you send are
+merged into the stored options, and a `null` removes one. Send `null` for `captcha_type`,
+`captcha_key` and `captcha_secret` together to remove the captcha, which also clears
+`captcha_config`.
 
 #### `inbox.delete()`
 
