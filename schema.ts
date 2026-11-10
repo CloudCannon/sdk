@@ -4,12092 +4,13729 @@
  */
 
 export interface paths {
-	'/api/v0/authentication/bearer-tokens/{bearer_token_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		post?: never;
-		/** @description Delete site bearer token */
-		delete: operations['AuthenticationBearerTokensDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/authentication/users/{site_user_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		post?: never;
-		/** @description Delete site authentication user */
-		delete: operations['AuthenticationUsersDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get base domain */
-		get: operations['BaseDomainsIndexShow'];
-		/** @description Update base domain */
-		put: operations['BaseDomainsIndexUpdate'];
-		post?: never;
-		/** @description Delete base domain */
-		delete: operations['BaseDomainsIndexDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/dns': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Status of base domain dns */
-		get: operations['BaseDomainsDnsIndexStatus'];
-		put?: never;
-		/** @description Create a base domain dns */
-		post: operations['BaseDomainsDnsIndexCreate'];
-		/** @description Delete base domain dns */
-		delete: operations['BaseDomainsDnsIndexDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/dns/records': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List of base domain dns records */
-		get: operations['BaseDomainsDnsRecordsList'];
-		put?: never;
-		/** @description Create a base domain dns record */
-		post: operations['BaseDomainsDnsRecordsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/dns/records/{record_id}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update a base domain dns record */
-		put: operations['BaseDomainsDnsRecordsUpdate'];
-		post?: never;
-		/** @description Delete a base domain dns record */
-		delete: operations['BaseDomainsDnsRecordsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/dns/retry': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Retry setup for base domain dns */
-		post: operations['BaseDomainsDnsIndexRetry'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/dns/validate': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Validate base domain dns */
-		get: operations['BaseDomainsDnsIndexValidate'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/migrate': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Migrate base domain to Cloudflare */
-		put: operations['BaseDomainsIndexMigrate'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/base-domains/{base_domain_uuid}/subdomains': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get subdomains from base domain */
-		get: operations['BaseDomainsSubdomainsIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/builds/{build_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to build output */
-		get: operations['BuildsOutput'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/builds/{build_uuid}/files/{path}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to a file in the build output */
-		get: operations['BuildsFiles'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/builds/{build_uuid}/urls': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to build URLs */
-		get: operations['BuildsUrls'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/dams/{dam_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get DAM Details */
-		get: operations['DamsShow'];
-		/** @description Update DAM details */
-		put: operations['DamsUpdate'];
-		post?: never;
-		/** @description Delete DAM */
-		delete: operations['DamsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get the details of an editing session file */
-		get: operations['EditingSessionFilesIndexIndex'];
-		put?: never;
-		post?: never;
-		/** @description discard an editing session file for editing */
-		delete: operations['EditingSessionFilesIndexDiscard'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/claim_lock': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Claim the edit lock on an editing session file */
-		put: operations['EditingSessionFilesIndexClaimLock'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/contributions': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List the contributions for an editing session file */
-		get: operations['EditingSessionFilesContributionsIndex'];
-		put?: never;
-		/** @description Create a new contribution or upload a new file to an existing contribution */
-		post: operations['EditingSessionFilesContributionsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/edit_type': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update the edit type of a editing session file */
-		put: operations['EditingSessionFilesIndexEditType'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/metadata': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update the metadata of an editing session file */
-		put: operations['EditingSessionFilesIndexMetadata'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/path': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update the path of a editing session file */
-		put: operations['EditingSessionFilesIndexPath'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/raw': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get the raw contents of an editing session file */
-		get: operations['EditingSessionFilesIndexRaw'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/resized': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get a resized preview of an editing session file */
-		get: operations['EditingSessionFilesIndexResized'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/resolve': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Mark an editing session file with conflicts as resolved */
-		put: operations['EditingSessionFilesIndexResolve'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_session_files/{editing_session_file_uuid}/unlock': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Unlock an editing session file for editing */
-		put: operations['EditingSessionFilesIndexUnlock'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get editing session details */
-		get: operations['EditingSessionsIndexIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/abort': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		post?: never;
-		/** @description Abort a merge on an editing session */
-		delete: operations['EditingSessionsIndexAbort'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/clone_path': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Perform a clone in an editing session */
-		post: operations['EditingSessionsIndexClonePath'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/commit': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Save an editing session to your source provider */
-		post: operations['EditingSessionsIndexCommit'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/delete_path': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Perform a delete in an editing session */
-		post: operations['EditingSessionsIndexDeletePath'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/files': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get the files for an editing session */
-		get: operations['EditingSessionsFilesIndex'];
-		put?: never;
-		/** @description Create a new file in an editing session */
-		post: operations['EditingSessionsFilesCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/move_path': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Perform a move in an editing session */
-		post: operations['EditingSessionsIndexMovePath'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/restore_path': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Restore a deleted editing session file */
-		post: operations['EditingSessionsIndexRestorePath'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/editing_sessions/{editing_session_uuid}/upload_file': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Upload a file to an editing session */
-		post: operations['EditingSessionsIndexUploadFile'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/form-hooks/{form_hook_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update form hook */
-		put: operations['FormHooksUpdate'];
-		post?: never;
-		/** @description Clear form hook */
-		delete: operations['FormHooksClear'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/form-hooks/{form_hook_uuid}/send': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Resend form hook */
-		post: operations['FormHooksQueueSend'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/form-hooks/{form_hook_uuid}/sends': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List form hook sends */
-		get: operations['FormHooksSends'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/groups/{group_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get group details */
-		get: operations['GroupsIndexShow'];
-		/** @description Update a group's name and custom permissions */
-		put: operations['GroupsIndexUpdate'];
-		post?: never;
-		/** @description Delete a group */
-		delete: operations['GroupsIndexDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/groups/{group_uuid}/leave': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		post?: never;
-		/** @description Leave a group as the current authenticated user */
-		delete: operations['GroupsIndexLeave'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/groups/{group_uuid}/members': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List the members of a group */
-		get: operations['GroupsMembersIndex'];
-		put?: never;
-		/** @description Invite a user to a group by email; existing users are added as members, others as pending members */
-		post: operations['GroupsMembersInvite'];
-		/** @description Remove a member from a group by email */
-		delete: operations['GroupsMembersDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/groups/{group_uuid}/pending-members': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List the pending (invited but not yet accepted) members of a group */
-		get: operations['GroupsPendingMembersIndex'];
-		put?: never;
-		post?: never;
-		/** @description Cancel a pending group invitation by email */
-		delete: operations['GroupsPendingMembersDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/groups/{group_uuid}/pending-members/resend': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Resend a pending group invitation email by email address */
-		post: operations['GroupsPendingMembersResendInvitation'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inbox-targets/{inbox_target_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Inbox Target Details */
-		get: operations['InboxTargetsShow'];
-		/** @description Update inbox target config */
-		put: operations['InboxTargetsUpdate'];
-		post?: never;
-		/** @description Delete Inbox Target */
-		delete: operations['InboxTargetsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inbox-targets/{inbox_target_uuid}/revalidate': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Restart validation process for target */
-		post: operations['InboxTargetsRevalidate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inboxes/{inbox_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Inbox Details */
-		get: operations['InboxesIndexShow'];
-		/** @description Update Inbox details */
-		put: operations['InboxesIndexUpdate'];
-		post?: never;
-		/** @description Delete Inbox */
-		delete: operations['InboxesIndexDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inboxes/{inbox_uuid}/export': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Export inbox submissions as CSV */
-		get: operations['InboxesIndexExport'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inboxes/{inbox_uuid}/form-hooks': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List form hooks */
-		get: operations['InboxesFormHooksIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inboxes/{inbox_uuid}/targets': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List inbox targets */
-		get: operations['InboxesInboxTargetsIndex'];
-		put?: never;
-		/** @description Create inbox target */
-		post: operations['InboxesInboxTargetsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/inboxes/{inbox_uuid}/upload/{key}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description View uploaded file */
-		get: operations['InboxesIndexUpload'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization list */
-		get: operations['OrgsIndexIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization details */
-		get: operations['OrgsIndexShow'];
-		/** @description Update organisation details */
-		put: operations['OrgsIndexUpdate'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/access-review': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Download an organization access review as CSV */
-		get: operations['OrgsIndexAccessReview'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/activity': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List activity */
-		get: operations['OrgsActivityIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/analytics/build/duration': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization build duration analytics */
-		get: operations['OrgsAnalyticsBuildDuration'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/analytics/build/duration-total': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get total organization build duration */
-		get: operations['OrgsAnalyticsBuildDurationTotal'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization bandwidth usage analytics */
-		get: operations['OrgsAnalyticsHostingBandwidth'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-by-site': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization bandwidth usage by site */
-		get: operations['OrgsAnalyticsHostingBandwidthBySite'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-by-url': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization bandwidth usage by URL */
-		get: operations['OrgsAnalyticsHostingBandwidthByUrl'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-total': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get total organization bandwidth usage */
-		get: operations['OrgsAnalyticsHostingBandwidthTotal'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/api-keys': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List an organization's API keys */
-		get: operations['OrgsApiKeysIndex'];
-		put?: never;
-		/** @description Create an organization API key with scoped permissions */
-		post: operations['OrgsApiKeysCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/api-keys/{api_key_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get an organization API key */
-		get: operations['OrgsApiKeysShow'];
-		put?: never;
-		post?: never;
-		/** @description Delete an organization API key */
-		delete: operations['OrgsApiKeysDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/base-domains': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization base domains */
-		get: operations['OrgsBaseDomainsIndex'];
-		put?: never;
-		/** @description Create base domain */
-		post: operations['OrgsBaseDomainsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/billing': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update organisation billing details */
-		put: operations['OrgsIndexUpdateBilling'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/dams': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization DAMs */
-		get: operations['OrgsDamsIndex'];
-		put?: never;
-		/** @description Create DAM */
-		post: operations['OrgsDamsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/groups': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List an organization's groups */
-		get: operations['OrgsGroupsIndex'];
-		put?: never;
-		/** @description Create a custom group with scoped permissions */
-		post: operations['OrgsGroupsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/inboxes': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization inboxes */
-		get: operations['OrgsInboxesIndex'];
-		put?: never;
-		/** @description Create inbox */
-		post: operations['OrgsInboxesCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/members': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List organization members */
-		get: operations['OrgsMembersIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/members/{email}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get an organization member or pending member by email */
-		get: operations['OrgsMembersShow'];
-		put?: never;
-		post?: never;
-		/** @description Remove an organization member or cancel a pending invitation by email */
-		delete: operations['OrgsMembersDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/pending-members': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List an organization's pending members grouped by email */
-		get: operations['OrgsPendingMembersIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/permissions': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get the current user's permission groups for an organization */
-		get: operations['OrgsIndexPermissions'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/projects': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization projects */
-		get: operations['OrgsProjectsIndex'];
-		put?: never;
-		/** @description Create project */
-		post: operations['OrgsProjectsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/providers/{provider}/installations': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List app installations */
-		get: operations['OrgsProvidersInstallations'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/providers/{provider}/repositories': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List repositories */
-		get: operations['OrgsProvidersRepositories'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/providers/{provider}/repositories/{repository}/branches': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List branches from repository */
-		get: operations['OrgsProvidersBranches'];
-		put?: never;
-		/** @description Clone a branch from the selected branch */
-		post: operations['OrgsProvidersCreateBranch'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/site-mountings': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization site mountings */
-		get: operations['OrgsSiteMountingsIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/sites': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization sites */
-		get: operations['OrgsSitesIndex'];
-		put?: never;
-		/** @description Create site */
-		post: operations['OrgsSitesCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/sites/connect': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Create site from a remote repo without keeping the connection with git */
-		post: operations['OrgsSitesConnect'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/ssl-certificates': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get organization Ssl Certificates */
-		get: operations['OrgsSslCertificatesIndex'];
-		put?: never;
-		/** @description Create Ssl Certificate */
-		post: operations['OrgsSslCertificatesCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/whitelabel': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to whitelabel logo */
-		get: operations['OrgsWhitelabelShow'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/orgs/{org_uuid}/whitelabel/brand': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to brand logo */
-		get: operations['OrgsWhitelabelShowBrand'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/outputs/{output_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to output */
-		get: operations['OutputsShow'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/projects/{project_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get project details */
-		get: operations['ProjectsShow'];
-		/** @description Update project details */
-		put: operations['ProjectsUpdate'];
-		post?: never;
-		/** @description Delete project */
-		delete: operations['ProjectsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/projects/{project_uuid}/branches': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List branches for the project repository */
-		get: operations['ProjectsGitBranches'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/projects/{project_uuid}/git': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update project Git details */
-		put: operations['ProjectsUpdateGit'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/projects/{project_uuid}/pull-requests': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List open pull requests for the project repository */
-		get: operations['ProjectsGitPullRequests'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/projects/{project_uuid}/refresh-pr-comments': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Refresh deploy-preview PR comments for every site on this project */
-		post: operations['ProjectsRefreshPrComments'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/projects/{project_uuid}/sites': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get sites from projects */
-		get: operations['ProjectsSites'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/scheduled-builds/{scheduled_build_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Scheduled Build Details */
-		get: operations['ScheduledBuildsShow'];
-		put?: never;
-		post?: never;
-		/** @description Delete Scheduled Build */
-		delete: operations['ScheduledBuildsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/site-archives/{site_archive_uuid}/download': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Download site archive */
-		get: operations['SiteArchivesDownload'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/site-dams/{site_dam_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Site DAM details */
-		get: operations['SiteDamsShow'];
-		/** @description Update site dam details */
-		put: operations['SiteDamsUpdate'];
-		post?: never;
-		/** @description Delete Site DAM */
-		delete: operations['SiteDamsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/site-inboxes/{site_inbox_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Site Inbox details */
-		get: operations['SiteInboxesShow'];
-		/** @description Update site inbox details */
-		put: operations['SiteInboxesUpdate'];
-		post?: never;
-		/** @description Delete Site Inbox */
-		delete: operations['SiteInboxesDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/site-mountings/{site_mounting_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site mounting details */
-		put: operations['SiteMountingsUpdate'];
-		post?: never;
-		/** @description Delete Site Mounting */
-		delete: operations['SiteMountingsDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get site details */
-		get: operations['SitesIndexShow'];
-		/** @description Update site details */
-		put: operations['SitesIndexUpdate'];
-		post?: never;
-		/** @description Delete site */
-		delete: operations['SitesIndexDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/activity': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List activity */
-		get: operations['SitesActivityIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/analytics/build/duration': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get build duration analytics */
-		get: operations['SitesAnalyticsBuildDuration'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/analytics/hosting/bandwidth': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get bandwidth usage analytics */
-		get: operations['SitesAnalyticsHostingBandwidth'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/analytics/hosting/bandwidth-by-url': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get bandwidth usage by URL for this site */
-		get: operations['SitesAnalyticsHostingBandwidthByUrl'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/analytics/hosting/bandwidth-for-url': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get bandwidth usage for a specific URL */
-		get: operations['SitesAnalyticsHostingBandwidthForUrl'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/archives': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List backups */
-		get: operations['SitesArchivesIndex'];
-		put?: never;
-		/** @description Create backup */
-		post: operations['SitesArchivesCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/authentication': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site authentication method */
-		put: operations['SitesIndexUpdateAuthentication'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/authentication/bearer-tokens': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site bearer tokens */
-		get: operations['SitesAuthenticationBearerTokensIndex'];
-		put?: never;
-		/** @description Create site bearer token */
-		post: operations['SitesAuthenticationBearerTokensCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/authentication/client-password': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update client sharing password */
-		put: operations['SitesAuthenticationIndexUpdateClientPassword'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/authentication/saml': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update SAML data */
-		put: operations['SitesAuthenticationIndexUpdateSaml'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/authentication/stable-password': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update authentication password */
-		put: operations['SitesAuthenticationIndexUpdateStablePassword'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/authentication/users': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site authentication users */
-		get: operations['SitesAuthenticationUsersIndex'];
-		put?: never;
-		/** @description Create site authentication user */
-		post: operations['SitesAuthenticationUsersCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/build': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site build configuration */
-		put: operations['SitesIndexUpdateBuild'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/builds': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site builds */
-		get: operations['SitesBuildsIndex'];
-		put?: never;
-		/** @description Create a new build */
-		post: operations['SitesBuildsCreate'];
-		/** @description Cancel the current build */
-		delete: operations['SitesBuildsCancel'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/client-sharing': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site client sharing configuration */
-		put: operations['SitesIndexUpdateClientSharing'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/copy': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Copy site */
-		post: operations['SitesIndexCopy'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/dam': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site dam configuration */
-		put: operations['SitesIndexUpdateDam'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/dams': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get site dams */
-		get: operations['SitesDamsIndex'];
-		put?: never;
-		/** @description Create site dam */
-		post: operations['SitesDamsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/domain': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update domain name */
-		put: operations['SitesDomainUpdate'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/domain/prioritise': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Prioritise this site as default for the domain */
-		post: operations['SitesDomainPrioritise'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/editing_sessions': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get site editing sessions */
-		get: operations['SitesEditingSessionsIndex'];
-		put?: never;
-		/** @description Create a new editing session on a site */
-		post: operations['SitesEditingSessionsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/editing_sessions/latest': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get latest open editing session for a site */
-		get: operations['SitesEditingSessionsLatest'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/files': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List files from site */
-		get: operations['SitesFilesIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/files/zip': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Complete ZIP Upload */
-		post: operations['SitesFilesCompleteZipUpload'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/files/{path}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to file */
-		get: operations['SitesFilesShow'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/files/{path}/metadata': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description returns file metadata */
-		get: operations['SitesFilesMetadata'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/files/{path}/resized': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to resized file */
-		get: operations['SitesFilesResized'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/files/{path}/sorting': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description returns file sorting */
-		get: operations['SitesFilesSorting'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/form-hooks': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List form hooks */
-		get: operations['SitesFormHooksIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/hosting': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site hosting configuration */
-		put: operations['SitesIndexUpdateHosting'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/inboxes': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get site inboxes */
-		get: operations['SitesInboxesIndex'];
-		put?: never;
-		/** @description Create site inbox */
-		post: operations['SitesInboxesCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/main_source_dam': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get the site's main source DAM */
-		get: operations['SitesMainSourceDamIndex'];
-		/** @description Set the site's main source DAM */
-		put: operations['SitesMainSourceDamUpdate'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/members': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site members */
-		get: operations['SitesMembersIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/members/{email}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Move a site member to a different site group */
-		post: operations['SitesMembersSetSiteGroup'];
-		/** @description Remove a site member or cancel a pending invitation */
-		delete: operations['SitesMembersDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/output-providers': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update output storage provider */
-		put: operations['SitesOutputProvidersIndexUpdate'];
-		/** @description Add output storage provider */
-		post: operations['SitesOutputProvidersIndexAdd'];
-		/** @description Remove output storage provider */
-		delete: operations['SitesOutputProvidersIndexRemove'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/output-providers/sync': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Sync to output storage provider */
-		post: operations['SitesOutputProvidersIndexSync'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/outputs': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site outputs */
-		get: operations['SitesOutputsIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/pending-members': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List pending site members */
-		get: operations['SitesPendingMembersIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update storage provider */
-		put: operations['SitesProvidersIndexUpdate'];
-		/** @description Add storage provider */
-		post: operations['SitesProvidersIndexAdd'];
-		/** @description Remove storage provider */
-		delete: operations['SitesProvidersIndexRemove'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/branches': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List branches */
-		get: operations['SitesProvidersGitIndexBranches'];
-		put?: never;
-		/** @description Clone a branch from the selected site branch */
-		post: operations['SitesProvidersGitIndexCreateBranch'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/branches/merge': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Merge changes */
-		post: operations['SitesProvidersGitIndexMerge'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/branches/publish': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Set the branch for changes to be published to */
-		post: operations['SitesProvidersGitIndexPublishBranch'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/branches/publish/compare': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Compare the changes to the publish branch */
-		get: operations['SitesProvidersGitIndexCompare'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/branches/publish/upstream-compare': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Compare the changes from the publish branch */
-		get: operations['SitesProvidersGitIndexUpstreamCompare'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/branches/upstream-merge': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Merge upstream changes */
-		post: operations['SitesProvidersGitIndexUpstreamMerge'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/pull-requests': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List pull requests */
-		get: operations['SitesProvidersGitPullRequestsIndex'];
-		put?: never;
-		/** @description Create pull request */
-		post: operations['SitesProvidersGitPullRequestsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/pull-requests/{number}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get pull request details */
-		get: operations['SitesProvidersGitPullRequestsShow'];
-		put?: never;
-		post?: never;
-		/** @description Close pull request */
-		delete: operations['SitesProvidersGitPullRequestsClose'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/pull-requests/{number}/commits': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get pull request commits */
-		get: operations['SitesProvidersGitPullRequestsCommits'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/pull-requests/{number}/merge': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Merge pull request */
-		put: operations['SitesProvidersGitPullRequestsMerge'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/reconnect': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Clears the current storage providers error */
-		post: operations['SitesProvidersIndexReconnect'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/sync': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Sync from storage provider */
-		post: operations['SitesProvidersIndexSync'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/providers/upstream-pull-requests': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List Upstream pull requests */
-		get: operations['SitesProvidersGitUpstreamPullRequestsIndex'];
-		put?: never;
-		/** @description Create update pull request */
-		post: operations['SitesProvidersGitUpstreamPullRequestsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/publish': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site publish method */
-		put: operations['SitesIndexUpdatePublish'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/scans': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get site scan details */
-		get: operations['SitesScansIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/scheduled-builds': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site scheduled builds */
-		get: operations['SitesScheduledBuildsIndex'];
-		put?: never;
-		/** @description Create site scheduled build */
-		post: operations['SitesScheduledBuildsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/screenshots': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Returns a presigned s3 URL to load screenshot hashes for a site */
-		get: operations['SitesScreenshotsIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/screenshots/lighthouse': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to lighthouse json response */
-		get: operations['SitesScreenshotsLighthouse'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/screenshots/{device}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to screenshot */
-		get: operations['SitesScreenshotsShow'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/site-mountings': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get site mountings */
-		get: operations['SitesSiteMountingsIndex'];
-		put?: never;
-		/** @description Create site mounting */
-		post: operations['SitesSiteMountingsCreate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/ssl': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		/** @description Update site SSL Custom */
-		put: operations['SitesSslIndexUpdate'];
-		post?: never;
-		/** @description Remove site SSL Custom */
-		delete: operations['SitesSslIndexRemove'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/ssl/auto': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get state for SSL Auto */
-		get: operations['SitesSslAutoSslState'];
-		put?: never;
-		/** @description Retry to Generate SSL Auto */
-		post: operations['SitesSslAutoRetrySslGenerate'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/ssl/cloudflare': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Cloudflare state for SSL */
-		get: operations['SitesSslCloudflareCloudflareSslState'];
-		/** @description Update Cloudflare SSL Setup */
-		put: operations['SitesSslCloudflareUpdate'];
-		/** @description Retry Cloudflare SSL Setup */
-		post: operations['SitesSslCloudflareRetryCloudflareSetup'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/syncs': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List site syncs */
-		get: operations['SitesSyncsIndex'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/sites/{site_uuid}/watchers': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Start watching a site path */
-		post: operations['SitesIndexStartWatching'];
-		/** @description Stop watching a site path */
-		delete: operations['SitesIndexStopWatching'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/ssl-certificates/{ssl_certificate_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get Ssl Certificate Details */
-		get: operations['SslCertificatesShow'];
-		put?: never;
-		post?: never;
-		/** @description Delete Ssl Certificate */
-		delete: operations['SslCertificatesDestroy'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/syncs/{sync_uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to sync output */
-		get: operations['SyncsShow'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/upload-data': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get the presigned data for file upload */
-		get: operations['IndexUploadData'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get current user details */
-		get: operations['UsersUserShowCurrentUser'];
-		/** @description Update current user information */
-		put: operations['UsersUserUpdate'];
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/access_keys': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get current user's access keys */
-		get: operations['UsersUserAccessKeys'];
-		put?: never;
-		/** @description Create a new access key */
-		post: operations['UsersUserCreateAccessKey'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/access_keys/{uuid}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		post?: never;
-		/** @description Revoke an access key */
-		delete: operations['UsersUserDestroyAccessKey'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/avatar': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to avatar */
-		get: operations['UsersAvatarShow'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/invites': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description List the current user's pending organization invites */
-		get: operations['UsersUserInvites'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/invites/accept': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		/** @description Accept pending organization invites */
-		post: operations['UsersUserAcceptInvite'];
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/invites/decline': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		get?: never;
-		put?: never;
-		post?: never;
-		/** @description Decline pending organization invites */
-		delete: operations['UsersUserDeclineInvite'];
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/{user_identifier}': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Get user details */
-		get: operations['UsersUserShowByIdentifier'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
-	'/api/v0/users/{user_identifier}/avatar': {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		/** @description Redirect to avatar */
-		get: operations['UsersAvatarShowByIdentifier'];
-		put?: never;
-		post?: never;
-		delete?: never;
-		options?: never;
-		head?: never;
-		patch?: never;
-		trace?: never;
-	};
+    "/api/v0/authentication/bearer-tokens/{bearer_token_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** @description Delete a Bearer Token */
+        delete: operations["AuthenticationBearerTokensDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/authentication/users/{site_user_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** @description Remove an allowed user from a Site's Account Authentication */
+        delete: operations["AuthenticationUsersDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Base Domain */
+        get: operations["BaseDomainsIndexShow"];
+        /** @description Update a Base Domain's minimum TLS version or fallback redirect status */
+        put: operations["BaseDomainsIndexUpdate"];
+        post?: never;
+        /** @description Delete a Base Domain */
+        delete: operations["BaseDomainsIndexDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Base Domain's DNS status */
+        get: operations["BaseDomainsDnsIndexStatus"];
+        put?: never;
+        /** @description Enable DNS management for a Base Domain */
+        post: operations["BaseDomainsDnsIndexCreate"];
+        /** @description Disable DNS management for a Base Domain */
+        delete: operations["BaseDomainsDnsIndexDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Check a Base Domain's nameservers now, and on External DNS its wildcard record and its wildcard certificate's TXT records. At most once a minute. */
+        post: operations["BaseDomainsDnsIndexCheck"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/checks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Base Domain's nameserver checks, most recent first. Back-to-back checks with the same result share one entry, from its created_at to its updated_at. */
+        get: operations["BaseDomainsDnsChecksIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/nameservers-updated": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Mark a Base Domain's nameservers as updated at the registrar and check them now (at most once a minute) */
+        post: operations["BaseDomainsDnsIndexNameserversUpdated"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/records": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Base Domain's DNS records */
+        get: operations["BaseDomainsDnsRecordsList"];
+        put?: never;
+        /** @description Create a Base Domain's DNS record */
+        post: operations["BaseDomainsDnsRecordsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/records/{record_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Base Domain's DNS record */
+        put: operations["BaseDomainsDnsRecordsUpdate"];
+        post?: never;
+        /** @description Delete a Base Domain's DNS record */
+        delete: operations["BaseDomainsDnsRecordsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Retry DNS setup for a Base Domain */
+        post: operations["BaseDomainsDnsIndexRetry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/validate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Validate a Base Domain's DNS */
+        get: operations["BaseDomainsDnsIndexValidate"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/wildcard-record-updated": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Tell CloudCannon the optional wildcard record was added at the DNS Provider, so it checks hourly for 7 days. Checks it now, at most once a minute. */
+        post: operations["BaseDomainsDnsIndexWildcardRecordUpdated"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/dns/wildcard-updated": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Tell CloudCannon the wildcard certificate's TXT records were added, so it checks hourly for 7 days. Refreshes the certificate now, at most once a minute. */
+        post: operations["BaseDomainsDnsIndexWildcardUpdated"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/migrate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Migrate a Base Domain to Cloudflare */
+        put: operations["BaseDomainsIndexMigrate"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Base Domain's Subdomains */
+        get: operations["BaseDomainsSubdomainsIndex"];
+        put?: never;
+        /** @description Add a Subdomain to a Base Domain */
+        post: operations["BaseDomainsSubdomainsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Subdomain. A certificate awaiting validation is refreshed first, at most once an hour. */
+        get: operations["BaseDomainsSubdomainsShow"];
+        /** @description Update a Subdomain's hosting, HTTPS, redirect target or redirect status */
+        put: operations["BaseDomainsSubdomainsUpdate"];
+        post?: never;
+        /** @description Delete a Subdomain. Its Sites keep their testing domains. */
+        delete: operations["BaseDomainsSubdomainsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/checks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Subdomain's DNS checks */
+        get: operations["BaseDomainsSubdomainsChecks"];
+        put?: never;
+        /** @description Check a Subdomain's DNS now, and refresh its certificate if it isn't active yet. At most once a minute. */
+        post: operations["BaseDomainsSubdomainsCheckNow"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/dns/fix": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Replace or remove the records in CloudCannon DNS that stop a Subdomain reaching CloudCannon */
+        post: operations["BaseDomainsSubdomainsFixDns"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/dns/updated": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Tell CloudCannon a Subdomain's DNS record was changed, so it checks more often until it's found */
+        post: operations["BaseDomainsSubdomainsDnsUpdated"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/fallback": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Send visitors to unknown subdomains of the Base Domain to this Subdomain */
+        post: operations["BaseDomainsSubdomainsFallback"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/redirect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Redirect every visitor on a Subdomain to another domain */
+        post: operations["BaseDomainsSubdomainsChangeToRedirect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/site": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Serve Sites on a Subdomain instead of redirecting */
+        post: operations["BaseDomainsSubdomainsChangeToSite"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/sites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Serve a Site on a Subdomain, at its root or under a path */
+        post: operations["BaseDomainsSubdomainSitesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/sites/{site_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Change the path a Site is served at on a Subdomain */
+        put: operations["BaseDomainsSubdomainSitesUpdate"];
+        post?: never;
+        /** @description Stop serving a Site on a Subdomain */
+        delete: operations["BaseDomainsSubdomainSitesDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/sites/{site_uuid}/swap": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Replace the Site at a path on a Subdomain in one step */
+        put: operations["BaseDomainsSubdomainSitesSwap"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/ssl/retry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Retry issuing a Subdomain's certificate. At most once a minute. */
+        post: operations["BaseDomainsSubdomainsRetrySsl"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/builds/{build_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Build's output log */
+        get: operations["BuildsOutput"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/builds/{build_uuid}/files/{path}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a file from a Build's output */
+        get: operations["BuildsFiles"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/builds/{build_uuid}/urls": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Build's output URLs */
+        get: operations["BuildsUrls"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/dams/{dam_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a DAM's details */
+        get: operations["DamsShow"];
+        /** @description Update a DAM's details */
+        put: operations["DamsUpdate"];
+        post?: never;
+        /** @description Delete a DAM */
+        delete: operations["DamsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a file's details from an Editing Session */
+        get: operations["EditingSessionFilesIndexIndex"];
+        put?: never;
+        post?: never;
+        /** @description Discard a file from an Editing Session */
+        delete: operations["EditingSessionFilesIndexDiscard"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/claim_lock": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Claim the editing lock on a file in an Editing Session */
+        put: operations["EditingSessionFilesIndexClaimLock"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/contributions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List all contributions for a file in an Editing Session */
+        get: operations["EditingSessionFilesContributionsIndex"];
+        put?: never;
+        /** @description Create a contribution for a file in an Editing Session, or update the latest contribution */
+        post: operations["EditingSessionFilesContributionsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/edit_type": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a file's edit type in an Editing Session */
+        put: operations["EditingSessionFilesIndexEditType"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/metadata": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a file's metadata in an Editing Session */
+        put: operations["EditingSessionFilesIndexMetadata"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/path": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a file's path in an Editing Session */
+        put: operations["EditingSessionFilesIndexPath"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/raw": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a file's raw contents from an Editing Session */
+        get: operations["EditingSessionFilesIndexRaw"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/resized": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View a resized preview of a file from an Editing Session */
+        get: operations["EditingSessionFilesIndexResized"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/resolve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Mark a file's conflicts as resolved in an Editing Session */
+        put: operations["EditingSessionFilesIndexResolve"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_session_files/{editing_session_file_uuid}/unlock": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Release the editing lock on a file in an Editing Session */
+        put: operations["EditingSessionFilesIndexUnlock"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Editing Session's details */
+        get: operations["EditingSessionsIndexIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/abort": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** @description Abort a merge on an Editing Session */
+        delete: operations["EditingSessionsIndexAbort"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/clone_path": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Clone a file in an Editing Session */
+        post: operations["EditingSessionsIndexClonePath"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/commit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Commit an Editing Session to its Git Provider */
+        post: operations["EditingSessionsIndexCommit"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/delete_path": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Delete a file in an Editing Session */
+        post: operations["EditingSessionsIndexDeletePath"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Editing Session's files */
+        get: operations["EditingSessionsFilesIndex"];
+        put?: never;
+        /** @description Create a file in an Editing Session */
+        post: operations["EditingSessionsFilesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/move_path": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Move a file in an Editing Session */
+        post: operations["EditingSessionsIndexMovePath"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/restore_path": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Restore a deleted file in an Editing Session */
+        post: operations["EditingSessionsIndexRestorePath"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/editing_sessions/{editing_session_uuid}/upload_file": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Upload a file to an Editing Session */
+        post: operations["EditingSessionsIndexUploadFile"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/form-hooks/{form_hook_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Form Hook */
+        get: operations["FormHooksShow"];
+        /** @description Update a Form Hook */
+        put: operations["FormHooksUpdate"];
+        post?: never;
+        /** @description Clear a Form Hook */
+        delete: operations["FormHooksClear"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/form-hooks/{form_hook_uuid}/send": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Resend a Form Hook */
+        post: operations["FormHooksQueueSend"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/form-hooks/{form_hook_uuid}/sends": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Form Hook's sends */
+        get: operations["FormHooksSends"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/groups/{group_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Permission Group's details */
+        get: operations["GroupsIndexShow"];
+        /** @description Update a Permission Group's name and permissions */
+        put: operations["GroupsIndexUpdate"];
+        post?: never;
+        /** @description Delete a Permission Group */
+        delete: operations["GroupsIndexDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/groups/{group_uuid}/leave": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** @description Leave a Permission Group */
+        delete: operations["GroupsIndexLeave"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/groups/{group_uuid}/members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List the Members of a Permission Group */
+        get: operations["GroupsMembersIndex"];
+        put?: never;
+        /** @description Add a Member to a Permission Group */
+        post: operations["GroupsMembersInvite"];
+        /** @description Remove a Member from a Permission Group */
+        delete: operations["GroupsMembersDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/groups/{group_uuid}/pending-members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List the pending Members of a Permission Group */
+        get: operations["GroupsPendingMembersIndex"];
+        put?: never;
+        post?: never;
+        /** @description Cancel a pending Permission Group invitation */
+        delete: operations["GroupsPendingMembersDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/groups/{group_uuid}/pending-members/resend": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Resend a pending Permission Group invitation email */
+        post: operations["GroupsPendingMembersResendInvitation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inbox-targets/{inbox_target_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Inbox Target's details */
+        get: operations["InboxTargetsShow"];
+        /** @description Update an Inbox Target's configuration */
+        put: operations["InboxTargetsUpdate"];
+        post?: never;
+        /** @description Delete an Inbox Target */
+        delete: operations["InboxTargetsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inbox-targets/{inbox_target_uuid}/revalidate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Restart validation for an Inbox Target */
+        post: operations["InboxTargetsRevalidate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inboxes/{inbox_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Inbox's details */
+        get: operations["InboxesIndexShow"];
+        /** @description Update an Inbox's details */
+        put: operations["InboxesIndexUpdate"];
+        post?: never;
+        /** @description Delete an Inbox */
+        delete: operations["InboxesIndexDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inboxes/{inbox_uuid}/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Start an Inbox's submissions CSV export */
+        get: operations["InboxesIndexExport"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inboxes/{inbox_uuid}/export/{token}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get the status of an Inbox's submissions CSV export */
+        get: operations["InboxesIndexExportStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inboxes/{inbox_uuid}/form-hooks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Inbox's Form Hooks */
+        get: operations["InboxesFormHooksIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inboxes/{inbox_uuid}/targets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Inbox's Targets */
+        get: operations["InboxesInboxTargetsIndex"];
+        put?: never;
+        /** @description Create an Inbox Target */
+        post: operations["InboxesInboxTargetsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/inboxes/{inbox_uuid}/upload/{key}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View a file uploaded to an Inbox */
+        get: operations["InboxesIndexUpload"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List my Organizations */
+        get: operations["OrgsIndexIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization */
+        get: operations["OrgsIndexShow"];
+        /** @description Update an Organization */
+        put: operations["OrgsIndexUpdate"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/access-review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Download an Organization's access review as CSV */
+        get: operations["OrgsIndexAccessReview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/activity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Activity */
+        get: operations["OrgsActivityIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/analytics/build/duration": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's Build duration analytics */
+        get: operations["OrgsAnalyticsBuildDuration"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/analytics/build/duration-total": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's total Build duration */
+        get: operations["OrgsAnalyticsBuildDurationTotal"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's Hosting Bandwidth */
+        get: operations["OrgsAnalyticsHostingBandwidth"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-by-site": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's Hosting Bandwidth per Site */
+        get: operations["OrgsAnalyticsHostingBandwidthBySite"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-by-url": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's Hosting Bandwidth per URL */
+        get: operations["OrgsAnalyticsHostingBandwidthByUrl"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/analytics/hosting/bandwidth-total": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's total Hosting Bandwidth */
+        get: operations["OrgsAnalyticsHostingBandwidthTotal"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/api-keys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's API Keys */
+        get: operations["OrgsApiKeysIndex"];
+        put?: never;
+        /** @description Create an Organization's API Key with scoped permissions */
+        post: operations["OrgsApiKeysCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/api-keys/{api_key_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's API Key */
+        get: operations["OrgsApiKeysShow"];
+        put?: never;
+        post?: never;
+        /** @description Delete an Organization's API Key */
+        delete: operations["OrgsApiKeysDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/base-domains": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Base Domains */
+        get: operations["OrgsBaseDomainsIndex"];
+        put?: never;
+        /** @description Add a Base Domain */
+        post: operations["OrgsBaseDomainsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/billing": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update an Organization's billing details */
+        put: operations["OrgsIndexUpdateBilling"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/dams": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's DAMs */
+        get: operations["OrgsDamsIndex"];
+        put?: never;
+        /** @description Add a DAM */
+        post: operations["OrgsDamsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/groups": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Permission Groups */
+        get: operations["OrgsGroupsIndex"];
+        put?: never;
+        /** @description Create a custom Permission Group with scoped permissions */
+        post: operations["OrgsGroupsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/inboxes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Inboxes */
+        get: operations["OrgsInboxesIndex"];
+        put?: never;
+        /** @description Create an Inbox */
+        post: operations["OrgsInboxesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Members */
+        get: operations["OrgsMembersIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/members/{email}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization's Member or pending Member */
+        get: operations["OrgsMembersShow"];
+        put?: never;
+        post?: never;
+        /** @description Remove an Organization's Member or cancel a pending invitation */
+        delete: operations["OrgsMembersDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/pending-members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's pending Members */
+        get: operations["OrgsPendingMembersIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/permissions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List my Permission Groups for an Organization */
+        get: operations["OrgsIndexPermissions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Projects */
+        get: operations["OrgsProjectsIndex"];
+        put?: never;
+        /** @description Create a Project */
+        post: operations["OrgsProjectsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/providers/{provider}/installations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Git Provider's app installations */
+        get: operations["OrgsProvidersInstallations"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/providers/{provider}/repositories": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Git Provider's repositories */
+        get: operations["OrgsProvidersRepositories"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/providers/{provider}/repositories/{repository}/branches": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a repository's branches */
+        get: operations["OrgsProvidersBranches"];
+        put?: never;
+        /** @description Create a branch from an existing branch */
+        post: operations["OrgsProvidersCreateBranch"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/site-mountings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Site Mountings */
+        get: operations["OrgsSiteMountingsIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/sites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's Sites */
+        get: operations["OrgsSitesIndex"];
+        put?: never;
+        /** @description Create a Site */
+        post: operations["OrgsSitesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/sites/connect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Create a Site by copying a repository, without connecting Git */
+        post: operations["OrgsSitesConnect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/ssl-certificates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List an Organization's SSL Certificates */
+        get: operations["OrgsSslCertificatesIndex"];
+        put?: never;
+        /** @description Create an SSL Certificate */
+        post: operations["OrgsSslCertificatesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/whitelabel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View an Organization's Badge */
+        get: operations["OrgsWhitelabelShow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/orgs/{org_uuid}/whitelabel/brand": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View an Organization's Sites Browser Logo */
+        get: operations["OrgsWhitelabelShowBrand"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/outputs/{output_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Build Deploy's log */
+        get: operations["OutputsShow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/projects/{project_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Project's details */
+        get: operations["ProjectsShow"];
+        /** @description Update a Project's details */
+        put: operations["ProjectsUpdate"];
+        post?: never;
+        /** @description Delete a Project */
+        delete: operations["ProjectsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/projects/{project_uuid}/branches": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Project's branches */
+        get: operations["ProjectsGitBranches"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/projects/{project_uuid}/git": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Project's Git details */
+        put: operations["ProjectsUpdateGit"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/projects/{project_uuid}/pull-requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Project's open Pull Requests */
+        get: operations["ProjectsGitPullRequests"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/projects/{project_uuid}/refresh-pr-comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Refresh a Project's Deploy Preview comments on Pull Requests */
+        post: operations["ProjectsRefreshPrComments"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/projects/{project_uuid}/sites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Project's Sites */
+        get: operations["ProjectsSites"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/scheduled-builds/{scheduled_build_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Scheduled Build's details */
+        get: operations["ScheduledBuildsShow"];
+        put?: never;
+        post?: never;
+        /** @description Delete a Scheduled Build */
+        delete: operations["ScheduledBuildsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/site-archives/{site_archive_uuid}/download": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Download a Site Backup */
+        get: operations["SiteArchivesDownload"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/site-dams/{site_dam_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site DAM's details */
+        get: operations["SiteDamsShow"];
+        /** @description Update a Site DAM's details */
+        put: operations["SiteDamsUpdate"];
+        post?: never;
+        /** @description Disconnect a DAM from a Site */
+        delete: operations["SiteDamsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/site-inboxes/{site_inbox_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site Inbox's details */
+        get: operations["SiteInboxesShow"];
+        /** @description Update a Site Inbox's details */
+        put: operations["SiteInboxesUpdate"];
+        post?: never;
+        /** @description Disconnect an Inbox from a Site */
+        delete: operations["SiteInboxesDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/site-mountings/{site_mounting_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site Mounting's details */
+        put: operations["SiteMountingsUpdate"];
+        post?: never;
+        /** @description Delete a Site Mounting */
+        delete: operations["SiteMountingsDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's details */
+        get: operations["SitesIndexShow"];
+        /** @description Update a Site's details */
+        put: operations["SitesIndexUpdate"];
+        post?: never;
+        /** @description Delete a Site */
+        delete: operations["SitesIndexDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/activity": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Activity */
+        get: operations["SitesActivityIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/analytics/build/duration": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's Build duration analytics */
+        get: operations["SitesAnalyticsBuildDuration"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/analytics/hosting/bandwidth": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's Hosting Bandwidth */
+        get: operations["SitesAnalyticsHostingBandwidth"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/analytics/hosting/bandwidth-by-url": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's Hosting Bandwidth per URL */
+        get: operations["SitesAnalyticsHostingBandwidthByUrl"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/analytics/hosting/bandwidth-for-url": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's Hosting Bandwidth for a single URL */
+        get: operations["SitesAnalyticsHostingBandwidthForUrl"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/archives": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Backups */
+        get: operations["SitesArchivesIndex"];
+        put?: never;
+        /** @description Create a Backup */
+        post: operations["SitesArchivesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's authentication method */
+        put: operations["SitesIndexUpdateAuthentication"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication/bearer-tokens": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Bearer Tokens */
+        get: operations["SitesAuthenticationBearerTokensIndex"];
+        put?: never;
+        /** @description Create a Bearer Token */
+        post: operations["SitesAuthenticationBearerTokensCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication/client-password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * @deprecated
+         * @description Update a Site's Guest Password
+         */
+        put: operations["SitesAuthenticationIndexUpdateClientPassword"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication/guest-password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's Guest Password */
+        put: operations["SitesAuthenticationIndexUpdateGuestPassword"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication/saml": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's SAML configuration */
+        put: operations["SitesAuthenticationIndexUpdateSaml"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication/stable-password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's authentication password */
+        put: operations["SitesAuthenticationIndexUpdateStablePassword"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/authentication/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Account Authentication users */
+        get: operations["SitesAuthenticationUsersIndex"];
+        put?: never;
+        /** @description Add an allowed user to a Site's Account Authentication */
+        post: operations["SitesAuthenticationUsersCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/build": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's build configuration */
+        put: operations["SitesIndexUpdateBuild"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/builds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Builds */
+        get: operations["SitesBuildsIndex"];
+        put?: never;
+        /** @description Start a Build for a Site */
+        post: operations["SitesBuildsCreate"];
+        /** @description Cancel a Site's current Build */
+        delete: operations["SitesBuildsCancel"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/client-sharing": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * @deprecated
+         * @description Update a Site's Guest Access configuration
+         */
+        put: operations["SitesIndexUpdateClientSharing"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/copy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Copy a Site */
+        post: operations["SitesIndexCopy"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/dam": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's DAM configuration */
+        put: operations["SitesIndexUpdateDam"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/dams": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's DAMs */
+        get: operations["SitesDamsIndex"];
+        put?: never;
+        /** @description Connect a DAM to a Site */
+        post: operations["SitesDamsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/domain": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's Custom Domain */
+        put: operations["SitesDomainUpdate"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/domain/prioritise": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * @deprecated
+         * @description Set a Site as the fallback redirect for its Base Domain. Deprecated. Use POST /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/fallback instead.
+         */
+        post: operations["SitesDomainPrioritise"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/editing_sessions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Editing Sessions */
+        get: operations["SitesEditingSessionsIndex"];
+        put?: never;
+        /** @description Create an Editing Session for a Site */
+        post: operations["SitesEditingSessionsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/editing_sessions/latest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's latest open Editing Session */
+        get: operations["SitesEditingSessionsLatest"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's files */
+        get: operations["SitesFilesIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/files/zip": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Complete a ZIP file upload */
+        post: operations["SitesFilesCompleteZipUpload"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/files/{path}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a file from a Site */
+        get: operations["SitesFilesShow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/files/{path}/metadata": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site file's metadata */
+        get: operations["SitesFilesMetadata"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/files/{path}/resized": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View a resized image from a Site */
+        get: operations["SitesFilesResized"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/files/{path}/sorting": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site file's sorting */
+        get: operations["SitesFilesSorting"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/form-hooks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Form Hooks */
+        get: operations["SitesFormHooksIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/guest-access": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's Guest Access configuration */
+        put: operations["SitesIndexUpdateGuestAccess"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/hosting": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's hosting configuration */
+        put: operations["SitesIndexUpdateHosting"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/inboxes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Inboxes */
+        get: operations["SitesInboxesIndex"];
+        put?: never;
+        /** @description Connect an Inbox to a Site */
+        post: operations["SitesInboxesCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/main_source_dam": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get the DAM a Site uses for relative asset paths */
+        get: operations["SitesMainSourceDamIndex"];
+        /** @description Set which DAM a Site uses for relative asset paths */
+        put: operations["SitesMainSourceDamUpdate"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List Site Sharing Members */
+        get: operations["SitesMembersIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/members/{email}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Move a Site Sharing Member to a different Permission Group */
+        post: operations["SitesMembersSetSiteGroup"];
+        /** @description Remove a Site Sharing Member or cancel a pending invitation */
+        delete: operations["SitesMembersDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/output-providers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's Build Deploy */
+        put: operations["SitesOutputProvidersIndexUpdate"];
+        /** @description Add a Build Deploy to a Site */
+        post: operations["SitesOutputProvidersIndexAdd"];
+        /** @description Remove a Site's Build Deploy */
+        delete: operations["SitesOutputProvidersIndexRemove"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/output-providers/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Trigger a Site's Build Deploy */
+        post: operations["SitesOutputProvidersIndexSync"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/outputs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Build Deploys */
+        get: operations["SitesOutputsIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/pending-members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List pending Site Sharing Members */
+        get: operations["SitesPendingMembersIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's Git Provider settings */
+        put: operations["SitesProvidersIndexUpdate"];
+        /** @description Connect a Site to a Git Provider */
+        post: operations["SitesProvidersIndexAdd"];
+        /** @description Remove a Site's Git Provider */
+        delete: operations["SitesProvidersIndexRemove"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/branches": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's branches */
+        get: operations["SitesProvidersGitIndexBranches"];
+        put?: never;
+        /** @description Create a branch from a Site's editing branch */
+        post: operations["SitesProvidersGitIndexCreateBranch"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/branches/merge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Merge a Site's changes into its publish branch */
+        post: operations["SitesProvidersGitIndexMerge"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/branches/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Set a Site's publish branch */
+        post: operations["SitesProvidersGitIndexPublishBranch"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/branches/publish/compare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Compare a Site's changes waiting to be published */
+        get: operations["SitesProvidersGitIndexCompare"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/branches/publish/upstream-compare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Compare upstream changes waiting to be pulled into a Site */
+        get: operations["SitesProvidersGitIndexUpstreamCompare"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/branches/upstream-merge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Merge upstream changes into a Site's editing branch */
+        post: operations["SitesProvidersGitIndexUpstreamMerge"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/pull-requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List open Pull Requests into the Site's Publish Branch */
+        get: operations["SitesProvidersGitPullRequestsIndex"];
+        put?: never;
+        /** @description Create a Pull Request into the Site's Publish Branch */
+        post: operations["SitesProvidersGitPullRequestsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/pull-requests/{number}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Pull Request's details */
+        get: operations["SitesProvidersGitPullRequestsShow"];
+        put?: never;
+        post?: never;
+        /** @description Close a Pull Request */
+        delete: operations["SitesProvidersGitPullRequestsClose"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/pull-requests/{number}/commits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Pull Request's commits */
+        get: operations["SitesProvidersGitPullRequestsCommits"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/pull-requests/{number}/merge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Merge a Pull Request */
+        put: operations["SitesProvidersGitPullRequestsMerge"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/reconnect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Reconnect a Site's Git Provider */
+        post: operations["SitesProvidersIndexReconnect"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/sync": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Sync a Site with its Git Provider */
+        post: operations["SitesProvidersIndexSync"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/providers/upstream-pull-requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List open Pull Requests from the Site's Publish Branch */
+        get: operations["SitesProvidersGitUpstreamPullRequestsIndex"];
+        put?: never;
+        /** @description Create a Pull Request from the Site's Publish Branch */
+        post: operations["SitesProvidersGitUpstreamPullRequestsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** @description Update a Site's publish method */
+        put: operations["SitesIndexUpdatePublish"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/scans": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's scan details */
+        get: operations["SitesScansIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/scheduled-builds": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Scheduled Builds */
+        get: operations["SitesScheduledBuildsIndex"];
+        put?: never;
+        /** @description Create a Scheduled Build */
+        post: operations["SitesScheduledBuildsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/screenshots": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a presigned S3 URL for a Site's screenshot hashes */
+        get: operations["SitesScreenshotsIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/screenshots/lighthouse": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's Lighthouse report */
+        get: operations["SitesScreenshotsLighthouse"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/screenshots/{device}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View a Site's screenshot */
+        get: operations["SitesScreenshotsShow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/site-mountings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Site Mountings */
+        get: operations["SitesSiteMountingsIndex"];
+        put?: never;
+        /** @description Create a Site Mounting */
+        post: operations["SitesSiteMountingsCreate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/ssl": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * @deprecated
+         * @description Update a Site's SSL certificate. Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead.
+         */
+        put: operations["SitesSslIndexUpdate"];
+        post?: never;
+        /**
+         * @deprecated
+         * @description Remove a Site's SSL certificate. Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead.
+         */
+        delete: operations["SitesSslIndexRemove"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/ssl/auto": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's automatic SSL state */
+        get: operations["SitesSslAutoSslState"];
+        put?: never;
+        /**
+         * @deprecated
+         * @description Retry a Site's automatic SSL generation. Deprecated. Use POST /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/ssl/retry instead.
+         */
+        post: operations["SitesSslAutoRetrySslGenerate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/ssl/cloudflare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Site's Cloudflare SSL state */
+        get: operations["SitesSslCloudflareCloudflareSslState"];
+        /**
+         * @deprecated
+         * @description Update a Site's Cloudflare SSL setup. Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead.
+         */
+        put: operations["SitesSslCloudflareUpdate"];
+        /**
+         * @deprecated
+         * @description Retry a Site's Cloudflare SSL setup. Deprecated. Use POST /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid}/ssl/retry instead.
+         */
+        post: operations["SitesSslCloudflareRetryCloudflareSetup"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/syncs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List a Site's Syncs */
+        get: operations["SitesSyncsIndex"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/sites/{site_uuid}/watchers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Start watching a Site path */
+        post: operations["SitesIndexStartWatching"];
+        /** @description Stop watching a Site path */
+        delete: operations["SitesIndexStopWatching"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/ssl-certificates/{ssl_certificate_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an SSL Certificate's details */
+        get: operations["SslCertificatesShow"];
+        put?: never;
+        post?: never;
+        /** @description Remove an SSL Certificate. Every Subdomain using it switches to an automatic SSL certificate. If none still serves it, it is deleted at once (204). Otherwise it is marked as removing (202) and deleted once each Subdomain has its replacement, when it expires, or when issuing a replacement stops retrying, whichever comes first. */
+        delete: operations["SslCertificatesDestroy"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/ssl-certificates/{ssl_certificate_uuid}/subdomains": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List the Subdomains that use an SSL Certificate, including redirects, on the Base Domains you can read */
+        get: operations["SslCertificatesSubdomains"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/syncs/{sync_uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get a Sync's output log */
+        get: operations["SyncsShow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/upload-data": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get presigned data for a file upload */
+        get: operations["IndexUploadData"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get my account details */
+        get: operations["UsersUserShowCurrentUser"];
+        /** @description Update my account details */
+        put: operations["UsersUserUpdate"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/access_keys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List my Access Keys */
+        get: operations["UsersUserAccessKeys"];
+        put?: never;
+        /** @description Create an Access Key */
+        post: operations["UsersUserCreateAccessKey"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/access_keys/{uuid}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** @description Revoke an Access Key */
+        delete: operations["UsersUserDestroyAccessKey"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/avatar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View my avatar */
+        get: operations["UsersAvatarShow"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/invites": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description List my pending Organization invites */
+        get: operations["UsersUserInvites"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/invites/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** @description Accept all my pending invites to one Organization */
+        post: operations["UsersUserAcceptInvite"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/invites/decline": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** @description Decline all my pending invites to one Organization */
+        delete: operations["UsersUserDeclineInvite"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/{user_identifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description Get an Organization Member's details */
+        get: operations["UsersUserShowByIdentifier"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v0/users/{user_identifier}/avatar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** @description View an Organization Member's avatar */
+        get: operations["UsersAvatarShowByIdentifier"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-	schemas: {
-		RepositorySchema: {
-			full_name?: string;
-			name?: string;
-			language?: string | null;
-			private?: boolean;
-			avatar_url?: string;
-			size?: number | null;
-			permissions?: {
-				admin?: boolean;
-				push?: boolean;
-				pull?: boolean;
-			};
-		};
-		BranchSchema: {
-			name?: string;
-			sha?: string;
-			/** Format: date-time */
-			updated_at?: string | null;
-		};
-		PullRequestSchema: {
-			number?: number;
-			state?: string;
-			title?: string;
-			body?: string | null;
-			/** Format: date-time */
-			created_at?: string;
-			/** Format: date-time */
-			updated_at?: string;
-			/** Format: date-time */
-			closed_at?: string | null;
-			/** Format: date-time */
-			merged_at?: string | null;
-			locked?: boolean | null;
-			draft?: boolean | null;
-			head?: {
-				ref?: string;
-				sha?: string;
-				repo?: {
-					name?: string;
-					full_name?: string;
-				};
-			};
-			base?: {
-				ref?: string;
-				sha?: string;
-				repo?: {
-					name?: string;
-					full_name?: string;
-				};
-			};
-			is_external_contributor?: boolean;
-		};
-		CommitsSchema: {
-			sha?: string;
-			html_url?: string | null;
-			commit?: {
-				message?: string;
-				author?: {
-					name?: string;
-					email?: string;
-					/** Format: date-time */
-					date?: string;
-				};
-				committer?: {
-					name?: string;
-					email?: string;
-					/** Format: date-time */
-					date?: string;
-				};
-			};
-		};
-		CompareSchema: {
-			status?: string;
-			ahead_by?: number;
-			behind_by?: number;
-			total_commits?: number;
-			commits?: components['schemas']['CommitsSchema'][];
-			files?: {
-				sha?: string;
-				filename?: string;
-				status?: string;
-				additions?: number;
-				deletions?: number;
-				changes?: number;
-			}[];
-		};
-		/** Format: uuid */
-		UUID: string;
-		ErrorSchema: {
-			error?: string;
-		};
-		ErrorsSchema: {
-			errors?: Record<string, never>;
-		};
-		BaseBlueprint: {
-			uuid: components['schemas']['UUID'];
-			id: number;
-		};
-		UserAccessKeyBlueprint: components['schemas']['BaseBlueprint'] & {
-			name?: string | null;
-			key_id: string;
-			login_session_id?: number | null;
-			/** Format: date-time */
-			revoked_at?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-		};
-		SyncBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			successful?: boolean | null;
-			identifier?: string | null;
-			after_identifier?: string | null;
-			diff_id?: string | null;
-			/** Format: date-time */
-			completed_at?: string | null;
-			provider: string;
-			provider_data?: {
-				[key: string]: unknown;
-			};
-			triggered_build?: boolean;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		SubdomainBlueprint: components['schemas']['BaseBlueprint'] & {
-			domain_name?: string | null;
-			subpath?: string | null;
-			hosting_choice?: string;
-			force_ssl?: boolean | null;
-			auto_generate_ssl?: boolean;
-			latest_hosted_build_id?: number | null;
-			ssl_certificate_id?: number | null;
-			pinned_build_id?: number | null;
-			mode?: string | null;
-			is_fallback_redirect?: Record<string, never>;
-			site_uuid?: components['schemas']['UUID'];
-			site_id?: components['schemas']['UUID'];
-		};
-		SiteUserBlueprint: components['schemas']['BaseBlueprint'] & {
-			email: string;
-			has_password?: boolean;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		SiteScheduledBuildBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			filename?: string | null;
-			/** Format: date-time */
-			run_date: string;
-			period?: number | null;
-			from_source?: boolean;
-			/** Format: date-time */
-			scheduled_at?: string | null;
-			run_count?: number;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		SiteScannerBlueprint: components['schemas']['BaseBlueprint'] & {
-			files?: number | null;
-			html_files?: number | null;
-			css_files?: number | null;
-			image_files?: number | null;
-			js_files?: number | null;
-			other_files?: number | null;
-			editable_class?: number | null;
-			repeatable_class?: number | null;
-			blog_posts?: number | null;
-			draft_posts?: number | null;
-			data_files?: number | null;
-			layouts?: number | null;
-			includes?: number | null;
-			old_includes?: number | null;
-			cc_contact_form?: number | null;
-			/** Format: date-time */
-			scanner_run_at?: string | null;
-			config_yml_file?: boolean | null;
-			total_size?: number | null;
-			collections?: number | null;
-			/** Format: date-time */
-			created_at?: string | null;
-			/** Format: date-time */
-			updated_at?: string | null;
-			ruby_version?: string | null;
-			array_editables?: number | null;
-			component_editables?: number | null;
-			source_editables?: number | null;
-			text_editables?: number | null;
-			image_editables?: number | null;
-			missing_links?: number | null;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		SiteMountingBlueprint: components['schemas']['BaseBlueprint'] & {
-			id: number;
-			uuid: string;
-			local_site_id: number;
-			local_path: string;
-			remote_site_id: number;
-			remote_path: string;
-			remote_artifact: string;
-			local_site?: components['schemas']['SiteBlueprint'];
-			remote_site?: components['schemas']['SiteBlueprint'];
-		};
-		SslCertificateBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			autorenew?: boolean | null;
-			/** Format: date-time */
-			expires_at: string;
-			cloudflare_id?: string | null;
-			cloudflare_data?: {
-				[key: string]: unknown;
-			} | null;
-			organisation_uuid?: components['schemas']['UUID'];
-			sites?: (string | null) | components['schemas']['SiteBlueprint'][];
-		};
-		SiteDamBlueprint: components['schemas']['BaseBlueprint'] & {
-			site_id: number;
-			uuid: string;
-			dam_uuid: string;
-			config?: {
-				[key: string]: unknown;
-			} | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			uploads_locked?: boolean;
-			reference_key?: string | null;
-			site_uuid?: components['schemas']['UUID'];
-			dam?: components['schemas']['DamBlueprint'];
-		};
-		SiteInboxBlueprint: components['schemas']['BaseBlueprint'] & {
-			default_inbox?: boolean;
-			site_id: number;
-			inbox_uuid: string;
-			visible?: boolean;
-			require_captcha?: boolean;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			site_uuid?: components['schemas']['UUID'];
-			inbox?: components['schemas']['InboxBlueprint'];
-		};
-		SiteBlueprint: components['schemas']['BaseBlueprint'] & {
-			site_name: string;
-			subpath?: string | null;
-			stable_domain: string;
-			ssg?: string | null;
-			/** Format: date-time */
-			last_synced?: string | null;
-			/** Format: date-time */
-			last_output?: string | null;
-			/** Format: date-time */
-			last_compiled?: string | null;
-			/** Format: date-time */
-			last_compressed?: string | null;
-			/** Format: date-time */
-			last_internationalised?: string | null;
-			/** Format: date-time */
-			last_published?: string | null;
-			/** Format: date-time */
-			last_cleaned?: string | null;
-			storage_provider?: string | null;
-			client_author_name?: string | null;
-			client_author_email?: string | null;
-			create_source?: string | null;
-			hosting_choice?: string;
-			building_locked?: boolean | null;
-			editing_locked?: boolean | null;
-			uploads_locked?: boolean;
-			browsing_locked?: boolean;
-			/** Format: date-time */
-			last_compiled_success?: string | null;
-			preview_url?: string | null;
-			documentation_url?: string | null;
-			support_url?: string | null;
-			client_editor_route?: string;
-			active_quest?: string | null;
-			/** Format: date-time */
-			created_at?: string | null;
-			/** Format: date-time */
-			updated_at?: string | null;
-			mode?: string | null;
-			project_id?: number | null;
-			project_uuid?: string | null;
-			pr_number?: number | null;
-			pr_external_url?: string | null;
-			cloudcannon_config_path?: string | null;
-			output_storage_provider?: string | null;
-			domain_name?: string | null;
-			site_icon_state?: string;
-			sync_error?: string | null;
-			output_error?: string | null;
-			has_open_editing_session?: boolean | null;
-			storage_provider_details?: Record<string, never> | null;
-			output_storage_provider_data?: Record<string, never>;
-			has_site_password?: boolean;
-			has_client_password?: boolean;
-			has_main_source_dam?: boolean;
-			build_configuration?: Record<string, never>;
-		};
-		SiteBlueprintProject: components['schemas']['SiteBlueprint'] & {
-			site_name: string;
-			subpath?: string | null;
-			stable_domain: string;
-			ssg?: string | null;
-			/** Format: date-time */
-			last_synced?: string | null;
-			/** Format: date-time */
-			last_output?: string | null;
-			/** Format: date-time */
-			last_compiled?: string | null;
-			/** Format: date-time */
-			last_compressed?: string | null;
-			/** Format: date-time */
-			last_internationalised?: string | null;
-			/** Format: date-time */
-			last_published?: string | null;
-			/** Format: date-time */
-			last_cleaned?: string | null;
-			storage_provider?: string | null;
-			client_author_name?: string | null;
-			client_author_email?: string | null;
-			create_source?: string | null;
-			hosting_choice?: string;
-			building_locked?: boolean | null;
-			editing_locked?: boolean | null;
-			uploads_locked?: boolean;
-			browsing_locked?: boolean;
-			/** Format: date-time */
-			last_compiled_success?: string | null;
-			preview_url?: string | null;
-			documentation_url?: string | null;
-			support_url?: string | null;
-			client_editor_route?: string;
-			active_quest?: string | null;
-			/** Format: date-time */
-			created_at?: string | null;
-			/** Format: date-time */
-			updated_at?: string | null;
-			mode?: string | null;
-			project_id?: number | null;
-			project_uuid?: string | null;
-			pr_number?: number | null;
-			pr_external_url?: string | null;
-			cloudcannon_config_path?: string | null;
-			output_storage_provider?: string | null;
-			base_domain?: components['schemas']['BaseDomainBlueprint'] | (string | null);
-		};
-		SiteBlueprintFull: components['schemas']['SiteBlueprint'] & {
-			auto_generate_ssl?: boolean;
-			authentication?: string | null;
-			default_locale?: string | null;
-			uses_i18n?: boolean;
-			geolocation?: boolean | null;
-			serve_extensionless?: boolean;
-			flags?: {
-				[key: string]: unknown;
-			} | null;
-			force_extensionless?: boolean;
-			force_ssl?: boolean | null;
-			keep_form_hook_days?: number | null;
-			needs_clean?: boolean;
-			automatic_builds_state?: string | null;
-			publish_mode?: string | null;
-			destroy_on_publish?: boolean;
-			/** Format: date-time */
-			priority_domain_at?: string;
-			prevent_client_password_save?: boolean;
-			recaptcha_key?: string | null;
-			recaptcha_secret?: string | null;
-			saml_data?: string;
-			compiler_order?: string[];
-			base_domain_id?: number | null;
-			latest_hosted_build_id?: number | null;
-			ssl_certificate_id?: number | null;
-			main_source_dam?: string | null;
-			editor_group_uuid?: components['schemas']['UUID'];
-			technical_editor_group_uuid?: components['schemas']['UUID'];
-			client_share_group_uuid?: components['schemas']['UUID'];
-			organisation_uuid?: components['schemas']['UUID'];
-			base_domain_uuid?: components['schemas']['UUID'] | (string | null);
-			cloudflare_hostname_uuid?: components['schemas']['UUID'] | (string | null);
-			latest_hosted_build_uuid?: components['schemas']['UUID'] | (string | null);
-			pending_transfer_request_uuid?: components['schemas']['UUID'] | (string | null);
-			site_inboxes?: (components['schemas']['SiteInboxBlueprint'] | (string | null))[];
-			base_domain?: components['schemas']['BaseDomainBlueprint'] | (string | null);
-			site_dams?: (components['schemas']['SiteDamBlueprint'] | (string | null))[];
-		};
-		AutoSSLStateSchema: {
-			ssl_certificate_id?: number | null;
-			auto_generate_ssl_failures?: number;
-			auto_generate_ssl_max_failures?: number;
-			/** Format: date-time */
-			next_ssl_generate_attempt_at?: string | null;
-			/** Format: date-time */
-			ssl_generation_failing_email_sent_at?: string | null;
-			auto_generate_ssl_error_code?: string | null;
-			/** Format: date-time */
-			auto_generate_ssl_errored_at?: string | null;
-		};
-		CloudflareSSLStateSchema: {
-			ssl_status?: string | null;
-			ssl_errors?: unknown | Record<string, never>[] | (string | null);
-			ssl_certificate_id?: number | null;
-			custom_hostname_id?: string | null;
-			min_tls_version?: string | null;
-			response?: Record<string, never> | null;
-		};
-		SiteBearerTokenBlueprint: components['schemas']['BaseBlueprint'] & {
-			name?: string;
-			obscured_token?: string;
-			/** Format: date-time */
-			created_at: string;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		SiteBearerTokenBlueprintWithToken: components['schemas']['SiteBearerTokenBlueprint'] & {
-			token: string;
-		};
-		SiteArchiveBlueprint: components['schemas']['BaseBlueprint'] & {
-			path: string;
-			size: number;
-			exclude_git?: boolean;
-			/** Format: date-time */
-			created_at?: string | null;
-			/** Format: date-time */
-			updated_at?: string | null;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		SiteArchiveBlueprintFull: components['schemas']['SiteArchiveBlueprint'] & {
-			include_build?: boolean;
-			stub_source_assets?: boolean;
-			stub_build_assets?: boolean;
-			hidden?: boolean;
-		};
-		SiteActivityBlueprint: components['schemas']['BaseBlueprint'] & {
-			id: number;
-			uuid: string;
-			data: string;
-			identifier?: string | null;
-			identifier_data?: string | null;
-			/** Format: date-time */
-			happened_at: string;
-			/** Format: date-time */
-			created_at?: string | null;
-			/** Format: date-time */
-			updated_at?: string | null;
-			user?: components['schemas']['UserBlueprint'];
-			site_uuid?: components['schemas']['UUID'];
-		};
-		ProjectBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			description?: string | null;
-			git_repository: string;
-			allow_all_branching?: boolean;
-			prevent_permissions_granted_on_branch?: boolean;
-			main_git_branch?: string | null;
-			external_url?: string | null;
-			links?: components['schemas']['ProjectLink'][];
-			provider: string;
-			default_destroy_on_publish?: boolean;
-			default_authentication?: string | null;
-			default_publish_mode?: string | null;
-			/** Format: date-time */
-			last_synced?: string | null;
-			/** Format: date-time */
-			last_compiled?: string | null;
-			/** Format: date-time */
-			last_compiled_success?: string | null;
-			auto_create_site_on_pr?: boolean;
-			comment_on_pr?: boolean;
-			pr_comment_skip_drafts?: boolean;
-			pr_comment_footer?: string | null;
-			auto_create_skip_drafts?: boolean;
-			pr_tab_visible?: boolean;
-			publishing_tab_visible?: boolean;
-			branches_tab_visible?: boolean;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			has_default_password?: boolean;
-			organisation_uuid?: components['schemas']['UUID'];
-			main_site?: components['schemas']['SiteBlueprintFull'] | (string | null);
-		};
-		ProjectLink: {
-			name?: string;
-			link?: string;
-		};
-		OutputBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			successful?: boolean | null;
-			identifier?: string | null;
-			after_identifier?: string | null;
-			diff_id?: string | null;
-			/** Format: date-time */
-			completed_at?: string | null;
-			provider: string;
-			provider_data?: {
-				[key: string]: unknown;
-			};
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			site_uuid?: components['schemas']['UUID'];
-		};
-		OrgBlueprintNormal: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			stable_domain_suffix?: string | null;
-			country?: string;
-			billing_name?: string | null;
-			billing_email?: string | null;
-			billing_line1?: string | null;
-			billing_line2?: string | null;
-			billing_postal_code?: string | null;
-			billing_state?: string | null;
-			billing_city?: string | null;
-			billing_country?: string | null;
-			billing_status?: string | null;
-			address?: string | null;
-			brand_color?: string | null;
-			plan?: string;
-			brand_logo?: string | null;
-			white_label_logo?: string | null;
-			site_soft_limit?: number;
-			business_type?: string | null;
-			organisation_type?: string | null;
-			partner_organisation_id?: number | null;
-			flags?: {
-				[key: string]: unknown;
-			} | null;
-			build_time_limit_exceeded?: boolean | null;
-			user_limit_exceeded?: boolean | null;
-			hosting_limit_exceeded?: boolean | null;
-			domain_limit_exceeded?: boolean | null;
-			last_hosting_limit_email_value?: number | null;
-			last_build_time_limit_email_value?: number | null;
-			allow_overage_charges?: boolean | null;
-			trial_offer_enabled?: boolean | null;
-			initial_saml_user_group_id?: number | null;
-			/** Format: date-time */
-			subscription_current_period_start?: string | null;
-			/** Format: date-time */
-			subscription_current_period_end?: string | null;
-			current_overage_period?: Record<string, never>;
-			additional_features?: (unknown[] | null) | (boolean | null);
-			additional_build_time?: number | null;
-			additional_bandwidth?: number | null;
-			additional_domains?: number | null;
-			additional_shares?: number | null;
-			additional_custom_groups?: number | null;
-			active_quest?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			/** Format: date-time */
-			cc_expires_at?: string | null;
-			/** Format: date-time */
-			mfa_required_after?: string | null;
-			/** Format: date-time */
-			sso_required_after?: string | null;
-			custom_billing_active?: boolean;
-			custom_billing_period?: string | null;
-			custom_contract_value?: number;
-			is_owner?: boolean;
-			partner_points?: number | null;
-			earns_partner_points?: boolean;
-			card_action_banner?: string | null;
-			payment_locked?: boolean;
-			custom_billing_start_date?: string | null;
-			/** Format: date-time */
-			trial_end?: string | null;
-		};
-		OrgBlueprintFull: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			stable_domain_suffix?: string | null;
-			country?: string;
-			billing_name?: string | null;
-			billing_email?: string | null;
-			billing_line1?: string | null;
-			billing_line2?: string | null;
-			billing_postal_code?: string | null;
-			billing_state?: string | null;
-			billing_city?: string | null;
-			billing_country?: string | null;
-			billing_status?: string | null;
-			address?: string | null;
-			brand_color?: string | null;
-			plan?: string;
-			brand_logo?: string | null;
-			white_label_logo?: string | null;
-			site_soft_limit?: number;
-			business_type?: string | null;
-			organisation_type?: string | null;
-			partner_organisation_id?: number | null;
-			flags?: {
-				[key: string]: unknown;
-			} | null;
-			build_time_limit_exceeded?: boolean | null;
-			user_limit_exceeded?: boolean | null;
-			hosting_limit_exceeded?: boolean | null;
-			domain_limit_exceeded?: boolean | null;
-			last_hosting_limit_email_value?: number | null;
-			last_build_time_limit_email_value?: number | null;
-			allow_overage_charges?: boolean | null;
-			trial_offer_enabled?: boolean | null;
-			initial_saml_user_group_id?: number | null;
-			/** Format: date-time */
-			subscription_current_period_start?: string | null;
-			/** Format: date-time */
-			subscription_current_period_end?: string | null;
-			current_overage_period?: Record<string, never>;
-			additional_features?: (unknown[] | null) | (boolean | null);
-			additional_build_time?: number | null;
-			additional_bandwidth?: number | null;
-			additional_domains?: number | null;
-			additional_shares?: number | null;
-			additional_custom_groups?: number | null;
-			active_quest?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			/** Format: date-time */
-			cc_expires_at?: string | null;
-			/** Format: date-time */
-			mfa_required_after?: string | null;
-			/** Format: date-time */
-			sso_required_after?: string | null;
-			custom_billing_active?: boolean;
-			custom_billing_period?: string | null;
-			custom_contract_value?: number;
-			initial_saml_user_group_uuid?: (string | null) | components['schemas']['UUID'];
-			is_github_app?: boolean;
-			github_account_linked?: boolean;
-			github_account_is_latest?: boolean;
-			github_enterprise_server_account_linked?: boolean;
-			github_enterprise_server_account_is_latest?: boolean;
-			gitlab_account_linked?: boolean;
-			gitlab_account_is_latest?: boolean;
-			self_hosted_gitlab_account_linked?: boolean;
-			self_hosted_gitlab_account_is_latest?: boolean;
-			bitbucket_account_linked?: boolean;
-			bitbucket_account_is_latest?: boolean;
-			self_hosted_gitlab_data?: Record<string, never> | null;
-			github_enterprise_server_data?: Record<string, never> | null;
-			partner_organisation?: Record<string, never> | null;
-		};
-		InboxTargetBlueprint: components['schemas']['BaseBlueprint'] & {
-			target_type: string;
-			target: string;
-			validated?: boolean;
-			config?: {
-				[key: string]: unknown;
-			} | null;
-			inbox_uuid: components['schemas']['UUID'];
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-		};
-		InboxBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			key: string;
-			monthly_quota?: number | null;
-			keep_form_hook_days?: number | null;
-			organisation_id: number;
-			captcha_type?: string | null;
-			captcha_key?: string | null;
-			captcha_secret?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			organisation_uuid?: components['schemas']['UUID'];
-			inbox_targets?: (components['schemas']['InboxTargetBlueprint'] | (string | null))[];
-		};
-		GroupPendingMemberBlueprint: components['schemas']['BaseBlueprint'] & {
-			email?: string;
-			organisation_uuid?: string | null;
-			group?: components['schemas']['GroupBlueprint'];
-		};
-		UserBlueprint: components['schemas']['BaseBlueprint'] & {
-			first_name?: string | null;
-			surname?: string | null;
-			email?: string;
-			otp_required_for_login?: boolean | null;
-		};
-		UserBlueprintFull: components['schemas']['UserBlueprint'] & {
-			country?: string;
-			job_title?: string | null;
-			ssg_experience?: string | null;
-			/** Format: date-time */
-			last_sign_in_at?: string | null;
-			/** Format: date-time */
-			current_sign_in_at?: string | null;
-		};
-		GroupMemberBlueprint: components['schemas']['BaseBlueprint'] & {
-			group_id?: number;
-			user_id?: number;
-			group_uuid?: string | null;
-			user_uuid?: string | null;
-			user?: components['schemas']['UserBlueprint'];
-		};
-		FormHookSendBlueprint: components['schemas']['BaseBlueprint'] & {
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			success?: boolean;
-			error?: string | null;
-			inbox_target?: components['schemas']['InboxTargetBlueprint'];
-			form_hook?: components['schemas']['FormHookBlueprint'];
-		};
-		FormHookBlueprint: components['schemas']['BaseBlueprint'] & {
-			sent?: boolean | null;
-			recaptcha?: boolean | null;
-			ip?: string | null;
-			host?: string | null;
-			data?: {
-				[key: string]: unknown;
-			} | null;
-			timings?: {
-				[key: string]: unknown;
-			} | null;
-			error?: string | null;
-			/** @enum {string} */
-			explicitly_marked_status?: 'no_mark' | 'spam' | 'ham';
-			automatically_marked_spam?: boolean;
-			/** Format: date-time */
-			last_sent_at?: string | null;
-			/** Format: date-time */
-			cleared_at?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			inbox_uuid?: (string | null) | components['schemas']['UUID'];
-			site_uuid?: components['schemas']['UUID'];
-		};
-		EditingSessionFileContributionBlueprint: components['schemas']['BaseBlueprint'] & {
-			editing_session_file_uuid: string;
-			session_type: string;
-			user_uuid?: string | null;
-			session_uuid: string;
-			state: string;
-			file_contents: string;
-			generated_by_merge?: boolean | null;
-			content_hash: string;
-			/** Format: date-time */
-			ended_at?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-		};
-		EditingSessionFileBlueprint: components['schemas']['BaseBlueprint'] & {
-			editing_session_uuid: string;
-			edit_type?: string | null;
-			source_path?: string | null;
-			path?: string | null;
-			sync_blocked?: boolean | null;
-			has_conflict?: boolean | null;
-			unchanged?: boolean | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			metadata?: {
-				[key: string]: unknown;
-			} | null;
-			contributions?: (
-				| components['schemas']['EditingSessionFileContributionBlueprint']
-				| (string | null)
-			)[];
-		};
-		EditingSessionBlueprint: components['schemas']['BaseBlueprint'] & {
-			site_id: number;
-			build_id?: number | null;
-			state: string;
-			base_commit_hash: string;
-			upstream_commit_hash?: string | null;
-			syncs_blocked?: number;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			site_uuid?: components['schemas']['UUID'];
-			build_uuid?: components['schemas']['UUID'];
-			files?: (components['schemas']['EditingSessionFileBlueprint'] | (string | null))[];
-		};
-		DamBlueprint: components['schemas']['BaseBlueprint'] & {
-			access_key?: string | null;
-			base_url: string;
-			/** Format: date-time */
-			created_at: string;
-			dam_type: string;
-			name: string;
-			/** Format: date-time */
-			updated_at: string;
-			max_upload_size?: number | null;
-			organisation_uuid?: components['schemas']['UUID'];
-			config?: Record<string, never>;
-			extra_params?: string | null;
-		};
-		CloudflareHostnameBlueprint: components['schemas']['BaseBlueprint'] & {
-			/** Format: date-time */
-			expires_at?: string | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			hostname: string;
-			base_domain_id: number;
-			ssl_certificate_id?: number | null;
-			wildcard?: boolean | null;
-			validation_method?: string | null;
-			min_tls_version?: string | null;
-			custom_hostname_id?: string | null;
-			status?: string | null;
-			ssl_status?: string | null;
-			latest_json?: {
-				[key: string]: unknown;
-			} | null;
-			error?: string | null;
-			base_domain_uuid?: components['schemas']['UUID'];
-			base_domain?: components['schemas']['BaseDomainBlueprint'] | (string | null);
-		};
-		BuildBlueprint: components['schemas']['BaseBlueprint'] & {
-			name: string;
-			successful?: boolean | null;
-			site_id: number;
-			/** Format: date-time */
-			completed_at?: string | null;
-			metadata?: {
-				[key: string]: unknown;
-			} | null;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			pinnable?: boolean | null;
-			parent_build_uuid?: components['schemas']['UUID'] | (string | null);
-			site_uuid?: components['schemas']['UUID'];
-		};
-		NameServerCheckBlueprint: components['schemas']['BaseBlueprint'] & {
-			base_domain?: string;
-			base_domain_uuid?: string;
-		};
-		BaseDomainBlueprint: components['schemas']['BaseBlueprint'] & {
-			base_domain: string;
-			uses_dns?: boolean;
-			auto_generate_ssl_failures?: number | null;
-			auto_generate_ssl_max_failures?: number | null;
-			/** Format: date-time */
-			next_ssl_generate_attempt_at?: string | null;
-			/** Format: date-time */
-			ssl_generation_failing_email_sent_at?: string | null;
-			in_cloudflare_beta?: boolean | null;
-			cloudflare_dns_migrated?: boolean;
-			cloudflare_zone_id?: string | null;
-			cloudflare_zone_create_error?: string | null;
-			cloudflare_zone_create_error_from_cloudflare?: boolean;
-			mx_record?: string | null;
-			spf_record?: string | null;
-			minimum_tls_version?: string | null;
-			cloudflare_name_servers?: string[];
-			name_servers?: string[] | null;
-			cloudflare_dns_migration?: Record<string, never>[] | null;
-			a_record?: components['schemas']['DNSRecord'][];
-			cname_record?: components['schemas']['DNSRecord'][];
-			txt_record?: components['schemas']['DNSRecord'][];
-		};
-		BaseDomainBlueprintFull: components['schemas']['BaseDomainBlueprint'] & {
-			base_domain: string;
-			uses_dns?: boolean;
-			auto_generate_ssl_failures?: number | null;
-			auto_generate_ssl_max_failures?: number | null;
-			/** Format: date-time */
-			next_ssl_generate_attempt_at?: string | null;
-			/** Format: date-time */
-			ssl_generation_failing_email_sent_at?: string | null;
-			in_cloudflare_beta?: boolean | null;
-			cloudflare_dns_migrated?: boolean;
-			cloudflare_zone_id?: string | null;
-			cloudflare_zone_create_error?: string | null;
-			cloudflare_zone_create_error_from_cloudflare?: boolean;
-			mx_record?: string | null;
-			spf_record?: string | null;
-			minimum_tls_version?: string | null;
-			site_count?: number;
-			subdomain_count?: number;
-			fallback_domain?: string | null;
-			organisation_uuid?: components['schemas']['UUID'];
-			name_server_checks?: (components['schemas']['NameServerCheckBlueprint'] | (string | null))[];
-		};
-		DNSRecord: {
-			subdomain?: string;
-			target?: string;
-		};
-		BaseDomainDnsRecordSchema: {
-			content?: string;
-			/** Format: date-time */
-			created_on?: string;
-			id?: string;
-			locked?: boolean;
-			meta?: Record<string, never>;
-			/** Format: date-time */
-			modified_on?: string;
-			name?: string;
-			proxiable?: boolean;
-			proxied?: boolean;
-			ttl?: number;
-			type?: string;
-			zone_id?: string;
-			zone_name?: string;
-		};
-		GroupPermissionBlueprint: components['schemas']['BaseBlueprint'] & {
-			resource?: string;
-			global_scope?: boolean;
-			group_scope_uuid?: string | null;
-			base_domain_scope_uuid?: string | null;
-			project_scope_uuid?: string | null;
-			site_scope_uuid?: string | null;
-			file_glob?: string | null;
-			except?: boolean;
-			group_id?: number;
-			group_uuid?: string | null;
-			organisation_uuid?: string | null;
-		};
-		GroupBlueprint: components['schemas']['BaseBlueprint'] & {
-			creation_type?: string | null;
-			organisation_id?: number;
-			name?: string;
-			organisation_uuid?: string | null;
-		};
-		GroupBlueprintWithPermissions: components['schemas']['GroupBlueprint'] & {
-			permissions?: components['schemas']['GroupPermissionBlueprint'][];
-		};
-		ApiKeyBlueprint: components['schemas']['BaseBlueprint'] & {
-			name?: string;
-			key_snippet?: string | null;
-			/** Format: date-time */
-			created_at?: string;
-			group?: components['schemas']['GroupBlueprintWithPermissions'];
-		};
-		ApiKeyBlueprintUnsnippedKey: components['schemas']['ApiKeyBlueprint'] & {
-			key?: string;
-		};
-		AdditionalPartnerPointsBlueprint: components['schemas']['BaseBlueprint'] & {
-			id: number;
-			uuid: string;
-			organisation_id: number;
-			points: number;
-			reason: string;
-			/** Format: date-time */
-			created_at: string;
-			/** Format: date-time */
-			updated_at: string;
-			organisation_uuid?: components['schemas']['UUID'];
-		};
-	};
-	responses: {
-		/** @description Unprocessable */
-		ErrorResp: {
-			headers: {
-				[name: string]: unknown;
-			};
-			content: {
-				'application/json': components['schemas']['ErrorsSchema'];
-			};
-		};
-		/** @description Forbidden */
-		ForbiddenResp: {
-			headers: {
-				[name: string]: unknown;
-			};
-			content: {
-				'application/json': components['schemas']['ErrorSchema'];
-			};
-		};
-		/** @description Not Found */
-		NotFoundResp: {
-			headers: {
-				[name: string]: unknown;
-			};
-			content: {
-				'application/json': components['schemas']['ErrorSchema'];
-			};
-		};
-		/** @description Unauthorized */
-		UnauthorizedResp: {
-			headers: {
-				[name: string]: unknown;
-			};
-			content: {
-				'application/json': components['schemas']['ErrorSchema'];
-			};
-		};
-		/** @description PaymentConfirmRequired */
-		PaymentConfirmRequired: {
-			headers: {
-				[name: string]: unknown;
-			};
-			content: {
-				'application/json': components['schemas']['ErrorsSchema'];
-			};
-		};
-		/** @description FeatureNotOnPlan */
-		FeatureNotOnPlan: {
-			headers: {
-				[name: string]: unknown;
-			};
-			content: {
-				'application/json': components['schemas']['ErrorsSchema'];
-			};
-		};
-	};
-	parameters: {
-		/** @description Page number to fetch (1-indexed) */
-		PageQuery: number;
-		/** @description Number of items per page */
-		ItemsQuery: number;
-		SortAttributeQuery: string;
-		SortDirectionQuery: string;
-	};
-	requestBodies: never;
-	headers: never;
-	pathItems: never;
+    schemas: {
+        RepositorySchema: {
+            full_name?: string;
+            name?: string;
+            language?: string | null;
+            private?: boolean;
+            avatar_url?: string;
+            size?: number | null;
+            permissions?: {
+                admin?: boolean;
+                push?: boolean;
+                pull?: boolean;
+            };
+        };
+        BranchSchema: {
+            name?: string;
+            sha?: string;
+            /** Format: date-time */
+            updated_at?: string | null;
+        };
+        PullRequestSchema: {
+            number?: number;
+            state?: string;
+            title?: string;
+            body?: string | null;
+            /** Format: date-time */
+            created_at?: string;
+            /** Format: date-time */
+            updated_at?: string;
+            /** Format: date-time */
+            closed_at?: string | null;
+            /** Format: date-time */
+            merged_at?: string | null;
+            locked?: boolean | null;
+            draft?: boolean | null;
+            head?: {
+                ref?: string;
+                sha?: string;
+                repo?: {
+                    name?: string;
+                    full_name?: string;
+                };
+            };
+            base?: {
+                ref?: string;
+                sha?: string;
+                repo?: {
+                    name?: string;
+                    full_name?: string;
+                };
+            };
+            is_external_contributor?: boolean;
+        };
+        CommitsSchema: {
+            sha?: string;
+            html_url?: string | null;
+            commit?: {
+                message?: string;
+                author?: {
+                    name?: string;
+                    email?: string;
+                    /** Format: date-time */
+                    date?: string;
+                };
+                committer?: {
+                    name?: string;
+                    email?: string;
+                    /** Format: date-time */
+                    date?: string;
+                };
+            };
+        };
+        CompareSchema: {
+            status?: string;
+            ahead_by?: number;
+            behind_by?: number;
+            total_commits?: number;
+            commits?: components["schemas"]["CommitsSchema"][];
+            files?: {
+                sha?: string;
+                filename?: string;
+                status?: string;
+                additions?: number;
+                deletions?: number;
+                changes?: number;
+            }[];
+        };
+        /** Format: uuid */
+        UUID: string;
+        ErrorSchema: {
+            error?: string;
+        };
+        ErrorsSchema: {
+            errors?: Record<string, never>;
+        };
+        BaseBlueprint: {
+            uuid: components["schemas"]["UUID"];
+            id: number;
+        };
+        UserAccessKeyBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name?: string | null;
+            key_id: string;
+            login_session_id?: number | null;
+            /** Format: date-time */
+            revoked_at?: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        SyncBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            successful?: boolean | null;
+            identifier?: string | null;
+            after_identifier?: string | null;
+            diff_id?: string | null;
+            /** Format: date-time */
+            completed_at?: string | null;
+            provider: string;
+            provider_data?: {
+                [key: string]: unknown;
+            };
+            triggered_build?: boolean;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        SubdomainSummaryBlueprint: components["schemas"]["BaseBlueprint"] & {
+            domain_name: string;
+            serving_mode?: string;
+            base_domain_id: number;
+            redirect_target?: string | null;
+        };
+        SubdomainSiteSchema: {
+            uuid?: components["schemas"]["UUID"];
+            id?: number;
+            site_name?: string;
+            subpath?: string | null;
+            project_uuid?: components["schemas"]["UUID"] | (string | null);
+        };
+        SubdomainRedirectHereSchema: {
+            uuid?: components["schemas"]["UUID"];
+            domain_name?: string;
+            base_domain_uuid?: components["schemas"]["UUID"];
+        };
+        SubdomainDnsRecordSchema: {
+            type?: string;
+            content?: string;
+        };
+        SubdomainCheckSchema: {
+            status?: number | null;
+            connection_test_status?: number | null;
+            first_answer?: string | null;
+            answers?: string[];
+            error_message?: string | null;
+            /** Format: date-time */
+            checked_at?: string;
+        };
+        SubdomainCloudflareSchema: {
+            uuid?: components["schemas"]["UUID"];
+            status?: string | null;
+            ssl_status?: string | null;
+            validation_method?: string | null;
+            /** Format: date-time */
+            expires_at?: string | null;
+            wildcard?: boolean;
+            /** Format: date-time */
+            checked_at?: string;
+            error?: string | null;
+            ownership_record?: Record<string, never> | null;
+            validation_records?: Record<string, never>[];
+            /** @description The TXT values last found at each certificate validation record and the ownership record, recorded while TXT validation is pending on a Base Domain not on CloudCannon DNS, and only when every lookup succeeded */
+            txt_found?: {
+                [key: string]: string[];
+            } | null;
+            dcv_delegation?: components["schemas"]["SubdomainDcvDelegationSchema"] | (string | null);
+            /** Format: date-time */
+            dcv_delegated_at?: string | null;
+            /** Format: date-time */
+            recreated_at?: string | null;
+        };
+        SubdomainDcvDelegationSchema: {
+            name?: string;
+            /** @enum {string} */
+            type?: "CNAME";
+            value?: string;
+        };
+        SubdomainBlueprint: components["schemas"]["BaseBlueprint"] & {
+            domain_name: string;
+            serving_mode?: string;
+            ingress?: string;
+            force_ssl?: boolean;
+            auto_generate_ssl?: boolean;
+            auto_generate_ssl_failures?: number;
+            /** Format: date-time */
+            next_ssl_generate_attempt_at?: string | null;
+            ssl_certificate_id?: number | null;
+            min_tls_version?: string;
+            /** Format: date-time */
+            priority_domain_at: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: date-time */
+            dns_updated_at?: string | null;
+            /** Format: date-time */
+            dns_live_at?: string | null;
+            /** Format: date-time */
+            dns_changed_at?: string | null;
+            /** Format: date-time */
+            dns_stuck_sent_at?: string | null;
+            /** Format: date-time */
+            dns_reset_at?: string | null;
+            redirect_target?: string | null;
+            /** @enum {integer|null} */
+            redirect_status?: 301 | 302 | 307 | 308 | null;
+            hosting_choice?: string;
+            is_fallback?: boolean;
+            /** Format: date-time */
+            ssl_certificate_expires_at?: string | null;
+            auto_generate_ssl_max_failures?: number;
+            auto_generate_ssl_error_code?: string | null;
+            /** Format: date-time */
+            auto_generate_ssl_errored_at?: string | null;
+            sites?: components["schemas"]["SubdomainSiteSchema"][];
+            latest_check?: components["schemas"]["SubdomainCheckSchema"] | (string | null);
+            meets_minimum_tls?: boolean;
+            /** @enum {string} */
+            dns_record_status?: "connected" | "not_pointing" | "no_record" | "unchecked";
+            /** Format: date-time */
+            check_failed_at?: string | null;
+            expected_dns_records?: components["schemas"]["SubdomainDnsRecordSchema"][];
+            found_dns_records?: components["schemas"]["SubdomainDnsRecordSchema"][];
+            served_by_zone_wildcard?: boolean;
+            /** Format: date-time */
+            ssl_certificate_issued_at?: string | null;
+            cloudflare?: components["schemas"]["SubdomainCloudflareSchema"] | (string | null);
+        };
+        SubdomainBlueprintFull: components["schemas"]["SubdomainBlueprint"] & {
+            redirects_here?: string[];
+            redirects_here_details?: components["schemas"]["SubdomainRedirectHereSchema"][];
+        };
+        SiteUserBlueprint: components["schemas"]["BaseBlueprint"] & {
+            email: string;
+            has_password?: boolean;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        SiteScheduledBuildBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            filename?: string | null;
+            /** Format: date-time */
+            run_date: string;
+            period?: number | null;
+            from_source?: boolean;
+            /** Format: date-time */
+            scheduled_at?: string | null;
+            run_count?: number;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        SiteScannerBlueprint: components["schemas"]["BaseBlueprint"] & {
+            files?: number | null;
+            html_files?: number | null;
+            css_files?: number | null;
+            image_files?: number | null;
+            js_files?: number | null;
+            other_files?: number | null;
+            editable_class?: number | null;
+            repeatable_class?: number | null;
+            blog_posts?: number | null;
+            draft_posts?: number | null;
+            data_files?: number | null;
+            layouts?: number | null;
+            includes?: number | null;
+            old_includes?: number | null;
+            cc_contact_form?: number | null;
+            /** Format: date-time */
+            scanner_run_at?: string | null;
+            config_yml_file?: boolean | null;
+            total_size?: number | null;
+            collections?: number | null;
+            /** Format: date-time */
+            created_at?: string | null;
+            /** Format: date-time */
+            updated_at?: string | null;
+            ruby_version?: string | null;
+            array_editables?: number | null;
+            component_editables?: number | null;
+            source_editables?: number | null;
+            text_editables?: number | null;
+            image_editables?: number | null;
+            missing_links?: number | null;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        SiteMountingBlueprint: components["schemas"]["BaseBlueprint"] & {
+            id: number;
+            uuid: string;
+            local_site_id: number;
+            local_path: string;
+            remote_site_id: number;
+            remote_path: string;
+            remote_artifact: string;
+            local_site?: components["schemas"]["SiteBlueprint"];
+            remote_site?: components["schemas"]["SiteBlueprint"];
+        };
+        SiteDomainCheckBlueprint: components["schemas"]["BaseBlueprint"] & {
+            status?: number | null;
+            first_answer?: string | null;
+            connection_test_status?: number | null;
+            answers?: string | null;
+            error_message?: string | null;
+            domain_name_checked: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            subdomain_uuid?: components["schemas"]["UUID"] | (string | null);
+            base_domain_uuid?: components["schemas"]["UUID"] | (string | null);
+            conclusive?: boolean;
+            /** @enum {string} */
+            dns_record_status?: "connected" | "not_pointing" | "no_record" | "unchecked";
+        };
+        SslCertificateBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            autorenew?: boolean | null;
+            /** Format: date-time */
+            expires_at: string;
+            cloudflare_id?: string | null;
+            cloudflare_data?: {
+                [key: string]: unknown;
+            } | null;
+            /** @description The hostnames the certificate covers, read from it when it was uploaded. Null for certificates added before CloudCannon recorded them. */
+            hostnames?: string[] | null;
+            /**
+             * Format: date-time
+             * @description When someone removed the certificate while Subdomains still served it. It is deleted once each has an automatic replacement, when it expires, or when issuing a replacement stops retrying.
+             */
+            removal_requested_at?: string | null;
+            organisation_uuid?: components["schemas"]["UUID"];
+        };
+        SslCertificateBlueprintFull: components["schemas"]["SslCertificateBlueprint"] & {
+            /**
+             * @deprecated
+             * @description Deprecated. Use GET /ssl-certificates/{ssl_certificate_uuid}/subdomains instead.
+             */
+            sites?: components["schemas"]["SiteBlueprint"][];
+        };
+        SiteDamBlueprint: components["schemas"]["BaseBlueprint"] & {
+            site_id: number;
+            uuid: string;
+            dam_uuid: string;
+            config?: {
+                [key: string]: unknown;
+            } | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            uploads_locked?: boolean;
+            reference_key?: string | null;
+            site_uuid?: components["schemas"]["UUID"];
+            dam?: components["schemas"]["DamBlueprint"];
+        };
+        SiteInboxBlueprint: components["schemas"]["BaseBlueprint"] & {
+            default_inbox?: boolean;
+            site_id: number;
+            inbox_uuid: string;
+            visible?: boolean;
+            require_captcha?: boolean;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            site_uuid?: components["schemas"]["UUID"];
+            inbox?: components["schemas"]["InboxBlueprint"];
+        };
+        SiteBlueprint: components["schemas"]["BaseBlueprint"] & {
+            site_name: string;
+            subpath?: string | null;
+            stable_domain: string;
+            ssg?: string | null;
+            /**
+             * Format: date-time
+             * @description When this Site's files were last exchanged with its source. This moves only when a sync actually transferred something, so it does not change when a sync succeeds but finds nothing new, and it is also set when a Site is created by copying another Site, before it has contacted a storage provider at all. A push that committed locally and then failed to reach the provider moves it too. It is therefore not a measure of health: use last_sync_failed_at and sync_error for that.
+             */
+            last_synced?: string | null;
+            /**
+             * Format: date-time
+             * @description When this Site's most recent sync attempt failed, or null if no failure is currently recorded. CloudCannon clears it once the Site syncs successfully again. Null does not on its own mean the Site is healthy, because a Site halted by sync_error stops attempting to sync at all, so check both fields. Syncing paused by unsaved changes, and a push that raced a change on the remote, are not failures: they are not recorded here and do not clear an existing value.
+             */
+            last_sync_failed_at?: string | null;
+            /** Format: date-time */
+            last_output?: string | null;
+            /** Format: date-time */
+            last_compiled?: string | null;
+            /** Format: date-time */
+            last_compressed?: string | null;
+            /** Format: date-time */
+            last_internationalised?: string | null;
+            /** Format: date-time */
+            last_published?: string | null;
+            /** Format: date-time */
+            last_cleaned?: string | null;
+            storage_provider?: string | null;
+            /**
+             * @deprecated
+             * @description Deprecated. Use guest_author_name instead.
+             */
+            client_author_name?: string | null;
+            /**
+             * @deprecated
+             * @description Deprecated. Use guest_author_email instead.
+             */
+            client_author_email?: string | null;
+            create_source?: string | null;
+            hosting_choice?: string;
+            building_locked?: boolean | null;
+            editing_locked?: boolean | null;
+            uploads_locked?: boolean;
+            browsing_locked?: boolean;
+            /**
+             * Format: date-time
+             * @description When this Site last built successfully. Unlike last_synced, its counterpart last_compiled records every build attempt, so a Site has a failed build when the two differ.
+             */
+            last_compiled_success?: string | null;
+            preview_url?: string | null;
+            documentation_url?: string | null;
+            support_url?: string | null;
+            client_editor_route?: string;
+            active_quest?: string | null;
+            /** Format: date-time */
+            created_at?: string | null;
+            /** Format: date-time */
+            updated_at?: string | null;
+            mode?: string | null;
+            project_id?: number | null;
+            project_uuid?: string | null;
+            pr_number?: number | null;
+            pr_external_url?: string | null;
+            cloudcannon_config_path?: string | null;
+            output_storage_provider?: string | null;
+            domain_name?: string | null;
+            site_icon_state?: string;
+            /** @description An identifier for a syncing error that has halted this Site, or null. While it is set, CloudCannon refuses to pull from the storage provider and keeps pushes local, so the two stop exchanging changes until the provider is reconnected or disconnected. Only errors that need intervention halt a Site: a sync can fail without setting this, which last_sync_failed_at records instead. */
+            sync_error?: string | null;
+            /** @description An identifier for an error that has halted this Site's Build Deploys, or null. While it is set, CloudCannon stops deploying build output to the output storage provider until that provider is updated or disconnected. There is no separate record of a deploy that failed without halting, so unlike syncing there is no last_output_failed_at. */
+            output_error?: string | null;
+            has_open_editing_session?: boolean | null;
+            /** @description Whether syncing is paused for this Site, or null when not computed. CloudCannon pauses syncing when files with unsaved changes also changed on the storage provider, and resumes once those changes are saved or discarded. A Site halted by sync_error reports false here. */
+            sync_blocked?: boolean | null;
+            storage_provider_details?: Record<string, never> | null;
+            output_storage_provider_data?: Record<string, never>;
+            has_site_password?: boolean;
+            /**
+             * @deprecated
+             * @description Deprecated. Use has_guest_password instead.
+             */
+            has_client_password?: boolean;
+            has_guest_password?: boolean;
+            guest_author_name?: string | null;
+            guest_author_email?: string | null;
+            has_main_source_dam?: boolean;
+            build_configuration?: Record<string, never>;
+        };
+        SiteBlueprintProject: components["schemas"]["SiteBlueprint"] & {
+            site_name: string;
+            subpath?: string | null;
+            stable_domain: string;
+            ssg?: string | null;
+            /**
+             * Format: date-time
+             * @description When this Site's files were last exchanged with its source. This moves only when a sync actually transferred something, so it does not change when a sync succeeds but finds nothing new, and it is also set when a Site is created by copying another Site, before it has contacted a storage provider at all. A push that committed locally and then failed to reach the provider moves it too. It is therefore not a measure of health: use last_sync_failed_at and sync_error for that.
+             */
+            last_synced?: string | null;
+            /**
+             * Format: date-time
+             * @description When this Site's most recent sync attempt failed, or null if no failure is currently recorded. CloudCannon clears it once the Site syncs successfully again. Null does not on its own mean the Site is healthy, because a Site halted by sync_error stops attempting to sync at all, so check both fields. Syncing paused by unsaved changes, and a push that raced a change on the remote, are not failures: they are not recorded here and do not clear an existing value.
+             */
+            last_sync_failed_at?: string | null;
+            /** Format: date-time */
+            last_output?: string | null;
+            /** Format: date-time */
+            last_compiled?: string | null;
+            /** Format: date-time */
+            last_compressed?: string | null;
+            /** Format: date-time */
+            last_internationalised?: string | null;
+            /** Format: date-time */
+            last_published?: string | null;
+            /** Format: date-time */
+            last_cleaned?: string | null;
+            storage_provider?: string | null;
+            client_author_name?: string | null;
+            client_author_email?: string | null;
+            create_source?: string | null;
+            hosting_choice?: string;
+            building_locked?: boolean | null;
+            editing_locked?: boolean | null;
+            uploads_locked?: boolean;
+            browsing_locked?: boolean;
+            /**
+             * Format: date-time
+             * @description When this Site last built successfully. Unlike last_synced, its counterpart last_compiled records every build attempt, so a Site has a failed build when the two differ.
+             */
+            last_compiled_success?: string | null;
+            preview_url?: string | null;
+            documentation_url?: string | null;
+            support_url?: string | null;
+            client_editor_route?: string;
+            active_quest?: string | null;
+            /** Format: date-time */
+            created_at?: string | null;
+            /** Format: date-time */
+            updated_at?: string | null;
+            mode?: string | null;
+            project_id?: number | null;
+            project_uuid?: string | null;
+            pr_number?: number | null;
+            pr_external_url?: string | null;
+            cloudcannon_config_path?: string | null;
+            output_storage_provider?: string | null;
+            base_domain?: components["schemas"]["BaseDomainBlueprint"] | (string | null);
+            subdomain_uuid?: components["schemas"]["UUID"] | (string | null);
+        };
+        SiteBlueprintFull: components["schemas"]["SiteBlueprint"] & {
+            auto_generate_ssl?: boolean;
+            authentication?: string | null;
+            default_locale?: string | null;
+            uses_i18n?: boolean;
+            geolocation?: boolean | null;
+            serve_extensionless?: boolean;
+            flags?: {
+                [key: string]: unknown;
+            } | null;
+            force_extensionless?: boolean;
+            force_ssl?: boolean | null;
+            keep_form_hook_days?: number | null;
+            needs_clean?: boolean;
+            automatic_builds_state?: string | null;
+            publish_mode?: string | null;
+            destroy_on_publish?: boolean;
+            /** Format: date-time */
+            priority_domain_at?: string | null;
+            /**
+             * @deprecated
+             * @description Deprecated. Use prevent_guest_password_save instead.
+             */
+            prevent_client_password_save?: boolean;
+            recaptcha_key?: string | null;
+            saml_data?: string;
+            compiler_order?: string[];
+            latest_hosted_build_id?: number | null;
+            ssl_certificate_id?: number | null;
+            main_source_dam?: string | null;
+            editor_group_uuid?: components["schemas"]["UUID"];
+            technical_editor_group_uuid?: components["schemas"]["UUID"];
+            client_share_group_uuid?: components["schemas"]["UUID"];
+            guest_group_uuid?: components["schemas"]["UUID"];
+            prevent_guest_password_save?: boolean;
+            organisation_uuid?: components["schemas"]["UUID"];
+            base_domain_id?: number | null;
+            base_domain_uuid?: components["schemas"]["UUID"] | (string | null);
+            subdomain_uuid?: components["schemas"]["UUID"] | (string | null);
+            cloudflare_hostname_uuid?: components["schemas"]["UUID"] | (string | null);
+            latest_hosted_build_uuid?: components["schemas"]["UUID"] | (string | null);
+            pending_transfer_request_uuid?: components["schemas"]["UUID"] | (string | null);
+            site_inboxes?: (components["schemas"]["SiteInboxBlueprint"] | (string | null))[];
+            base_domain?: components["schemas"]["BaseDomainBlueprint"] | (string | null);
+            site_dams?: (components["schemas"]["SiteDamBlueprint"] | (string | null))[];
+        };
+        AutoSSLStateSchema: {
+            ssl_certificate_id?: number | null;
+            auto_generate_ssl_failures?: number;
+            auto_generate_ssl_max_failures?: number;
+            /** Format: date-time */
+            next_ssl_generate_attempt_at?: string | null;
+            /** Format: date-time */
+            ssl_generation_failing_email_sent_at?: string | null;
+            auto_generate_ssl_error_code?: string | null;
+            /** Format: date-time */
+            auto_generate_ssl_errored_at?: string | null;
+        };
+        CloudflareSSLStateSchema: {
+            status?: string | null;
+            ssl_status?: string | null;
+            ssl_errors?: unknown | Record<string, never>[] | (string | null);
+            ssl_certificate_id?: number | null;
+            custom_hostname_id?: string | null;
+            /** @enum {string} */
+            min_tls_version?: "1.2" | "1.3";
+            response?: Record<string, never> | null;
+        };
+        SiteBearerTokenBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name?: string;
+            obscured_token?: string;
+            /** Format: date-time */
+            created_at: string;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        SiteBearerTokenBlueprintWithToken: components["schemas"]["SiteBearerTokenBlueprint"] & {
+            token: string;
+        };
+        SiteArchiveBlueprint: components["schemas"]["BaseBlueprint"] & {
+            path: string;
+            size: number;
+            exclude_git?: boolean;
+            /** Format: date-time */
+            created_at?: string | null;
+            /** Format: date-time */
+            updated_at?: string | null;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        SiteActivityBlueprint: components["schemas"]["BaseBlueprint"] & {
+            id: number;
+            uuid: string;
+            data: string;
+            identifier?: string | null;
+            identifier_data?: string | null;
+            /** Format: date-time */
+            happened_at: string;
+            /** Format: date-time */
+            created_at?: string | null;
+            /** Format: date-time */
+            updated_at?: string | null;
+            user?: components["schemas"]["UserBlueprint"];
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        ProjectBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            description?: string | null;
+            git_repository: string;
+            allow_all_branching?: boolean;
+            prevent_permissions_granted_on_branch?: boolean;
+            main_git_branch?: string | null;
+            external_url?: string | null;
+            links?: components["schemas"]["ProjectLink"][];
+            provider: string;
+            default_destroy_on_publish?: boolean;
+            default_authentication?: string | null;
+            default_publish_mode?: string | null;
+            /** Format: date-time */
+            last_synced?: string | null;
+            /** Format: date-time */
+            last_compiled?: string | null;
+            /** Format: date-time */
+            last_compiled_success?: string | null;
+            auto_create_site_on_pr?: boolean;
+            comment_on_pr?: boolean;
+            pr_comment_skip_drafts?: boolean;
+            pr_comment_footer?: string | null;
+            auto_create_skip_drafts?: boolean;
+            pr_tab_visible?: boolean;
+            publishing_tab_visible?: boolean;
+            branches_tab_visible?: boolean;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            has_default_password?: boolean;
+            organisation_uuid?: components["schemas"]["UUID"];
+            main_site?: components["schemas"]["SiteBlueprintProject"] | (string | null);
+        };
+        ProjectLink: {
+            name?: string;
+            link?: string;
+        };
+        OutputBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            successful?: boolean | null;
+            identifier?: string | null;
+            after_identifier?: string | null;
+            diff_id?: string | null;
+            /** Format: date-time */
+            completed_at?: string | null;
+            provider: string;
+            provider_data?: {
+                [key: string]: unknown;
+            };
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        OrgBlueprintNormal: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            stable_domain_suffix?: string | null;
+            country?: string;
+            billing_name?: string | null;
+            billing_email?: string | null;
+            billing_line1?: string | null;
+            billing_line2?: string | null;
+            billing_postal_code?: string | null;
+            billing_state?: string | null;
+            billing_city?: string | null;
+            billing_country?: string | null;
+            billing_status?: string | null;
+            address?: string | null;
+            brand_color?: string | null;
+            plan?: string;
+            brand_logo?: string | null;
+            white_label_logo?: string | null;
+            site_soft_limit?: number;
+            business_type?: string | null;
+            organisation_type?: string | null;
+            partner_organisation_id?: number | null;
+            flags?: {
+                [key: string]: unknown;
+            } | null;
+            build_time_limit_exceeded?: boolean | null;
+            user_limit_exceeded?: boolean | null;
+            hosting_limit_exceeded?: boolean | null;
+            domain_limit_exceeded?: boolean | null;
+            last_hosting_limit_email_value?: number | null;
+            last_build_time_limit_email_value?: number | null;
+            allow_overage_charges?: boolean | null;
+            trial_offer_enabled?: boolean | null;
+            initial_saml_user_group_id?: number | null;
+            /** Format: date-time */
+            subscription_current_period_start?: string | null;
+            /** Format: date-time */
+            subscription_current_period_end?: string | null;
+            current_overage_period?: Record<string, never> | null;
+            additional_features?: (string[] | null) | (boolean | null);
+            additional_build_time?: number | null;
+            additional_bandwidth?: number | null;
+            additional_domains?: number | null;
+            additional_shares?: number | null;
+            additional_custom_groups?: number | null;
+            active_quest?: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: date-time */
+            cc_expires_at?: string | null;
+            /** Format: date-time */
+            mfa_required_after?: string | null;
+            /** Format: date-time */
+            sso_required_after?: string | null;
+            custom_billing_active?: boolean;
+            custom_billing_period?: string | null;
+            custom_contract_value?: number;
+            is_owner?: boolean;
+            partner_points?: number | null;
+            earns_partner_points?: boolean;
+            card_action_banner?: string | null;
+            payment_locked?: boolean;
+            custom_billing_start_date?: string | null;
+            /** Format: date-time */
+            trial_end?: string | null;
+        };
+        OrgBlueprintFull: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            stable_domain_suffix?: string | null;
+            country?: string;
+            billing_name?: string | null;
+            billing_email?: string | null;
+            billing_line1?: string | null;
+            billing_line2?: string | null;
+            billing_postal_code?: string | null;
+            billing_state?: string | null;
+            billing_city?: string | null;
+            billing_country?: string | null;
+            billing_status?: string | null;
+            address?: string | null;
+            brand_color?: string | null;
+            plan?: string;
+            brand_logo?: string | null;
+            white_label_logo?: string | null;
+            site_soft_limit?: number;
+            business_type?: string | null;
+            organisation_type?: string | null;
+            partner_organisation_id?: number | null;
+            flags?: {
+                [key: string]: unknown;
+            } | null;
+            build_time_limit_exceeded?: boolean | null;
+            user_limit_exceeded?: boolean | null;
+            hosting_limit_exceeded?: boolean | null;
+            domain_limit_exceeded?: boolean | null;
+            last_hosting_limit_email_value?: number | null;
+            last_build_time_limit_email_value?: number | null;
+            allow_overage_charges?: boolean | null;
+            trial_offer_enabled?: boolean | null;
+            initial_saml_user_group_id?: number | null;
+            /** Format: date-time */
+            subscription_current_period_start?: string | null;
+            /** Format: date-time */
+            subscription_current_period_end?: string | null;
+            current_overage_period?: Record<string, never> | null;
+            additional_features?: (string[] | null) | (boolean | null);
+            additional_build_time?: number | null;
+            additional_bandwidth?: number | null;
+            additional_domains?: number | null;
+            additional_shares?: number | null;
+            additional_custom_groups?: number | null;
+            active_quest?: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** Format: date-time */
+            cc_expires_at?: string | null;
+            /** Format: date-time */
+            mfa_required_after?: string | null;
+            /** Format: date-time */
+            sso_required_after?: string | null;
+            custom_billing_active?: boolean;
+            custom_billing_period?: string | null;
+            custom_contract_value?: number;
+            initial_saml_user_group_uuid?: (string | null) | components["schemas"]["UUID"];
+            is_github_app?: boolean;
+            github_account_linked?: boolean;
+            github_account_is_latest?: boolean;
+            github_enterprise_server_account_linked?: boolean;
+            github_enterprise_server_account_is_latest?: boolean;
+            gitlab_account_linked?: boolean;
+            gitlab_account_is_latest?: boolean;
+            self_hosted_gitlab_account_linked?: boolean;
+            self_hosted_gitlab_account_is_latest?: boolean;
+            bitbucket_account_linked?: boolean;
+            bitbucket_account_is_latest?: boolean;
+            self_hosted_gitlab_data?: Record<string, never> | null;
+            github_enterprise_server_data?: Record<string, never> | null;
+            partner_organisation?: Record<string, never> | null;
+        };
+        InboxTargetBlueprint: components["schemas"]["BaseBlueprint"] & {
+            target_type: string;
+            target: string;
+            validated?: boolean;
+            config?: {
+                [key: string]: unknown;
+            } | null;
+            inbox_uuid: components["schemas"]["UUID"];
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        InboxBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            key: string;
+            monthly_quota?: number | null;
+            keep_form_hook_days?: number | null;
+            organisation_id: number;
+            captcha_type?: string | null;
+            captcha_key?: string | null;
+            captcha_config?: {
+                project_id?: string | null;
+                /** Format: float */
+                min_score?: number | null;
+                send_sitekey?: boolean | null;
+            };
+            allow_uploads?: boolean;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            organisation_uuid?: components["schemas"]["UUID"];
+            has_captcha_secret?: boolean;
+            inbox_targets?: (components["schemas"]["InboxTargetBlueprint"] | (string | null))[];
+        };
+        GroupPendingMemberBlueprint: components["schemas"]["BaseBlueprint"] & {
+            email?: string;
+            organisation_uuid?: string | null;
+            group?: components["schemas"]["GroupBlueprint"];
+        };
+        UserBlueprint: components["schemas"]["BaseBlueprint"] & {
+            first_name?: string | null;
+            surname?: string | null;
+            email?: string;
+            otp_required_for_login?: boolean | null;
+        };
+        UserBlueprintFull: components["schemas"]["UserBlueprint"] & {
+            country?: string;
+            job_title?: string | null;
+            ssg_experience?: string | null;
+            /** Format: date-time */
+            last_sign_in_at?: string | null;
+            /** Format: date-time */
+            current_sign_in_at?: string | null;
+        };
+        GroupMemberBlueprint: components["schemas"]["BaseBlueprint"] & {
+            group_id?: number;
+            user_id?: number;
+            group_uuid?: string | null;
+            user_uuid?: string | null;
+            user?: components["schemas"]["UserBlueprint"];
+        };
+        FormHookSendBlueprint: components["schemas"]["BaseBlueprint"] & {
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            success?: boolean;
+            error?: string | null;
+            inbox_target?: components["schemas"]["InboxTargetBlueprint"];
+            form_hook?: components["schemas"]["FormHookBlueprint"];
+        };
+        FormHookBlueprint: components["schemas"]["BaseBlueprint"] & {
+            sent?: boolean | null;
+            recaptcha?: boolean | null;
+            ip?: string | null;
+            host?: string | null;
+            data?: {
+                [key: string]: unknown;
+            } | null;
+            timings?: {
+                [key: string]: unknown;
+            } | null;
+            error?: string | null;
+            /** @enum {string} */
+            explicitly_marked_status?: "no_mark" | "spam" | "ham";
+            automatically_marked_spam?: boolean;
+            spam_checked?: boolean;
+            /** Format: date-time */
+            last_sent_at?: string | null;
+            /** Format: date-time */
+            cleared_at?: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            inbox_uuid?: (string | null) | components["schemas"]["UUID"];
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        EditingSessionFileContributionBlueprint: components["schemas"]["BaseBlueprint"] & {
+            editing_session_file_uuid: string;
+            session_type: string;
+            user_uuid?: string | null;
+            session_uuid: string;
+            state: string;
+            file_contents: string;
+            generated_by_merge?: boolean | null;
+            content_hash: string;
+            /** Format: date-time */
+            ended_at?: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        EditingSessionFileBlueprint: components["schemas"]["BaseBlueprint"] & {
+            editing_session_uuid: string;
+            edit_type?: string | null;
+            source_path?: string | null;
+            path?: string | null;
+            sync_blocked?: boolean | null;
+            has_conflict?: boolean | null;
+            unchanged?: boolean | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            metadata?: {
+                [key: string]: unknown;
+            } | null;
+            contributions?: (components["schemas"]["EditingSessionFileContributionBlueprint"] | (string | null))[];
+        };
+        EditingSessionBlueprint: components["schemas"]["BaseBlueprint"] & {
+            site_id: number;
+            build_id?: number | null;
+            state: string;
+            base_commit_hash: string;
+            upstream_commit_hash?: string | null;
+            syncs_blocked?: number;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            site_uuid?: components["schemas"]["UUID"];
+            build_uuid?: components["schemas"]["UUID"];
+            files?: (components["schemas"]["EditingSessionFileBlueprint"] | (string | null))[];
+        };
+        DamBlueprint: components["schemas"]["BaseBlueprint"] & {
+            access_key?: string | null;
+            base_url: string;
+            /** Format: date-time */
+            created_at: string;
+            dam_type: string;
+            name: string;
+            /** Format: date-time */
+            updated_at: string;
+            max_upload_size?: number | null;
+            organisation_uuid?: components["schemas"]["UUID"];
+            config?: Record<string, never>;
+            extra_params?: string | null;
+        };
+        BuildBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name: string;
+            successful?: boolean | null;
+            site_id: number;
+            /** Format: date-time */
+            completed_at?: string | null;
+            metadata?: {
+                [key: string]: unknown;
+            } | null;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            pinnable?: boolean | null;
+            parent_build_uuid?: components["schemas"]["UUID"] | (string | null);
+            site_uuid?: components["schemas"]["UUID"];
+        };
+        NameServerCheckBlueprint: components["schemas"]["BaseBlueprint"] & {
+            base_domain?: string;
+            base_domain_uuid?: string;
+            found_name_servers?: string[];
+            conclusive?: boolean;
+        };
+        BaseDomainBlueprint: components["schemas"]["BaseBlueprint"] & {
+            base_domain: string;
+            uses_dns?: boolean;
+            in_cloudflare_beta?: boolean | null;
+            cloudflare_dns_migrated?: boolean;
+            cloudflare_zone_id?: string | null;
+            cloudflare_zone_create_error?: string | null;
+            cloudflare_zone_create_error_from_cloudflare?: boolean;
+            mx_record?: string | null;
+            spf_record?: string | null;
+            minimum_tls_version?: string | null;
+            fallback_redirect_status?: number;
+            cloudflare_name_servers?: string[];
+            name_servers?: string[] | null;
+            cloudflare_dns_migration?: Record<string, never>[] | null;
+            a_record?: components["schemas"]["DNSRecord"][];
+            cname_record?: components["schemas"]["DNSRecord"][];
+            txt_record?: components["schemas"]["DNSRecord"][];
+        };
+        BaseDomainBlueprintFull: components["schemas"]["BaseDomainBlueprint"] & {
+            base_domain: string;
+            uses_dns?: boolean;
+            in_cloudflare_beta?: boolean | null;
+            cloudflare_dns_migrated?: boolean;
+            cloudflare_zone_id?: string | null;
+            cloudflare_zone_create_error?: string | null;
+            cloudflare_zone_create_error_from_cloudflare?: boolean;
+            mx_record?: string | null;
+            spf_record?: string | null;
+            minimum_tls_version?: string | null;
+            fallback_redirect_status?: number;
+            /** Format: date-time */
+            nameservers_updated_at?: string | null;
+            /** Format: date-time */
+            dns_live_at?: string | null;
+            /** Format: date-time */
+            nameservers_changed_at?: string | null;
+            /** Format: date-time */
+            nameserver_nudge_sent_at?: string | null;
+            /** Format: date-time */
+            wildcard_record_checked_at?: string | null;
+            wildcard_record_found?: boolean | null;
+            /** Format: date-time */
+            wildcard_record_updated_at?: string | null;
+            site_count?: number;
+            subdomain_count?: number;
+            fallback_domain?: string | null;
+            organisation_uuid?: components["schemas"]["UUID"];
+            /** @enum {string} */
+            dns_setup_stage?: "external" | "legacy" | "zone_pending" | "zone_failed" | "update_nameservers" | "spreading" | "not_detected" | "live" | "changed";
+            found_name_servers?: string[];
+            /** Format: date-time */
+            name_servers_checked_at?: string | null;
+            /** Format: date-time */
+            name_server_check_failed_at?: string | null;
+            missing_mx_records?: boolean;
+            disconnect_blockers?: string[];
+            wildcard_certificate?: components["schemas"]["BaseDomainWildcardCertificateSchema"] | (string | null);
+            name_server_checks?: (components["schemas"]["NameServerCheckBlueprint"] | (string | null))[];
+        };
+        BaseDomainWildcardTxtRecordSchema: {
+            txt_name?: string;
+            txt_value?: string;
+            found?: string[];
+            /** @enum {string} */
+            status?: "connected" | "not_pointing" | "no_record" | "unchecked";
+        };
+        BaseDomainWildcardCertificateSchema: {
+            uuid?: components["schemas"]["UUID"];
+            status?: string | null;
+            ssl_status?: string | null;
+            validation_method?: string | null;
+            /** Format: date-time */
+            expires_at?: string | null;
+            wildcard?: boolean;
+            /** Format: date-time */
+            checked_at?: string;
+            /** Format: date-time */
+            dns_updated_at?: string | null;
+            dcv_delegation?: components["schemas"]["SubdomainDcvDelegationSchema"] | (string | null);
+            /** Format: date-time */
+            dcv_delegated_at?: string | null;
+            validation_records?: components["schemas"]["BaseDomainWildcardTxtRecordSchema"][];
+        };
+        DNSRecord: {
+            subdomain?: string;
+            target?: string;
+        };
+        BaseDomainDnsRecordSchema: {
+            content?: string;
+            /** Format: date-time */
+            created_on?: string;
+            id?: string;
+            locked?: boolean;
+            meta?: Record<string, never>;
+            /** Format: date-time */
+            modified_on?: string;
+            name?: string;
+            proxiable?: boolean;
+            proxied?: boolean;
+            ttl?: number;
+            type?: string;
+            zone_id?: string;
+            zone_name?: string;
+        };
+        GroupPermissionBlueprint: components["schemas"]["BaseBlueprint"] & {
+            resource?: string;
+            global_scope?: boolean;
+            group_scope_uuid?: string | null;
+            base_domain_scope_uuid?: string | null;
+            project_scope_uuid?: string | null;
+            site_scope_uuid?: string | null;
+            file_glob?: string | null;
+            except?: boolean;
+            group_id?: number;
+            group_uuid?: string | null;
+            organisation_uuid?: string | null;
+        };
+        GroupBlueprint: components["schemas"]["BaseBlueprint"] & {
+            creation_type?: string | null;
+            organisation_id?: number;
+            name?: string;
+            organisation_uuid?: string | null;
+        };
+        GroupBlueprintWithPermissions: components["schemas"]["GroupBlueprint"] & {
+            permissions?: components["schemas"]["GroupPermissionBlueprint"][];
+        };
+        ApiKeyBlueprint: components["schemas"]["BaseBlueprint"] & {
+            name?: string;
+            key_snippet?: string | null;
+            /** Format: date-time */
+            created_at?: string;
+            group?: components["schemas"]["GroupBlueprintWithPermissions"];
+        };
+        ApiKeyBlueprintUnsnippedKey: components["schemas"]["ApiKeyBlueprint"] & {
+            key?: string;
+        };
+    };
+    responses: {
+        /** @description Unprocessable */
+        ErrorResp: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorsSchema"];
+            };
+        };
+        /** @description Forbidden */
+        ForbiddenResp: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorSchema"];
+            };
+        };
+        /** @description Not Found */
+        NotFoundResp: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorSchema"];
+            };
+        };
+        /** @description Unauthorized */
+        UnauthorizedResp: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorSchema"];
+            };
+        };
+        /** @description PaymentConfirmRequired */
+        PaymentConfirmRequired: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorsSchema"];
+            };
+        };
+        /** @description FeatureNotOnPlan */
+        FeatureNotOnPlan: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorsSchema"];
+            };
+        };
+    };
+    parameters: {
+        /** @description Page number to fetch (1-indexed) */
+        PageQuery: number;
+        /** @description Number of items per page */
+        ItemsQuery: number;
+    };
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-	AuthenticationBearerTokensDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				bearer_token_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	AuthenticationUsersDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_user_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	BaseDomainsIndexShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	BaseDomainsIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					minimum_tls_version?: '1.2' | '1.3';
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsIndexDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsIndexStatus: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						success?: boolean;
-						status?: number;
-						answers?: string[];
-						error_message?: string;
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	BaseDomainsDnsIndexCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsIndexDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Removed */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsRecordsList: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				search?: string;
-			};
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainDnsRecordSchema'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsRecordsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					type?: string;
-					name?: string;
-					ttl?: number;
-					data?: {
-						comment?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainDnsRecordSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsRecordsUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-				record_id: string;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					type?: string;
-					name?: string;
-					ttl?: number;
-					data?: {
-						comment?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainDnsRecordSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsRecordsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-				record_id: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsIndexRetry: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsDnsIndexValidate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						valid?: boolean;
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsIndexMigrate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BaseDomainsSubdomainsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				search?: string;
-			};
-			header?: never;
-			path: {
-				base_domain_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SubdomainBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	BuildsOutput: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				build_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'text/plain': string;
-				};
-			};
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	BuildsFiles: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				build_uuid: components['schemas']['UUID'];
-				path: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	BuildsUrls: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				build_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	DamsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				dam_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['DamBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	DamsUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				dam_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					dam_type?:
-						| 's3'
-						| 'tenovos'
-						| 'cloudinary'
-						| 'azure'
-						| 'google'
-						| 'cloudflare'
-						| 'digitalocean'
-						| 'bynder';
-					name?: string;
-					config?: string;
-					base_url?: string;
-					access_key?: string | null;
-					access_secret?: string | null;
-					max_upload_size?: number | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['DamBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	DamsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				dam_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	EditingSessionFilesIndexIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	EditingSessionFilesIndexDiscard: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Discarded */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': Record<string, never>;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesIndexClaimLock: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: {
-			content: {
-				'application/json': {
-					previous_content_hash?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileContributionBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesContributionsIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileContributionBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	EditingSessionFilesContributionsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					s3_key: string;
-					content_hash: string;
-					previous_content_hash?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileContributionBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesIndexEditType: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					edit_type: string;
-					discard_unsaved?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': Record<string, never>;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesIndexMetadata: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					metadata?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesIndexPath: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					path: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesIndexRaw: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	EditingSessionFilesIndexResized: {
-		parameters: {
-			query?: {
-				width?: number;
-				height?: number;
-				content_type?: string;
-			};
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	EditingSessionFilesIndexResolve: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionFilesIndexUnlock: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_file_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					previous_content_hash: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileContributionBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	EditingSessionsIndexAbort: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description No Content */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexClonePath: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					source?: string;
-					target?: string;
-					paths?: {
-						source?: string;
-						target?: string;
-					}[];
-					allow_overwrite?: boolean;
-					metadata?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexCommit: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					message?: string;
-					include?: {
-						[key: string]: boolean;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						socket_message_id?: string;
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexDeletePath: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					target?: string;
-					paths?: {
-						target?: string;
-					}[];
-					discard_unsaved?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsFilesIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	EditingSessionsFilesCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					edit_type?: string | null;
-					path?: string | null;
-					source_path?: string | null;
-					discard_unsaved?: boolean;
-					previous_content_hash?: string;
-					metadata?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description Success */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'];
-				};
-			};
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexMovePath: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					source?: string;
-					target?: string;
-					paths?: {
-						source?: string;
-						target?: string;
-					}[];
-					allow_overwrite?: boolean;
-					metadata?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexRestorePath: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					target?: string;
-					paths?: {
-						target?: string;
-					}[];
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	EditingSessionsIndexUploadFile: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				editing_session_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					target?: string;
-					s3_key?: string;
-					content_hash?: string;
-					files?: {
-						target?: string;
-						s3_key?: string;
-						content_hash?: string;
-					}[];
-					allow_overwrite?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionFileBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	FormHooksUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				form_hook_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					explicitly_marked_status?: 'no_mark' | 'spam' | 'ham';
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['FormHookBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	FormHooksClear: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				form_hook_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['FormHookBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	FormHooksQueueSend: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				form_hook_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: {
-			content: {
-				'application/json': {
-					inbox_target_uuid?: components['schemas']['UUID'];
-				};
-			};
-		};
-		responses: {
-			/** @description Queued */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	FormHooksSends: {
-		parameters: {
-			query?: {
-				success?: boolean;
-				inbox_target_uuid?: string;
-				form_hook_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				form_hook_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['FormHookSendBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	GroupsIndexShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupBlueprintWithPermissions'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	GroupsIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name?: string;
-					permissions?: {
-						resource?: string;
-						except?: boolean;
-						global_scope?: boolean;
-						group_scope_uuid?: string;
-						site_scope_uuid?: string;
-						base_domain_scope_uuid?: string;
-						project_scope_uuid?: string;
-						file_glob?: string;
-					}[];
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupBlueprintWithPermissions'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	GroupsIndexDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	GroupsIndexLeave: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Left the group */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	GroupsMembersIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				/** @description Filter members by name or email */
-				search?: string;
-			};
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	GroupsMembersInvite: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					email: string;
-					accept_billing_increase?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupMemberBlueprint'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	GroupsMembersDestroy: {
-		parameters: {
-			query: {
-				/** @description Email of the member to remove */
-				email: string;
-			};
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	GroupsPendingMembersIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-			};
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupPendingMemberBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	GroupsPendingMembersDestroy: {
-		parameters: {
-			query: {
-				/** @description Email of the pending member to remove */
-				email: string;
-			};
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	GroupsPendingMembersResendInvitation: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				group_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					email: string;
-				};
-			};
-		};
-		responses: {
-			/** @description Invitation resent */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxTargetsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_target_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxTargetBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxTargetsUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_target_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					config?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxTargetBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	InboxTargetsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_target_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxTargetsRevalidate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_target_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxTargetBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxesIndexShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxesIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					key: string;
-					monthly_quota?: number | null;
-					keep_form_hook_days?: number | null;
-					captcha_key?: string | null;
-					captcha_secret?: string | null;
-					captcha_type?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	InboxesIndexDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxesIndexExport: {
-		parameters: {
-			query?: {
-				category?: 'spam' | 'sent' | 'errored' | 'pending';
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				recaptcha?: boolean;
-				sent?: boolean;
-				spam_checked?: boolean;
-				automatically_marked_spam?: boolean;
-				ip?: string;
-				host?: string;
-				explicitly_marked_status?: number;
-				inbox_uuid?: string;
-				has_error?: string | number | boolean;
-				has_spam_check_error?: string | number | boolean;
-				cleared_at_lt?: string;
-				cleared_at_gt?: string;
-				cleared_at_lte?: string;
-				cleared_at_gte?: string;
-				last_sent_at_lt?: string;
-				last_sent_at_gt?: string;
-				last_sent_at_lte?: string;
-				last_sent_at_gte?: string;
-				sent_count_lt?: number;
-				sent_count_gt?: number;
-				sent_count_lte?: number;
-				sent_count_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'text/csv': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxesFormHooksIndex: {
-		parameters: {
-			query?: {
-				category?: 'spam' | 'sent' | 'errored' | 'pending';
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				recaptcha?: boolean;
-				sent?: boolean;
-				spam_checked?: boolean;
-				automatically_marked_spam?: boolean;
-				ip?: string;
-				host?: string;
-				explicitly_marked_status?: number;
-				inbox_uuid?: string;
-				has_error?: string | number | boolean;
-				has_spam_check_error?: string | number | boolean;
-				cleared_at_lt?: string;
-				cleared_at_gt?: string;
-				cleared_at_lte?: string;
-				cleared_at_gte?: string;
-				last_sent_at_lt?: string;
-				last_sent_at_gt?: string;
-				last_sent_at_lte?: string;
-				last_sent_at_gte?: string;
-				sent_count_lt?: number;
-				sent_count_gt?: number;
-				sent_count_lte?: number;
-				sent_count_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['FormHookBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxesInboxTargetsIndex: {
-		parameters: {
-			query?: {
-				inbox_uuid?: string;
-				target_type?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxTargetBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	InboxesInboxTargetsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					target_type: string;
-					target: string;
-					config?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxTargetBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	InboxesIndexUpload: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				inbox_uuid: components['schemas']['UUID'];
-				key: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	OrgsIndexIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Exclude organisations managed as clients of the current user's partner organisations */
-				exclude_partner_clients?: boolean;
-				/** @description Attribute to sort the results by */
-				sort_attribute?:
-					| 'id'
-					| 'uuid'
-					| 'name'
-					| 'partner_points'
-					| 'updated_at'
-					| 'estimated_monthly_cost';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				build_time_limit_exceeded?: boolean;
-				hosting_limit_exceeded?: boolean;
-				user_limit_exceeded?: boolean;
-				domain_limit_exceeded?: boolean;
-				hubspot_migrated?: boolean;
-				has_billing_email?: string | number | boolean;
-				has_partner_organisation_id?: number;
-				country?: string;
-				organisation_type?: string;
-				partner_organisation_id?: number;
-				billing_status?: string;
-				has_organisation_type?: string | number | boolean;
-				expired?: string | number | boolean;
-				has_address?: string | number | boolean;
-				locked?: string | number | boolean;
-				has_billing_name?: string | number | boolean;
-				unattached?: string | number | boolean;
-				in_partner_program?: string | number | boolean;
-				given_user_is_sole_owner?: string | number | boolean;
-				plan?: string;
-				needs_attention?: string | number | boolean;
-				billing_issue?: string | number | boolean;
-				trial_ending_soon?: string | number | boolean;
-				inactive?: string | number | boolean;
-				has_failing_sites?: string | number | boolean;
-				has_domain_issues?: string | number | boolean;
-				has_build_failures?: string | number | boolean;
-				has_sync_errors?: string | number | boolean;
-				has_output_errors?: string | number | boolean;
-				has_ssl_auto_failures?: string | number | boolean;
-				has_dns_errors?: string | number | boolean;
-				has_site_domain_failures?: string | number | boolean;
-				has_expired_certs?: string | number | boolean;
-				has_expiring_certs?: string | number | boolean;
-				has_custom_ssl_expiring?: string | number | boolean;
-				has_failing_forms?: string | number | boolean;
-				storage_provider_uuid?: string;
-				provider_account_linked?: string | number | boolean;
-				trial?: string | number | boolean;
-				plan_period?: string | number | boolean;
-				user_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['OrgBlueprintNormal'][];
-				};
-			};
-		};
-	};
-	OrgsIndexShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['OrgBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					billing_name?: string | null;
-					billing_email?: string | null;
-					billing_city?: string | null;
-					billing_country?: string | null;
-					billing_line1?: string | null;
-					billing_line2?: string | null;
-					billing_postal_code?: string | null;
-					billing_state?: string | null;
-					brand_color?: string | null;
-					business_type?: string | null;
-					/** Format: date-time */
-					mfa_required_after?: string | null;
-					/** Format: date-time */
-					sso_required_after?: string | null;
-					flags?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['OrgBlueprintNormal'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsIndexAccessReview: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'text/csv': string;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsActivityIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				size_lt?: string | number | boolean;
-				size_gt?: string | number | boolean;
-				size_lte?: string | number | boolean;
-				size_gte?: string | number | boolean;
-				organisation_uuid?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteActivityBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsAnalyticsBuildDuration: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						/** Format: date-time */
-						date?: string;
-						duration?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsAnalyticsBuildDurationTotal: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						used?: number;
-					};
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsAnalyticsHostingBandwidth: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						/** Format: date-time */
-						date?: string;
-						bandwidth?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsAnalyticsHostingBandwidthBySite: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-				offset?: number;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						site_id?: number;
-						host?: string;
-						total_bandwidth?: number;
-						total_requests?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsAnalyticsHostingBandwidthByUrl: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-				offset?: number;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						url?: string;
-						site_id?: number;
-						host?: string;
-						total_bandwidth?: number;
-						total_requests?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsAnalyticsHostingBandwidthTotal: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-				/** @description Set to "upper" to include all hosting log entries */
-				bound?: 'upper';
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						used?: number;
-					};
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsApiKeysIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'name';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				/** @description Filter API keys by name */
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ApiKeyBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsApiKeysCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name?: string;
-					permissions?: {
-						resource?: string;
-						except?: boolean;
-						global_scope?: boolean;
-						group_scope_uuid?: string;
-						site_scope_uuid?: string;
-						base_domain_scope_uuid?: string;
-						project_scope_uuid?: string;
-						file_glob?: string;
-					}[];
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ApiKeyBlueprintUnsnippedKey'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsApiKeysShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				api_key_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ApiKeyBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsApiKeysDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				api_key_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsBaseDomainsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?:
-					| 'id'
-					| 'uuid'
-					| 'base_domain'
-					| 'auto_generate_ssl_failures'
-					| 'next_ssl_generate_attempt_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				base_domain?: string;
-				has_zone_id?: number;
-				has_cloudflare_zone_id?: number;
-				has_cloudflare_zone_create_error?: string | number | boolean;
-				uses_dns?: boolean;
-				organisation_id?: number;
-				organisation_uuid?: string;
-				auto_ssl_retries?: string | number | boolean;
-				dns_failing?: string | number | boolean;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string | number | boolean;
-				created_at_gt?: string | number | boolean;
-				created_at_lte?: string | number | boolean;
-				created_at_gte?: string | number | boolean;
-				updated_at_lt?: string | number | boolean;
-				updated_at_gt?: string | number | boolean;
-				updated_at_lte?: string | number | boolean;
-				updated_at_gte?: string | number | boolean;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsBaseDomainsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					base_domain: string;
-					uses_dns?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BaseDomainBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsIndexUpdateBilling: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					billing_name?: string | null;
-					billing_email?: string | null;
-					billing_city?: string | null;
-					billing_country?: string | null;
-					billing_line1?: string | null;
-					billing_line2?: string | null;
-					billing_postal_code?: string | null;
-					billing_state?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['OrgBlueprintNormal'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsDamsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'name' | 'type' | 'base_url';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
-				dam_type?: string;
-				organisation_id?: number;
-				organisation_uuid?: string;
-				unlinked_site_uuid?: string;
-				site_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['DamBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsDamsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					dam_type:
-						| 's3'
-						| 'tenovos'
-						| 'cloudinary'
-						| 'azure'
-						| 'google'
-						| 'cloudflare'
-						| 'digitalocean'
-						| 'bynder';
-					name: string;
-					config: string;
-					base_url: string;
-					access_key?: string | null;
-					access_secret?: string | null;
-					max_upload_size?: number | null;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['DamBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsGroupsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'name';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				creation_type?: string;
-				name?: string;
-				organisation_uuid?: string;
-				user_uuid?: string;
-				api_key?: string | number | boolean;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-				/** @description Only include groups the current user is a member of */
-				only_member_of?: boolean;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupBlueprintWithPermissions'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsGroupsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name?: string;
-					permissions?: {
-						resource?: string;
-						except?: boolean;
-						global_scope?: boolean;
-						group_scope_uuid?: string;
-						site_scope_uuid?: string;
-						base_domain_scope_uuid?: string;
-						project_scope_uuid?: string;
-						file_glob?: string;
-					}[];
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupBlueprintWithPermissions'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsInboxesIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'created_at' | 'updated_at' | 'id' | 'key' | 'name' | 'uuid';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				captcha_type?: string;
-				name?: string;
-				organisation_id?: number;
-				site_uuid?: string;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsInboxesCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					key: string;
-					monthly_quota?: number | null;
-					keep_form_hook_days?: number | null;
-					captcha_key?: string | null;
-					captcha_secret?: string | null;
-					captcha_type?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['InboxBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsMembersIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				/** @description Filter members by name or email */
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsMembersShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				email: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsMembersDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				email: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsPendingMembersIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						id?: number;
-						uuid?: string;
-						first_name?: string;
-						surname?: string;
-						email?: string;
-						groups?: unknown[];
-					}[];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsIndexPermissions: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupPermissionBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsProjectsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?:
-					| 'id'
-					| 'uuid'
-					| 'name'
-					| 'external_url'
-					| 'git_repository'
-					| 'main_git_branch'
-					| 'updated_at'
-					| 'created_at'
-					| 'last_synced'
-					| 'last_compiled'
-					| 'last_compiled_success'
-					| 'provider';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				git_repository?: string;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
-				name?: string;
-				organisation_id?: number;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ProjectBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsProjectsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					external_url?: string | null;
-					description?: string | null;
-					links?: string;
-					default_destroy_on_publish?: boolean;
-					default_authentication?: string | null;
-					default_publish_mode?: string | null;
-					default_password?: Record<string, never>;
-					pr_tab_visible?: boolean;
-					publishing_tab_visible?: boolean;
-					branches_tab_visible?: boolean;
-					git_repository: string;
-					allow_all_branching?: boolean;
-					prevent_permissions_granted_on_branch?: boolean;
-					main_git_branch?: string | null;
-					provider: string;
-					auto_create_site_on_pr?: boolean;
-					auto_create_skip_drafts?: boolean;
-					comment_on_pr?: boolean;
-					pr_comment_skip_drafts?: boolean;
-					pr_comment_footer?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ProjectBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsProvidersInstallations: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				provider:
-					| 'github'
-					| 'github_enterprise_server'
-					| 'gitlab'
-					| 'bitbucket'
-					| 'self_hosted_gitlab';
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						id?: number;
-						app_id?: number;
-						single_file_name?: string | null;
-						app_slug?: string;
-						html_url?: string;
-						provider?: string;
-						account?: {
-							avatar_url?: string;
-							login?: string;
-							type?: string;
-						};
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsProvidersRepositories: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				provider:
-					| 'github'
-					| 'github_enterprise_server'
-					| 'gitlab'
-					| 'bitbucket'
-					| 'self_hosted_gitlab';
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['RepositorySchema'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsProvidersBranches: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				provider:
-					| 'github'
-					| 'github_enterprise_server'
-					| 'gitlab'
-					| 'bitbucket'
-					| 'self_hosted_gitlab';
-				repository: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BranchSchema'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsProvidersCreateBranch: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-				provider:
-					| 'github'
-					| 'github_enterprise_server'
-					| 'gitlab'
-					| 'bitbucket'
-					| 'self_hosted_gitlab';
-				repository: string;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					branch_from: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BranchSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsSiteMountingsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				site_id?: number;
-				local_site_id?: number;
-				remote_site_id?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				local_site_uuid?: string;
-				remote_site_uuid?: string;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteMountingBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsSitesIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?:
-					| 'id'
-					| 'uuid'
-					| 'site_name'
-					| 'domain_name'
-					| 'created_at'
-					| 'updated_at'
-					| 'last_synced'
-					| 'last_compressed'
-					| 'last_compiled'
-					| 'last_cleaned'
-					| 'priority_domain_at'
-					| 'storage_provider'
-					| 'stable_domain'
-					| 'subpath'
-					| 'sync_error';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_name?: string;
-				base_domain_id?: number;
-				domain_name?: string;
-				ssl_certificate_id?: number;
-				project_id?: number;
-				project_uuid?: string;
-				storage_provider?: string;
-				output_storage_provider?: string;
-				hosting_choice?: string;
-				ssg?: string;
-				authentication?: string;
-				force_ssl?: boolean;
-				editing_locked?: boolean;
-				uploads_locked?: boolean;
-				browsing_locked?: boolean;
-				building_locked?: boolean;
-				uses_i18n?: boolean;
-				auto_generate_ssl?: boolean;
-				use_rbenv_builds?: boolean;
-				needs_clean?: boolean;
-				has_storage_provider?: string | number | boolean;
-				has_output_storage_provider?: string | number | boolean;
-				has_source?: string | number | boolean;
-				has_domain_name?: string | number | boolean;
-				organisation_id?: number;
-				has_subpath?: string | number | boolean;
-				has_client_password?: string | number | boolean;
-				cloudflare_hostname?: string | number | boolean;
-				locales?: string;
-				sync_error?: string;
-				output_error?: string;
-				compile_error?: string;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
-				latest_hosted_build_id?: number;
-				files?: string;
-				never_synced?: string | number | boolean;
-				bearer_tokens?: string | number | boolean;
-				site_scanner?: string | number | boolean;
-				old_includes?: string | number | boolean;
-				repeatables?: string | number | boolean;
-				storage_provider_details_full_name?: string | number | boolean;
-				source?: string | number | boolean;
-				inactive?: string | number | boolean;
-				error?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
-				last_compiled_status?: string | number | boolean;
-				domain_not_resolving?: string | number | boolean;
-				inbox_uuid?: string;
-				custom_ssl_expiring?: string | number | boolean;
-				failing_forms?: string | number | boolean;
-				has_unsaved_changes?: string | number | boolean;
-				compiled?: string | number | boolean;
-				base_domain_uuid?: string;
-				cloudflare_hostname_uuid?: string;
-				cloudflare_error?: string;
-				dam_uuid?: string;
-				publish_branch?: string | number | boolean;
-				owner_locked?: string | number | boolean;
-				owner_trial?: string | number | boolean;
-				ssl_certificate?: string | number | boolean;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsSitesCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					site_name: string;
-					editing_locked?: boolean | null;
-					active_quest?: string | null;
-					cloudcannon_config_path?: string | null;
-					stable_domain?: string;
-					flags?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsSitesConnect: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					provider: string;
-					repo: string;
-					branch: string;
-					folder?: string;
-					site_name: string;
-					editing_locked?: boolean | null;
-					active_quest?: string | null;
-					cloudcannon_config_path?: string | null;
-					stable_domain?: string;
-					flags?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsSslCertificatesIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'name' | 'expires_at' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
-				organisation_id?: number;
-				expires_at_gt?: string;
-				expires_at_lte?: string;
-				autorenew?: boolean;
-				has_cloudflare_id?: number;
-				expires_at_gte?: string;
-				expires_at_lt?: string;
-				organisation_uuid?: string;
-				expired?: string | number | boolean;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SslCertificateBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsSslCertificatesCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					/** Format: date-time */
-					expires_at: string;
-					crt: string;
-					key: string;
-					chain?: string;
-					autorenew?: boolean | null;
-					cipher?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SslCertificateBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	OrgsWhitelabelShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Not present */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OrgsWhitelabelShowBrand: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				org_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Not present */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	OutputsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				output_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	ProjectsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ProjectBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	ProjectsUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					external_url?: string | null;
-					description?: string | null;
-					links?: string;
-					default_destroy_on_publish?: boolean;
-					default_authentication?: string | null;
-					default_publish_mode?: string | null;
-					default_password?: Record<string, never>;
-					pr_tab_visible?: boolean;
-					publishing_tab_visible?: boolean;
-					branches_tab_visible?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ProjectBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	ProjectsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	ProjectsGitBranches: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': (components['schemas']['BranchSchema'] & {
-						sites?: {
-							uuid?: string;
-							site_name?: string;
-							stable_domain?: string;
-						}[];
-						is_default?: boolean;
-						pull_request?: {
-							number?: number;
-							title?: string;
-							external_url?: string;
-							state?: string;
-							/** Format: date-time */
-							updated_at?: string | null;
-						};
-					})[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	ProjectsUpdateGit: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					git_repository: string;
-					allow_all_branching?: boolean;
-					prevent_permissions_granted_on_branch?: boolean;
-					main_git_branch?: string | null;
-					provider: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ProjectBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	ProjectsGitPullRequests: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': (components['schemas']['PullRequestSchema'] & {
-						sites?: {
-							uuid?: string;
-							site_name?: string;
-							stable_domain?: string;
-						}[];
-					})[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	ProjectsRefreshPrComments: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['ProjectBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	ProjectsSites: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?:
-					| 'id'
-					| 'uuid'
-					| 'site_name'
-					| 'domain_name'
-					| 'created_at'
-					| 'updated_at'
-					| 'last_synced'
-					| 'last_compressed'
-					| 'last_compiled'
-					| 'last_cleaned'
-					| 'priority_domain_at'
-					| 'storage_provider'
-					| 'stable_domain'
-					| 'subpath'
-					| 'sync_error';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_name?: string;
-				base_domain_id?: number;
-				domain_name?: string;
-				ssl_certificate_id?: number;
-				project_id?: number;
-				project_uuid?: string;
-				storage_provider?: string;
-				output_storage_provider?: string;
-				hosting_choice?: string;
-				ssg?: string;
-				authentication?: string;
-				force_ssl?: boolean;
-				editing_locked?: boolean;
-				uploads_locked?: boolean;
-				browsing_locked?: boolean;
-				building_locked?: boolean;
-				uses_i18n?: boolean;
-				auto_generate_ssl?: boolean;
-				use_rbenv_builds?: boolean;
-				needs_clean?: boolean;
-				has_storage_provider?: string | number | boolean;
-				has_output_storage_provider?: string | number | boolean;
-				has_source?: string | number | boolean;
-				has_domain_name?: string | number | boolean;
-				organisation_id?: number;
-				has_subpath?: string | number | boolean;
-				has_client_password?: string | number | boolean;
-				cloudflare_hostname?: string | number | boolean;
-				locales?: string;
-				sync_error?: string;
-				output_error?: string;
-				compile_error?: string;
-				last_synced?: string;
-				last_compiled?: string;
-				last_compiled_success?: string;
-				latest_hosted_build_id?: number;
-				files?: string;
-				never_synced?: string | number | boolean;
-				bearer_tokens?: string | number | boolean;
-				site_scanner?: string | number | boolean;
-				old_includes?: string | number | boolean;
-				repeatables?: string | number | boolean;
-				storage_provider_details_full_name?: string | number | boolean;
-				source?: string | number | boolean;
-				inactive?: string | number | boolean;
-				error?: string | number | boolean;
-				ssl_certificate_expired?: string | number | boolean;
-				last_compiled_status?: string | number | boolean;
-				domain_not_resolving?: string | number | boolean;
-				inbox_uuid?: string;
-				custom_ssl_expiring?: string | number | boolean;
-				failing_forms?: string | number | boolean;
-				has_unsaved_changes?: string | number | boolean;
-				compiled?: string | number | boolean;
-				base_domain_uuid?: string;
-				cloudflare_hostname_uuid?: string;
-				cloudflare_error?: string;
-				dam_uuid?: string;
-				publish_branch?: string | number | boolean;
-				owner_locked?: string | number | boolean;
-				owner_trial?: string | number | boolean;
-				ssl_certificate?: string | number | boolean;
-				organisation_uuid?: string;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				project_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	ScheduledBuildsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				scheduled_build_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteScheduledBuildBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	ScheduledBuildsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				scheduled_build_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SiteArchivesDownload: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_archive_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SiteDamsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_dam_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteDamBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SiteDamsUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_dam_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					dam_uuid?: string;
-					uploads_locked?: boolean;
-					config?: {
-						[key: string]: unknown;
-					} | null;
-					reference_key?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteDamBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SiteDamsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_dam_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SiteInboxesShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteInboxBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SiteInboxesUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					inbox_uuid?: string;
-					default_inbox?: boolean;
-					visible?: boolean;
-					require_captcha?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteInboxBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SiteInboxesDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_inbox_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SiteMountingsUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_mounting_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					local_site_id: number;
-					local_path: string;
-					remote_site_id: number;
-					remote_path: string;
-					remote_artifact: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteMountingBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SiteMountingsDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_mounting_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesIndexShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					site_name: string;
-					editing_locked?: boolean | null;
-					active_quest?: string | null;
-					cloudcannon_config_path?: string | null;
-					flags?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesIndexDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesActivityIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'updated_at' | 'happened_at' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				size_lt?: string | number | boolean;
-				size_gt?: string | number | boolean;
-				size_lte?: string | number | boolean;
-				size_gte?: string | number | boolean;
-				organisation_uuid?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteActivityBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesAnalyticsBuildDuration: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						/** Format: date-time */
-						date?: string;
-						duration?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAnalyticsHostingBandwidth: {
-		parameters: {
-			query?: {
-				start_time?: string;
-				end_time?: string;
-				period?: 'hourly' | 'daily' | 'weekly';
-				timezone?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						/** Format: date-time */
-						date?: string;
-						bandwidth?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAnalyticsHostingBandwidthByUrl: {
-		parameters: {
-			query: {
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-				offset?: number;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						url?: string;
-						host?: string;
-						total_bandwidth?: number;
-						total_requests?: number;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAnalyticsHostingBandwidthForUrl: {
-		parameters: {
-			query: {
-				url: string;
-				start_time: string;
-				end_time: string;
-				period: 'hourly' | 'daily' | 'weekly';
-				timezone: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						total_bandwidth?: number;
-						total_requests?: number;
-					};
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesArchivesIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				size_lt?: number;
-				size_gt?: number;
-				size_lte?: number;
-				size_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteArchiveBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesArchivesCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					exclude_git?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						socket_message_id?: string;
-					};
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesIndexUpdateAuthentication: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					authentication?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAuthenticationBearerTokensIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				name?: string;
-				token?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBearerTokenBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesAuthenticationBearerTokensCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBearerTokenBlueprintWithToken'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAuthenticationIndexUpdateClientPassword: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					password?: string;
-					accept_billing_increase?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAuthenticationIndexUpdateSaml: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					saml_data?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAuthenticationIndexUpdateStablePassword: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					stable_password?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesAuthenticationUsersIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				email?: string;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteUserBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesAuthenticationUsersCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					email: string;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteUserBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesIndexUpdateBuild: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					default_locale?: string | null;
-					uses_i18n?: boolean;
-					building_locked?: boolean | null;
-					ssg?: string | null;
-					build_configuration?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesBuildsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				pinnable?: boolean;
-				site_id?: number;
-				name?: string;
-				completed_at?: string;
-				successful?: boolean;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BuildBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesBuildsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description No Content */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesBuildsCancel: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description canceled */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesIndexUpdateClientSharing: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					client_editor_route?: string;
-					prevent_client_password_save?: boolean;
-					client_author_name?: string | null;
-					client_author_email?: string | null;
-					preview_url?: string | null;
-					documentation_url?: string | null;
-					support_url?: string | null;
-					flags?: {
-						[key: string]: unknown;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesIndexCopy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					site_name: string;
-					editing_locked?: boolean | null;
-					active_quest?: string | null;
-					cloudcannon_config_path?: string | null;
-					stable_domain?: string;
-					flags?: {
-						[key: string]: unknown;
-					};
-					publish_mode?: string | null;
-					destroy_on_publish?: boolean;
-					branch?: string;
-					publish_branch?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesIndexUpdateDam: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					uploads_locked?: boolean;
-					browsing_locked?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesDamsIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteDamBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesDamsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					dam_uuid: string;
-					uploads_locked?: boolean;
-					config?: {
-						[key: string]: unknown;
-					} | null;
-					reference_key?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteDamBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesDomainUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					domain_name?: string | null;
-					subpath?: string | null;
-					accept_billing_increase?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			402: components['responses']['PaymentConfirmRequired'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesDomainPrioritise: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesEditingSessionsIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesEditingSessionsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionBlueprint'];
-				};
-			};
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesEditingSessionsLatest: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['EditingSessionBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesFilesIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						md5?: string;
-						s3Path?: string;
-						sitePath?: string;
-					}[];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesFilesCompleteZipUpload: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					zip?: {
-						key?: string;
-						checksum?: string;
-						type?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						socket_message_id?: string;
-					};
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesFilesShow: {
-		parameters: {
-			query?: {
-				download?: boolean;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				path: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesFilesMetadata: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				path: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesFilesResized: {
-		parameters: {
-			query?: {
-				width?: number;
-				height?: number;
-				content_type?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				path: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesFilesSorting: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				path: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesFormHooksIndex: {
-		parameters: {
-			query?: {
-				category?: 'spam' | 'sent' | 'errored' | 'pending';
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'last_sent_at' | 'created_at' | 'id' | 'uuid';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				site_id?: number;
-				recaptcha?: boolean;
-				sent?: boolean;
-				spam_checked?: boolean;
-				automatically_marked_spam?: boolean;
-				ip?: string;
-				host?: string;
-				explicitly_marked_status?: number;
-				inbox_uuid?: string;
-				has_error?: string | number | boolean;
-				has_spam_check_error?: string | number | boolean;
-				cleared_at_lt?: string;
-				cleared_at_gt?: string;
-				cleared_at_lte?: string;
-				cleared_at_gte?: string;
-				last_sent_at_lt?: string;
-				last_sent_at_gt?: string;
-				last_sent_at_lte?: string;
-				last_sent_at_gte?: string;
-				sent_count_lt?: number;
-				sent_count_gt?: number;
-				sent_count_lte?: number;
-				sent_count_gte?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['FormHookBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesIndexUpdateHosting: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					hosting_choice?: string;
-					geolocation?: boolean | null;
-					force_ssl?: boolean | null;
-					auto_generate_ssl?: boolean;
-					serve_extensionless?: boolean;
-					force_extensionless?: boolean;
-					ssl_certificate_id?: number | null;
-					mode?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesInboxesIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteInboxBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesInboxesCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					inbox_uuid?: string;
-					default_inbox?: boolean;
-					visible?: boolean;
-					require_captcha?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteInboxBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesMainSourceDamIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						uuid?: components['schemas']['UUID'];
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesMainSourceDamUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					uuid?: components['schemas']['UUID'];
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						uuid?: components['schemas']['UUID'];
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesMembersIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'email' | 'first_name' | 'last_sign_in_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				search?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesMembersSetSiteGroup: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				email: string;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					group_uuid?: components['schemas']['UUID'];
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupMemberBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesMembersDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				email: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesOutputProvidersIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					custom_data?: Record<string, never>;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesOutputProvidersIndexAdd: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					storage_provider?:
-						| 'github'
-						| 'github_enterprise_server'
-						| 'bitbucket'
-						| 'gitlab'
-						| 'self_hosted_gitlab'
-						| 'ftp';
-					custom_data?: {
-						full_name?: string;
-						branch?: string;
-						hostname?: string;
-						port?: number;
-						username?: string;
-						password?: string;
-						path?: string;
-						ignorePermissions?: boolean;
-						step?: string;
-						webhook_id?: string;
-						exclusions?: unknown[];
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesOutputProvidersIndexRemove: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesOutputProvidersIndexSync: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						socket_message_id?: string;
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesOutputsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				identifier?: string;
-				after_identifier?: string;
-				diff_id?: string;
-				name?: string;
-				completed_at_lt?: string;
-				provider?: string;
-				completed_at_lte?: string;
-				completed_at_gt?: string;
-				completed_at_gte?: string;
-				site_id?: number;
-				successful?: boolean;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['OutputBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesPendingMembersIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['GroupPendingMemberBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesProvidersIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					custom_data?: {
-						full_name?: string;
-						branch?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersIndexAdd: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					storage_provider?:
-						| 'github'
-						| 'github_enterprise_server'
-						| 'bitbucket'
-						| 'gitlab'
-						| 'self_hosted_gitlab';
-					custom_data?: {
-						branch?: string;
-						full_name?: string;
-						webhook_id?: string;
-						lfsEnabled?: boolean;
-						fast_compile_disabled?: boolean;
-						publish_branch?: string;
-					};
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersIndexRemove: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitIndexBranches: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BranchSchema'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesProvidersGitIndexCreateBranch: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['BranchSchema'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitIndexMerge: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			/** @description Deleted. Used when site is deleted after a successful merge. */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitIndexPublishBranch: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					branch?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitIndexCompare: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CompareSchema'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitIndexUpstreamCompare: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CompareSchema'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesProvidersGitIndexUpstreamMerge: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitPullRequestsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['PullRequestSchema'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitPullRequestsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					title?: string;
-					body?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['PullRequestSchema'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitPullRequestsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				number: number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['PullRequestSchema'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitPullRequestsClose: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				number: number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['PullRequestSchema'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitPullRequestsCommits: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				number: number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CommitsSchema'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitPullRequestsMerge: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				number: number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					commit_message?: string;
-					type?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						socket_message_id?: string;
-					};
-				};
-			};
-			/** @description Merged */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersIndexReconnect: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: {
-			content: {
-				'application/json': {
-					forced?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersIndexSync: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: {
-			content: {
-				'application/json': {
-					/** @enum {string} */
-					type?: 'push' | 'pull';
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						socket_message_id?: string;
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitUpstreamPullRequestsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['PullRequestSchema'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesProvidersGitUpstreamPullRequestsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					title?: string;
-					body?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['PullRequestSchema'];
-				};
-			};
-			402: components['responses']['FeatureNotOnPlan'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesIndexUpdatePublish: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					publish_mode?: string | null;
-					destroy_on_publish?: boolean;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesScansIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteScannerBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesScheduledBuildsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				run_count_lte?: number;
-				run_count_gte?: number;
-				scheduled_at?: string;
-				from_source?: boolean;
-				run_count_lt?: number;
-				site_id?: number;
-				name?: string;
-				filename?: string;
-				run_date_lt?: string;
-				run_date_gt?: string;
-				run_date_lte?: string;
-				run_date_gte?: string;
-				period_lt?: number;
-				period_gt?: number;
-				period_lte?: number;
-				period_gte?: number;
-				run_count_gt?: number;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteScheduledBuildBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesScheduledBuildsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name: string;
-					period?: number | null;
-					/** Format: date-time */
-					run_date: string;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteScheduledBuildBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesScreenshotsIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesScreenshotsLighthouse: {
-		parameters: {
-			query?: {
-				path?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	SitesScreenshotsShow: {
-		parameters: {
-			query?: {
-				path?: string;
-				width?: string;
-				height?: string;
-				build_id?: number;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-				device: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			307: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	SitesSiteMountingsIndex: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteMountingBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesSiteMountingsCreate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					local_site_id: number;
-					local_path: string;
-					remote_site_id: number;
-					remote_path: string;
-					remote_artifact: string;
-				};
-			};
-		};
-		responses: {
-			/** @description Created */
-			201: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteMountingBlueprint'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslIndexUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					ssl_certificate_id?: number | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslIndexRemove: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SiteBlueprintFull'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslAutoSslState: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['AutoSSLStateSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslAutoRetrySslGenerate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['AutoSSLStateSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslCloudflareCloudflareSslState: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CloudflareSSLStateSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslCloudflareUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					ssl_certificate_id?: number | null;
-					validation_method?: string;
-					wildcard?: boolean;
-					min_tls_version?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CloudflareSSLStateSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSslCloudflareRetryCloudflareSetup: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['CloudflareSSLStateSchema'];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SitesSyncsIndex: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'id' | 'uuid' | 'created_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				identifier?: string;
-				after_identifier?: string;
-				diff_id?: string;
-				name?: string;
-				provider?: string;
-				site_id?: number;
-				completed_at?: string;
-				successful?: boolean;
-				site_uuid?: string;
-				org_uuid?: string;
-				org_id?: number;
-				uuid?: string;
-				id?: number;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SyncBlueprint'][];
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesIndexStartWatching: {
-		parameters: {
-			query?: {
-				path?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': Record<string, never>;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SitesIndexStopWatching: {
-		parameters: {
-			query?: {
-				path?: string;
-			};
-			header?: never;
-			path: {
-				site_uuid: components['schemas']['UUID'] | number;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': Record<string, never>;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SslCertificatesShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				ssl_certificate_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['SslCertificateBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	SslCertificatesDestroy: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				ssl_certificate_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Deleted */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	SyncsShow: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				sync_uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			303: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			401: components['responses']['UnauthorizedResp'];
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	IndexUploadData: {
-		parameters: {
-			query?: {
-				type?: 'zip';
-			};
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						prefix: string;
-						url: string;
-						fields: {
-							[key: string]: string;
-						};
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	UsersUserShowCurrentUser: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	UsersUserUpdate: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					first_name?: string | null;
-					surname?: string | null;
-					ssg_experience?: string | null;
-					job_title?: string | null;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprintFull'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	UsersUserAccessKeys: {
-		parameters: {
-			query?: {
-				/** @description Page number to fetch (1-indexed) */
-				page?: components['parameters']['PageQuery'];
-				/** @description Number of items per page */
-				items?: components['parameters']['ItemsQuery'];
-				/** @description Attribute to sort the results by */
-				sort_attribute?: 'key_id' | 'name' | 'created_at' | 'updated_at';
-				/** @description Direction to sort the results */
-				sort_direction?: 'ASC' | 'DESC';
-				name?: string;
-				status?: string | number | boolean;
-				uuid?: string;
-				id?: string | number | boolean;
-				created_at_lt?: string;
-				created_at_gt?: string;
-				created_at_lte?: string;
-				created_at_gte?: string;
-				updated_at_lt?: string;
-				updated_at_gt?: string;
-				updated_at_lte?: string;
-				updated_at_gte?: string;
-				search?: string;
-			};
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					/** @description The current page number */
-					current_page?: string;
-					/** @description The total number of items across all pages */
-					total_items?: string;
-					/** @description The total number of pages available */
-					total_pages?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserAccessKeyBlueprint'][];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	UsersUserCreateAccessKey: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody: {
-			content: {
-				'application/json': {
-					name?: string;
-				};
-			};
-		};
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': {
-						access_key?: components['schemas']['UserAccessKeyBlueprint'];
-						access_key_display?: string;
-					};
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	UsersUserDestroyAccessKey: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				uuid: components['schemas']['UUID'];
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description No Content */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			404: components['responses']['NotFoundResp'];
-		};
-	};
-	UsersAvatarShow: {
-		parameters: {
-			query?: {
-				/** @description Avatar size in pixels */
-				s?: number;
-			};
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			302: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	UsersUserInvites: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': (components['schemas']['BaseBlueprint'] & {
-						name?: string;
-						brand_color?: string | null;
-						brand_logo?: string | null;
-						white_label_logo?: string | null;
-						/** Format: date-time */
-						invited_at?: string | null;
-					})[];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	UsersUserAcceptInvite: {
-		parameters: {
-			query: {
-				organisation_uuid: components['schemas']['UUID'];
-			};
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description No Content */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	UsersUserDeclineInvite: {
-		parameters: {
-			query: {
-				organisation_uuid: components['schemas']['UUID'];
-			};
-			header?: never;
-			path?: never;
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description No Content */
-			204: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content?: never;
-			};
-			403: components['responses']['ForbiddenResp'];
-			422: components['responses']['ErrorResp'];
-		};
-	};
-	UsersUserShowByIdentifier: {
-		parameters: {
-			query?: never;
-			header?: never;
-			path: {
-				user_identifier: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description OK */
-			200: {
-				headers: {
-					[name: string]: unknown;
-				};
-				content: {
-					'application/json': components['schemas']['UserBlueprint'];
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
-	UsersAvatarShowByIdentifier: {
-		parameters: {
-			query?: {
-				/** @description Avatar size in pixels */
-				s?: number;
-			};
-			header?: never;
-			path: {
-				user_identifier: string;
-			};
-			cookie?: never;
-		};
-		requestBody?: never;
-		responses: {
-			/** @description Redirect */
-			302: {
-				headers: {
-					/** @description null */
-					location?: string;
-					[name: string]: unknown;
-				};
-				content: {
-					'text/html': string;
-				};
-			};
-			403: components['responses']['ForbiddenResp'];
-		};
-	};
+    AuthenticationBearerTokensDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                bearer_token_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    AuthenticationUsersDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_user_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsIndexShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description The minimum TLS version to enforce. Raising it raises every Subdomain below it; lowering it leaves Subdomains as they are unless lower_subdomains is true.
+                     * @enum {string}
+                     */
+                    minimum_tls_version?: "1.2" | "1.3";
+                    /** @description When lowering minimum_tls_version, also lower every Subdomain above it, and the wildcard certificate for subdomains that are not set up, to the new minimum. */
+                    lower_subdomains?: boolean;
+                    /**
+                     * @description The status code the fallback redirect responds with.
+                     * @enum {integer}
+                     */
+                    fallback_redirect_status?: 301 | 302 | 307 | 308;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsIndexDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        success?: boolean;
+                        status?: number;
+                        answers?: string[];
+                        error_message?: string;
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsDnsIndexCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Removed */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexCheck: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsChecksIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NameServerCheckBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsDnsIndexNameserversUpdated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsRecordsList: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Filter DNS records by a search term */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainDnsRecordSchema"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsRecordsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    type?: string;
+                    name?: string;
+                    ttl?: number;
+                    data?: {
+                        comment?: string;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainDnsRecordSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsRecordsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    type?: string;
+                    name?: string;
+                    ttl?: number;
+                    data?: {
+                        comment?: string;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainDnsRecordSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsRecordsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+                record_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexRetry: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexValidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        valid?: boolean;
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexWildcardRecordUpdated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsDnsIndexWildcardUpdated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsIndexMigrate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Filter Subdomains by a search term */
+                search?: string;
+                /** @description Sort by name, name descending, newest first, or those needing attention first */
+                sort?: "name" | "-name" | "-created_at" | "attention";
+                /** @description Comma-separated serving modes: site, redirect */
+                serving_mode?: string;
+                /** @description Comma-separated hosting choices: cloudcannon, cloudflare, origin */
+                hosting_choice?: string;
+                /** @description Comma-separated HTTPS states: active, issuing, renewing, expired, failed, none */
+                https_state?: string;
+                /** @description Comma-separated DNS record statuses: connected, not_pointing, no_record, unchecked */
+                dns_record_status?: string;
+                /** @description true lists only Subdomains needing attention (a DNS problem, no site, or a certificate problem); false lists the rest */
+                attention?: string;
+            };
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsSubdomainsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    hosting_choice?: "cloudcannon" | "cloudflare" | "origin";
+                    force_ssl?: boolean;
+                    auto_generate_ssl?: boolean;
+                    ssl_certificate_id?: number | null;
+                    redirect_target?: string;
+                    /**
+                     * @description The status code a redirect Subdomain responds with. Defaults to 301.
+                     * @enum {integer}
+                     */
+                    redirect_status?: 301 | 302 | 307 | 308;
+                    /**
+                     * @description The oldest TLS version the Subdomain accepts, for every hosting_choice. Defaults to, and can't be below, the Base Domain's minimum_tls_version. On the Base Domain itself it also applies to subdomains that are not set up.
+                     * @enum {string}
+                     */
+                    min_tls_version?: "1.2" | "1.3";
+                    /** @description The full subdomain, e.g. www.example.com, on this Base Domain. */
+                    domain_name: string;
+                    /** @enum {string} */
+                    serving_mode?: "site" | "redirect";
+                    /**
+                     * Format: uuid
+                     * @description A Site to serve on the new Subdomain.
+                     */
+                    site_uuid?: string;
+                    subpath?: string | null;
+                    accept_billing_increase?: boolean;
+                    /**
+                     * @description When the Site is the last one on the domain it leaves: leave that domain set up without a Site (the default), redirect it to previous_redirect_target, or delete it.
+                     * @enum {string}
+                     */
+                    previous_then?: "leave" | "redirect" | "delete";
+                    /** @description Where to redirect the domain the Site leaves. */
+                    previous_redirect_target?: string;
+                    /** @description Subdomains that redirect to the domain the Site leaves, to delete with it. */
+                    previous_delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            402: components["responses"]["PaymentConfirmRequired"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsSubdomainsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    hosting_choice?: "cloudcannon" | "cloudflare" | "origin";
+                    force_ssl?: boolean;
+                    auto_generate_ssl?: boolean;
+                    ssl_certificate_id?: number | null;
+                    redirect_target?: string;
+                    /**
+                     * @description The status code a redirect Subdomain responds with. Defaults to 301.
+                     * @enum {integer}
+                     */
+                    redirect_status?: 301 | 302 | 307 | 308;
+                    /**
+                     * @description The oldest TLS version the Subdomain accepts, for every hosting_choice. Defaults to, and can't be below, the Base Domain's minimum_tls_version. On the Base Domain itself it also applies to subdomains that are not set up.
+                     * @enum {string}
+                     */
+                    min_tls_version?: "1.2" | "1.3";
+                    /**
+                     * @description How Cloudflare validates the certificate. txt validates before DNS points at CloudCannon. The base domain's own wildcard certificate is always txt.
+                     * @enum {string}
+                     */
+                    validation_method?: "http" | "txt";
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsChecks: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteDomainCheckBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsSubdomainsCheckNow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsFixDns: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsDnsUpdated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BaseDomainsSubdomainsFallback: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsChangeToRedirect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    redirect_target: string;
+                    /**
+                     * @description The status code a redirect Subdomain responds with. Defaults to 301.
+                     * @enum {integer}
+                     */
+                    redirect_status?: 301 | 302 | 307 | 308;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsChangeToSite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    site_uuid?: components["schemas"]["UUID"];
+                    subpath?: string | null;
+                    accept_billing_increase?: boolean;
+                    /**
+                     * @description When the Site is the last one on the domain it leaves: leave that domain set up without a Site (the default), redirect it to previous_redirect_target, or delete it.
+                     * @enum {string}
+                     */
+                    previous_then?: "leave" | "redirect" | "delete";
+                    /** @description Where to redirect the domain the Site leaves. */
+                    previous_redirect_target?: string;
+                    /** @description Subdomains that redirect to the domain the Site leaves, to delete with it. */
+                    previous_delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            402: components["responses"]["PaymentConfirmRequired"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainSitesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    site_uuid: components["schemas"]["UUID"];
+                    subpath?: string | null;
+                    accept_billing_increase?: boolean;
+                    /**
+                     * @description When the Site is the last one on the domain it leaves: leave that domain set up without a Site (the default), redirect it to previous_redirect_target, or delete it.
+                     * @enum {string}
+                     */
+                    previous_then?: "leave" | "redirect" | "delete";
+                    /** @description Where to redirect the domain the Site leaves. */
+                    previous_redirect_target?: string;
+                    /** @description Subdomains that redirect to the domain the Site leaves, to delete with it. */
+                    previous_delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            402: components["responses"]["PaymentConfirmRequired"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainSitesUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    subpath?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainSitesDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description When the Site is the last one on the domain it leaves: leave that domain set up without a Site (the default), redirect it to redirect_target, or delete it.
+                     * @enum {string}
+                     */
+                    then?: "leave" | "redirect" | "delete";
+                    /** @description Where to redirect the domain the Site leaves. */
+                    redirect_target?: string;
+                    /** @description Subdomains that redirect to the domain the Site leaves, to delete with it. */
+                    delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainSitesSwap: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    replacement_site_uuid: components["schemas"]["UUID"];
+                    /**
+                     * @description When the Site is the last one on the domain it leaves: leave that domain set up without a Site (the default), redirect it to previous_redirect_target, or delete it.
+                     * @enum {string}
+                     */
+                    previous_then?: "leave" | "redirect" | "delete";
+                    /** @description Where to redirect the domain the Site leaves. */
+                    previous_redirect_target?: string;
+                    /** @description Subdomains that redirect to the domain the Site leaves, to delete with it. */
+                    previous_delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BaseDomainsSubdomainsRetrySsl: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                base_domain_uuid: components["schemas"]["UUID"] | number;
+                subdomain_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BuildsOutput: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                build_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/plain": string;
+                };
+            };
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    BuildsFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                build_uuid: components["schemas"]["UUID"];
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    BuildsUrls: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                build_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    DamsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dam_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DamBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    DamsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dam_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    dam_type?: "s3" | "tenovos" | "cloudinary" | "azure" | "google" | "cloudflare" | "digitalocean" | "bynder";
+                    name?: string;
+                    config?: string;
+                    base_url?: string;
+                    access_key?: string | null;
+                    access_secret?: string | null;
+                    max_upload_size?: number | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DamBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    DamsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dam_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    EditingSessionFilesIndexIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    EditingSessionFilesIndexDiscard: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Discarded */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesIndexClaimLock: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    previous_content_hash?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileContributionBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesContributionsIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileContributionBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    EditingSessionFilesContributionsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The storage key of the uploaded file contents */
+                    s3_key: string;
+                    /** @description The hash of the new file contents */
+                    content_hash: string;
+                    /** @description The content hash of the current latest contribution. Must match to avoid overwriting newer edits. */
+                    previous_content_hash?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileContributionBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesIndexEditType: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    edit_type: string;
+                    discard_unsaved?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesIndexMetadata: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    metadata?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesIndexPath: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    path: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesIndexRaw: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    EditingSessionFilesIndexResized: {
+        parameters: {
+            query?: {
+                /** @description The width to resize the preview to, in pixels */
+                width?: number;
+                /** @description The height to resize the preview to, in pixels */
+                height?: number;
+                /** @description The content type to return the image as */
+                content_type?: string;
+            };
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    EditingSessionFilesIndexResolve: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionFilesIndexUnlock: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_file_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    previous_content_hash: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileContributionBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    EditingSessionsIndexAbort: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexClonePath: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The path of the file to copy */
+                    source?: string;
+                    /** @description The path for the copied file */
+                    target?: string;
+                    paths?: {
+                        /** @description The path of the file to copy */
+                        source?: string;
+                        /** @description The path for the copied file */
+                        target?: string;
+                    }[];
+                    /** @description Overwrite the target file if it already exists */
+                    allow_overwrite?: boolean;
+                    /** @description Additional metadata to store on the file */
+                    metadata?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexCommit: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The commit message */
+                    message?: string;
+                    /** @description Which files to save, keyed by file UUID. Omit to save all files in the session. */
+                    include?: {
+                        [key: string]: boolean;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        socket_message_id?: string;
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexDeletePath: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The path of the file to delete */
+                    target?: string;
+                    paths?: {
+                        /** @description The path of the file to delete */
+                        target?: string;
+                    }[];
+                    /** @description Confirm that you want to discard uncommitted edits. Without this, the request will fail if there are uncommitted edits. */
+                    discard_unsaved?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsFilesIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    EditingSessionsFilesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    edit_type?: string | null;
+                    path?: string | null;
+                    source_path?: string | null;
+                    discard_unsaved?: boolean;
+                    previous_content_hash?: string;
+                    metadata?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description Success */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"];
+                };
+            };
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexMovePath: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The current path of the file to move */
+                    source?: string;
+                    /** @description The new path for the file */
+                    target?: string;
+                    paths?: {
+                        /** @description The current path of the file to move */
+                        source?: string;
+                        /** @description The new path for the file */
+                        target?: string;
+                    }[];
+                    /** @description Overwrite the target file if it already exists */
+                    allow_overwrite?: boolean;
+                    /** @description Additional metadata to store on the file */
+                    metadata?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexRestorePath: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The path of the deleted file to restore */
+                    target?: string;
+                    paths?: {
+                        /** @description The path of the deleted file to restore */
+                        target?: string;
+                    }[];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    EditingSessionsIndexUploadFile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                editing_session_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The path to upload the file to */
+                    target?: string;
+                    /** @description The storage key of the uploaded file contents */
+                    s3_key?: string;
+                    /** @description The hash of the uploaded file contents */
+                    content_hash?: string;
+                    files?: {
+                        /** @description The path to upload the file to */
+                        target?: string;
+                        /** @description The storage key of the uploaded file contents */
+                        s3_key?: string;
+                        /** @description The hash of the uploaded file contents */
+                        content_hash?: string;
+                    }[];
+                    /** @description Overwrite the target file if it already exists */
+                    allow_overwrite?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionFileBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    FormHooksShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                form_hook_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FormHookBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    FormHooksUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                form_hook_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description Manually set the spam status: no_mark, spam, or ham
+                     * @enum {string}
+                     */
+                    explicitly_marked_status?: "no_mark" | "spam" | "ham";
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FormHookBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    FormHooksClear: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                form_hook_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FormHookBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    FormHooksQueueSend: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                form_hook_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    inbox_target_uuid?: components["schemas"]["UUID"];
+                };
+            };
+        };
+        responses: {
+            /** @description Queued */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    FormHooksSends: {
+        parameters: {
+            query?: {
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                form_hook_uuid?: string;
+                has_error?: string | number | boolean;
+                id?: number;
+                inbox_target_uuid?: string;
+                success?: boolean;
+                target_type?: string | number | boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                form_hook_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FormHookSendBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    GroupsIndexShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupBlueprintWithPermissions"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    GroupsIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    permissions?: {
+                        resource?: string;
+                        except?: boolean;
+                        global_scope?: boolean;
+                        group_scope_uuid?: string;
+                        site_scope_uuid?: string;
+                        base_domain_scope_uuid?: string;
+                        project_scope_uuid?: string;
+                        file_glob?: string;
+                    }[];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupBlueprintWithPermissions"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    GroupsIndexDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    GroupsIndexLeave: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Left the group */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    GroupsMembersIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "email" | "first_name" | "last_sign_in_at" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                /** @description Filter Members by name or email */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    GroupsMembersInvite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The email to invite. If it doesn't match an existing Organization Member, they get a pending invite. */
+                    email: string;
+                    /** @description Accept any billing increase. Without this, the request will fail if you exceed the number of seats in your Subscription Plan. */
+                    accept_billing_increase?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupMemberBlueprint"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    GroupsMembersDestroy: {
+        parameters: {
+            query: {
+                /** @description Email of the Member to remove */
+                email: string;
+            };
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    GroupsPendingMembersIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupPendingMemberBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    GroupsPendingMembersDestroy: {
+        parameters: {
+            query: {
+                /** @description Email of the pending Member to remove */
+                email: string;
+            };
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    GroupsPendingMembersResendInvitation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    email: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Invitation resent */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxTargetsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_target_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxTargetBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxTargetsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_target_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    target?: string;
+                    config?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxTargetBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    InboxTargetsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_target_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxTargetsRevalidate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_target_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxTargetBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    InboxesIndexShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxesIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description A name for the Inbox. */
+                    name?: string;
+                    /** @description The Inbox's unique key. */
+                    key?: string;
+                    /** @description The number of days to retain submissions. */
+                    keep_form_hook_days?: number | null;
+                    /** @description The captcha provider's site key. */
+                    captcha_key?: string | null;
+                    /** @description The captcha provider's secret key, or the Google Cloud API key for google_enterprise. */
+                    captcha_secret?: string | null;
+                    /** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
+                    captcha_type?: string | null;
+                    /** @description Options for the captcha provider: project_id is the Google Cloud project that holds the reCAPTCHA key, required for google_enterprise; min_score (0 to 1, default 0.5) rejects lower-scoring tokens for google and google_enterprise; send_sitekey (default true) tells hcaptcha which site key to expect. Keys you send are merged into the stored options, a key sent as null is removed, null for the whole object clears it, and keys for other providers are dropped. */
+                    captcha_config?: {
+                        project_id?: string | null;
+                        /** Format: float */
+                        min_score?: number | null;
+                        send_sitekey?: boolean | null;
+                    };
+                    /** @description Whether forms on this inbox accept file uploads. */
+                    allow_uploads?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    InboxesIndexDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxesIndexExport: {
+        parameters: {
+            query?: {
+                /** @description Filter submissions by category */
+                category?: "spam" | "sent" | "forwarded" | "errored" | "pending";
+                /** @description Only export the submissions with these UUIDs */
+                uuids?: string[];
+                automatically_marked_spam?: boolean;
+                cleared_at_gt?: string;
+                cleared_at_gte?: string;
+                cleared_at_lt?: string;
+                cleared_at_lte?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                explicitly_marked_status?: number;
+                has_error?: string | number | boolean;
+                has_spam_check_error?: string | number | boolean;
+                host?: string;
+                id?: number;
+                inbox_uuid?: string;
+                ip?: string;
+                last_sent_at_gt?: string;
+                last_sent_at_gte?: string;
+                last_sent_at_lt?: string;
+                last_sent_at_lte?: string;
+                org_id?: number;
+                org_uuid?: string;
+                recaptcha?: boolean;
+                sent?: boolean;
+                sent_count_gt?: number;
+                sent_count_gte?: number;
+                sent_count_lt?: number;
+                sent_count_lte?: number;
+                site_id?: number;
+                site_uuid?: string;
+                spam_checked?: boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        status?: string;
+                        token?: string;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxesIndexExportStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+                /** @description The export token returned when the export was started */
+                token: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        status?: string;
+                        url?: string | null;
+                        error?: string | null;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxesFormHooksIndex: {
+        parameters: {
+            query?: {
+                /** @description Filter Form Hooks by category */
+                category?: "spam" | "sent" | "forwarded" | "errored" | "pending";
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "last_sent_at" | "created_at" | "id" | "uuid";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                automatically_marked_spam?: boolean;
+                cleared_at_gt?: string;
+                cleared_at_gte?: string;
+                cleared_at_lt?: string;
+                cleared_at_lte?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                explicitly_marked_status?: number;
+                has_error?: string | number | boolean;
+                has_spam_check_error?: string | number | boolean;
+                host?: string;
+                id?: number;
+                inbox_uuid?: string;
+                ip?: string;
+                last_sent_at_gt?: string;
+                last_sent_at_gte?: string;
+                last_sent_at_lt?: string;
+                last_sent_at_lte?: string;
+                org_id?: number;
+                org_uuid?: string;
+                recaptcha?: boolean;
+                sent?: boolean;
+                sent_count_gt?: number;
+                sent_count_gte?: number;
+                sent_count_lt?: number;
+                sent_count_lte?: number;
+                site_id?: number;
+                site_uuid?: string;
+                spam_checked?: boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FormHookBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxesInboxTargetsIndex: {
+        parameters: {
+            query?: {
+                search?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                inbox_uuid?: string;
+                target_type?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                validated?: boolean;
+            };
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxTargetBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    InboxesInboxTargetsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The integration type: email, webhook, zapier, make, ifttt, slack, discord, teams, hubspot, n8n, pipedream, integromat, automate. */
+                    target_type: string;
+                    /** @description The destination: an email address, or the integration's webhook URL. */
+                    target: string;
+                    /** @description Additional configuration options for the target. */
+                    config?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxTargetBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    InboxesIndexUpload: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                inbox_uuid: components["schemas"]["UUID"];
+                /** @description The uploaded file's key */
+                key: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    OrgsIndexIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                search?: string;
+                /** @description Exclude Organizations managed as clients of my partner Organizations */
+                exclude_partner_clients?: boolean;
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "name" | "partner_points" | "updated_at" | "created_at" | "estimated_monthly_cost";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                billing_issue?: string | number | boolean;
+                billing_status?: string;
+                build_time_limit_exceeded?: boolean;
+                country?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                domain_limit_exceeded?: boolean;
+                expired?: string | number | boolean;
+                given_user_is_sole_owner?: string | number | boolean;
+                has_address?: string | number | boolean;
+                has_billing_email?: string | number | boolean;
+                has_billing_name?: string | number | boolean;
+                has_build_failures?: string | number | boolean;
+                has_custom_ssl_expiring?: string | number | boolean;
+                has_default_inboxes?: string | number | boolean;
+                has_disconnected_providers?: string | number | boolean;
+                has_dns_errors?: string | number | boolean;
+                has_domain_issues?: string | number | boolean;
+                has_expired_certs?: string | number | boolean;
+                has_expiring_certs?: string | number | boolean;
+                has_failing_forms?: string | number | boolean;
+                has_failing_sites?: string | number | boolean;
+                has_organisation_type?: string | number | boolean;
+                has_output_errors?: string | number | boolean;
+                has_partner_organisation_id?: number;
+                has_site_domain_failures?: string | number | boolean;
+                has_ssl_auto_failures?: string | number | boolean;
+                has_sync_blocked?: string | number | boolean;
+                has_sync_errors?: string | number | boolean;
+                hosting_limit_exceeded?: boolean;
+                hubspot_migrated?: boolean;
+                id?: number;
+                in_partner_program?: string | number | boolean;
+                inactive?: string | number | boolean;
+                locked?: string | number | boolean;
+                needs_attention?: string | number | boolean;
+                organisation_type?: string;
+                partner_organisation_id?: number;
+                plan?: string;
+                plan_period?: string | number | boolean;
+                provider_account_linked?: string | number | boolean;
+                storage_provider_uuid?: string;
+                trial?: string | number | boolean;
+                trial_ending_soon?: string | number | boolean;
+                unattached?: string | number | boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                user_limit_exceeded?: boolean;
+                user_uuid?: string;
+                uuid?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgBlueprintNormal"][];
+                };
+            };
+        };
+    };
+    OrgsIndexShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    billing_name?: string | null;
+                    billing_email?: string | null;
+                    billing_city?: string | null;
+                    billing_country?: string | null;
+                    billing_line1?: string | null;
+                    billing_line2?: string | null;
+                    billing_postal_code?: string | null;
+                    billing_state?: string | null;
+                    brand_color?: string | null;
+                    business_type?: string | null;
+                    /** Format: date-time */
+                    mfa_required_after?: string | null;
+                    /** Format: date-time */
+                    sso_required_after?: string | null;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgBlueprintNormal"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsIndexAccessReview: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/csv": string;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsActivityIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "updated_at" | "happened_at" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                org_id?: number;
+                org_uuid?: string;
+                organisation_uuid?: string;
+                site_id?: number;
+                site_uuid?: string;
+                size_gt?: string | number | boolean;
+                size_gte?: string | number | boolean;
+                size_lt?: string | number | boolean;
+                size_lte?: string | number | boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteActivityBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsAnalyticsBuildDuration: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: date-time */
+                        date?: string;
+                        duration?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsAnalyticsBuildDurationTotal: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        used?: number;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsAnalyticsHostingBandwidth: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: date-time */
+                        date?: string;
+                        bandwidth?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsAnalyticsHostingBandwidthBySite: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+                /** @description The number of results to skip */
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        site_id?: number;
+                        host?: string;
+                        total_bandwidth?: number;
+                        total_requests?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsAnalyticsHostingBandwidthByUrl: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+                /** @description The number of results to skip */
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        url?: string;
+                        site_id?: number;
+                        host?: string;
+                        total_bandwidth?: number;
+                        total_requests?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsAnalyticsHostingBandwidthTotal: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+                /** @description Set to "upper" to include all hosting log entries */
+                bound?: "upper";
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        used?: number;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsApiKeysIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "name" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                /** @description Filter API Keys by name */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApiKeyBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsApiKeysCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    permissions?: {
+                        resource?: string;
+                        except?: boolean;
+                        global_scope?: boolean;
+                        group_scope_uuid?: string;
+                        site_scope_uuid?: string;
+                        base_domain_scope_uuid?: string;
+                        project_scope_uuid?: string;
+                        file_glob?: string;
+                    }[];
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApiKeyBlueprintUnsnippedKey"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsApiKeysShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                api_key_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApiKeyBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsApiKeysDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                api_key_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsBaseDomainsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "base_domain";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                auto_ssl_retries?: string | number | boolean;
+                base_domain?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                dns_failing?: string | number | boolean;
+                has_cloudflare_zone_create_error?: string | number | boolean;
+                has_cloudflare_zone_id?: number;
+                has_zone_id?: number;
+                id?: number;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uses_dns?: boolean;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsBaseDomainsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    base_domain: string;
+                    uses_dns?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Already connected to this Organization */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BaseDomainBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsIndexUpdateBilling: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    billing_name?: string | null;
+                    billing_email?: string | null;
+                    billing_city?: string | null;
+                    billing_country?: string | null;
+                    billing_line1?: string | null;
+                    billing_line2?: string | null;
+                    billing_postal_code?: string | null;
+                    billing_state?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OrgBlueprintNormal"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsDamsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "name" | "type" | "base_url";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                dam_type?: string;
+                id?: number;
+                name?: string;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                site_uuid?: string;
+                unlinked_site_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DamBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsDamsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    dam_type: "s3" | "tenovos" | "cloudinary" | "azure" | "google" | "cloudflare" | "digitalocean" | "bynder";
+                    name: string;
+                    config: string;
+                    base_url: string;
+                    access_key?: string | null;
+                    access_secret?: string | null;
+                    max_upload_size?: number | null;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DamBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsGroupsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "name";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                api_key?: string | number | boolean;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                creation_type?: string;
+                id?: number;
+                name?: string;
+                organisation_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                user_uuid?: string;
+                uuid?: string;
+                /** @description Filter Permission Groups by name */
+                search?: string;
+                /** @description Only include Permission Groups I'm a member of */
+                only_member_of?: boolean;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupBlueprintWithPermissions"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsGroupsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                    permissions?: {
+                        resource?: string;
+                        except?: boolean;
+                        global_scope?: boolean;
+                        group_scope_uuid?: string;
+                        site_scope_uuid?: string;
+                        base_domain_scope_uuid?: string;
+                        project_scope_uuid?: string;
+                        file_glob?: string;
+                    }[];
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupBlueprintWithPermissions"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsInboxesIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "created_at" | "updated_at" | "id" | "key" | "name" | "uuid";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                captcha_type?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                has_captcha?: string | number | boolean;
+                id?: number;
+                name?: string;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                site_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsInboxesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description A name for the Inbox. */
+                    name: string;
+                    /** @description The Inbox's unique key. */
+                    key: string;
+                    /** @description The number of days to retain submissions. */
+                    keep_form_hook_days?: number | null;
+                    /** @description The captcha provider's site key. */
+                    captcha_key?: string | null;
+                    /** @description The captcha provider's secret key, or the Google Cloud API key for google_enterprise. */
+                    captcha_secret?: string | null;
+                    /** @description The captcha provider: google (reCAPTCHA), google_enterprise (reCAPTCHA Enterprise), hcaptcha, or turnstile. */
+                    captcha_type?: string | null;
+                    /** @description Options for the captcha provider: project_id is the Google Cloud project that holds the reCAPTCHA key, required for google_enterprise; min_score (0 to 1, default 0.5) rejects lower-scoring tokens for google and google_enterprise; send_sitekey (default true) tells hcaptcha which site key to expect. Keys you send are merged into the stored options, a key sent as null is removed, null for the whole object clears it, and keys for other providers are dropped. */
+                    captcha_config?: {
+                        project_id?: string | null;
+                        /** Format: float */
+                        min_score?: number | null;
+                        send_sitekey?: boolean | null;
+                    };
+                    /** @description Whether forms on this inbox accept file uploads. */
+                    allow_uploads?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InboxBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsMembersIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "email" | "first_name" | "last_sign_in_at" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                /** @description Filter Members by name or email */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsMembersShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                /** @description The Member or pending Member's email address */
+                email: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsMembersDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                /** @description The Member or pending Member's email address */
+                email: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsPendingMembersIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: number;
+                        uuid?: string;
+                        first_name?: string;
+                        surname?: string;
+                        email?: string;
+                        invited_by?: string;
+                        invited_by_uuid?: string;
+                        groups?: components["schemas"]["GroupBlueprint"][];
+                    }[];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsIndexPermissions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupPermissionBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsProjectsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "name" | "external_url" | "git_repository" | "main_git_branch" | "updated_at" | "created_at" | "last_synced" | "last_compiled" | "last_compiled_success" | "provider";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                git_repository?: string;
+                id?: number;
+                last_compiled?: string;
+                last_compiled_success?: string;
+                last_synced?: string;
+                name?: string;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                /** @description Filter Projects by name */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsProjectsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    external_url?: string | null;
+                    description?: string | null;
+                    links?: string;
+                    default_destroy_on_publish?: boolean;
+                    default_authentication?: string | null;
+                    default_publish_mode?: string | null;
+                    default_password?: string | boolean;
+                    pr_tab_visible?: boolean;
+                    publishing_tab_visible?: boolean;
+                    branches_tab_visible?: boolean;
+                    git_repository: string;
+                    allow_all_branching?: boolean;
+                    prevent_permissions_granted_on_branch?: boolean;
+                    main_git_branch?: string | null;
+                    provider: string;
+                    auto_create_site_on_pr?: boolean;
+                    auto_create_skip_drafts?: boolean;
+                    comment_on_pr?: boolean;
+                    pr_comment_skip_drafts?: boolean;
+                    pr_comment_footer?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsProvidersInstallations: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                /** @description The Git Provider */
+                provider: "github" | "github_enterprise_server" | "gitlab" | "bitbucket" | "self_hosted_gitlab";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        id?: number;
+                        app_id?: number;
+                        single_file_name?: string | null;
+                        app_slug?: string;
+                        html_url?: string;
+                        provider?: string;
+                        account?: {
+                            avatar_url?: string;
+                            login?: string;
+                            type?: string;
+                        };
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsProvidersRepositories: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                /** @description The Git Provider */
+                provider: "github" | "github_enterprise_server" | "gitlab" | "bitbucket" | "self_hosted_gitlab";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RepositorySchema"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsProvidersBranches: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                /** @description The Git Provider */
+                provider: "github" | "github_enterprise_server" | "gitlab" | "bitbucket" | "self_hosted_gitlab";
+                /** @description The repository's full name */
+                repository: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BranchSchema"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsProvidersCreateBranch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+                /** @description The Git Provider */
+                provider: "github" | "github_enterprise_server" | "gitlab" | "bitbucket" | "self_hosted_gitlab";
+                /** @description The repository's full name */
+                repository: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    branch_from: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BranchSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsSiteMountingsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                local_site_id?: number;
+                local_site_uuid?: string;
+                org_id?: number;
+                org_uuid?: string;
+                organisation_uuid?: string;
+                remote_site_id?: number;
+                remote_site_uuid?: string;
+                site_id?: number;
+                site_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteMountingBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsSitesIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "site_name" | "domain_name" | "created_at" | "updated_at" | "last_synced" | "last_compressed" | "last_compiled" | "last_cleaned" | "storage_provider" | "stable_domain" | "subpath" | "sync_error";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                authentication?: string;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                auto_generate_ssl?: boolean;
+                base_domain_id?: number;
+                base_domain_uuid?: string;
+                bearer_tokens?: string | number | boolean;
+                broken_client_auth?: string | number | boolean;
+                browsing_locked?: boolean;
+                building_locked?: boolean;
+                cloudflare_hostname?: string | number | boolean;
+                cloudflare_hostname_uuid?: string;
+                compile_error?: string;
+                compiled?: string | number | boolean;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                custom_ssl_expiring?: string | number | boolean;
+                dam_uuid?: string;
+                default_inbox?: string | number | boolean;
+                domain_name?: string;
+                domain_not_resolving?: string | number | boolean;
+                editing_locked?: boolean;
+                error?: string | number | boolean;
+                failing_forms?: string | number | boolean;
+                files?: string;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                force_ssl?: boolean;
+                has_client_password?: string | number | boolean;
+                has_domain_name?: string | number | boolean;
+                has_output_storage_provider?: string | number | boolean;
+                has_source?: string | number | boolean;
+                has_storage_provider?: string | number | boolean;
+                has_subpath?: string | number | boolean;
+                has_unsaved_changes?: string | number | boolean;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                hosting_choice?: string;
+                id?: number;
+                inactive?: string | number | boolean;
+                inbox_uuid?: string;
+                last_compiled?: string;
+                last_compiled_status?: string | number | boolean;
+                last_compiled_success?: string;
+                last_synced?: string;
+                latest_hosted_build_id?: number;
+                locales?: string;
+                needs_clean?: boolean;
+                never_synced?: string | number | boolean;
+                old_includes?: string | number | boolean;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                output_error?: string;
+                output_storage_provider?: string;
+                owner_locked?: string | number | boolean;
+                owner_trial?: string | number | boolean;
+                project_id?: number;
+                project_uuid?: string;
+                publish_branch?: string | number | boolean;
+                repeatables?: string | number | boolean;
+                site_name?: string;
+                site_scanner?: string | number | boolean;
+                source?: string | number | boolean;
+                ssg?: string;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                ssl_certificate?: string | number | boolean;
+                ssl_certificate_expired?: string | number | boolean;
+                ssl_certificate_id?: number;
+                storage_provider?: string;
+                storage_provider_details_full_name?: string | number | boolean;
+                sync_blocked?: string | number | boolean;
+                sync_error?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uploads_locked?: boolean;
+                use_rbenv_builds?: boolean;
+                used_for_client_auth?: string | number | boolean;
+                uses_i18n?: boolean;
+                uuid?: string;
+                /** @description Filter Sites by a search term */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsSitesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    site_name: string;
+                    editing_locked?: boolean | null;
+                    active_quest?: string | null;
+                    cloudcannon_config_path?: string | null;
+                    stable_domain?: string;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsSitesConnect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    provider: string;
+                    repo: string;
+                    branch: string;
+                    folder?: string;
+                    site_name: string;
+                    editing_locked?: boolean | null;
+                    active_quest?: string | null;
+                    cloudcannon_config_path?: string | null;
+                    stable_domain?: string;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsSslCertificatesIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "name" | "expires_at" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                autorenew?: boolean;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                expired?: string | number | boolean;
+                expires_at_gt?: string;
+                expires_at_gte?: string;
+                expires_at_lt?: string;
+                expires_at_lte?: string;
+                has_cloudflare_id?: number;
+                id?: number;
+                name?: string;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                removing?: string | number | boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SslCertificateBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsSslCertificatesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    crt: string;
+                    key: string;
+                    chain?: string;
+                    autorenew?: boolean | null;
+                    cipher?: string;
+                    /** @description A domain the certificate must cover. The expiry date is read from the certificate. */
+                    domain_name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SslCertificateBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    OrgsWhitelabelShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Not present */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OrgsWhitelabelShowBrand: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                org_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Not present */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    OutputsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                output_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    ProjectsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    ProjectsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                    external_url?: string | null;
+                    description?: string | null;
+                    links?: string;
+                    default_destroy_on_publish?: boolean;
+                    default_authentication?: string | null;
+                    default_publish_mode?: string | null;
+                    default_password?: string | boolean;
+                    pr_tab_visible?: boolean;
+                    publishing_tab_visible?: boolean;
+                    branches_tab_visible?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    ProjectsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    ProjectsGitBranches: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["BranchSchema"] & {
+                        sites?: {
+                            uuid?: string;
+                            site_name?: string;
+                            stable_domain?: string;
+                        }[];
+                        is_default?: boolean;
+                        pull_request?: {
+                            number?: number;
+                            title?: string;
+                            external_url?: string;
+                            state?: string;
+                            /** Format: date-time */
+                            updated_at?: string | null;
+                        };
+                    })[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    ProjectsUpdateGit: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    git_repository: string;
+                    allow_all_branching?: boolean;
+                    prevent_permissions_granted_on_branch?: boolean;
+                    main_git_branch?: string | null;
+                    provider: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    ProjectsGitPullRequests: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["PullRequestSchema"] & {
+                        sites?: {
+                            uuid?: string;
+                            site_name?: string;
+                            stable_domain?: string;
+                        }[];
+                    })[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    ProjectsRefreshPrComments: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    ProjectsSites: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "site_name" | "domain_name" | "created_at" | "updated_at" | "last_synced" | "last_compressed" | "last_compiled" | "last_cleaned" | "storage_provider" | "stable_domain" | "subpath" | "sync_error";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                authentication?: string;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                auto_generate_ssl?: boolean;
+                base_domain_id?: number;
+                base_domain_uuid?: string;
+                bearer_tokens?: string | number | boolean;
+                broken_client_auth?: string | number | boolean;
+                browsing_locked?: boolean;
+                building_locked?: boolean;
+                cloudflare_hostname?: string | number | boolean;
+                cloudflare_hostname_uuid?: string;
+                compile_error?: string;
+                compiled?: string | number | boolean;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                custom_ssl_expiring?: string | number | boolean;
+                dam_uuid?: string;
+                default_inbox?: string | number | boolean;
+                domain_name?: string;
+                domain_not_resolving?: string | number | boolean;
+                editing_locked?: boolean;
+                error?: string | number | boolean;
+                failing_forms?: string | number | boolean;
+                files?: string;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                force_ssl?: boolean;
+                has_client_password?: string | number | boolean;
+                has_domain_name?: string | number | boolean;
+                has_output_storage_provider?: string | number | boolean;
+                has_source?: string | number | boolean;
+                has_storage_provider?: string | number | boolean;
+                has_subpath?: string | number | boolean;
+                has_unsaved_changes?: string | number | boolean;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                hosting_choice?: string;
+                id?: number;
+                inactive?: string | number | boolean;
+                inbox_uuid?: string;
+                last_compiled?: string;
+                last_compiled_status?: string | number | boolean;
+                last_compiled_success?: string;
+                last_synced?: string;
+                latest_hosted_build_id?: number;
+                locales?: string;
+                needs_clean?: boolean;
+                never_synced?: string | number | boolean;
+                old_includes?: string | number | boolean;
+                organisation_id?: number;
+                organisation_uuid?: string;
+                output_error?: string;
+                output_storage_provider?: string;
+                owner_locked?: string | number | boolean;
+                owner_trial?: string | number | boolean;
+                project_id?: number;
+                project_uuid?: string;
+                publish_branch?: string | number | boolean;
+                repeatables?: string | number | boolean;
+                site_name?: string;
+                site_scanner?: string | number | boolean;
+                source?: string | number | boolean;
+                ssg?: string;
+                /** @description Only matches Sites with a custom domain, whatever the value. */
+                ssl_certificate?: string | number | boolean;
+                ssl_certificate_expired?: string | number | boolean;
+                ssl_certificate_id?: number;
+                storage_provider?: string;
+                storage_provider_details_full_name?: string | number | boolean;
+                sync_blocked?: string | number | boolean;
+                sync_error?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uploads_locked?: boolean;
+                use_rbenv_builds?: boolean;
+                used_for_client_auth?: string | number | boolean;
+                uses_i18n?: boolean;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                project_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    ScheduledBuildsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                scheduled_build_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteScheduledBuildBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    ScheduledBuildsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                scheduled_build_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SiteArchivesDownload: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_archive_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SiteDamsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_dam_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteDamBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SiteDamsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_dam_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    dam_uuid?: string;
+                    uploads_locked?: boolean;
+                    config?: {
+                        [key: string]: unknown;
+                    } | null;
+                    reference_key?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteDamBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SiteDamsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_dam_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SiteInboxesShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteInboxBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SiteInboxesUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    inbox_uuid?: string;
+                    default_inbox?: boolean;
+                    visible?: boolean;
+                    require_captcha?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteInboxBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SiteInboxesDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_inbox_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SiteMountingsUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_mounting_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    local_site_id: number;
+                    local_path: string;
+                    remote_site_id: number;
+                    remote_path: string;
+                    remote_artifact: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteMountingBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SiteMountingsDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_mounting_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesIndexShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    site_name: string;
+                    editing_locked?: boolean | null;
+                    active_quest?: string | null;
+                    cloudcannon_config_path?: string | null;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesActivityIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "updated_at" | "happened_at" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                org_id?: number;
+                org_uuid?: string;
+                organisation_uuid?: string;
+                site_id?: number;
+                site_uuid?: string;
+                size_gt?: string | number | boolean;
+                size_gte?: string | number | boolean;
+                size_lt?: string | number | boolean;
+                size_lte?: string | number | boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteActivityBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesAnalyticsBuildDuration: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: date-time */
+                        date?: string;
+                        duration?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAnalyticsHostingBandwidth: {
+        parameters: {
+            query?: {
+                /** @description The start of the reporting period */
+                start_time?: string;
+                /** @description The end of the reporting period */
+                end_time?: string;
+                /** @description The interval to group results by */
+                period?: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: date-time */
+                        date?: string;
+                        bandwidth?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAnalyticsHostingBandwidthByUrl: {
+        parameters: {
+            query: {
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+                /** @description The number of results to skip */
+                offset?: number;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        url?: string;
+                        host?: string;
+                        total_bandwidth?: number;
+                        total_requests?: number;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAnalyticsHostingBandwidthForUrl: {
+        parameters: {
+            query: {
+                /** @description The URL to report bandwidth for */
+                url: string;
+                /** @description The start of the reporting period */
+                start_time: string;
+                /** @description The end of the reporting period */
+                end_time: string;
+                /** @description The interval to group results by */
+                period: "hourly" | "daily" | "weekly";
+                /** @description The timezone for the reporting period */
+                timezone: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        total_bandwidth?: number;
+                        total_requests?: number;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesArchivesIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                org_id?: number;
+                org_uuid?: string;
+                site_id?: number;
+                site_uuid?: string;
+                size_gt?: number;
+                size_gte?: number;
+                size_lt?: number;
+                size_lte?: number;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteArchiveBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesArchivesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description Exclude Git history from the Backup */
+                    exclude_git?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        socket_message_id?: string;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexUpdateAuthentication: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    authentication?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAuthenticationBearerTokensIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                name?: string;
+                org_id?: number;
+                org_uuid?: string;
+                site_id?: number;
+                site_uuid?: string;
+                token?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBearerTokenBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesAuthenticationBearerTokensCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBearerTokenBlueprintWithToken"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAuthenticationIndexUpdateClientPassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The Guest Password. Leave blank to remove it. */
+                    password?: string;
+                    /** @description Accept any billing increase. Without this, the request will fail if you exceed the number of seats in your Subscription Plan. */
+                    accept_billing_increase?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAuthenticationIndexUpdateGuestPassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The Guest Password. Leave blank to remove it. */
+                    password?: string;
+                    /** @description Accept any billing increase. Without this, the request will fail if you exceed the number of seats in your Subscription Plan. */
+                    accept_billing_increase?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAuthenticationIndexUpdateSaml: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The Site's SAML authentication configuration */
+                    saml_data?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAuthenticationIndexUpdateStablePassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The authentication password. Leave blank to remove it. */
+                    stable_password?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesAuthenticationUsersIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                email?: string;
+                id?: number;
+                org_id?: number;
+                org_uuid?: string;
+                site_id?: number;
+                site_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteUserBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesAuthenticationUsersCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    email: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteUserBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexUpdateBuild: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    default_locale?: string | null;
+                    uses_i18n?: boolean;
+                    building_locked?: boolean | null;
+                    ssg?: string | null;
+                    build_configuration?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesBuildsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                completed_at?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: number;
+                name?: string;
+                org_id?: number;
+                org_uuid?: string;
+                pinnable?: boolean;
+                site_id?: number;
+                site_uuid?: string;
+                successful?: boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BuildBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesBuildsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesBuildsCancel: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description canceled */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesIndexUpdateClientSharing: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    client_editor_route?: string;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use prevent_guest_password_save instead.
+                     */
+                    prevent_client_password_save?: boolean;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use guest_author_name instead.
+                     */
+                    client_author_name?: string | null;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use guest_author_email instead.
+                     */
+                    client_author_email?: string | null;
+                    preview_url?: string | null;
+                    documentation_url?: string | null;
+                    support_url?: string | null;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                    guest_author_name?: string | null;
+                    guest_author_email?: string | null;
+                    prevent_guest_password_save?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexCopy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    site_name: string;
+                    editing_locked?: boolean | null;
+                    active_quest?: string | null;
+                    cloudcannon_config_path?: string | null;
+                    stable_domain?: string;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                    publish_mode?: string | null;
+                    destroy_on_publish?: boolean;
+                    /** @description The branch to use for the copied Site */
+                    branch?: string;
+                    /** @description Set the copied Site's Publish Branch to the source Site's branch */
+                    publish_branch?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexUpdateDam: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    uploads_locked?: boolean;
+                    browsing_locked?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesDamsIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteDamBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesDamsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    dam_uuid: string;
+                    uploads_locked?: boolean;
+                    config?: {
+                        [key: string]: unknown;
+                    } | null;
+                    reference_key?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteDamBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesDomainUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description The Custom Domain for the Site, on a Base Domain the Organization has already connected. Leave blank to remove it. */
+                    domain_name?: string | null;
+                    /** @description An optional subpath under the domain where the Site is served. */
+                    subpath?: string | null;
+                    /** @description Accept any billing increase. Without this, the request will fail if you exceed the number of domains in your Subscription Plan. */
+                    accept_billing_increase?: boolean;
+                    /**
+                     * @description When the Site is the last one on the domain it leaves: leave that domain set up without a Site (the default), redirect it to redirect_target, or delete it.
+                     * @enum {string}
+                     */
+                    then?: "leave" | "redirect" | "delete";
+                    /** @description Where to redirect the domain the Site leaves. */
+                    redirect_target?: string;
+                    /** @description Subdomains that redirect to the domain the Site leaves, to delete with it. */
+                    delete_redirects?: components["schemas"]["UUID"][];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            402: components["responses"]["PaymentConfirmRequired"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesDomainPrioritise: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesEditingSessionsIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesEditingSessionsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionBlueprint"];
+                };
+            };
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesEditingSessionsLatest: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditingSessionBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesFilesIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        md5?: string;
+                        s3Path?: string;
+                        sitePath?: string;
+                    }[];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesFilesCompleteZipUpload: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    zip?: {
+                        /** @description The storage key of the uploaded ZIP file */
+                        key?: string;
+                        /** @description The checksum of the uploaded ZIP file */
+                        checksum?: string;
+                        /** @description The type of the uploaded ZIP file */
+                        type?: string;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        socket_message_id?: string;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesFilesShow: {
+        parameters: {
+            query?: {
+                /** @description Set to true to download the file instead of viewing it */
+                download?: boolean;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The path to the file within the Site */
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesFilesMetadata: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The path to the file within the Site */
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesFilesResized: {
+        parameters: {
+            query?: {
+                /** @description The width to resize the image to, in pixels */
+                width?: number;
+                /** @description The height to resize the image to, in pixels */
+                height?: number;
+                /** @description The content type to return the image as */
+                content_type?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The path to the file within the Site */
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesFilesSorting: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The path to the file within the Site */
+                path: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesFormHooksIndex: {
+        parameters: {
+            query?: {
+                /** @description Filter Form Hooks by category */
+                category?: "spam" | "sent" | "forwarded" | "errored" | "pending";
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "last_sent_at" | "created_at" | "id" | "uuid";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                automatically_marked_spam?: boolean;
+                cleared_at_gt?: string;
+                cleared_at_gte?: string;
+                cleared_at_lt?: string;
+                cleared_at_lte?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                explicitly_marked_status?: number;
+                has_error?: string | number | boolean;
+                has_spam_check_error?: string | number | boolean;
+                host?: string;
+                id?: number;
+                inbox_uuid?: string;
+                ip?: string;
+                last_sent_at_gt?: string;
+                last_sent_at_gte?: string;
+                last_sent_at_lt?: string;
+                last_sent_at_lte?: string;
+                org_id?: number;
+                org_uuid?: string;
+                recaptcha?: boolean;
+                sent?: boolean;
+                sent_count_gt?: number;
+                sent_count_gte?: number;
+                sent_count_lt?: number;
+                sent_count_lte?: number;
+                site_id?: number;
+                site_uuid?: string;
+                spam_checked?: boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FormHookBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesIndexUpdateGuestAccess: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    client_editor_route?: string;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use prevent_guest_password_save instead.
+                     */
+                    prevent_client_password_save?: boolean;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use guest_author_name instead.
+                     */
+                    client_author_name?: string | null;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use guest_author_email instead.
+                     */
+                    client_author_email?: string | null;
+                    preview_url?: string | null;
+                    documentation_url?: string | null;
+                    support_url?: string | null;
+                    flags?: {
+                        [key: string]: unknown;
+                    };
+                    guest_author_name?: string | null;
+                    guest_author_email?: string | null;
+                    prevent_guest_password_save?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexUpdateHosting: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead. Needs a custom domain on the Site, unless the value is the one the Site already has.
+                     * @enum {string}
+                     */
+                    hosting_choice?: "cloudcannon" | "cloudflare" | "origin";
+                    geolocation?: boolean | null;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead. Needs a custom domain on the Site, unless the value is the one the Site already has.
+                     */
+                    force_ssl?: boolean | null;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead. Needs a custom domain on the Site, unless the value is the one the Site already has.
+                     */
+                    auto_generate_ssl?: boolean;
+                    serve_extensionless?: boolean;
+                    force_extensionless?: boolean;
+                    /**
+                     * @deprecated
+                     * @description Deprecated. Use PUT /api/v0/base-domains/{base_domain_uuid}/subdomains/{subdomain_uuid} instead. Needs a custom domain on the Site, unless the value is the one the Site already has.
+                     */
+                    ssl_certificate_id?: number | null;
+                    mode?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesInboxesIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteInboxBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesInboxesCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    inbox_uuid?: string;
+                    default_inbox?: boolean;
+                    visible?: boolean;
+                    require_captcha?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteInboxBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesMainSourceDamIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        uuid?: components["schemas"]["UUID"];
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesMainSourceDamUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    uuid?: components["schemas"]["UUID"];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        uuid?: components["schemas"]["UUID"];
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesMembersIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "email" | "first_name" | "last_sign_in_at" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                /** @description Filter Members by name or email */
+                search?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesMembersSetSiteGroup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The Member or pending Member's email address */
+                email: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    group_uuid?: components["schemas"]["UUID"];
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupMemberBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesMembersDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The Member or pending Member's email address */
+                email: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesOutputProvidersIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    custom_data?: Record<string, never>;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesOutputProvidersIndexAdd: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    storage_provider?: "github" | "github_enterprise_server" | "bitbucket" | "gitlab" | "self_hosted_gitlab" | "ftp";
+                    custom_data?: {
+                        full_name?: string;
+                        branch?: string;
+                        hostname?: string;
+                        port?: number;
+                        username?: string;
+                        password?: string;
+                        path?: string;
+                        ignorePermissions?: boolean;
+                        step?: string;
+                        webhook_id?: string;
+                        exclusions?: string[];
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesOutputProvidersIndexRemove: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesOutputProvidersIndexSync: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        socket_message_id?: string;
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesOutputsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                after_identifier?: string;
+                completed_at_gt?: string;
+                completed_at_gte?: string;
+                completed_at_lt?: string;
+                completed_at_lte?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                diff_id?: string;
+                id?: number;
+                identifier?: string;
+                name?: string;
+                org_id?: number;
+                org_uuid?: string;
+                provider?: string;
+                site_id?: number;
+                site_uuid?: string;
+                successful?: boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OutputBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesPendingMembersIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GroupPendingMemberBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesProvidersIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    custom_data?: {
+                        /** @description The repository's full name. Must match the connected repository — it cannot be changed here. */
+                        full_name?: string;
+                        /** @description The branch to sync the Site's files from */
+                        branch?: string;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersIndexAdd: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description The Git Provider to connect
+                     * @enum {string}
+                     */
+                    storage_provider?: "github" | "github_enterprise_server" | "bitbucket" | "gitlab" | "self_hosted_gitlab";
+                    custom_data?: {
+                        /** @description The branch to sync the Site's files from */
+                        branch?: string;
+                        /** @description The repository's full name, e.g. org/repo */
+                        full_name?: string;
+                        /** @description The ID of the webhook created on the repository */
+                        webhook_id?: string;
+                        /** @description Enable Git LFS for the repository */
+                        lfsEnabled?: boolean;
+                        /** @description When a Site is branched, the branched Site gets a copy of its build files. This option disables that behavior. */
+                        fast_compile_disabled?: boolean;
+                        /** @description The branch to publish changes to */
+                        publish_branch?: string;
+                    };
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersIndexRemove: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitIndexBranches: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BranchSchema"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitIndexCreateBranch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BranchSchema"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitIndexMerge: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            /** @description Deleted. Used when site is deleted after a successful merge. */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitIndexPublishBranch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    branch?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitIndexCompare: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CompareSchema"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitIndexUpstreamCompare: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CompareSchema"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesProvidersGitIndexUpstreamMerge: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitPullRequestsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PullRequestSchema"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitPullRequestsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    title?: string;
+                    body?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PullRequestSchema"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitPullRequestsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The Pull Request's number */
+                number: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PullRequestSchema"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitPullRequestsClose: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The Pull Request's number */
+                number: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PullRequestSchema"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitPullRequestsCommits: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The Pull Request's number */
+                number: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CommitsSchema"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitPullRequestsMerge: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The Pull Request's number */
+                number: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    commit_message?: string;
+                    type?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        socket_message_id?: string;
+                    };
+                };
+            };
+            /** @description Merged */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersIndexReconnect: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    /** @description Reset all files from the Git Provider instead of syncing changes */
+                    forced?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersIndexSync: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description Sync direction: push local changes to the Git Provider, or pull provider changes to the Site
+                     * @enum {string}
+                     */
+                    type?: "push" | "pull";
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        socket_message_id?: string;
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitUpstreamPullRequestsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PullRequestSchema"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesProvidersGitUpstreamPullRequestsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    title?: string;
+                    body?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PullRequestSchema"];
+                };
+            };
+            402: components["responses"]["FeatureNotOnPlan"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesIndexUpdatePublish: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    publish_mode?: string | null;
+                    destroy_on_publish?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesScansIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteScannerBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesScheduledBuildsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                filename?: string;
+                from_source?: boolean;
+                id?: number;
+                name?: string;
+                org_id?: number;
+                org_uuid?: string;
+                period_gt?: number;
+                period_gte?: number;
+                period_lt?: number;
+                period_lte?: number;
+                run_count_gt?: number;
+                run_count_gte?: number;
+                run_count_lt?: number;
+                run_count_lte?: number;
+                run_date_gt?: string;
+                run_date_gte?: string;
+                run_date_lt?: string;
+                run_date_lte?: string;
+                scheduled_at?: string;
+                site_id?: number;
+                site_uuid?: string;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteScheduledBuildBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesScheduledBuildsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @description A name for the Scheduled Build. */
+                    name: string;
+                    /** @description How often to repeat the build, in seconds (minimum 3600). Leave blank to run once. */
+                    period?: number | null;
+                    /**
+                     * Format: date-time
+                     * @description The date and time to run the build.
+                     */
+                    run_date: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteScheduledBuildBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesScreenshotsIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesScreenshotsLighthouse: {
+        parameters: {
+            query?: {
+                /** @description The page path to report on */
+                path?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    SitesScreenshotsShow: {
+        parameters: {
+            query?: {
+                /** @description The page path to screenshot */
+                path?: string;
+                /** @description The width of the screenshot, in pixels */
+                width?: string;
+                /** @description The height of the screenshot, in pixels */
+                height?: string;
+                /** @description The Build to screenshot */
+                build_id?: number;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+                /** @description The device viewport to render: mobile or desktop */
+                device: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            307: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    SitesSiteMountingsIndex: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteMountingBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesSiteMountingsCreate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    local_site_id: number;
+                    local_path: string;
+                    remote_site_id: number;
+                    remote_path: string;
+                    remote_artifact: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteMountingBlueprint"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslIndexUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    ssl_certificate_id?: number | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslIndexRemove: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SiteBlueprintFull"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslAutoSslState: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AutoSSLStateSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslAutoRetrySslGenerate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AutoSSLStateSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslCloudflareCloudflareSslState: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CloudflareSSLStateSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslCloudflareUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    ssl_certificate_id?: number | null;
+                    /**
+                     * @description The oldest TLS version the Subdomain accepts, for every hosting_choice. Defaults to, and can't be below, the Base Domain's minimum_tls_version. On the Base Domain itself it also applies to subdomains that are not set up.
+                     * @enum {string}
+                     */
+                    min_tls_version?: "1.2" | "1.3";
+                    /**
+                     * @description How Cloudflare validates the certificate. txt validates before DNS points at CloudCannon. The base domain's own wildcard certificate is always txt.
+                     * @enum {string}
+                     */
+                    validation_method?: "http" | "txt";
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CloudflareSSLStateSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSslCloudflareRetryCloudflareSetup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CloudflareSSLStateSchema"];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    SitesSyncsIndex: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "id" | "uuid" | "created_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                after_identifier?: string;
+                completed_at?: string;
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                diff_id?: string;
+                id?: number;
+                identifier?: string;
+                name?: string;
+                org_id?: number;
+                org_uuid?: string;
+                provider?: string;
+                site_id?: number;
+                site_uuid?: string;
+                successful?: boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                uuid?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SyncBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesIndexStartWatching: {
+        parameters: {
+            query?: {
+                /** @description The file path to watch */
+                path?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SitesIndexStopWatching: {
+        parameters: {
+            query?: {
+                /** @description The file path to stop watching */
+                path?: string;
+            };
+            header?: never;
+            path: {
+                site_uuid: components["schemas"]["UUID"] | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SslCertificatesShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ssl_certificate_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SslCertificateBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SslCertificatesDestroy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                ssl_certificate_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Removing */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SslCertificateBlueprintFull"];
+                };
+            };
+            /** @description Deleted */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SslCertificatesSubdomains: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+            };
+            header?: never;
+            path: {
+                ssl_certificate_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SubdomainSummaryBlueprint"][];
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    SyncsShow: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                sync_uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            303: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            401: components["responses"]["UnauthorizedResp"];
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    IndexUploadData: {
+        parameters: {
+            query?: {
+                /** @description Set to `zip` to upload a ZIP file */
+                type?: "zip";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        prefix: string;
+                        url: string;
+                        fields: {
+                            [key: string]: string;
+                        };
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    UsersUserShowCurrentUser: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    UsersUserUpdate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    first_name?: string | null;
+                    surname?: string | null;
+                    ssg_experience?: string | null;
+                    job_title?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprintFull"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    UsersUserAccessKeys: {
+        parameters: {
+            query?: {
+                /** @description Page number to fetch (1-indexed) */
+                page?: components["parameters"]["PageQuery"];
+                /** @description Number of items per page */
+                items?: components["parameters"]["ItemsQuery"];
+                /** @description Attribute to sort the results by */
+                sort_attribute?: "key_id" | "name" | "created_at" | "updated_at";
+                /** @description Direction to sort the results */
+                sort_direction?: "ASC" | "DESC";
+                created_at_gt?: string;
+                created_at_gte?: string;
+                created_at_lt?: string;
+                created_at_lte?: string;
+                id?: string | number | boolean;
+                locked?: string | number | boolean;
+                name?: string;
+                status?: string | number | boolean;
+                updated_at_gt?: string;
+                updated_at_gte?: string;
+                updated_at_lt?: string;
+                updated_at_lte?: string;
+                user_uuid?: string;
+                uuid?: string;
+                search?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    /** @description The current page number */
+                    current_page?: string;
+                    /** @description The total number of items across all pages */
+                    total_items?: string;
+                    /** @description The total number of pages available */
+                    total_pages?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserAccessKeyBlueprint"][];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    UsersUserCreateAccessKey: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        access_key?: components["schemas"]["UserAccessKeyBlueprint"];
+                        access_key_display?: string;
+                    };
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    UsersUserDestroyAccessKey: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The Access Key's UUID */
+                uuid: components["schemas"]["UUID"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            404: components["responses"]["NotFoundResp"];
+        };
+    };
+    UsersAvatarShow: {
+        parameters: {
+            query?: {
+                /** @description Avatar size in pixels */
+                s?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            302: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    UsersUserInvites: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": (components["schemas"]["BaseBlueprint"] & {
+                        name?: string;
+                        brand_color?: string | null;
+                        brand_logo?: string | null;
+                        white_label_logo?: string | null;
+                        /** Format: date-time */
+                        invited_at?: string | null;
+                    })[];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    UsersUserAcceptInvite: {
+        parameters: {
+            query: {
+                /** @description The Organization's UUID */
+                organisation_uuid: components["schemas"]["UUID"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    UsersUserDeclineInvite: {
+        parameters: {
+            query: {
+                /** @description The Organization's UUID */
+                organisation_uuid: components["schemas"]["UUID"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description No Content */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: components["responses"]["ForbiddenResp"];
+            422: components["responses"]["ErrorResp"];
+        };
+    };
+    UsersUserShowByIdentifier: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description The Organization Member's email address or UUID */
+                user_identifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBlueprint"];
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
+    UsersAvatarShowByIdentifier: {
+        parameters: {
+            query?: {
+                /** @description Avatar size in pixels */
+                s?: number;
+            };
+            header?: never;
+            path: {
+                /** @description The Organization Member's email address or UUID */
+                user_identifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Redirect */
+            302: {
+                headers: {
+                    /** @description URL of the redirect target */
+                    location?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            403: components["responses"]["ForbiddenResp"];
+        };
+    };
 }
