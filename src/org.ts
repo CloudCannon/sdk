@@ -51,8 +51,8 @@ export class OrgClient {
 		const requestInit = { method: 'GET' } as const;
 		let resp = await this.#client.fetch(url, requestInit);
 		resp = await assertResponse(resp, 'Error fetching base domains', url, requestInit);
-		const sites = await resp.json();
-		return paginatedResponse(sites, resp.headers);
+		const domains = await resp.json();
+		return paginatedResponse(domains, resp.headers);
 	}
 
 	async sites(options: ListOrgSitesOptions = {}): Promise<PaginatedResponse<Site>> {
