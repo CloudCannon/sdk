@@ -47,8 +47,7 @@ export class SubdomainClient {
 	}
 
 	async setAsFallback(): Promise<Subdomain> {
-		const url =
-			`/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/fallback` as const;
+		const url = `/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/fallback` as const;
 		const requestInit = { method: 'POST' } as const;
 		let resp = await this.#client.fetch(url, requestInit);
 		resp = await assertResponse(resp, 'Error setting subdomain as fallback', url, requestInit);
@@ -57,16 +56,10 @@ export class SubdomainClient {
 	}
 
 	async changeToRedirect(options: ChangeSubdomainToRedirectOptions): Promise<Subdomain> {
-		const url =
-			`/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/redirect` as const;
+		const url = `/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/redirect` as const;
 		const requestInit = { method: 'POST', body: options } as const;
 		let resp = await this.#client.fetch(url, requestInit);
-		resp = await assertResponse(
-			resp,
-			'Error changing subdomain to a redirect',
-			url,
-			requestInit
-		);
+		resp = await assertResponse(resp, 'Error changing subdomain to a redirect', url, requestInit);
 		const subdomain = await resp.json();
 		return subdomain;
 	}
@@ -91,10 +84,7 @@ export class SubdomainClient {
 		return subdomain;
 	}
 
-	async updateSite(
-		siteUuid: string,
-		options: UpdateSubdomainSiteOptions
-	): Promise<Subdomain> {
+	async updateSite(siteUuid: string, options: UpdateSubdomainSiteOptions): Promise<Subdomain> {
 		const url =
 			`/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/sites/${siteUuid}` as const;
 		const requestInit = { method: 'PUT', body: options } as const;
@@ -115,8 +105,7 @@ export class SubdomainClient {
 	}
 
 	async retrySsl(): Promise<Subdomain> {
-		const url =
-			`/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/ssl/retry` as const;
+		const url = `/base-domains/${this.#baseDomainUuid}/subdomains/${this.#uuid}/ssl/retry` as const;
 		const requestInit = { method: 'POST' } as const;
 		let resp = await this.#client.fetch(url, requestInit);
 		resp = await assertResponse(resp, 'Error retrying subdomain SSL', url, requestInit);

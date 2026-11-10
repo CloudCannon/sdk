@@ -38,9 +38,7 @@ export class DomainClient {
 		return domain;
 	}
 
-	async getSubdomains(
-		options: ListSubdomainsOptions = {}
-	): Promise<PaginatedResponse<Subdomain>> {
+	async getSubdomains(options: ListSubdomainsOptions = {}): Promise<PaginatedResponse<Subdomain>> {
 		const query = buildQuery(options);
 		const url = `/base-domains/${this.#uuid}/subdomains${query}` as const;
 		const requestInit = { method: 'GET' } as const;
