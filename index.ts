@@ -179,8 +179,8 @@ type StripPrefix<S extends string> = S extends `/api/v0${infer Rest}` ? Rest : n
 type StripParams<S extends string> = S extends `${infer Path}?${string}` ? Path : S;
 
 type RequestBody<T> = T extends { requestBody?: { content: { 'application/json': infer B } } }
-		? B
-		: never;
+	? B
+	: never;
 
 type RequestParams<T> = T extends { parameters: infer P } ? P : never;
 
