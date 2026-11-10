@@ -1,5 +1,5 @@
 import type CloudCannonClient from '../index.ts';
-import type { Dam, Inbox, Org, Provider, ProviderDetails, Site } from '../index.ts';
+import type { BaseDomain, Dam, Inbox, Org, Provider, ProviderDetails, Site } from '../index.ts';
 import type { operations } from '../schema.js';
 import { assertResponse } from './errors.ts';
 import {
@@ -27,6 +27,9 @@ export type ListOrgInboxesOptions = PaginationOptions &
 export type ListOrgDamsOptions = PaginationOptions &
 	SortingOptions<operations['OrgsDamsIndex']> &
 	FilterOptions<operations['OrgsDamsIndex']>;
+export type ListOrgDomainsOptions = PaginationOptions &
+	SortingOptions<operations['OrgsBaseDomainsIndex']> &
+	FilterOptions<operations['OrgsBaseDomainsIndex']>;
 
 export type CreateInboxOptions =
 	operations['OrgsInboxesCreate']['requestBody']['content']['application/json'];
@@ -40,6 +43,16 @@ export class OrgClient {
 	constructor(uuid: string, client: CloudCannonClient) {
 		this.#uuid = uuid;
 		this.#client = client;
+	}
+
+	async domains(options: ListOrgDomainsOptions = {}): Promise<PaginatedResponse<BaseDomain>> {
+		const query = buildQuery(options);
+		const url = `/orgs/${this.#uuid}/base-domains${query}` as const;
+		const requestInit = { method: 'GET' } as const;
+		let resp = await this.#client.fetch(url, requestInit);
+		resp = await assertResponse(resp, 'Error fetching base domains', url, requestInit);
+		const domains = await resp.json();
+		return paginatedResponse(domains, resp.headers);
 	}
 
 	async sites(options: ListOrgSitesOptions = {}): Promise<PaginatedResponse<Site>> {

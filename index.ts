@@ -3,6 +3,11 @@ import type { components, operations, paths } from './schema.ts';
 import { BackupClient } from './src/backup.ts';
 import { BuildClient } from './src/build.ts';
 import {
+	type CreateSubdomainOptions,
+	DomainClient,
+	type ListSubdomainsOptions,
+} from './src/domain.ts';
+import {
 	type CloneEditingSessionFileOptions,
 	type CloneEditingSessionFilesOptions,
 	type CommitEditingSessionOptions,
@@ -37,6 +42,7 @@ import {
 	type CreateDamOptions,
 	type CreateInboxOptions,
 	type ListOrgDamsOptions,
+	type ListOrgDomainsOptions,
 	type ListOrgInboxesOptions,
 	type ListOrgSitesOptions,
 	OrgClient,
@@ -56,6 +62,14 @@ import {
 	type UploadFileOptions,
 } from './src/site.ts';
 import { SiteInboxClient, type UpdateInboxOptions } from './src/site-inbox.ts';
+import type {
+	AddSubdomainSiteOptions,
+	ChangeSubdomainToRedirectOptions,
+	ChangeSubdomainToSiteOptions,
+	SwapSubdomainSiteOptions,
+	UpdateSubdomainOptions,
+	UpdateSubdomainSiteOptions,
+} from './src/subdomain.ts';
 import { SyncClient } from './src/sync.ts';
 
 export {
@@ -68,6 +82,9 @@ export {
 } from './src/errors.ts';
 
 export type {
+	AddSubdomainSiteOptions,
+	ChangeSubdomainToRedirectOptions,
+	ChangeSubdomainToSiteOptions,
 	CloneEditingSessionFileOptions,
 	CloneEditingSessionFilesOptions,
 	CommitEditingSessionOptions,
@@ -82,17 +99,20 @@ export type {
 	CreateDamOptions,
 	CreateEditingSessionFileOptions,
 	CreateInboxOptions,
+	CreateSubdomainOptions,
 	DeleteEditingSessionFileOptions,
 	DeleteEditingSessionFilesOptions,
 	FilterOptions,
 	ListInboxSubmissionsOptions,
 	ListOrgDamsOptions,
+	ListOrgDomainsOptions,
 	ListOrgInboxesOptions,
 	ListOrgSitesOptions,
 	ListOrgsOptions,
 	ListSiteBackupsOptions,
 	ListSiteBuildsOptions,
 	ListSiteSyncsOptions,
+	ListSubdomainsOptions,
 	MoveEditingSessionFileOptions,
 	MoveEditingSessionFilesOptions,
 	PaginatedResponse,
@@ -100,10 +120,13 @@ export type {
 	RestoreEditingSessionFileOptions,
 	RestoreEditingSessionFilesOptions,
 	SortingOptions,
+	SwapSubdomainSiteOptions,
 	UnlockOptions,
 	UpdateBuildConfigOptions,
 	UpdateInboxOptions,
 	UpdateSiteOptions,
+	UpdateSubdomainOptions,
+	UpdateSubdomainSiteOptions,
 	UploadFileOptions,
 };
 
@@ -117,6 +140,8 @@ export type Site = Omit<components['schemas']['SiteBlueprint'], 'build_configura
 	build_configuration?: BuildConfiguration;
 };
 
+export type BaseDomain = components['schemas']['BaseDomainBlueprint'];
+export type Subdomain = components['schemas']['SubdomainBlueprint'];
 export type Backup = components['schemas']['SiteArchiveBlueprint'];
 export type Org = components['schemas']['OrgBlueprintFull'];
 export type Build = components['schemas']['BuildBlueprint'];
@@ -153,7 +178,7 @@ type ParamToString<S extends string> = S extends `${infer A}/{${string}}/${infer
 type StripPrefix<S extends string> = S extends `/api/v0${infer Rest}` ? Rest : never;
 type StripParams<S extends string> = S extends `${infer Path}?${string}` ? Path : S;
 
-type RequestBody<T> = T extends { requestBody: { content: { 'application/json': infer B } } }
+type RequestBody<T> = T extends { requestBody?: { content: { 'application/json': infer B } } }
 	? B
 	: never;
 
@@ -364,6 +389,10 @@ export default class CloudCannonClient {
 
 	site(uuid: string): SiteClient {
 		return new SiteClient(uuid, this);
+	}
+
+	domain(uuid: string): DomainClient {
+		return new DomainClient(uuid, this);
 	}
 
 	inbox(uuid: string): InboxClient {
