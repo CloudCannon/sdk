@@ -49,8 +49,8 @@
   "author": "CloudCannon <support@cloudcannon.com>",
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "2.6.8",
-    "@types/node": "26.6.6",
+    "@biomejs/biome": "2.6.9",
+    "@types/node": "26.6.7",
     "typescript": "7.0.2"
   },
   "dependencies": {
